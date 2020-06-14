@@ -21,6 +21,9 @@ def intersection(request):
     context = dict(title='Intersection')
     return render(request, 'first-site/intersection.html', context)
 
+def asteroids(request):
+    context = dict(title='Asteroids')
+    return render(request, 'first-site/asteroids.html', context)
 
 def home(request):
     context = {

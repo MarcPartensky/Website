@@ -7,4 +7,6 @@ urlpatterns = [
     path('geometry/',views.geometry,name="geometry"),
     path('intersection/',views.intersection,name="intersection"),
     path('physics/',views.physics,name="physics"),
+    path('asteroids/',views.asteroids,name="asteroids"),
 ]
+
