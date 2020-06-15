@@ -38,5 +38,5 @@ def connect4(request):
     return render(request, 'first-site/connect4.html', context)
 
 def home(request):
-    dict(title="Website of Marc Partensky")
+    context = dict(title="Website of Marc Partensky")
     return render(request, 'first-site/index.html', context)
