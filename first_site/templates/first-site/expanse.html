@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Title</title>
+    <style>
+    #canvas {
+      background-color: black;
+    }
+    </style>
+
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <!-- Dependencies -->
+    <!-- online -->
+    <!-- <script src="{% static 'https://code.jquery.com/pep/0.4.1/pep.js"></script> -->
+
+    <!-- <script>
+      var PATH = '{{ STATIC_PATH }}/expanse'; 
+      // var PATH = "/expanse";
+   </script> -->
+
+    <!-- <link href="{% static 'expanse/imgs' %}"></link>
+    <img src="{% static 'expanse/imgs/water.png' %}"></img>
+    <img src="{% static 'expanse/imgs/sand.png' %}"></img>
+    <img src="{% static 'expanse/imgs/dark_water.png' %}"></img>
+    <img src="{% static 'expanse/imgs/sand.png' %}"></img>
+    <img src="{% static 'expanse/imgs/grass.png' %}"></img>
+    <img src="{% static 'expanse/imgs/ice.png' %}"></img>
+    <img src="{% static 'expanse/imgs/frozen_water.png' %}"></img>
+    <img src="{% static 'expanse/imgs/snow.png' %}"></img>
+    <img src="{% static 'expanse/imgs/red_dirt.png' %}"></img>
+    <img src="{% static 'expanse/imgs/apple_tree.png' %}"></img>
+    <img src="{% static 'expanse/imgs/tree.png' %}"></img>
+    <img src="{% static 'expanse/imgs/rock.png' %}"></img> -->
+
+    <!-- <link href="{% static 'expanse/links/water.png' %}"></link>
+    <link href="{% static 'expanse/links/sand.png' %}"></link>
+    <link href="{% static 'expanse/links/dark_water.png' %}"></link>
+    <link href="{% static 'expanse/links/sand.png' %}"></link>
+    <link href="{% static 'expanse/links/grass.png' %}"></link>
+    <link href="{% static 'expanse/links/ice.png' %}"></link>
+    <link href="{% static 'expanse/links/frozen_water.png' %}"></link>
+    <link href="{% static 'expanse/links/snow.png' %}"></link>
+    <link href="{% static 'expanse/links/red_dirt.png' %}"></link>
+    <link href="{% static 'expanse/links/apple_tree.png' %}"></link>
+    <link href="{% static 'expanse/links/tree.png' %}"></link>
+    <link href="{% static 'expanse/links/rock.png' %}"></link> -->
+
+    <!-- local -->
+    <script src="{% static 'libs/perlin.js' %}"></script>  
+    <script src="{% static 'libs/tensor.js' %}"></script>  
+    <script src="{% static 'libs/vector.js' %}"></script>  
+    <script src="{% static 'libs/color.js' %}"></script>  
+    <script src="{% static 'libs/context.js' %}"></script>  
+    <script src="{% static 'libs/matrix.js' %}"></script>  
+    <script src="{% static 'libs/motion.js' %}"></script>  
+    <script src="{% static 'libs/tree.js' %}"></script>  
+    <script src="{% static 'libs/group.js' %}"></script>  
+    <script src="{% static 'libs/body.js' %}"></script>  
+    <script src="{% static 'libs/plane.js' %}"></script>  
+    <script src="{% static 'libs/manager.js' %}"></script>  
+    <!-- Scripts -->
+    <script src="{% static 'expanse/models/case.js' %}"></script>  
+    <script src="{% static 'expanse/models/gamemap.js' %}"></script>  
+    <!-- <script src="{% static 'generator.js' %}"></script>   -->
+
+    <script src="{% static 'expanse/models/block.js' %}"></script>  
+    <script src="{% static 'expanse/models/biome.js' %}"></script>  
+    <script src="{% static 'expanse/models/terrain.js' %}"></script>  
+    <script src="{% static 'expanse/models/player.js' %}"></script>  
+    <script src="{% static 'expanse/models/game.js' %}"></script>  
+    <script src="{% static 'expanse/models/client.js' %}"></script>
+  
+
+<!-- 
+    <script>
+      var pic2.src = "{% static "photos/1.jpg" %}"
+  </script> -->
+  
+    
+    <!-- <script src="{% static 'libs/point.js' %}"></script>  
+    <script src="{% static 'libs/figure.js' %}"></script>  
+    <script src="{% static 'libs/form.js' %}"></script>  
+    <script src="{% static 'libs/segment.js' %}"></script>  
+    <script src="{% static 'libs/polygon.js' %}"></script>  
+    <script src="{% static 'libs/geometry.js' %}"></script>   -->
+  </body>
+</html>

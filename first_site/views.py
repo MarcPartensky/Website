@@ -6,8 +6,8 @@ def dummy(request):
     return HttpResponse('<h1>Blog Home</h1>')
 
 def circle(request):
-    context = dict(title='Circle')
-    return render(request, 'first-site/circle.html', context)
+    context = dict(title='Circles')
+    return render(request, 'first-site/circles.html', context)
 
 def geometry(request):
     context = dict(title='Geometry')
@@ -25,8 +25,18 @@ def asteroids(request):
     context = dict(title='Asteroids')
     return render(request, 'first-site/asteroids.html', context)
 
+def cube(request):
+    context = dict(title='Cube')
+    return render(request, 'first-site/cube.html', context)
+
+def expanse(request):
+    context = dict(title='Expanse')
+    return render(request, 'first-site/expanse.html', context)
+
+def connect4(request):
+    context = dict(title='Expanse')
+    return render(request, 'first-site/connect4.html', context)
+
 def home(request):
-    context = {
-        'title': "Website of Marc Partensky",
-    }
+    dict(title="Website of Marc Partensky")
     return render(request, 'first-site/index.html', context)
