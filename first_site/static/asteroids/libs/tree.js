@@ -1,4 +1,4 @@
-class Tree extends Map {
+class Tree extends Dict {
     paths(path=[]) {
         const ps = [];
         for (const [k, v] of this) {

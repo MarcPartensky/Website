@@ -1,8 +1,8 @@
-class Rectangle {
+class Rectangle extends BasePolygon {
   static color = "#ffffff";
   static lineWidth = 1;
   static of(x, y, w, h, ...args) {
-    return this([x,y], [w,h], ...args);
+    return this(x,y, w,h, ...args);
   }
   static from(a, ...args) {
     return new this(a.slice(0,2), a.slice(2), ...args)
@@ -11,60 +11,58 @@ class Rectangle {
     return new this(Vector.random(), Vector.random());
   }
   
-  constructor(position, size, color=Rectangle.color, lineWidth=Rectangle.lineWidth) {
+  constructor(
+    position,
+    size,
+    color=Rectangle.color,
+    lineWidth=Rectangle.lineWidth,
+    fill=Rectangle.fill,
+  ) {
+    super(color, lineWidth, fill);
     this.position = new Vector(...position);
     this.size = new Vector(...size);
-    this.color = color;
-    this.lineWidth = lineWidth;
   }
-  get position() {
-    return this[0];
-  }
-  set position(vector) {
-    this[0] = vector;
-  }
-  get size() {
-    return this[1];
-  }
-  set size(vector) {
-    this[1] = vector;
+  translate(vector) {
+    this.position.iadd(vector);
   }
   get x() {
-    return this[0][0]
+    return this.position[0]
   }
   set x(value) {
-    this[0][0] = value;
+    this.position[0] = value;
   }
   get y() {
-    return this[0][1];
+    return this.position[1];
   }
   set y(value) {
-    this[0][1] = value;
+    this.position[1] = value;
   }
   get w() {
-    return this[1][0];
+    return this.size[0];
   }
   set w(value) {
-    this[1][0] = value;
+    this.size[0] = value;
   }
   get h() {
-    return this[1][1];
+    return this.size[1];
   }
   set h(value) {
-    this[1][1] = value;
+    this.size[1] = value;
   }
   get components() {
-    return [this.x, this.y, this.w, this.h];
+    return [...this.position, ...this.size];
   }
   set components(value) {
-    [this.x, this.y, this.w, this.h] = value;
+    this.position = value.slice(0, 2);
+    this.size = value.slice(2, 4);
   }
   get points() {
-    let p1 = new Point(this.x, this.y);
-    let p2 = new Point(this.x+this.w, this.y);
-    let p3 = new Point(this.x+this.w, this.y+this.h);
-    let p4 = new Point(this.x, this.y+this.h);
-    return [p1, p2, p3, p4];
+    return [
+      new Point(this.x, this.y),
+      new Point(this.x+this.w, this.y),
+      new Point(this.x+this.w, this.y+this.h),
+      new Point(this.x, this.y+this.h)
+    ];
   }
   set points(value) {
     this.x = Math.min(value.map((p) => p.x));
@@ -76,7 +74,15 @@ class Rectangle {
     return this.w*this.h;
   }
   show(ctx) {
-    const p = new Polygon(this.points);
-    p.show(ctx);
+    if (this.lineWidth) {
+        ctx.lineWidth = this.lineWidth;
+    }
+    if (this.fill) {
+      ctx.fillStyle = this.color;
+      ctx.fillRect(...this.components);
+    } else {
+      ctx.strokeStyle = this.color;
+      ctx.strokeRect(...this.components);
+    }
   }
 }

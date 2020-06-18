@@ -1,10 +1,10 @@
-class Polygon extends Figure {
+class Polygon extends BasePolygon {
     static color = "#ffffff";
     static width=null;
     static fill=false;
     static w=3; // number of points (triangle)
     static h=2; // number of components (2d)
-    static s=10; // size factor
+    static s=1; // size factor
     static random(
         w=Polygon.w,
         h=Polygon.h,
@@ -14,7 +14,7 @@ class Polygon extends Figure {
         fill=Polygon.fill
     ) {
         let m = new Matrix(w);
-        let v = Vector.random(w, 0, 1);
+        let v = Vector.random(w, 0, s);
         v.irdiv(v.sum);
         let a = 0;
         for (let i=0; i<w; i++) {
@@ -29,11 +29,8 @@ class Polygon extends Figure {
         width=Polygon.width,
         fill=Polygon.fill,
     ) {
-        super();
+        super(color, width, fill);
         this.matrix = Matrix.from(matrix);
-        this.color = color;
-        this.width = width;
-        this.fill = fill;
     }
     get points() {
         return Array.from(this.matrix);
@@ -41,15 +38,15 @@ class Polygon extends Figure {
     set points(points) {
         this.matrix.set(points);
     }
-    get length() {return this.matrix.length;}
     move(x, y) {
 
     }
     get segments() {
         const segments = [];
-        const p = this.matrix[0];
+        let p = this.matrix[this.matrix.length-1];
         for (const pi of this.matrix) {
             segments.push(new Segment(p, pi));
+            p = pi;
         }
         return segments;
       }
@@ -71,9 +68,6 @@ class Polygon extends Figure {
     set angle(r) {
         this.rotate(r-this.angle);
     }
-
-
-
     translate(vector) {
         this.matrix.map(v => v.translate(vector));
     }
@@ -101,19 +95,32 @@ class Polygon extends Figure {
             ctx.stroke();
         }
     }
-    get length() {
-        return this.segments.reduce((s1, s2) => s1.length+s2.length);
-    }
-    get area() {
-
-    }
     /**
      * Determine if the polygon contains a point
      * @param {*} point 
      */
-    contains(point) {
-        const s = new Segment(point, point.radd(0, ))
-
-
+    contains(p) {
+        const points = this.matrix;
+        var isInside = false;
+        var minX = points[0].x, maxX = points[0].x;
+        var minY = points[0].y, maxY = points[0].y;
+        for (let n = 1; n < points.length; n++) {
+            let q = points[n];
+            minX = Math.min(q.x, minX);
+            maxX = Math.max(q.x, maxX);
+            minY = Math.min(q.y, minY);
+            maxY = Math.max(q.y, maxY);
+        }
+        if (p.x < minX || p.x > maxX || p.y < minY || p.y > maxY) {
+            return false;
+        }
+        let i = 0, j = points.length - 1;
+        for (i, j; i < points.length; j = i++) {
+            if ( (points[i].y > p.y) != (points[j].y > p.y) &&
+                    p.x < (points[j].x - points[i].x) * (p.y - points[i].y) / (points[j].y - points[i].y) + points[i].x ) {
+                isInside = !isInside;
+            }
+        }
+        return isInside;
     }
 }

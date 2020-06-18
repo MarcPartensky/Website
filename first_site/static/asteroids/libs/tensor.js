@@ -268,6 +268,7 @@ class Tensor extends Array {
   ifill(k) {
     this.set(this.fill(k));
   }
+  // component wise operations
   map2(tensor, f) {
     let m = Math.max(this.length, tensor.length);
     let v = this.copy();
@@ -294,11 +295,17 @@ class Tensor extends Array {
       }
     }
   }
-  add(other) {
-    return this.map2(other, (x,y) => x+y);
+  mul(tensor) {
+    return this.map2(tensor, (x,y) => x*y);
   }
-  iadd(other) {
-    this.imap2(other, (x,y) => x+y);
+  imul(tensor) {
+    this.imap2(tensor, (x,y) => x*y);
+  }
+  add(tensor) {
+    return this.map2(tensor, (x,y) => x+y);
+  }
+  iadd(tensor) {
+    this.imap2(tensor, (x,y) => x+y);
   }
   radd(k) {
     return this.rmap(t => t+k);
@@ -312,17 +319,14 @@ class Tensor extends Array {
   irsub(k) {
     this.irmap(t => t-k);
   }
-  sub(other) {
-    return this.map2(other, (x,y) => x-y);
+  sub(tensor) {
+    return this.map2(tensor, (x,y) => x-y);
   }
-  isub(other) {
-    this.imap2(other, (x,y) => x-y);
+  isub(tensor) {
+    this.imap2(tensor, (x,y) => x-y);
   }
-  dot(other) {
-    return this.map2(other, (x,y) => x*y);
-  }
-  idot(other) {
-    this.imap2(other, (x,y) => x*y);
+  dot(tensor) {
+    return Math.sum(this.mul(tensor))
   }
   copy() {
     return this.slice(0);

@@ -1,41 +1,30 @@
 /*
-Basically a list of points. Unlike a figure, a form does have an area.
+Unlike a figure, a form does have an area.
+This class is more of an interface than
+a true class or we can also see it as an
+abstract class. (reference to PHP, C#, C++, ...)
 */
 class Form extends Figure {
-  static width = 3;
-  static height = 2;
-
-  static color = "#ffffff";
-  static areaColor = this.color;
-  static borderColor = Color.darken(this.areaColor);
-  static fill = true;
-  static random(w, h, areaColor=Form.areaColor, borderColor=Form.borderColor) {
-    var f = Figure.random(w, h);
-    f.areaColor = areaColor;
-    f.borderColor = borderColor;
-  }
-  constructor(vectors, areaColor=Form.areaColor, borderColor=Form.borderColor) {
-    super(vectors);
-    this.areaColor = areaColor;
-    this.borderColor = borderColor;
+  static fill = false;
+  static random(...args) {
+    throw "Static function random is not implemented."
   }
   get center() {
     throw "The get center method is not implemented for "+this+".";
   }
-  set center() {
+  set center(vector) {
     throw "The set center method is not implemented for "+this+".";
   }
   get area() {
     throw "The get area method is not implemented for "+this+".";
   }
-  set area() {
+  set area(area) {
     throw "The set area method is not implemented for "+this+".";
   }
   translate(v) {
-
+    throw "The translate method is not implemented for "+this+".";
   }
-  rotate(r) {
-
+  rotate(r, vector=undefined) {
+    throw "The rotate method is not implemented for "+this+".";
   }
-  
 }

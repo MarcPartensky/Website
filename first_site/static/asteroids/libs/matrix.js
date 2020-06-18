@@ -45,8 +45,8 @@ class Matrix extends Tensor {
     }
     return m.join("\n");
   }
-  slice() {
-    return new Matrix(...super.slice());
+  slice(...args) {
+    return new Matrix(...super.slice(...args));
   }
   dot(matrix) {
     let d = this.width;

@@ -15,6 +15,9 @@ class Motion extends Matrix {
   static zero(width=Motion.width, height=Motion.height) {
     return Motion.from(Matrix.zero(width, height));
   }
+  slice(...args) {
+    return new Motion(...super.slice(...args));
+  }
   // constructor(...vectors) {
   //   console.log("motion_constructor:", vectors);
   //   super(...vectors);

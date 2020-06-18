@@ -6,13 +6,7 @@ class Point extends Vector {
     return new Point(...Vector.average(...points));
   }
   static random(n=2) {
-    return new Point(...Vector.random(n));
-  }
-  constructor(...components) {
-    super(...components);
-    this.radius = Point.radius;
-    this.color = Point.color;
-    this.conversion = Point.conversion;
+    return Point.from(Vector.random(n));
   }
   map(f) {
     return new Point(...super.map(f));
@@ -23,10 +17,15 @@ class Point extends Vector {
   set r(value) {
     this.radius = value;
   }
-  show(context) {
+  show(
+    context,
+    color=Point.color,
+    radius=Point.radius,
+    conversion=Point.conversion
+  ) {
     context.beginPath();
-    context.fillStyle = this.color;
-    context.arc(this.x, this.y, this.radius, 0, 2*Math.PI, this.conversion);
+    context.fillStyle = color;
+    context.arc(this.x, this.y, radius, 0, 2*Math.PI, conversion);
     context.fill();
     context.closePath();
   }
