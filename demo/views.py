@@ -33,10 +33,3 @@ projects = [
 def home(request):
     context = dict(title="Demonstration", projects=projects, tb=range(3))
     return render(request, 'demo/home.html', context)
-
-# class TestListView(ListView):
-#     model = Post
-#     template_name = 'demo/home.html' #<app>/<model>_<viewtype>.html
-#     context_object_name = 'demos'
-#     ordering = ['-date_posted']
-#     paginate_by = 5
