@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ["websiteofmarcpartensky.herokuapp.com", "localhost"]
 # Application definition
 
 INSTALLED_APPS = [
+    'home.apps.HomeConfig',
     'planning.apps.PlanningConfig',
     'demo.apps.DemoConfig',
     'blog.apps.BlogConfig',
