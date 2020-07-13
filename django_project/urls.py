@@ -35,6 +35,7 @@ urlpatterns = [
     path('first-site/', include('first_site.urls')),
     path('', include('home.urls')),
     path('demo/', include('demo.urls')),
+    path('games/', include('games.urls')),
     path('planning/', include('planning.urls')),
 ]
 
