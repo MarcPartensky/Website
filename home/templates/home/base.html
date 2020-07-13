@@ -47,10 +47,10 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="active"><a href="../">Home<span class="sr-only">(current)</span></a></li>
-              <li><a href="../about">About</a></li>
-              <li><a href="../planning">Planning</a></li>
-              <li><a href="../first-site">First Site</a></li>
-              <li><a href="../games">Games</a></li>
+              <li><a href="{% url 'about' %}">About</a></li>
+              <li><a href="{% url 'planning' %}">Planning</a></li>
+              <li><a href="{% url 'first-site' %}">First Site</a></li>
+              <li><a href="{% url 'games' %}">Games</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Me<span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -74,8 +74,14 @@
               <button type="submit" class="btn btn-default">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="../login">Login</a></li>
-              <li><a href="../register">Register</a></li>
+              {% if user.is_authenticated %}
+                <li><a class="nav-item nav-link" href="{% url 'blog-home' %}">Blog</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a></li>
+              {% else %}
+                <li><a class="nav-item nav-link" href="{% url 'login' %}">Login</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'register' %}">Register</a></li>
+              {% endif %}
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
