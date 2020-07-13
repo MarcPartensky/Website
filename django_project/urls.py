@@ -37,6 +37,7 @@ urlpatterns = [
     path('demo/', include('demo.urls')),
     path('games/', include('games.urls')),
     path('planning/', include('planning.urls')),
+    path('touch-typing/', include('touch_typing.urls')),
 ]
 
 if settings.DEBUG:
