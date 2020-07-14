@@ -37,6 +37,10 @@ def connect4(request):
     context = dict(title='Expanse')
     return render(request, 'first-site/connect4.html', context)
 
+def minecraft(request):
+    context = dict(title='Minecraft')
+    return render(request, 'first-site/minecraft.html', context)
+
 def home(request):
     context = dict(title="Website of Marc Partensky")
     return render(request, 'first-site/index.html', context)
