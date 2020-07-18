@@ -7,3 +7,7 @@ def home(request):
 def about(request):
     context = dict(title="About Marc Partensky")
     return render(request, 'home/about.html', context)
+
+def donation(request):
+    context = dict(title='Donate to Marc Partensky')
+    return render(request, 'home/donation.html', context)
