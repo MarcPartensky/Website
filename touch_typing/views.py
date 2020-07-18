@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import requests
-
+import html
 
 def random_quote(lang="en"):
     url = "https://quotes15.p.rapidapi.com/quotes/random/"
@@ -12,7 +12,7 @@ def random_quote(lang="en"):
     d = requests.request("GET", url, headers=headers, params=querystring).json()
     return dict(
         id=d['id'],
-        content=d['content'],
+        content=html.unescape(d['content']),
         author=d['originator']['name'],
         url=d['originator']['url'],
         full_url=d['url'],
