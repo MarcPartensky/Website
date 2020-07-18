@@ -16,7 +16,7 @@
     user-select: none; /* Standard */
 }
 
-.card {
+#card {
     padding: 2rem;
     margin: 3rem;
 
