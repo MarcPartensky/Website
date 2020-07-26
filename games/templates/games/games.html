@@ -2,5 +2,20 @@
 {% block content %}
 <div class="container">
   <h1>Here is a presentation of my games.</h1>
+  {% for gamepost in gameposts %}
+    <div class="card border-dark mb-3" style="width: 50%; text-align: center;">
+      <img class="card-img-top" src="{{gamepost.thumbnail}}" width="100%" alt="Card image cap">
+      <div class="card-body">
+        <h2 class="card-title">{{gamepost.title}}</h2>
+        <p class="card-text">{{gamepost.content}}</p>
+        <a href="{{gamepost.play}}" class="btn btn-primary" target="_blank">Play now!</a>
+      </div>
+      <ul class="list-group list-group-flush">
+        {% for gamepostcomment in gamepostcomments %}
+          <li class="list-group-item">{{gamepostcomment.author}}: {{gamepostcomment.content}}</li>
+        {% endfor %}
+      </ul>
+      </div>
+  {% endfor %}
 </div>
 {% endblock content %}

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <style>
         .jumbotron{
@@ -16,79 +16,77 @@
     </style>
 </head>
 <body>
-    {% block welcome %} {% endblock welcome %}
-    <!-- Collapsible Navigation Bar -->
-    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="navbar-header">
+        <a class="pull-left" href="#">
+          <img src="https://avatars0.githubusercontent.com/u/38857901?s=460&u=d8136c5a75703aeef7204b9d054ca386a65e80d8&v=4" width=50rem height='50rem'>
+         </a>
+      </div>
 
-      <!-- .navbar-fixed-top, or .navbar-fixed-bottom can be added to keep the nav bar fixed on the screen -->
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-  
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-  
-            <!-- Button that toggles the navbar on and off on small screens -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-  
-            <!-- Hides information from screen readers -->
-              <span class="sr-only"></span>
-  
-              <!-- Draws 3 bars in navbar button when in small mode -->
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-  
-            <!-- You'll have to add padding in your image on the top and right of a few pixels (CSS Styling will break the navbar) -->
-            <a class="pull-left" href="#">
-                <img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/39950227_1174877485994818_5902914966138126336_o.jpg?_nc_cat=100&_nc_sid=85a577&_nc_ohc=mnhGxxyENhIAX_oxJr_&_nc_ht=scontent-cdg2-1.xx&oh=5e3fc1f235b55d9fd1f2bb444d348e8b&oe=5F1C871E" width='50px' height='50px'>
-             </a>
-          </div>
-  
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="../">Home<span class="sr-only">(current)</span></a></li>
-              <li><a href="{% url 'about' %}">About</a></li>
-              <li><a href="{% url 'planning' %}">Planning</a></li>
-              <li><a href="{% url 'first-site' %}">First Site</a></li>
-              <li><a href="{% url 'games' %}">Games</a></li>
-              <li><a href="{% url 'touch-typing' %}">Touch Typing</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Me<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="mailto:marc.partensky@gmail.com">Mail</a></li>
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Phone<span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><button onclick="copyToClipboard('+33 07 67 44 36 62'); alert('copied phone number')">+33 07 67 44 36 62</button></li> 
-                      </ul>
-                    </li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Set Appointment</a></li>
-                </ul>
-              </li>
-            </ul>
-            <!-- navbar-left will move the search to the left -->
-            <form class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-              {% if user.is_authenticated %}
-                <li><a class="nav-item nav-link" href="{% url 'blog-home' %}">Blog</a></li>
-                <li><a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a></li>
-                <li><a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a></li>
-              {% else %}
-                <li><a class="nav-item nav-link" href="{% url 'login' %}">Login</a></li>
-                <li><a class="nav-item nav-link" href="{% url 'register' %}">Register</a></li>
-              {% endif %}
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
+      <!-- <a class="navbar-brand" href="#">Website of Marc Partensky</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'planning' %}">Planning</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'first-site' %}">First Site</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'games' %}">Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'touch-typing' %}">Touch Typing</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Contact Me
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="mailto:marc.partensky@gmail.com">Mail</a>
+              <button class="dropdown-item" onclick="copyToClipboard('+33 07 67 44 36 62'); alert('copied phone number')">+33 07 67 44 36 62</button>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Set Appointment</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+        <!-- navbar-left will move the search to the left -->
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="{% url 'blog-home' %}">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+            </li>
+          {% endif %}
+        </ul>
+    </nav>
     </div>
         
     {% block content %} {% endblock content %}
