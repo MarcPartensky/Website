@@ -19,7 +19,7 @@ class GamePost(models.Model):
         return self.title
 
 class GamePostImageUrl(models.Model):
-    """RepresentatiGamon of a gamepost image url."""
+    """Representation of a gamepost image url."""
     url = models.URLField()
     gamepost = models.ForeignKey(GamePost, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(default=timezone.now)
