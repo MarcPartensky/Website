@@ -18,4 +18,6 @@ class GamePostListView(ListView):
 
 class GamePostDetailView(DetailView):
     model = GamePost
-    
+
+# class GamePostUpdateView(UpdateView)
+
