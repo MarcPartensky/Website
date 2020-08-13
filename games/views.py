@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from .models import GamePost, GamePostComment
-from django.views.generic import ListView, DetailView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView
+)
+
 # Create your views here.
 def games(request):
     context = dict(
@@ -18,6 +23,10 @@ class GamePostListView(ListView):
 
 class GamePostDetailView(DetailView):
     model = GamePost
+
+class GamePostCreateView(CreateView):
+    model = GamePost
+    fields = ['title', 'content']
 
 # class GamePostUpdateView(UpdateView)
 
