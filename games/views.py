@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import GamePost, GamePostComment
 from django.views.generic import (
     ListView,
@@ -24,9 +25,13 @@ class GamePostListView(ListView):
 class GamePostDetailView(DetailView):
     model = GamePost
 
-class GamePostCreateView(CreateView):
+class GamePostCreateView(LoginRequiredMixin, CreateView):
     model = GamePost
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'thumbnail', 'play']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 # class GamePostUpdateView(UpdateView)
 

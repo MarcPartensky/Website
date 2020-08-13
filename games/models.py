@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.urls import reverse
 
 class GamePost(models.Model):
     """Representation of a game post."""
@@ -17,6 +18,10 @@ class GamePost(models.Model):
     def __str__(self):
         """Return the string representation of the game."""
         return self.title
+
+    def get_absolute_url(self):
+        """Return the url of the post."""
+        return reverse('games')
 
 class GamePostImageUrl(models.Model):
     """Representation of a gamepost image url."""
