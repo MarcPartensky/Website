@@ -15,12 +15,17 @@
             <br>
             <p class="card-text">{{object.content}}</p>
             <a href="{{object.play}}" class="btn btn-primary" target="_blank">Play now!</a>
+	    {% if object.author == user %}
+	      <a class="btn btn-info" href="update">Update</a>
+	      <a class="btn btn-danger" href="delete">Delete</a>
+	    {% endif %}
         </div>
         <ul class="list-group list-group-flush">
         {% for objectcomment in objectcomments %}
             <li class="list-group-item">{{objectcomment.author}}: {{objectcomment.content}}</li>
         {% endfor %}
         </ul>
+
     </div>
 </div>
 {% endblock content %}

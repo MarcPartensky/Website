@@ -1,0 +1,20 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container" style="padding: 1rem">
+  <div class="card">
+    <div class="content-section" style="margin: 2rem">
+      <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4"> Delete Game Post </legend>
+	  <h2> Are you sure you want to delete the post "{{ object.title }}"?</h2>
+        </fieldset>
+        <div class="form-group">
+          <button class="btn btn-outline-danger" type="submit"> Yes, delete </button>
+	  <a class="btn btn-success" href="{% url 'game-post-detail' object.id %}">No, cancel</a>
+	</div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

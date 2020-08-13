@@ -1,14 +1,16 @@
 {% extends 'home/base.html' %}
 {% block content %}
-<div class="container">
+<div class="container" style="width: 100%; height: 100%">
+<a class="btn btn-primary" href="new" style="width: 100%; padding: 1rem; margin: 2rem">New Game Post</a>
+<div class="cards columns">
   <h1>Here is a presentation of my games.</h1>
   {% for gamepost in gameposts %}
-    <div class="card border-dark mb-3" style="width: 50%; text-align: center;">
+    <div class="card border-dark mb-3" style="width: 100%; text-align: center;">
       <img class="card-img-top" src="{{gamepost.thumbnail}}" width="100%" alt="Card image cap">
       <div class="card-body">
-        <h2 class="card-title">{{gamepost.title}}</h2>
+	<h3 class="card-title" title="{{gamepost.title}}">{{gamepost.title}}</h3>
         <p class="card-text">{{gamepost.content}}</p>
-        <a href="{{gamepost.play}}" class="btn btn-primary" target="_blank">Play now!</a>
+	<a href="{{gamepost.pk}}" class="stretched-link btn btn-primary">See the game</a>
       </div>
       <ul class="list-group list-group-flush">
         {% for gamepostcomment in gamepostcomments %}
@@ -17,5 +19,6 @@
       </ul>
       </div>
   {% endfor %}
+</div>
 </div>
 {% endblock content %}
