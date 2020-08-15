@@ -13,11 +13,13 @@ def get_events():
     f = lambda date: f"{str(date[4]).zfill(2)}:{str(date[5]).zfill(2)}"
     events = []
     for raw_event in raw_events:
+        if date.day < raw_event['startDate'][3]:
+            continue
         event = dict(
             title = raw_event['title'],
             start = f(raw_event['startDate']),
             end = f(raw_event['endDate']),
-            guid = raw_event['guid']
+            guid = raw_event['guid'],
         )
         events.append(event)
     events.sort(key = lambda e:e['start'])
@@ -25,6 +27,5 @@ def get_events():
 
 def planning(request):
     events = get_events()
-    print(events)
     context=dict(title='planning', events=events)
     return render(request, 'planning/planning.html', context)

@@ -2,21 +2,31 @@
 
 {% block content %}
 <div class="container">
-    <div class="jumbotron">
-        <h1> Planning de Marc aujourd'hui </h1>
-    </div>
-</div>
-
-<div class="container">
-    {% for event in events %}
-    <div class="well">
-        <div class="caption">
-            <h3>{{event.title}}</h3>
-            <p>De {{event.start}} à {{event.end}}.</p>
-            <p>id: {{event.guid}}</p>
+    <div class="card border-dark bg-light mb-3" style="width: 100%; text-align: center;">
+        <div class="card-body">
+            <h1 class="card-title">Planning de Marc aujourd'hui</h1>
+            <hr/>
+            <br/>
+            {% comment %} <div class="jumbotron">
+                <h1> Planning de Marc aujourd'hui </h1>
+            </div> {% endcomment %}
+            {% for event in events %}
+                <div class="container">
+                    <div class="card border-dark mb-3" style="width: 100%; text-align: center">
+                        <div class="card-body">
+                            <div class="well">
+                                <div class="caption">
+                                    <h3>{{event.title}}</h3>
+                                    <p>De {{event.start}} à {{event.end}}.</p>
+                                    <p>id: {{event.guid}}</p>
+                                </div>
+                                <p><a href="#" class="btn btn-primary" role="button">Voir l'évènement</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-        <p><a href="#" class="btn btn-primary" role="button">Voir l'évènement</a></p>
     </div>
-    {% endfor %}
 </div>
 {% endblock content%}
