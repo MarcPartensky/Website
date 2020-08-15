@@ -2,17 +2,6 @@
 {% load static %}
 {% block content %}
 <div class="container" style="width: 100%; height: 100%; padding: 3rem">
-    {% comment %} <p> Here's my cv ! </p> {% endcomment %}
-    {% comment %} <object width="400" height="500" type="application/pdf" src="{% static 'cv/cv.pdf' %}">
-        <p>The CV could not be displayed on your browser. You could try to open it on chrome on your computer.</p>
-    </object> {% endcomment %}
-    {% comment %} <embed src="{% static 'cv/cv.pdf' %}" width="1000px" height="1200px" type="application/pdf"> {% endcomment %}
-    {% comment %} <iframe src="{% static 'cv/cv.pdf' %}" height="100%" width="100%"> {% endcomment %}
-    {% comment %} <div style="border:1px solid #000; float: left; width: 100%; height: 100%;">
-        <embed id="cv" height="100%" width="100%" style="float: left" controller="true" target="myself" src="{% static 'cv/cv.pdf' %}" type="application/pdf">
-    </div> {% endcomment %}
-    {% comment %} allowfullscreen {% endcomment %}
-    {% comment %} <script src="/js/pdfobject.js"></script> {% endcomment %}
     <div class="embed-responsive embed-responsive-1by1">
         <iframe class="embed-responsive-item" src="{% static 'cv/cv.pdf' %}" type="application/pdf" allowfullscreen></iframe>
     </div>
