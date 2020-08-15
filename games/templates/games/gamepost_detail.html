@@ -4,28 +4,27 @@
     <div class="card border-dark mb-3" style="width: 100%; text-align: center;">
         <img class="card-img-top" src="{{object.thumbnail}}" width="100%" alt="Card image cap">
         <div class="card-body">
-            <h2 class="card-title">{{object.title}}</h2>
-            <blockquote class="blockquote mb-0">
-              <footer class="blockquote-footer">
-                <small>
-                  made by <cite title="author">{{object.author}}</cite>
-                </small>
-              </footer>
-            </blockquote>
-            <br>
-            <p class="card-text">{{object.content}}</p>
-            <a href="{{object.play}}" class="btn btn-primary" target="_blank">Play now!</a>
-	    {% if object.author == user %}
-	      <a class="btn btn-info" href="update">Update</a>
-	      <a class="btn btn-danger" href="delete">Delete</a>
-	    {% endif %}
+          <h2 class="card-title">{{object.title}}</h2>
+          <blockquote class="blockquote mb-0">
+            <footer class="blockquote-footer">
+              <small>
+                made by <cite title="author">{{object.author}}</cite>
+              </small>
+            </footer>
+          </blockquote>
+          <br>
+          <p class="card-text">{{object.content}}</p>
+          <a href="{{object.play}}" class="btn btn-primary" target="_blank">Play now!</a>
+          {% if object.author == user %}
+            <a class="btn btn-info" href="update">Update</a>
+            <a class="btn btn-danger" href="delete">Delete</a>
+          {% endif %}
         </div>
         <ul class="list-group list-group-flush">
         {% for objectcomment in objectcomments %}
             <li class="list-group-item">{{objectcomment.author}}: {{objectcomment.content}}</li>
         {% endfor %}
         </ul>
-
     </div>
 </div>
 {% endblock content %}
