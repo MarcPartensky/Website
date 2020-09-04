@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+import datetime
 
 def home(request):
     context = dict(title='Website of Marc Partensky')
@@ -15,3 +17,10 @@ def donation(request):
 def cv(request):
     context = dict(title="CV of Marc Partensky")
     return render(request, 'home/cv.html', context=context)
+
+def contact(request):
+    context = dict(title="Contact of Marc Partensky")
+    return render(request, 'home/contact.html', context=context)
+
+def date(request):
+    return HttpResponse(str(datetime.datetime.now()))
