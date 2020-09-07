@@ -9,27 +9,10 @@ from django.views.generic import (
     DeleteView
 )
 
-projects = [
-    {
-        'author': 'moi',
-        'title': 'Asteroids',
-        'content': 'Venez jouez on est bien.',
-        'date_posted': '25 juin 2020'
-    },
-    {
-        'author': 'toi',
-        'title': 'osef',
-        'content': 'Osef de tout',
-        'date_posted': '26 juin 2020'
-    },
-    {
-        'author': 'pablo',
-        'title': 'stuff',
-        'content': 'montage',
-        'date_posted': '25 juin 2020'
-    },
-]
-
 def home(request):
     context = dict(title="Demonstration", projects=projects, tb=range(3))
     return render(request, 'demo/home.html', context)
+
+def pixel_art(request):
+    context = dict(title="Pixel-Art")
+    return render(request, 'demo/pixel_art.html', context)
