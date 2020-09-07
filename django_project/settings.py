@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'first_site.apps.FirstSiteConfig',
     'tests.apps.TestsConfig',
+    'chat.apps.ChatConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
