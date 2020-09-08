@@ -39,7 +39,7 @@ class Board {
 }
 
 class Brush {
-  constructor(x, y, color="#000000", size=1, mg=1) {
+  constructor(x, y, color="#222222", size=1, mg=1) {
     this.x = x;
     this.y = y;
     this.color = color;
@@ -65,6 +65,27 @@ class Brush {
   }
 }
 
+function draw() {
+    let rect = canvas.getBoundingClientRect();
+    let W = board.width/rect.width;
+    let H = board.height/rect.height;
+    let S = Math.min(W, H);
+    let x = Math.min(parseInt(brush.x * S), board.width-1);
+    let y = Math.min(parseInt(brush.y * S), board.height-1);
+    board.setPixel(x, y, brush.color);
+}
+
+function show() {
+  board.show(context);
+  brush.show(context, board.width, board.height);
+}
+
+function resize() {
+    value = Math.min(window.innerWidth*0.9, window.innerHeight*0.9)
+    console.log(value)
+    context.width = canvas.width = context.height = canvas.height = value;
+    show()
+}
 
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
@@ -72,52 +93,34 @@ let context = canvas.getContext("2d");
 let board = new Board(8,8);
 let brush = new Brush();
 
-function resize() {
-  context.width = canvas.width = window.innerWidth*0.9;
-  context.height = canvas.height = window.innerHeight*0.9;
-  // context.width = canvas.width;
-  // context.height = canvas.height;
-}
-
-resize();
-
 canvas.addEventListener("mousemove",
   function(event) {
     let rect = canvas.getBoundingClientRect();
     brush.x=event.x - rect.left;
     brush.y=event.y - rect.top;
-  }
-)
+    if (brush.down) {
+        draw();
+    }
+    show()
+})
+
+canvas.addEventListener("mouseenter", brush.update)
+canvas.addEventListener("mousedown", function() {
+    draw()
+    show()
+    console.log("clicking")
+})
 
 window.addEventListener("mousedown", function() {
     brush.down = true;
-  }
-)
+})
+
+window.addEventListener('resize', resize)
 
 window.addEventListener("mouseup", function() {
     brush.down = false;
-  }
-)
+})
 
-function draw() {
-  let W = board.width/context.width;
-  let H = board.height/context.height;
-  let S = Math.min(W, H);
-  let x = Math.min(parseInt(brush.x * S), board.width-1);
-  let y = Math.min(parseInt(brush.y * S), board.height-1);
-  console.log(x, y);
-  board.setPixel(x, y, brush.color);
-}
 
-function step() {
-  resize();
-  brush.update();
-  board.show(context);
-  brush.show(context, board.width, board.height);
-  if (brush.down) {
-    draw();
-  }
-  window.requestAnimationFrame(step);
-}
-
-window.requestAnimationFrame(step);
+resize()
+brush.update()

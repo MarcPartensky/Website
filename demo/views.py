@@ -15,5 +15,4 @@ def home(request):
 
 def pixel_art(request):
     context = dict(title="Pixel-Art")
-    print("pixel art going on")
     return render(request, 'demo/pixel_art.html', context)

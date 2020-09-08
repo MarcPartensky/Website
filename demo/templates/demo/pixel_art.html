@@ -11,21 +11,32 @@
         border-width: thick;
         border-color: black;
       }
+      {% comment %}button {{% endcomment %}
+          {% comment %}margin: 2rem{% endcomment %}
+      {% comment %}}{% endcomment %}
+      {% comment %}input {{% endcomment %}
+          {% comment %}margin: 2rem{% endcomment %}
+      {% comment %}}{% endcomment %}
     </style>
   </head>
-  <body>
-    <canvas id="canvas">
+  <body style="text-align: center">
+    <canvas id="canvas" style="border:1px solid #000000;">
       <p> The canvas doesn't work on your browser. </p>
     </canvas>
-    <input id="color" type="color" value="#eeeeee">
-    <p id=code> texture code </p>
-    <a id="generate">
-      <button type="button" onclick="generate();">Generate</button>
-    </a>
-    <a id="download" download="pixelart.png">
+    <input id="color" type="color" value="#0000ff">
+    <input id="filename" type="text" value="pixel-art">
+    <br/>
+    <br/>
+    <a id="download">
       <button type="button" onclick="download();">Download</button>
     </a>
-    <script src="{% static 'Pixel-Art/main.js' %}" charset="utf-8"></script>
+    <br/>
+    <br/>
+    <a id="generate">
+      <button type="button" onclick="generate();">Generate texture code</button>
+    </a>
+    <p id=code> </p>
+    <script src="{% static 'pixel-art/main.js' %}" charset="utf-8"></script>
     <script type="text/javascript">
       function download() {
         var download = document.getElementById("download");
@@ -36,6 +47,7 @@
         image.clientWidth = 5;
         image.clientHeight = 5;
         download.setAttribute("href", image);
+        download.setAttribute("download", filename.value)
       }
       function generate() {
         var code = document.getElementById("code");
