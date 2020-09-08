@@ -9,9 +9,9 @@ from django.views.generic import (
     DeleteView
 )
 
-def home(request):
+def demo(request):
     context = dict(title="Demonstration", projects=projects, tb=range(3))
-    return render(request, 'demo/home.html', context)
+    return render(request, 'demo/demo.html', context)
 
 def pixel_art(request):
     context = dict(title="Pixel-Art")
