@@ -40,6 +40,8 @@ urlpatterns = [
     path('planning/', include('planning.urls')),
     path('touch-typing/', include('touch_typing.urls')),
     path('tests/', include('tests.urls')),
+    path('chat/', include('chat.urls')),
+    path('isep/', include('isep.urls')),
 ]
 
 if settings.DEBUG:

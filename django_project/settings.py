@@ -20,6 +20,13 @@ HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Allowing cors
+CORS_ORIGIN_ALLOW_ALL = False 
+# CORS_ORIGIN_WHITELIST = (
+    # 'google.com',
+    # 'websiteofmarcpartensky.herokuapp.com'
+# )
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -46,6 +53,7 @@ INSTALLED_APPS = [
     'first_site.apps.FirstSiteConfig',
     'tests.apps.TestsConfig',
     'chat.apps.ChatConfig',
+    'isep.apps.IsepConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -62,6 +70,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+    # cors stuff
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -72,7 +83,21 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # cors stuff
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ALLOW_HEADERS = (
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'x-csrftoken'
+    'x-frame-options',
+)
 
 ROOT_URLCONF = 'django_project.urls'
 

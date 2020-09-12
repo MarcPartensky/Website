@@ -49,7 +49,6 @@ class GamePostComment(models.Model):
     dislikes = models.PositiveIntegerField(default=0)
     views = models.PositiveIntegerField(default=0)
 
-
     def __str__(self):
         """Return the string representation of a comment."""
         return f"{self.gamepost}-{self.author}:{self.content}"

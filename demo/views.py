@@ -10,7 +10,7 @@ from django.views.generic import (
 )
 
 def demo(request):
-    context = dict(title="Demonstration"))
+    context = dict(title="Demonstration")
     return render(request, 'demo/demo.html', context)
 
 def pixel_art(request):
