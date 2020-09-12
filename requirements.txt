@@ -10,6 +10,7 @@ Django>=3.0.1
 django-allauth>=0.42.0
 django-appconf>=1.0.4
 django-compressor @ git+https://github.com/django-compressor/django-compressor.git@24f6648723b0b7d3ae88e17a20961ccb3ac1b1e7
+django-cors-middleware>=1.5.0
 django-crispy-forms>=1.8.1
 django-heroku>=0.3.1
 django-storages>=1.8
