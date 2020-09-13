@@ -73,6 +73,9 @@ INSTALLED_APPS = [
 
     # cors stuff
     'corsheaders',
+
+    # 503 error: maintenance service unavailable
+    # 'django_503',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +90,9 @@ MIDDLEWARE = [
     # cors stuff
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+
+    # 503 error
+    # 'django_503.middleware.MaintenanceMiddleware',
 ]
 
 CORS_ALLOW_HEADERS = (
