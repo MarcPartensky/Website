@@ -16,3 +16,6 @@ def demo(request):
 def pixel_art(request):
     context = dict(title="Pixel-Art")
     return render(request, 'demo/pixel_art.html', context)
+
+def garage(request):
+    return render(request, 'demo/garage.html', {})
