@@ -123,32 +123,145 @@
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>-->
 <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >-->
 
-    <hr class="mt-5 mb-5">
-    </br>
+    <div class="container mt-5 mb-5 d-flex justify-content-center">
+        <ul class="social-list">
+            <li>
+                <div class="maincard p-3">
+                    <div class="thecard">
+                        <div class="thefront text-center py-4 facebook">
+                            <div class="social-icon"> <i class="fa fa-facebook fa-2x"></i> </div>
+                        </div>
+                        <div class="theback py-3 px-3 text-center facebook">
+                            <div class="social-text mt-1"> <small class="font-weight-bold">Facebook</small> </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="maincard p-3">
+                    <div class="thecard">
+                        <div class="thefront text-center py-4 instagram">
+                            <div class="social-icon"> <i class="fa fa-instagram fa-2x"></i> </div>
+                        </div>
+                        <div class="theback py-3 px-3 text-center instagram">
+                            <div class="social-text mt-1"> <small class="font-weight-bold">Instagram</small> </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="maincard p-3">
+                    <div class="thecard">
+                        <div class="thefront text-center py-4 youtube">
+                            <div class="social-icon"> <i class="fa fa-youtube fa-2x"></i> </div>
+                        </div>
+                        <div class="theback py-3 px-3 text-center youtube">
+                            <div class="social-text mt-1"> <small class="font-weight-bold">Youtube</small> </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="maincard p-3">
+                    <div class="thecard">
+                        <div class="thefront text-center py-4 whatsapp">
+                            <div class="social-icon"> <i class="fa fa-whatsapp fa-2x"></i> </div>
+                        </div>
+                        <div class="theback py-3 px-3 text-center whatsapp">
+                            <div class="social-text mt-1"> <small class="font-weight-bold">Whatsapp</small> </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="maincard p-3">
+                    <div class="thecard">
+                        <div class="thefront text-center py-4 pinterest">
+                            <div class="social-icon"> <i class="fa fa-pinterest fa-2x"></i> </div>
+                        </div>
+                        <div class="theback py-3 px-3 text-center pinterest">
+                            <div class="social-text mt-1"> <small class="font-weight-bold">Pinterest</small> </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 
-    <div class="container" style="text-align: center">
+    <div class="container">
+        <p>
+            <!--Facebook-->
+            <a class="fb-ic mr-3" role="button"><i class="fab fa-lg fa-facebook-f"></i></a>
+            <!--Twitter-->
+            <a class="tw-ic mr-3" role="button"><i class="fab fa-lg fa-twitter"></i></a>
+            <!--Google +-->
+            <a class="gplus-ic mr-3" role="button"><i class="fab fa-lg fa-google-plus-g"></i></a>
+            <!--Linkedin-->
+            <a class="li-ic mr-3" role="button"><i class="fab fa-lg fa-linkedin-in"></i></a>
+            <!--Instagram-->
+            <a class="ins-ic mr-3" role="button"><i class="fab fa-lg fa-instagram"></i></a>
+            <!--Pinterest-->
+            <a class="pin-ic mr-3" role="button"><i class="fab fa-lg fa-pinterest"></i></a>
+            <!--Vkontakte-->
+            <a class="vk-ic mr-3" role="button"><i class="fab fa-lg fa-vk"></i></a>
+            <!--Stack Overflow-->
+            <a class="so-ic mr-3" role="button"><i class="fab fa-lg fa-stack-overflow"></i></a>
+            <!--Youtube-->
+            <a class="yt-ic mr-3" role="button"><i class="fab fa-lg fa-youtube"></i></a>
+            <!--Slack-->
+            <a class="slack-ic mr-3" role="button"><i class="fab fa-lg fa-slack-hash"></i></a>
+            <!--Github-->
+            <a class="git-ic mr-3" role="button"><i class="fab fa-lg fa-github"></i></a>
+            <!--Comments-->
+            <a class="comm-ic mr-3" role="button"><i class="fas fa-lg fa-comments"></i></a>
+            <!--Email-->
+            <a class="email-ic mr-3" role="button"><i class="far fa-lg fa-envelope"></i></a>
+            <!--Dribbble-->
+            <a class="dribbble-ic mr-3" role="button"><i class="fab fa-lg fa-dribbble"></i></a>
+            <!--Reddit-->
+            <a class="reddit-ic mr-3" role="button"><i class="fab fa-lg fa-reddit-alien"></i></a>
+            <!--WhatsApp-->
+            <a class="whatsapp-ic" role="button"><i class="fab fa-lg fa-whatsapp"></i></a>
+        </p>
+    </div>
+
+    <div class="container">
         <a href="https://www.facebook.com/marc.partensky/" class="fa fa-facebook"></a>
         <a href="https://github.com/marcpartensky/" class="fa fa-github"></a>
         <a href="https://twitter.com/MarcPartensky/" class="fa fa-twitter"></a>
         <a href="https://www.linkedin.com/in/marc-partensky/" class="fa fa-linkedin"></a>
         <a href="https://www.reddit.com/user/Marc-Partensky/" class="fa fa-reddit"></a>
+        <a href="" class="fa fa-google"></a>
         <a href="https://www.youtube.com/channel/UCGC4Tnr_j87F2sq-s6vWFGA" class="fa fa-youtube"></a>
-        <a href="https://www.instagram.com/marcpartensky/" class="fa fa-instagram"></a>
-        <a href="https://www.facebook.com/marc.partensky/" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-instagram"></a>
+        <a href="#" class="fa fa-pinterest"></a>
+        <a href="#" class="fa fa-skype"></a>
+        </br>
+        <a href="#" class="fa fa-dribbble"></a>
+        <a href="#" class="fa fa-vimeo"></a>
+        <a href="#" class="fa fa-tumblr"></a>
+        <a href="#" class="fa fa-vine"></a>
+        <a href="#" class="fa fa-foursquare"></a>
+        <a href="#" class="fa fa-stumbleupon"></a>
+        <a href="#" class="fa fa-flickr"></a>
+       
     </div>
 
-    <footer id="basefooter" class="mainfooter" role="contentinfo">
+    <footer class="mainfooter" role="contentinfo">
       <div class="footer-middle">
       <div class="container">
         <div class="row">
           <div class="col-md-3 col-sm-6">
             <!--Column1-->
             <div class="footer-pad">
-              <h4>Contact</h4>
+              <h4>Heading 1</h4>
               <ul class="list-unstyled">
                 <li><a href="#"></a></li>
-                <li><a href="mailto:marc.partensky@gmail.com">Email: marc.partensky@gmail.com</a></li>
-                <li>Phone: +33 07 67 44 36 62</li>
+                <li><a href="#">Payment Center</a></li>
+                <li><a href="#">Contact Directory</a></li>
+                <li><a href="#">Forms</a></li>
+                <li><a href="#">News and Updates</a></li>
+                <li><a href="#">FAQs</a></li>
               </ul>
             </div>
           </div>
@@ -157,7 +270,12 @@
             <div class="footer-pad">
               <h4>Heading 2</h4>
               <ul class="list-unstyled">
+                <li><a href="#">Website Tutorial</a></li>
+                <li><a href="#">Accessibility</a></li>
+                <li><a href="#">Disclaimer</a></li>
+                <li><a href="#">Privacy Policy</a></li>
                 <li><a href="#">FAQs</a></li>
+                <li><a href="#">Webmaster</a></li>
               </ul>
             </div>
           </div>
@@ -166,6 +284,10 @@
             <div class="footer-pad">
               <h4>Heading 3</h4>
               <ul class="list-unstyled">
+                <li><a href="#">Parks and Recreation</a></li>
+                <li><a href="#">Public Works</a></li>
+                <li><a href="#">Police Department</a></li>
+                <li><a href="#">Fire</a></li>
                 <li><a href="#">Mayor and City Council</a></li>
                 <li>
                   <a href="#"></a>
