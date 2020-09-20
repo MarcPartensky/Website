@@ -1,10 +1,10 @@
 .fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 50px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 2rem;
   text-align: center;
   text-decoration: none;
-  margin: 5px 2px;
+  margin: 0.2rem 0.1rem;
 }
 
 .fa:hover {
@@ -12,7 +12,12 @@
 }
 
 .fa-facebook {
-  background: #3B5998;
+  background: #3b5998;
+  color: white;
+}
+
+.fa-github {
+  background: #000000;
   color: white;
 }
 
