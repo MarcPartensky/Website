@@ -1,4 +1,5 @@
 {% extends "home/base.html" %}
+{% load static %}
 {% block welcome %}
 <div class="container">
   <div class="page-header">
@@ -8,28 +9,113 @@
 {% endblock welcome %}
 
 {% block content %}
-<div class="container">
-  <div class="dropdown"></div>
-      <button class="btn btn-primary dropdown-toggle btn-lg" type="button" id="dropdownMenu1" data-toggle="dropdown" ar-a-haspopup="true" aria-expanded="true">Who am I?
-          <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-          <li class="dropdown-header">Marvel</li>
-          <li><a href="#">
-              <div class="well">
-                  <div class="caption">
-                      <p>Je suis un étudiant de 20 ans qui programme sur son temps libre.</p>
-                  </div>
-              </div>
-          </a></li>
-          <li role="separator" class="divider"></li>
-          <li class="dropdown-header">DC</li>
 
-          <li class="disabled"><a href="#">Superman</a></li>
-          <li><a href="#">Batman</a></li>
-          <li><a href="#">Flash</a></li>
-      </ul>                
-     
+<script src="{% static 'home/home.js' %}"></script>
+<link rel="stylesheet" href="{% static 'home/home.css' %}">
+<link rel="stylesheet" href="{% static 'home/border-animation.css' %}">
+
+
+{% comment %}<svg viewBox="0 0 1800 600">{% endcomment %}
+  {% comment %}<symbol id="s-text">{% endcomment %}
+    {% comment %}<text text-anchor="middle"{% endcomment %}
+          {% comment %}x="50%"{% endcomment %}
+          {% comment %}y="35%"{% endcomment %}
+          {% comment %}class="webcoderskull"{% endcomment %}
+          {% comment %}>{% endcomment %}
+     {% comment %}Marc {% endcomment %}
+    {% comment %}</text>{% endcomment %}
+    {% comment %}<text text-anchor="middle"{% endcomment %}
+          {% comment %}x="50%"{% endcomment %}
+          {% comment %}y="68%"{% endcomment %}
+          {% comment %}class="text--line"{% endcomment %}
+          {% comment %}>{% endcomment %}
+    {% comment %}Partensky {% endcomment %}
+    {% comment %}</text>{% endcomment %}
+    
+  {% comment %}</symbol>{% endcomment %}
+  
+  {% comment %}<g class="g-ants">{% endcomment %}
+    {% comment %}<use xlink:href="#s-text"{% endcomment %}
+      {% comment %}class="webcoderskull-1"></use>     {% endcomment %}
+    {% comment %}<use xlink:href="#s-text"{% endcomment %}
+      {% comment %}class="webcoderskull-1"></use>     {% endcomment %}
+    {% comment %}<use xlink:href="#s-text"{% endcomment %}
+      {% comment %}class="webcoderskull-1"></use>     {% endcomment %}
+    {% comment %}<use xlink:href="#s-text"{% endcomment %}
+      {% comment %}class="webcoderskull-1"></use>     {% endcomment %}
+    {% comment %}<use xlink:href="#s-text"{% endcomment %}
+      {% comment %}class="webcoderskull-1"></use>     {% endcomment %}
+  {% comment %}</g>{% endcomment %}
+{% comment %}</svg>{% endcomment %}
+{% comment %}</br>{% endcomment %}
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+{% comment %}<div class="container">    {% endcomment %}
+        
+    {% comment %}<div id="loginbox" class="mainbox col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3"> {% endcomment %}
+
+        
+        {% comment %}<div class="panel panel-default" >{% endcomment %}
+            {% comment %}<div class="panel-heading">{% endcomment %}
+                {% comment %}<div class="panel-title text-center">Bootsnipp.com</div>{% endcomment %}
+            {% comment %}</div>     {% endcomment %}
+
+            {% comment %}<div class="panel-body" >{% endcomment %}
+
+                {% comment %}<form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST">{% endcomment %}
+                   
+                    {% comment %}<div class="input-group">{% endcomment %}
+                        {% comment %}<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>{% endcomment %}
+                        {% comment %}<input id="user" type="text" class="form-control" name="user" value="" placeholder="User">                                        {% endcomment %}
+                    {% comment %}</div>{% endcomment %}
+
+                    {% comment %}<div class="input-group">{% endcomment %}
+                        {% comment %}<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>{% endcomment %}
+                        {% comment %}<input id="password" type="password" class="form-control" name="password" placeholder="Password">{% endcomment %}
+                    {% comment %}</div>                                                                  {% endcomment %}
+
+                    {% comment %}<div class="form-group">{% endcomment %}
+                        {% comment %}<!-- Button -->{% endcomment %}
+                        {% comment %}<div class="col-sm-12 controls">{% endcomment %}
+                            {% comment %}<button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Log in</button>                          {% endcomment %}
+                        {% comment %}</div>{% endcomment %}
+                    {% comment %}</div>{% endcomment %}
+
+                {% comment %}</form>     {% endcomment %}
+
+            {% comment %}</div>                     {% endcomment %}
+        {% comment %}</div>  {% endcomment %}
+    {% comment %}</div>{% endcomment %}
+{% comment %}</div>{% endcomment %}
+
+
+<section>
+  <div class="container">
+    <div class="background-img">
+      <div class="box">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="content">
+          <h2 style="color: #FFD700">Welcome!</h2>
+          <p>Hi! My name is Marc and welcome to my own personal website where I post projects of any kind.</p>
+        </div>
+        
+      </div>
+    </div>
   </div>
-</div>
+</section>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
 {% endblock content %}
