@@ -1,0 +1,65 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block welcome %}
+<div class="container">
+  <div class="page-header">
+      <h1>Welcome to the website of Marc Partensky!</h1>
+  </div>
+</div>
+{% endblock welcome %}
+
+{% block content %}
+
+<script src="{% static 'home/home.js' %}"></script>
+<link rel="stylesheet" href="{% static 'home/home.css' %}">
+<link rel="stylesheet" href="{% static 'home/border-animation.css' %}">
+
+<section>
+  <div id="vanta-animation" class="container" style="width: 100%; height: 100%">
+    <div class="background-img">
+      <div class="box">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="content">
+          <h2 style="color: #FFD700">Welcome!</h2>
+          <p>Hi! My name is Marc and welcome to my own personal website where I post projects of any kind.</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+{% comment %}vanta{% endcomment %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r120/three.js" integrity="sha512-QCGz+55D77J/HfFhwUYiQ1jMFoaW0ObpqJFV2YwKqn+QhxEqlLtvG/7QOMBcRl/G3wWdLXe3hQ2I5oyPBHLStA==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.19/vanta.net.min.js" integrity="sha512-/LpqfCB57f0y4eEO82P1gq+CzbWyG6n1qOJ+Uc3v6PuCibWgnUNvPB1EpiQ9UKJy4hqEuBSLGah+94zn4Vy3Hw==" crossorigin="anonymous"></script>
+
+
+<script>
+VANTA.NET({
+  el: "#vanta-animation",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0xffffff,
+  backgroundColor: 0x0,
+  points: 20.00
+})
+</script>
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+{% endblock content %}

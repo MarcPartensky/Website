@@ -9,4 +9,6 @@ urlpatterns = [
     path('args/(?.*)', views.url, name='args'),
     re_path('addition/?(d/)*', views.addition, name='addition'),
     path('user-agent', views.user_agent, name="user-agent"),
+    path('homepage1', views.homepage1, name="homepage1"),
+    path('vanta-net', views.vanta_net, name="vanta-net"),
 ]

@@ -37,3 +37,9 @@ def addition(request):
 def decompose_prime(request):
     request
     return HttpResponse()
+
+def homepage1(request):
+    return render(request, 'tests/homepage1.html', {})
+
+def vanta_net(request):
+    return render(request, 'tests/vanta_net.html', {})
