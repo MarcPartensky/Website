@@ -209,5 +209,25 @@ const copyToClipboard = str => {
   document.body.removeChild(el);
 };    
     </script>
+
+
+<script src="{% static 'home/three.r119.min.js' %}"></script>
+<script src="{% static 'home/vanta.net.min.js' %}"></script>
+
+<script>
+VANTA.NET({
+  el: "#basefooter",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0xaa0000,
+  backgroundColor: 0x0,
+  points: 20.00
+})
+</script>
 </body>
 </html>

@@ -3,36 +3,5 @@
 
 {% block content %}
 
-<div id="vanta-net">
-    <p> loading animation... </p>
-</div>
-
-<style>
-#vanta-net {
-    position: relative;
-    width: 100%;
-    height: 50rem;
-}
-</style>
-
-<script src="{% static 'home/three.r119.min.js' %}"></script>
-<script src="{% static 'home/vanta.net.min.js' %}"></script>
-
-<script>
-VANTA.NET({
-  el: "#vanta-net",
-  mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  scale: 1.00,
-  scaleMobile: 1.00,
-  color: 0xffffff,
-  backgroundColor: 0x0,
-  points: 20.00
-})
-</script>
-
-
+<p>No content for now. Go to <a href={% url 'about' %}>about section</a> instead.</p>
 {% endblock content %}

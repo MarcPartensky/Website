@@ -4,8 +4,8 @@
 
 #basefooter {
   background: #16222A;
-  background: -webkit-linear-gradient(59deg, #3A6073, #16222A);
-  background: linear-gradient(59deg, #3A6073, #16222A);
+  background: -webkit-linear-gradient(59deg, #220000, #0000ff);
+  background: linear-gradient(59deg, #440000, #000000);
   color: white;
   margin-top:100px;
   bottom: 0;
