@@ -43,3 +43,6 @@ def homepage1(request):
 
 def vanta_net(request):
     return render(request, 'tests/vanta_net.html', {})
+
+def programming_languages_logo(request):
+    return render(request, 'tests/programming_languages_logo.html', {})
