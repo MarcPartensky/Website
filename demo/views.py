@@ -19,3 +19,9 @@ def pixel_art(request):
 
 def garage(request):
     return render(request, 'demo/garage.html', {})
+
+def google_calendar(request):
+    return render(request, 'demo/google_calendar.html', {})
+
+def google_official_calendar(request):
+    return render(request, 'demo/google_official_calendar.html', {})
