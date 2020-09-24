@@ -20,9 +20,14 @@ from django.urls import path, include
 from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.core.exceptions import ViewDoesNotExist 
+
+def response_error_handler(request, exception=None):
+    raise HttpResponse('<div class="tenor-gif-embed" data-postid="5094560" data-share-method="host" data-width="100%" data-aspect-ratio="1.7543859649122806"><a href="https://tenor.com/view/elmo-shrug-gif-5094560">Elmo Shrug GIF</a> from <a href="https://tenor.com/search/elmo-gifs">Elmo GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>', status=404)
+
 
 def not_found_view(request):
-    raise HttpResponse('<div class="tenor-gif-embed" data-postid="5094560" data-share-method="host" data-width="100%" data-aspect-ratio="1.7543859649122806"><a href="https://tenor.com/view/elmo-shrug-gif-5094560">Elmo Shrug GIF</a> from <a href="https://tenor.com/search/elmo-gifs">Elmo GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>', status=404)
+    raise ViewDoesNotExist
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -45,8 +50,11 @@ urlpatterns = [
     path('tests/', include('tests.urls')),
     path('chat/', include('chat.urls')),
     path('isep/', include('isep.urls')),
-    path('404/', not_found_view)
+    path('404/', ViewDoesNotExist),
 ]
+
+handler404 = response_error_handler
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
