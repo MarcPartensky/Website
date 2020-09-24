@@ -12,3 +12,8 @@ bash_profile.pub
 
 # Environments
 env
+
+#Editors
+.vscode/
+.idea/
+
