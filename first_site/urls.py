@@ -11,5 +11,6 @@ urlpatterns = [
     path('cube/',views.cube,name="cube"),
     path('connect4/',views.connect4,name="connect4"),
     path('expanse/',views.expanse,name="expanse"),
-    path('minecraft/', views.minecraft, name='minecraft')
+    path('minecraft/', views.minecraft, name='minecraft'),
+    path('spaceinvader/', views.spaceinvader, name='spaceinvader'),
 ]

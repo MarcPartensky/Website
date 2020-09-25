@@ -44,3 +44,6 @@ def minecraft(request):
 def home(request):
     context = dict(title="Website of Marc Partensky")
     return render(request, 'first-site/index.html', context)
+
+def spaceinvader(request):
+    return render(request, 'first-site/spaceinvader.html', {})
