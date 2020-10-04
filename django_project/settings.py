@@ -38,6 +38,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 # DEBUG = False
 # TEMPLATE_DEBUG = DEBUG
+# TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ["websiteofmarcpartensky.herokuapp.com", "localhost"]
 
@@ -144,15 +145,13 @@ TEMPLATES = [
 #     },
 # ]
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-]
 
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
+COMPRESS_ENABLED = True
+
+COMPRESS_OFFLINE = True
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
@@ -228,12 +227,21 @@ USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
+    # '/var/www/static/',
+]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

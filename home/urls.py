@@ -9,11 +9,11 @@ urlpatterns = [
     path('contact', views.contact, name="contact"),
 ]
 
-from django.conf.urls import (
-    handler400, handler403, handler404, handler500
-)
+# from django.conf.urls import (
+    # handler400, handler403, handler404, handler500
+# )
 
-handler400 = 'home.views.bad_request'
-handler403 = 'home.views.permission_denied'
-handler404 = 'home.views.page_not_found'
-handler500 = 'home.views.server_error'
+# handler400 = 'home.views.bad_request'
+# handler403 = 'home.views.permission_denied'
+# handler404 = 'home.views.page_not_found'
+# handler500 = 'home.views.server_error'

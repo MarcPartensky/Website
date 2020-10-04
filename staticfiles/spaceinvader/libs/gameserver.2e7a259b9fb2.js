@@ -1,0 +1,3 @@
+class GameServer extends GameBase {
+
+}

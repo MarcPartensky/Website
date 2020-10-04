@@ -1,0 +1,1 @@
+class GameGroup extends Group {}
