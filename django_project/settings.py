@@ -165,7 +165,7 @@ else:
 # print("DATABASE_URL:",DATABASE_URL)
 # DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
-# print("BASE_DIR:",BASE_DIR)
+print("BASE_DIR:", BASE_DIR)
 
 DATABASES = {
     'default': {
