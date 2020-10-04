@@ -21,7 +21,7 @@ HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Allowing cors
-CORS_ORIGIN_ALLOW_ALL = False 
+CORS_ORIGIN_ALLOW_ALL = False
 # CORS_ORIGIN_WHITELIST = (
     # 'google.com',
     # 'websiteofmarcpartensky.herokuapp.com'
@@ -36,7 +36,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-# DEBUG = False 
+# DEBUG = False
 # TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ["websiteofmarcpartensky.herokuapp.com", "localhost"]
@@ -78,6 +78,8 @@ INSTALLED_APPS = [
 
     # 503 error: maintenance service unavailable
     # 'django_503',
+
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -141,6 +143,14 @@ TEMPLATES = [
 #         },
 #     },
 # ]
+
+# STATICFILES_FINDERS = [
+    # 'compressor.finders.CompressorFinder',
+# ]
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
@@ -220,9 +230,9 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static')
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

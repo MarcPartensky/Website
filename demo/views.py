@@ -25,3 +25,9 @@ def google_calendar(request):
 
 def google_official_calendar(request):
     return render(request, 'demo/google_official_calendar.html', {})
+
+def html(request):
+    return render(request, 'demo/html.html', {})
+
+def qrcode(request):
+    return render(request, 'demo/qrcode.html', {})
