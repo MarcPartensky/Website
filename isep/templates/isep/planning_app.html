@@ -1,0 +1,10 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container" style="width: 100%; height: 100%; padding: 3rem">
+    <div class="embed-responsive embed-responsive-1by1">
+        <iframe class="embed-responsive-item" src="{% static 'planning-app/planning-app.pdf' %}" type="application/pdf" allowfullscreen></iframe>
+    </div>
+</div>
+{% endblock content %}
+

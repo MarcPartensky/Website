@@ -25,6 +25,7 @@ def contact(request):
 def date(request):
     return HttpResponse(str(datetime.datetime.now()))
 
+
 # HTTP Errors
 # def bad_request(request, exception):
     # response = render(

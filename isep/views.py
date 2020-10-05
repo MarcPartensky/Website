@@ -9,3 +9,6 @@ def isep(request):
 def app(request):
     context = dict(app='app')
     return render(request, 'isep/app.html', context)
+
+def planning_app(request):
+    return render(request, 'isep/planning_app.html', {})
