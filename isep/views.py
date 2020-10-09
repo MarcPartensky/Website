@@ -12,3 +12,6 @@ def app(request):
 
 def planning_app(request):
     return render(request, 'isep/planning_app.html', {})
+
+def lignee(request):
+    return render(request, 'isep/lignee.html', {})
