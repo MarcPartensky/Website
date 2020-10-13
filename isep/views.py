@@ -15,3 +15,6 @@ def planning_app(request):
 
 def lignee(request):
     return render(request, 'isep/lignee.html', {})
+
+def garage(request):
+    return render(request, 'isep/garage.html', {})

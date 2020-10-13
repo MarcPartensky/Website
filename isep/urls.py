@@ -6,4 +6,5 @@ urlpatterns = [
     path('app/', views.app, name="app"),
     path('planning-app/', views.planning_app, name="planning-app"),
     path('lignee', views.lignee, name="lignee"),
+    path('garage', views.garage, name="garage"),
 ]

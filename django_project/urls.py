@@ -50,6 +50,7 @@ urlpatterns = [
     path('tests/', include('tests.urls')),
     path('chat/', include('chat.urls')),
     path('isep/', include('isep.urls')),
+    path('gallery/', include('gallery.urls')),
     # path('404/', ViewDoesNotExist),
 ]
 
