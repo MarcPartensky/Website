@@ -11,5 +11,7 @@ urlpatterns = [
     path('user-agent', views.user_agent, name="user-agent"),
     path('homepage1', views.homepage1, name="homepage1"),
     path('vanta-net', views.vanta_net, name="vanta-net"),
-    path('programming-languages-logo', views.programming_languages_logo, name="programming-languages-logo")
+    path('programming-languages-logo', views.programming_languages_logo,
+         name="programming-languages-logo"),
+    path('ace-editor', views.ace_editor, name="ace-editor"),
 ]

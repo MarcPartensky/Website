@@ -46,3 +46,6 @@ def vanta_net(request):
 
 def programming_languages_logo(request):
     return render(request, 'tests/programming_languages_logo.html', {})
+
+def ace_editor(request):
+    return render(request, 'tests/ace-editor.html', {})
