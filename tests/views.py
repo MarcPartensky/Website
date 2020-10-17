@@ -49,3 +49,6 @@ def programming_languages_logo(request):
 
 def ace_editor(request):
     return render(request, 'tests/ace-editor.html', {})
+
+def codemirror_editor(request):
+    return render(request, 'tests/codemirror-editor.html', {})

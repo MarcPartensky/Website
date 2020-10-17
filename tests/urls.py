@@ -14,4 +14,5 @@ urlpatterns = [
     path('programming-languages-logo', views.programming_languages_logo,
          name="programming-languages-logo"),
     path('ace-editor', views.ace_editor, name="ace-editor"),
+    path('codemirror-editor', views.codemirror, name="codemirror-editor"),
 ]
