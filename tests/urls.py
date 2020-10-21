@@ -15,4 +15,5 @@ urlpatterns = [
          name="programming-languages-logo"),
     path('ace-editor', views.ace_editor, name="ace-editor"),
     path('codemirror-editor', views.codemirror_editor, name="codemirror-editor"),
+    path('terminal', views.terminal, name="terminal"),
 ]
