@@ -17,4 +17,7 @@ urlpatterns = [
     path('codemirror-editor', views.codemirror_editor, name="codemirror-editor"),
     path('xterm', views.xterm, name="xterm"),
     path('terminal', views.terminal, name="terminal"),
+    path('skulpt', views.skulpt, name="skulpt"),
+    path('codemirror+skulpt', views.codemirror_plus_skulpt,
+         name="codemirror_plus_skulpt"),
 ]

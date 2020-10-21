@@ -58,3 +58,9 @@ def xterm(request):
 
 def terminal(request):
     return render(request, 'tests/terminal.html', {})
+
+def skulpt(request):
+    return render(request, 'tests/skulpt.html', {})
+
+def codemirror_plus_skulpt(request):
+    return render(request, 'tests/codemirror+skulpt.html', {})
