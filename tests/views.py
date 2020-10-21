@@ -53,5 +53,8 @@ def ace_editor(request):
 def codemirror_editor(request):
     return render(request, 'tests/codemirror-editor.html', {})
 
+def xterm(request):
+    return render(request, 'tests/xterm.html', {})
+
 def terminal(request):
     return render(request, 'tests/terminal.html', {})

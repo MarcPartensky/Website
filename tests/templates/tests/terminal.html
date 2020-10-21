@@ -1,48 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js" integrity="sha512-2PRgAav8Os8vLcOAh1gSaDoNLe1fAyq8/G3QSdyjFFD+OqNjLeHE/8q4+S4MEZgPsuo+itHopj+hJvqS8XUQ8A==" crossorigin="anonymous"></script>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css"/>
+</head>
+<body>
+<script>
+$('body').terminal({
+    hello: function() {
+        this.echo('Hi! Welcome to this terminal.')
+    },
+    cat: function() {
+        const n = Math.floor(500*Math.random())
+        this.echo($('<img src="https://placekitten.com/'+n+'/287">'));
+    },
+    echo: function(args) {
+        this.echo(args)
+    }
+},
+{
+    greetings: 'Welcome to the terminal of Marc Partensky'
+});
+</script>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.css" integrity="sha512-iLYuqv+v/P4u9erpk+KM83Ioe/l7SEmr7wB6g+Kg1qmEit8EShDKnKtLHlv2QXUp7GGJhmqDI+1PhJYLTsfb8w==" crossorigin="anonymous" />
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.min.js" integrity="sha512-43J76SR5UijcuJTzs73z8NpkyWon8a8EoV+dX6obqXW7O26Yb268H2vP6EiJjD7sWXqxS3G/YOqPyyLF9fmqgA==" crossorigin="anonymous"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.min.js" integrity="sha512-43J76SR5UijcuJTzs73z8NpkyWon8a8EoV+dX6obqXW7O26Yb268H2vP6EiJjD7sWXqxS3G/YOqPyyLF9fmqgA==" crossorigin="anonymous"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/fullscreen/fullscreen.min.js" integrity="sha512-a2UduN5n2FB1FMXX6b+R4EZsC+uEAco4KBuIDstE1Eq3NacUXhxNYeDcR+enLHDJBxrtffgjR6Z7gjx87668mw==" crossorigin="anonymous"></script>
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/fullscreen/fullscreen.min.css" integrity="sha512-Uowe00aPyi/0HrMR7lEu5Ot9HPayA6wIBueVcj3sCCbFV2dan8tMs2AbPmjPdHW5iDDjwRFMa5nvIwmOQQ/qaA==" crossorigin="anonymous" />
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/search/search.min.js" integrity="sha512-OkVnWNhmCMHw8pYndhQ+yEMJzD1VrgqF12deRfRcqR6iWL4s8IkxTBwSrJZ2WgpevhD71S68dAqBPHv/VHGDAw==" crossorigin="anonymous"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/terminado/terminado.min.js" integrity="sha512-TtKncBxqCuka3yQ40VKwx1Jm3cfx1JyWCbRjAFIu7gQ+pvi8b4RwDIbTfmckBi2hpTSdIxxIN2nn23U6tcoboQ==" crossorigin="anonymous"></script>
-
-        <style>
-        #html, #body {
-            margin: 0;
-            height: 100%;
-            position: relative;
-        }
-        #terminal {
-            display: block;
-            position: absolute;
-            background: #000;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-        </style>
-
-    </head>
-    <body>
-      <div id="terminal"></div>
-      <script>
-        var term = new Terminal();
-        term.open(document.getElementById('terminal'));
-        term.write('Terminal of \x1B[1;3;31mMarc Partensky\x1B[0m $ ')
-      </script>
-    </body>
-  </html>
+</body>
+</html>
