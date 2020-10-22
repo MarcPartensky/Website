@@ -11,7 +11,7 @@
   <div id="modal-dialog" class="modal-dialog modal-xl modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="modal-title">title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -451,7 +451,8 @@ function saveTextAsFile() {
   var textFileAsBlob = new Blob([textToWrite], {
     type: "text/plain;charset=utf-8"
   });
-  var fileNameToSaveAs = document.getElementById('filename').value || "script.py";
+    var filename = document.getElementById('filename')
+  var fileNameToSaveAs = filename.value || filename.placeholder
 
   var downloadLink = document.createElement("a");
   downloadLink.download = fileNameToSaveAs;
@@ -561,7 +562,10 @@ function builtinRead(file) {
 Sk.main_canvas = document.getElementById("mycanvas");
 
 function runit() {
-    {% comment %}Sk.main_canvas = document.createElement("canvas");{% endcomment %}
+
+    var modalTitle = document.getElementById('modal-title')
+    var filename = document.getElementById('filename')
+    modalTitle.innerHTML = filename.value || filename.placeholder
 
    var prog = editor.getValue()
    var output = document.getElementById("output");
