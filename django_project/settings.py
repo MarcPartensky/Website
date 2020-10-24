@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'chat.apps.ChatConfig',
     'isep.apps.IsepConfig',
     'gallery.apps.GalleryConfig',
+    'design.apps.DesignConfig',
 
     'crispy_forms',
     'django.contrib.admin',

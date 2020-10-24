@@ -51,6 +51,7 @@ urlpatterns = [
     path('chat/', include('chat.urls')),
     path('isep/', include('isep.urls')),
     path('gallery/', include('gallery.urls')),
+    path('design/', include('design.urls')),
     # path('404/', ViewDoesNotExist),
 ]
 
