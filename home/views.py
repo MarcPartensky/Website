@@ -1,9 +1,28 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+
+import requests
 import datetime
+import re
 
 def home(request):
     context = dict(title='Website of Marc Partensky')
+
+    text = requests.get('https://github.com/marcpartensky/').text
+
+    pattern = '<span title=\"(\d+)\" class="Counter ">\d+</span>'
+    context['github_repos_number'] = re.findall(pattern, text)[0]
+
+    pattern = '(\d+)</span>\n +followers'
+    context['github_followers'] = re.findall(pattern, text)[0]
+
+    pattern = '(\d+) contributions'
+    context['github_year_commits'] = re.findall(pattern, text)[0]
+
+    pattern = 'Created (\d+)\n +commits in\n +(\d+)\n +repositories'
+    context['github_month_commits'] = re.findall(pattern, text)[0][0]
+    context['github_month_commits_repos'] = re.findall(pattern, text)[0][1]
+
     return render(request, 'home/home.html', context)
 
 def about(request):

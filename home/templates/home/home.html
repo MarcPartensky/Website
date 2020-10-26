@@ -251,6 +251,53 @@
     </section><!-- End Services Section -->
 
 
+    <section class="counts section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Github activity</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up">
+            <div class="count-box">
+              <i class="icofont-users-alt-5" style="color: #20b38e;"></i>
+              <span data-toggle="counter-up">{{ github_followers }}</span>
+              <p>Followers</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="count-box">
+              <i class="icofont-server" style="color: #c042ff;"></i>
+              <span data-toggle="counter-up">{{ github_repos_number }}</span>
+              <p>Repositories</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
+            <div class="count-box">
+              <i class="icofont-pie-chart" style="color: #46d1ff;"></i>
+              <span data-toggle="counter-up">{{ github_year_commits }}</span>
+              <p>Year commits</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="600">
+            <div class="count-box">
+              <i class="icofont-space-shuttle" style="color: #ffb459;"></i>
+              <span data-toggle="counter-up">{{ github_month_commits }}</span>
+              <p>Month commits in {{ github_month_commits_repos }} repos</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
     <!-- ======= Featured Section ======= -->
     <section id="featured" class="featured">
       <div class="container">
@@ -312,6 +359,7 @@
 
       </div>
     </section><!-- End Featured Section -->
+
 
     <!-- ======= Why Us Section ======= -->
     <section id="why-this-website" class="why-us">
@@ -526,53 +574,63 @@
     <section id="testimonials" class="testimonials">
       <div class="container" data-aos="zoom-in">
         <div class="quote-icon">
-          <i class="bx bxs-quote-right"></i>
+          <i class="icofont-award"></i>
         </div>
         <div class="owl-carousel testimonials-carousel">
 
           <div class="testimonial-item">
             <p>
-              Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+              Delivered by Coursera in April 2020
             </p>
-            <img src="{% static 'home/assets/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
-            <h3>Saul Goodman</h3>
-            <h4>Ceo &amp; Founder</h4>
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="{% static 'home/assets/pdf/certificate-1.pdf' %}" type="application/pdf" allowfullscreen></iframe>
+            </div>
+            <h3>Neural Networks and Deep Learning</h3>
+            <h4><a target="_blank" href="https://coursera.org/verify/85SDPU4SWDQM">Verify</a></h4>
           </div>
 
           <div class="testimonial-item">
             <p>
-              Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+              Delivered by Coursera in April 2020
             </p>
-            <img src="{% static 'home/assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
-            <h3>Sara Wilsson</h3>
-            <h4>Designer</h4>
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="{% static 'home/assets/pdf/certificate-2.pdf' %}" type="application/pdf" allowfullscreen></iframe>
+            </div>
+            <h3>Improving Deep Neural Networks: Hyperparameter tunning, Regularization and Optimization</h3>
+            <h4><a target="_blank" href="https://coursera.org/verify/GCQZS7H8HFM4">Verify</a></h4>
           </div>
 
           <div class="testimonial-item">
             <p>
-              Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+              Delivered by Coursera in April 2020
             </p>
-            <img src="{% static 'home/assets/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
-            <h3>Jena Karlis</h3>
-            <h4>Store Owner</h4>
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="{% static 'home/assets/pdf/certificate-3.pdf' %}" type="application/pdf" allowfullscreen></iframe>
+            </div>
+            <h3>Structuring Machine Learning Projects</h3>
+            <h4><a target="_blank" href="https://coursera.org/verify/G52ATN4KSM69">Verify</a></h4>
           </div>
 
           <div class="testimonial-item">
             <p>
-              Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+              Delivered by Coursera in April 2020
             </p>
-            <img src="{% static 'home/assets/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
-            <h3>Matt Brandon</h3>
-            <h4>Freelancer</h4>
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="{% static 'home/assets/pdf/certificate-4.pdf' %}" type="application/pdf" allowfullscreen></iframe>
+            </div>
+            <h3>Convolutional Neural Networks</h3>
+            <h4><a target="_blank" href="https://coursera.org/verify/C76NP3CMBMB3">Verify</a></h4>
           </div>
 
           <div class="testimonial-item">
             <p>
-              Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+              Delivered by Coursera in April 2020
             </p>
-            <img src="{% static 'home/assets/img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
-            <h3>John Larson</h3>
-            <h4>Entrepreneur</h4>
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="{% static 'home/assets/pdf/certificate-5.pdf' %}" type="application/pdf" allowfullscreen></iframe>
+            </div>
+            <h3>Sequence Models</h3>
+            <h4><a target="_blank" href="https://coursera.org/verify/23X8YKXP69CZ">Verify</a></h4>
           </div>
 
         </div>
@@ -799,7 +857,7 @@
           <p>Send me a message. I can't wait to meet you.</p>
         </div>
 
-            <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=19%20Boulevard%20Saint-Antoine+(My%20home)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
+            <div style="width: 100%" data-aos="fade-down"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=19%20Boulevard%20Saint-Antoine+(My%20home)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
 
         <div class="row">
 
@@ -919,8 +977,11 @@
   <script src="{% static 'home/assets/vendor/jquery-sticky/jquery.sticky.js' %}"></script>
   <script src="{% static 'home/assets/vendor/venobox/venobox.min.js' %}"></script>
   <script src="{% static 'home/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'home/assets/vendor/counterup/counterup.min.js' %}"></script>
   <script src="{% static 'home/assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
   <script src="{% static 'home/assets/vendor/aos/aos.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf_viewer.min.css"></script>
 
   <!-- Template Main JS File -->
   <script src="{% static 'home/assets/js/main.js' %}"></script>

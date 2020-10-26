@@ -53,6 +53,7 @@
     }
   });
 
+
   // Mobile Navigation
   if ($('.nav-menu').length) {
     var $mobile_nav = $('.nav-menu').clone().prop({
@@ -171,6 +172,12 @@
     dots: true,
     loop: true,
     items: 1
+  });
+
+  // jQuery counterUp
+  $('[data-toggle="counter-up"]').counterUp({
+    delay: 10,
+    time: 1000
   });
 
   // Init AOS
