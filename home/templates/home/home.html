@@ -67,7 +67,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul class="nav-inner">
-          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="/">Home</a></li>
           <li class="drop-down"><a href="">Sections</a>
             <ul>
               <li><a href="#about">About Me</a></li>
@@ -91,7 +91,7 @@
           <li class="nav-logo" style="width: 15%; height: 15%"><a href="/"><img src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a></li>
 
           <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#certificates">Certificates</a></li>
           <li><a href="#contact">Contact</a></li>
 
         </ul>
@@ -174,32 +174,26 @@
 
           <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in">
             <span class="iconify icon-language" data-icon="logos:python" data-inline="false"></span>
-              {% comment %}<img src="{% static 'home/assets/img/clients/client-1.png' %}" class="img-fluid" alt="">{% endcomment %}
           </div>
 
           <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="100">
             <i class="devicon-c-plain colored icon-language"></i>
-              {% comment %}<img src="{% static 'home/assets/img/clients/client-2.png' %}" class="img-fluid" alt="">{% endcomment %}
           </div>
 
           <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="200">
             <span class="iconify icon-language" data-icon="cib:unity" data-inline="false"></span>
-              {% comment %}<img src="{% static 'home/assets/img/clients/client-3.png' %}" class="img-fluid" alt="">{% endcomment %}
           </div>
 
           <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="300">
             <span class="iconify icon-language" data-icon="logos:java" data-inline="false"></span>
-              {% comment %}<img src="{% static 'home/assets/img/clients/client-4.png' %}" class="img-fluid" alt="">{% endcomment %}
           </div>
 
           <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="400">
             <span class="iconify icon-language" data-icon="logos:javascript" data-inline="false"></span>
-              {% comment %}<img src="{% static 'home/assets/img/clients/client-5.png' %}" class="img-fluid" alt="">{% endcomment %}
           </div>
 
           <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="500">
             <i class="devicon-php-plain colored icon-language"></i>
-              {% comment %}<img src="{% static 'home/assets/img/clients/client-6.png' %}" class="img-fluid" alt="">{% endcomment %}
           </div>
 
         </div>
@@ -240,12 +234,10 @@
             </div>
           </div>
 
-          {% comment %}<div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("{% static 'home/assets/img/services.jpg' %}");' data-aos="fade-left" data-aos-delay="100"></div>{% endcomment %}
             <div class="embed-responsive embed-responsive-1by1 image col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
                 <iframe class="embed-responsive-item" src="{% static 'cv/cv.pdf' %}" type="application/pdf" allowfullscreen></iframe>
             </div>
         </div>
-        {% comment %}<iframe src="/demo/google-calendar" title="My planning"></iframe>{% endcomment %}
 
       </div>
     </section><!-- End Services Section -->
@@ -307,12 +299,17 @@
             <div class="tab-content">
               <div class="tab-pane active show" id="tab-1">
                 <figure>
-                    <img src="{% static 'home/assets/img/featured-1.png' %}" alt="" class="img-fluid">
+                    <iframe id="open-web-calendar"
+                        style="center center no-repeat"
+                        src="https://open-web-calendar.herokuapp.com/calendar.html?url=https%3A%2F%2Fcalendar.google.com%2Fcalendar%2Fical%2Fmarc.partensky%2540gmail.com%2Fpublic%2Fbasic.ics&amp;language=fr"
+                        sandbox="allow-scripts allow-same-origin allow-top-navigation"
+                        allowTransparency="true" scrolling="no"
+                        frameborder="0" height="600px" width="100%"></iframe>
                 </figure>
               </div>
               <div class="tab-pane" id="tab-2">
                 <figure>
-                    <img src="{% static 'home/assets/img/featured-2.png' %}" alt="" class="img-fluid">
+                    <img src="https://i.postimg.cc/nLNRpgLH/passionate.png" alt="" class="img-fluid">
                 </figure>
               </div>
               <div class="tab-pane" id="tab-3">
@@ -322,7 +319,7 @@
               </div>
               <div class="tab-pane" id="tab-4">
                 <figure>
-                    <img src="{% static 'home/assets/img/featured-4.png' %}" alt="" class="img-fluid">
+                    <img src="https://iili.io/3hOmen.md.jpg" alt="" class="img-fluid">
                 </figure>
               </div>
             </div>
@@ -332,25 +329,37 @@
               <li class="nav-item">
                 <a class="nav-link active show" data-toggle="tab" href="#tab-1">
                   <h4>Autonomous</h4>
-                  <p>I am always learning new skills by myself.</p>
+                  <p>
+                  There is always have something to do.
+                  If you disagree your first goal is to make yourself a planning.
+                  </p>
                 </a>
               </li>
               <li class="nav-item mt-2">
                 <a class="nav-link" data-toggle="tab" href="#tab-2">
                   <h4>Passionate</h4>
-                  <p>Voluptas vel esse repudiandae quo excepturi.</p>
+                  <p>
+                  It is my goal to learn everything there is to learn in computer science.
+                  This is why I keep teaching myself everyday.
+                  </p>
                 </a>
               </li>
               <li class="nav-item mt-2">
                 <a class="nav-link" data-toggle="tab" href="#tab-3">
-                  <h4>Curious</h4>
-                  <p>Velit veniam ipsa sit nihil blanditiis mollitia natus.</p>
+                  <h4>Open minded</h4>
+                  <p>
+                  I'd rather you disagree with me than the opposite, because maybe then
+                  I might learn something new.
+                  </p>
                 </a>
               </li>
               <li class="nav-item mt-2">
                 <a class="nav-link" data-toggle="tab" href="#tab-4">
-                  <h4>Ambitious</h4>
-                  <p>Ratione hic sapiente nostrum doloremque illum nulla praesentium id</p>
+                  <h4>Enterprising</h4>
+                  <p>
+                  I am not afraid of failure.
+                  It's only by failing a thousand times that I will have a chance of succeeding once.
+                  </p>
                 </a>
               </li>
             </ul>
@@ -370,35 +379,35 @@
           <div class="col-lg-7 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-stretch">
 
             <div class="content" data-aos="fade-up">
-              <h3>Why make this website?</h3>
+              <h3>Why make a website?</h3>
               <p>This website is a way to get better in web development, expose my side projects and self promote myself for getting a job.</p>
             </div>
 
             <div class="accordion-list">
               <ul>
                 <li data-aos="fade-up" data-aos-delay="100">
-                  <a data-toggle="collapse" class="collapse" href="#accordion-list-1"><span>01</span> Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <a data-toggle="collapse" class="collapse" href="#accordion-list-1"><span>01</span>Who is if for?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                   <div id="accordion-list-1" class="collapse show" data-parent=".accordion-list">
                     <p>
-                      Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                    Everyone wishing to know more about me, going from friends and recruiters, to simply curious visitors.
                     </p>
                   </div>
                 </li>
 
                 <li data-aos="fade-up" data-aos-delay="200">
-                  <a data-toggle="collapse" href="#accordion-list-2" class="collapsed"><span>02</span> Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <a data-toggle="collapse" href="#accordion-list-2" class="collapsed"><span>02</span>What is in it?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                   <div id="accordion-list-2" class="collapse" data-parent=".accordion-list">
                     <p>
-                      Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                    Lots and lots of side projects with some demos and tests. But also few informations about me.
                     </p>
                   </div>
                 </li>
 
                 <li data-aos="fade-up" data-aos-delay="300">
-                  <a data-toggle="collapse" href="#accordion-list-3" class="collapsed"><span>03</span> Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <a data-toggle="collapse" href="#accordion-list-3" class="collapsed"><span>03</span> Why an orchid? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                   <div id="accordion-list-3" class="collapse" data-parent=".accordion-list">
                     <p>
-                      Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                    Maybe try to catch my nationality and the name of my dog, it might enlighten this mystery.
                     </p>
                   </div>
                 </li>
@@ -408,8 +417,8 @@
 
           </div>
 
-          <div class="col-lg-5 order-1 order-lg-2 align-items-stretch video-box" style='background-image: url("{% static 'home/assets/img/why-us.jpg' %}");' data-aos="zoom-in">
-            <a href="https://www.youtube.com/watch?v=LIqQNG_q2us" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+          <div class="col-lg-5 order-1 order-lg-2 align-items-stretch video-box" data-aos="zoom-in" style="text-align: center">
+              <img src="{% static 'home/assets/img/qrcode.svg' %}" style="width: 70%; height: 70%; margin: 6rem">
           </div>
 
         </div>
@@ -571,7 +580,7 @@
     </section><!-- End Portfolio Section -->
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
+    <section id="certificates" class="testimonials">
       <div class="container" data-aos="zoom-in">
         <div class="quote-icon">
           <i class="icofont-award"></i>
@@ -580,7 +589,7 @@
 
           <div class="testimonial-item">
             <p>
-              Delivered by Coursera in April 2020
+              Delivered by Coursera in March 2020
             </p>
             <div class="embed-responsive embed-responsive-4by3">
                 <iframe class="embed-responsive-item" src="{% static 'home/assets/pdf/certificate-1.pdf' %}" type="application/pdf" allowfullscreen></iframe>
@@ -591,7 +600,7 @@
 
           <div class="testimonial-item">
             <p>
-              Delivered by Coursera in April 2020
+              Delivered by Coursera in March 2020
             </p>
             <div class="embed-responsive embed-responsive-4by3">
                 <iframe class="embed-responsive-item" src="{% static 'home/assets/pdf/certificate-2.pdf' %}" type="application/pdf" allowfullscreen></iframe>
@@ -638,207 +647,208 @@
       </div>
     </section><!-- End Testimonials Section -->
 
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
-      <div class="container">
 
-        <div class="section-title" data-aos="fade-up">
-          <h2>Team</h2>
-          <p>Magnam dolores commodi suscipit eius consequatur ex aliquid fuga eum quidem</p>
-        </div>
+    {% comment %}<!-- ======= Team Section ======= -->{% endcomment %}
+    {% comment %}<section id="team" class="team">{% endcomment %}
+      {% comment %}<div class="container">{% endcomment %}
 
-        <div class="row">
+        {% comment %}<div class="section-title" data-aos="fade-up">{% endcomment %}
+          {% comment %}<h2>Team</h2>{% endcomment %}
+          {% comment %}<p>Magnam dolores commodi suscipit eius consequatur ex aliquid fuga eum quidem</p>{% endcomment %}
+        {% comment %}</div>{% endcomment %}
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="zoom-in">
-              <div class="member-img">
-                  <img src="{% static 'home/assets/img/team/team-1.jpg' %}" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
-                <p>Animi est delectus alias quam repellendus nihil nobis dolor. Est sapiente occaecati et dolore. Omnis aut ut nesciunt explicabo qui. Eius nam deleniti ut omnis</p>
-              </div>
-            </div>
-          </div>
+        {% comment %}<div class="row">{% endcomment %}
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="zoom-in" data-aos-delay="100">
-              <div class="member-img">
-                  <img src="{% static 'home/assets/img/team/team-2.jpg' %}" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
-                <p>Aspernatur iste esse aliquam enim et corporis. Molestiae voluptatem aut eligendi quis aut. Libero vel amet voluptatem eos rerum non doloremque</p>
-              </div>
-            </div>
-          </div>
+          {% comment %}<div class="col-lg-4 col-md-6 d-flex align-items-stretch">{% endcomment %}
+            {% comment %}<div class="member" data-aos="zoom-in">{% endcomment %}
+              {% comment %}<div class="member-img">{% endcomment %}
+                  {% comment %}<img src="{% static 'home/assets/img/team/team-1.jpg' %}" class="img-fluid" alt="">{% endcomment %}
+                {% comment %}<div class="social">{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-twitter"></i></a>{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-facebook"></i></a>{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-instagram"></i></a>{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-linkedin"></i></a>{% endcomment %}
+                {% comment %}</div>{% endcomment %}
+              {% comment %}</div>{% endcomment %}
+              {% comment %}<div class="member-info">{% endcomment %}
+                {% comment %}<h4>Walter White</h4>{% endcomment %}
+                {% comment %}<span>Chief Executive Officer</span>{% endcomment %}
+                {% comment %}<p>Animi est delectus alias quam repellendus nihil nobis dolor. Est sapiente occaecati et dolore. Omnis aut ut nesciunt explicabo qui. Eius nam deleniti ut omnis</p>{% endcomment %}
+              {% comment %}</div>{% endcomment %}
+            {% comment %}</div>{% endcomment %}
+          {% comment %}</div>{% endcomment %}
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="zoom-in" data-aos-delay="200">
-              <div class="member-img">
-                  <img src="{% static 'home/assets/img/team/team-3.jpg' %}" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-                <p>Ut enim possimus nihil cupiditate beatae. Veniam facere quae non qui necessitatibus rerum eos vero. Maxime sit sunt quo dolor autem est qui quaerat</p>
-              </div>
-            </div>
-          </div>
+          {% comment %}<div class="col-lg-4 col-md-6 d-flex align-items-stretch">{% endcomment %}
+            {% comment %}<div class="member" data-aos="zoom-in" data-aos-delay="100">{% endcomment %}
+              {% comment %}<div class="member-img">{% endcomment %}
+                  {% comment %}<img src="{% static 'home/assets/img/team/team-2.jpg' %}" class="img-fluid" alt="">{% endcomment %}
+                {% comment %}<div class="social">{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-twitter"></i></a>{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-facebook"></i></a>{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-instagram"></i></a>{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-linkedin"></i></a>{% endcomment %}
+                {% comment %}</div>{% endcomment %}
+              {% comment %}</div>{% endcomment %}
+              {% comment %}<div class="member-info">{% endcomment %}
+                {% comment %}<h4>Sarah Jhonson</h4>{% endcomment %}
+                {% comment %}<span>Product Manager</span>{% endcomment %}
+                {% comment %}<p>Aspernatur iste esse aliquam enim et corporis. Molestiae voluptatem aut eligendi quis aut. Libero vel amet voluptatem eos rerum non doloremque</p>{% endcomment %}
+              {% comment %}</div>{% endcomment %}
+            {% comment %}</div>{% endcomment %}
+          {% comment %}</div>{% endcomment %}
 
-        </div>
+          {% comment %}<div class="col-lg-4 col-md-6 d-flex align-items-stretch">{% endcomment %}
+            {% comment %}<div class="member" data-aos="zoom-in" data-aos-delay="200">{% endcomment %}
+              {% comment %}<div class="member-img">{% endcomment %}
+                  {% comment %}<img src="{% static 'home/assets/img/team/team-3.jpg' %}" class="img-fluid" alt="">{% endcomment %}
+                {% comment %}<div class="social">{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-twitter"></i></a>{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-facebook"></i></a>{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-instagram"></i></a>{% endcomment %}
+                  {% comment %}<a href=""><i class="icofont-linkedin"></i></a>{% endcomment %}
+                {% comment %}</div>{% endcomment %}
+              {% comment %}</div>{% endcomment %}
+              {% comment %}<div class="member-info">{% endcomment %}
+                {% comment %}<h4>William Anderson</h4>{% endcomment %}
+                {% comment %}<span>CTO</span>{% endcomment %}
+                {% comment %}<p>Ut enim possimus nihil cupiditate beatae. Veniam facere quae non qui necessitatibus rerum eos vero. Maxime sit sunt quo dolor autem est qui quaerat</p>{% endcomment %}
+              {% comment %}</div>{% endcomment %}
+            {% comment %}</div>{% endcomment %}
+          {% comment %}</div>{% endcomment %}
 
-      </div>
-    </section><!-- End Team Section -->
+        {% comment %}</div>{% endcomment %}
 
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing section-bg">
-      <div class="container">
+      {% comment %}</div>{% endcomment %}
+    {% comment %}</section><!-- End Team Section -->{% endcomment %}
 
-        <div class="section-title" data-aos="fade-up">
-          <h2>Pricing</h2>
-          <p>Magnam dolores commodi suscipit eius consequatur ex aliquid fuga eum quidem</p>
-        </div>
+    {% comment %}<!-- ======= Pricing Section ======= -->{% endcomment %}
+    {% comment %}<section id="pricing" class="pricing section-bg">{% endcomment %}
+      {% comment %}<div class="container">{% endcomment %}
 
-        <div class="row">
+        {% comment %}<div class="section-title" data-aos="fade-up">{% endcomment %}
+          {% comment %}<h2>Pricing</h2>{% endcomment %}
+          {% comment %}<p>Magnam dolores commodi suscipit eius consequatur ex aliquid fuga eum quidem</p>{% endcomment %}
+        {% comment %}</div>{% endcomment %}
 
-          <div class="col-lg-4 col-md-6">
-            <div class="box" data-aos="zoom-in" data-aos-delay="100">
-              <h3>Free</h3>
-              <h4><sup>$</sup>0<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
+        {% comment %}<div class="row">{% endcomment %}
 
-          <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
-            <div class="box recommended" data-aos="zoom-in">
-              <span class="recommended-badge">Recommended</span>
-              <h3>Business</h3>
-              <h4><sup>$</sup>19<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
+          {% comment %}<div class="col-lg-4 col-md-6">{% endcomment %}
+            {% comment %}<div class="box" data-aos="zoom-in" data-aos-delay="100">{% endcomment %}
+              {% comment %}<h3>Free</h3>{% endcomment %}
+              {% comment %}<h4><sup>$</sup>0<span> / month</span></h4>{% endcomment %}
+              {% comment %}<ul>{% endcomment %}
+                {% comment %}<li>Aida dere</li>{% endcomment %}
+                {% comment %}<li>Nec feugiat nisl</li>{% endcomment %}
+                {% comment %}<li>Nulla at volutpat dola</li>{% endcomment %}
+                {% comment %}<li class="na">Pharetra massa</li>{% endcomment %}
+                {% comment %}<li class="na">Massa ultricies mi</li>{% endcomment %}
+              {% comment %}</ul>{% endcomment %}
+              {% comment %}<div class="btn-wrap">{% endcomment %}
+                {% comment %}<a href="#" class="btn-buy">Buy Now</a>{% endcomment %}
+              {% comment %}</div>{% endcomment %}
+            {% comment %}</div>{% endcomment %}
+          {% comment %}</div>{% endcomment %}
 
-          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="zoom-in" data-aos-delay="100">
-              <h3>Developer</h3>
-              <h4><sup>$</sup>29<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
+          {% comment %}<div class="col-lg-4 col-md-6 mt-4 mt-md-0">{% endcomment %}
+            {% comment %}<div class="box recommended" data-aos="zoom-in">{% endcomment %}
+              {% comment %}<span class="recommended-badge">Recommended</span>{% endcomment %}
+              {% comment %}<h3>Business</h3>{% endcomment %}
+              {% comment %}<h4><sup>$</sup>19<span> / month</span></h4>{% endcomment %}
+              {% comment %}<ul>{% endcomment %}
+                {% comment %}<li>Aida dere</li>{% endcomment %}
+                {% comment %}<li>Nec feugiat nisl</li>{% endcomment %}
+                {% comment %}<li>Nulla at volutpat dola</li>{% endcomment %}
+                {% comment %}<li>Pharetra massa</li>{% endcomment %}
+                {% comment %}<li class="na">Massa ultricies mi</li>{% endcomment %}
+              {% comment %}</ul>{% endcomment %}
+              {% comment %}<div class="btn-wrap">{% endcomment %}
+                {% comment %}<a href="#" class="btn-buy">Buy Now</a>{% endcomment %}
+              {% comment %}</div>{% endcomment %}
+            {% comment %}</div>{% endcomment %}
+          {% comment %}</div>{% endcomment %}
 
-        </div>
+          {% comment %}<div class="col-lg-4 col-md-6 mt-4 mt-lg-0">{% endcomment %}
+            {% comment %}<div class="box" data-aos="zoom-in" data-aos-delay="100">{% endcomment %}
+              {% comment %}<h3>Developer</h3>{% endcomment %}
+              {% comment %}<h4><sup>$</sup>29<span> / month</span></h4>{% endcomment %}
+              {% comment %}<ul>{% endcomment %}
+                {% comment %}<li>Aida dere</li>{% endcomment %}
+                {% comment %}<li>Nec feugiat nisl</li>{% endcomment %}
+                {% comment %}<li>Nulla at volutpat dola</li>{% endcomment %}
+                {% comment %}<li>Pharetra massa</li>{% endcomment %}
+                {% comment %}<li>Massa ultricies mi</li>{% endcomment %}
+              {% comment %}</ul>{% endcomment %}
+              {% comment %}<div class="btn-wrap">{% endcomment %}
+                {% comment %}<a href="#" class="btn-buy">Buy Now</a>{% endcomment %}
+              {% comment %}</div>{% endcomment %}
+            {% comment %}</div>{% endcomment %}
+          {% comment %}</div>{% endcomment %}
 
-      </div>
-    </section><!-- End Pricing Section -->
+        {% comment %}</div>{% endcomment %}
+
+      {% comment %}</div>{% endcomment %}
+    {% comment %}</section><!-- End Pricing Section -->{% endcomment %}
 
     <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>Frequently Asked Questions</h2>
+          <h2>FAQ</h2>
         </div>
 
         <ul class="faq-list">
 
           <li data-aos="fade-up">
-            <a data-toggle="collapse" class="collapsed" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+            <a data-toggle="collapse" class="collapsed" href="#faq1">Which school did you go to?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
             <div id="faq1" class="collapse" data-parent=".faq-list">
               <p>
-                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+              I stayed my whole childhood in a school named Saint Jean Hulst until I got my high school diploma then I went to an engineering school called ISEP where I still am today.
               </p>
             </div>
           </li>
 
           <li data-aos="fade-up" data-aos-delay="100">
-            <a data-toggle="collapse" href="#faq2" class="collapsed">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+            <a data-toggle="collapse" href="#faq2" class="collapsed">How did you learn all these skills?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
             <div id="faq2" class="collapse" data-parent=".faq-list">
               <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+              I learned most of it on openclassrooms and on youtube.
               </p>
             </div>
           </li>
 
           <li data-aos="fade-up" data-aos-delay="200">
-            <a data-toggle="collapse" href="#faq3" class="collapsed">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+            <a data-toggle="collapse" href="#faq3" class="collapsed">What are your hobbies?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
             <div id="faq3" class="collapse" data-parent=".faq-list">
               <p>
-                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+              I like spending my time with my dog Glouay-May, playing basketball and adding plugins to my neovim setup ;) I sometimes go to keybr.com to compete against others in touch typing when I feel like it.
               </p>
             </div>
           </li>
 
           <li data-aos="fade-up" data-aos-delay="300">
-            <a data-toggle="collapse" href="#faq4" class="collapsed">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+            <a data-toggle="collapse" href="#faq4" class="collapsed">How can I contact you?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
             <div id="faq4" class="collapse" data-parent=".faq-list">
               <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+              Just scroll to the bottom of the page and here you go!
               </p>
             </div>
           </li>
 
           <li data-aos="fade-up" data-aos-delay="400">
-            <a data-toggle="collapse" href="#faq5" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+            <a data-toggle="collapse" href="#faq5" class="collapsed">Did you make this website all by yourself?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
             <div id="faq5" class="collapse" data-parent=".faq-list">
               <p>
-                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+              That's right!
               </p>
             </div>
           </li>
 
           <li data-aos="fade-up" data-aos-delay="500">
-            <a data-toggle="collapse" href="#faq6" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+            <a data-toggle="collapse" href="#faq6" class="collapsed">I want to give you a job offer.<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
             <div id="faq6" class="collapse" data-parent=".faq-list">
               <p>
-                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
+              I am very open to job offers and I'd be very happy to hear your proposal. Drop me your phone number and your email in the contact section and I'll make sure to call you to give you my answer.
               </p>
             </div>
           </li>
@@ -984,6 +994,7 @@
 
   <script src="{% static 'base/three.r119.min.js' %}"></script>
   <script src="{% static 'base/vanta.net.min.js' %}"></script>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
   <script>
   VANTA.NET({
