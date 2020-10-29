@@ -7,6 +7,7 @@ urlpatterns = [
     path('une-blague-pas-marrante-pour-le-garage', views.garage, name="garage"),
     path('google-calendar/', views.google_calendar, name="google-calendar"),
     path('google-official-calendar/', views.google_official_calendar, name="google-official-calendar"),
-    path('html/', views.html, name='html'),
-    path('qrcode/', views.qrcode, name='qrcode'),
+    path('html', views.html, name='html'),
+    path('qrcode', views.qrcode, name='qrcode'),
+    path('discord', views.discord, name='discord'),
 ]

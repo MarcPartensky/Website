@@ -31,3 +31,6 @@ def html(request):
 
 def qrcode(request):
     return render(request, 'demo/qrcode.html', {})
+
+def discord(request):
+    return render(request, 'demo/discord.html', {})
