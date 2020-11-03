@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'isep.apps.IsepConfig',
     'gallery.apps.GalleryConfig',
     'design.apps.DesignConfig',
+    'cdn.apps.CdnConfig',
 
     'crispy_forms',
     'django.contrib.admin',

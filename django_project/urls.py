@@ -52,6 +52,7 @@ urlpatterns = [
     path('isep/', include('isep.urls')),
     path('gallery/', include('gallery.urls')),
     path('design/', include('design.urls')),
+    path('cdn/', include('cdn.urls')),
     # path('404/', ViewDoesNotExist),
 ]
 
