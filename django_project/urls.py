@@ -43,7 +43,7 @@ urlpatterns = [
     path('first-site/', include('first_site.urls')),
     path('', include('home.urls')),
     path('demo/', include('demo.urls')),
-    path('games/', include('games.urls')),
+    path('game/', include('game.urls')),
     path('project/', include('project.urls')),
     path('planning/', include('planning.urls')),
     path('touch-typing/', include('touch_typing.urls')),

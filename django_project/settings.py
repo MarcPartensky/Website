@@ -45,7 +45,7 @@ ALLOWED_HOSTS = ["websiteofmarcpartensky.herokuapp.com", "localhost"]
 # Application definition
 
 INSTALLED_APPS = [
-    'games.apps.GamesConfig',
+    'game.apps.GameConfig',
     'touch_typing.apps.TouchTypingConfig',
     'project.apps.ProjectConfig',
     'home.apps.HomeConfig',

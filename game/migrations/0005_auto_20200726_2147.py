@@ -7,7 +7,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('games', '0004_gamepost_play'),
+        ('game', '0004_gamepost_play'),
     ]
 
     operations = [

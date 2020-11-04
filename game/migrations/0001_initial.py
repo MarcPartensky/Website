@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('url', models.URLField()),
-                ('gamepost', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='games.GamePost')),
+                ('gamepost', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='game.GamePost')),
             ],
         ),
         migrations.CreateModel(
@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('content', models.CharField(max_length=1000)),
                 ('timestamp', models.DateTimeField(default=django.utils.timezone.now)),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('game', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='games.GamePost')),
+                ('game', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='game.GamePost')),
             ],
         ),
     ]
