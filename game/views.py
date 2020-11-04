@@ -13,17 +13,17 @@ from django.views.generic import (
 )
 
 # Create your views here.
-def games(request):
+def game(request):
     context = dict(
-        title="games",
+        title="game",
         gameposts=GamePost.objects.all(),
         gamepostcomments=GamePostComment.objects.all(),
     )
-    return render(request, 'games/games.html', context=context)
+    return render(request, 'game/game.html', context=context)
 
 class GamePostListView(ListView):
     model = GamePost
-    template_name = 'games/games.html'
+    template_name = 'game/game.html'
     context_object_name = 'gameposts'
     ordering = ['-timestamp']
 
@@ -52,7 +52,7 @@ class GamePostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class GamePostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = GamePost
-    success_url = "/games"
+    success_url = "/game"
 
     def test_func(self):
         post = self.get_object()
