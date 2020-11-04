@@ -47,7 +47,7 @@ urlpatterns = [
     path('project/', include('project.urls')),
     path('planning/', include('planning.urls')),
     path('touch-typing/', include('touch_typing.urls')),
-    path('tests/', include('tests.urls')),
+    path('test/', include('test.urls')),
     path('chat/', include('chat.urls')),
     path('isep/', include('isep.urls')),
     path('gallery/', include('gallery.urls')),
