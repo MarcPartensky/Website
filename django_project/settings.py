@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'first_site.apps.FirstSiteConfig',
-    'test.apps.TestsConfig',
+    'test.apps.TestConfig',
     'chat.apps.ChatConfig',
     'isep.apps.IsepConfig',
     'gallery.apps.GalleryConfig',
