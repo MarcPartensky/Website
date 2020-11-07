@@ -20,11 +20,11 @@ def pixel_art(request):
 def garage(request):
     return render(request, 'demo/garage.html', {})
 
+def calendar(request):
+    return render(request, 'demo/calendar.html', {})
+
 def google_calendar(request):
     return render(request, 'demo/google_calendar.html', {})
-
-def google_official_calendar(request):
-    return render(request, 'demo/google_official_calendar.html', {})
 
 def html(request):
     return render(request, 'demo/html.html', {})
