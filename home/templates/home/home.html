@@ -67,10 +67,9 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul class="nav-inner">
-          <li class="active"><a href="/">Home</a></li>
-          <li class="drop-down"><a href="">Sections</a>
+
+          <li class="drop-down"><a href="">Explore</a>
             <ul>
-              <li><a href="#about">About Me</a></li>
               <li><a href="{% url 'touch-typing' %}">Touch typing</a></li>
               <li><a href="{% url 'planning' %}">Planning</a></li>
               <li><a href="{% url 'first-site' %}">First site</a></li>
@@ -85,6 +84,7 @@
               </li>
             </ul>
           </li>
+          <li class="active"><a href="#about">About me</a></li>
           <li><a href="#skills">Skills</a></li>
 
           <li class="nav-logo" style="width: 15%; height: 15%"><a href="/"><img src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a></li>
