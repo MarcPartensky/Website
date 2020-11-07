@@ -16,8 +16,8 @@ from django.views.generic import (
 def game(request):
     context = dict(
         title="game",
-        gameposts=GamePost.objects.all(),
-        gamepostcomments=GamePostComment.objects.all(),
+        gameposts = GamePost.objects.all(),
+        gamepostcomments = GamePostComment.objects.all(),
     )
     return render(request, 'game/game.html', context=context)
 

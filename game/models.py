@@ -21,7 +21,7 @@ class GamePost(models.Model):
 
     def get_absolute_url(self):
         """Return the url of the post."""
-        return reverse('games')
+        return reverse('game')
 
 class GamePostImageUrl(models.Model):
     """Representation of a gamepost image url."""

@@ -15,6 +15,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
 <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.0/css/all.css">
+<link rel="stylesheet" href="{% static 'base/style.css' %}">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'base/icons.css' %}">
+
 <style>
 .icon-language {
     font-size: 5rem;
@@ -28,7 +35,7 @@
   <link href="{% static 'home/assets/img/white-orchid.svg' %}" rel="icon">
   <link href="{% static 'home/assets/img/black-orchid.svg' %}" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -51,7 +58,7 @@
 
       <!-- The main logo is shown in mobile version only. The centered nav-logo in nav menu is displayed in desktop view  -->
       <div class="logo d-block d-lg-none">
-          <a data-aos="fade-down" href="/" class="icon-back-to-top"><img src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a>
+          <a data-aos="fade-down" href="#" class="icon-back-to-top"><img src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
@@ -92,48 +99,64 @@
       {% endblock content %}
   </main><!-- End #main -->
 
-  <footer id="footer">
-
-    <div class="footer-top">
-
+      <footer id="basefooter" class="mainfooter" role="contentinfo">
+      <div class="footer-middle">
       <div class="container">
-
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-              <a href="#header" class="scrollto footer-logo"><img src="{% static 'home/assets/img/white-orchid.svg' %}" alt=""></a>
-            <h3>Marc Partensky</h3>
-            <p>If you wish to be notified about my activities enter your mail here.</p>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <!--Column1-->
+            <div class="footer-pad">
+              <h4>Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="#"></a></li>
+                <li><a href="mailto:marc.partensky@gmail.com">Email: marc.partensky@gmail.com</a></li>
+                <li>Phone: +33 07 67 44 36 62</li>
+              </ul>
+            </div>
           </div>
-        </div>
-
-        <div class="row footer-newsletter justify-content-center">
-          <div class="col-lg-6">
-            <form action="" method="post">
-              <input type="email" name="email" placeholder="Enter your Email"><input type="submit" value="Subscribe">
-            </form>
+          <div class="col-md-3 col-sm-6">
+            <!--Column1-->
+            <div class="footer-pad">
+              <h4>In development</h4>
+              <ul class="list-unstyled">
+                <li><a href="#">FAQs</a></li>
+              </ul>
+            </div>
           </div>
-        </div>
-
-        <div class="social-links">
-          {% comment %}<a href="https://www.facebook.com/marc.partensky/" class="twitter"><i class="bx bxl-twitter"></i></a>{% endcomment %}
-          <a target="_blank" href="https://www.facebook.com/marc.partensky/" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a target="_blank" href="https://www.instagram.com/marcpartensky/" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a target="_blank" href="https://www.linkedin.com/in/marc-partensky/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-          <a target="_blank" href="https://github.com/marcpartensky/" class="github"><i class="bx bxl-github"></i></a>
-        </div>
-
+          <div class="col-md-3 col-sm-6">
+            <!--Column1-->
+            <div class="footer-pad">
+              <h4>External projects</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://websiteofmarcpartensky.herokuapp.com/">Main website</a></li>
+                <li><a href="https://marc-partensky.netlify.com/">First website</a></li>
+                <li><a href="https://connect4ofmarcpartensky.herokuapp.com/">Connect4 game</a></li>
+                <li><a href="https://youtube-downloader-of-marc.herokuapp.com">Youtube music downloader</a></li>
+                <li><a href="https://agario-marc-partensky.herokuapp.com/">Agario clone (pure vanilla javascript)</a></li>
+              </ul>
+            </div>
+          </div>
+            <div class="col-md-3">
+                <h4>Follow Me</h4>
+                <div class="social-area text-center" itemscope="" itemtype="https://schema.org/LocalBusiness">
+                    <a target="_blank" href="https://www.facebook.com/marc.partensky/" class="fa fa-facebook"></a>
+                    <a target="_blank" href="https://github.com/marcpartensky/" class="fa fa-github"></a>
+                    <a target="_blank" href="https://www.linkedin.com/in/marc-partensky/" class="fa fa-linkedin"></a>
+                    <a target="_blank" href="https://twitter.com/MarcPartensky/" class="fa fa-twitter"></a>
+                    <a target="_blank" href="https://www.reddit.com/user/Marc-Partensky/" class="fa fa-reddit"></a>
+                    <a target="_blank" href="https://www.youtube.com/channel/UCGC4Tnr_j87F2sq-s6vWFGA" class="fa fa-youtube"></a>
+                    <a target="_blank" href="https://www.instagram.com/marcpartensky/" class="fa fa-instagram"></a>
+                </div>
+            </div>
+          </div>
+            <div class="row">
+                <div class="col-md-12 copy">
+                    <p class="text-center">&copy; Copyright 2020 - Marc Partensky Corp.  All rights reserved.</p>
+                </div>
+            </div>
+          </div>
       </div>
-    </div>
-
-    <div class="container footer-bottom clearfix">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Marc Partensky</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="/">Marc Partensky</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+    </footer>
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
@@ -150,25 +173,25 @@
   <script src="{% static 'home/assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
   <script src="{% static 'home/assets/vendor/aos/aos.js' %}"></script>
 
-  <script src="{% static 'base/three.r119.min.js' %}"></script>
-  <script src="{% static 'base/vanta.net.min.js' %}"></script>
-<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+  <!-- <script src="{% static 'base/three.r119.min.js' %}"></script> -->
+  <!-- <script src="{% static 'base/vanta.net.min.js' %}"></script> -->
+  <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
-  <script>
-  VANTA.NET({
-    el: "#footer",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    scale: 1.00,
-    scaleMobile: 1.00,
-    color: 0x770000,
-    backgroundColor: 0x0,
-    points: 20.00
-  })
-  </script>
+  <!-- <script> -->
+  <!-- VANTA.NET({ -->
+  <!--   el: "#footer", -->
+  <!--   mouseControls: true, -->
+  <!--   touchControls: true, -->
+  <!--   gyroControls: false, -->
+  <!--   minHeight: 200.00, -->
+  <!--   minWidth: 200.00, -->
+  <!--   scale: 1.00, -->
+  <!--   scaleMobile: 1.00, -->
+  <!--   color: 0x770000, -->
+  <!--   backgroundColor: 0x0, -->
+  <!--   points: 20.00 -->
+  <!-- }) -->
+  <!-- </script> -->
 
   <!-- Template Main JS File -->
   <script src="{% static 'home/assets/js/main.js' %}"></script>
@@ -178,3 +201,4 @@
 </html>
 
 
+s
