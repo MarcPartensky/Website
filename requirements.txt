@@ -45,7 +45,7 @@ packaging==20.4
 parso==0.7.1
 pexpect==4.8.0
 pickleshare==0.7.5
-Pillow==6.2.1
+Pillow==7.1.0
 pip-review==1.1.0
 prompt-toolkit==3.0.8
 psycopg2==2.7.7
