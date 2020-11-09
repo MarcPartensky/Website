@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     'design.apps.DesignConfig',
     'cdn.apps.CdnConfig',
 
-    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,6 +68,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'storages',
+    'crispy_forms',
 
     #allauth stuff
     'django.contrib.sites',
@@ -87,6 +87,8 @@ INSTALLED_APPS = [
     'compressor',
 
     'markdown_view',
+
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -280,5 +282,7 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+ASGI_APPLICATION = 'django_project.routing.application'
 
 django_heroku.settings(locals())
