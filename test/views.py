@@ -64,3 +64,6 @@ def skulpt(request):
 
 def codemirror_plus_skulpt(request):
     return render(request, 'test/codemirror+skulpt.html', {})
+
+def todolist(request):
+    return render(request, 'test/todolist.html', {})

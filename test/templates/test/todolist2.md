@@ -1,3 +1,5 @@
+{% extends "layout/markdown.html" %}
+{% block content %}
 # Todolist
 
 ## Obligatoire
@@ -20,7 +22,7 @@
 - [ ] ajouter spark + aws emr au cv + linkedin + site web
 - [ ] ajouter déploiement docker de fourier et pygame-geometry
 - [ ] ajouter docker, tensorflow au cv
-- [ ] carte de visite [affinity designer](/Volumes/$/Application/Affinity\ Designer.app) + [affinity photo](/Volumes/$/Application/Affinity\ Photo.app)
+- [ ] carte de visite ([affinity designer](/Volumes/$/Application/Affinity\ Designer.app) + [affinity photo](/Volumes/$/Application/Affinity\ Photo.app))
 - [ ] bilan de compétences
 - [ ] version anglaise du CV
 
@@ -65,3 +67,4 @@
 - [ ] afficher la liste des taches sur mon site
 
 ## Tâche de fond
+{% endblock content %}

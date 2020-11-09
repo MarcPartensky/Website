@@ -21,7 +21,8 @@ urlpatterns = [
     path('skulpt', views.skulpt, name="skulpt"),
     path('codemirror+skulpt', views.codemirror_plus_skulpt,
          name="codemirror_plus_skulpt"),
-    path('todolist', MarkdownView.as_view(file_name="test/templates/test/todolist.md"),
-         name='todolist'),
+    path('todolist2', MarkdownView.as_view(file_name="test/templates/test/todolist.md"),
+         name='todolist2'),
+    path('todolist', views.todolist, name='todolist'),
 
 ]
