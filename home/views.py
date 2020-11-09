@@ -41,10 +41,6 @@ def contact(request):
     context = dict(title="Contact of Marc Partensky")
     return render(request, 'home/contact.html', context=context)
 
-def date(request):
-    return HttpResponse(str(datetime.datetime.now()))
-
-
 # HTTP Errors
 # def bad_request(request, exception):
     # response = render(
