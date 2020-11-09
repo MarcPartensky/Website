@@ -1,4 +1,5 @@
 from django.urls import path, re_path
+from markdown_view.views import MarkdownView
 from . import views
 
 urlpatterns = [
@@ -20,4 +21,7 @@ urlpatterns = [
     path('skulpt', views.skulpt, name="skulpt"),
     path('codemirror+skulpt', views.codemirror_plus_skulpt,
          name="codemirror_plus_skulpt"),
+    path('todolist', MarkdownView.as_view(file_name="test/templates/test/todolist.md"),
+         name='todolist'),
+
 ]

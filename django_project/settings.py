@@ -85,6 +85,8 @@ INSTALLED_APPS = [
     # 'django_503',
 
     'compressor',
+
+    'markdown_view',
 ]
 
 MIDDLEWARE = [

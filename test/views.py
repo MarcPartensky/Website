@@ -39,28 +39,28 @@ def decompose_prime(request):
     return HttpResponse()
 
 def homepage1(request):
-    return render(request, 'tests/homepage1.html', {})
+    return render(request, 'test/homepage1.html', {})
 
 def vanta_net(request):
-    return render(request, 'tests/vanta_net.html', {})
+    return render(request, 'test/vanta_net.html', {})
 
 def programming_languages_logo(request):
-    return render(request, 'tests/programming_languages_logo.html', {})
+    return render(request, 'test/programming_languages_logo.html', {})
 
 def ace_editor(request):
-    return render(request, 'tests/ace-editor.html', {})
+    return render(request, 'test/ace-editor.html', {})
 
 def codemirror_editor(request):
-    return render(request, 'tests/codemirror-editor.html', {})
+    return render(request, 'test/codemirror-editor.html', {})
 
 def xterm(request):
-    return render(request, 'tests/xterm.html', {})
+    return render(request, 'test/xterm.html', {})
 
 def terminal(request):
-    return render(request, 'tests/terminal.html', {})
+    return render(request, 'test/terminal.html', {})
 
 def skulpt(request):
-    return render(request, 'tests/skulpt.html', {})
+    return render(request, 'test/skulpt.html', {})
 
 def codemirror_plus_skulpt(request):
-    return render(request, 'tests/codemirror+skulpt.html', {})
+    return render(request, 'test/codemirror+skulpt.html', {})
