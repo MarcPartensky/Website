@@ -67,3 +67,6 @@ def codemirror_plus_skulpt(request):
 
 def todolist(request):
     return render(request, 'test/todolist.html', {})
+
+def discordbot(request):
+    return render(request, 'test/discordbot.html', {})

@@ -1,18 +1,24 @@
 {% extends "layout/home.html" %}
 {% block content %}
-<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
 <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-    }
-    #main-container {
-        margin: 5rem;
-    }
-</style>
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
 
-<div id="main-container" class="container">
-    {% block markdown %}
-    {% endblock markdown %}
-</div>
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
+</style>
+<article class="markdown-body">
+{% block markdown %}
+{% endblock markdown %}
+</article>
 {% endblock content %}

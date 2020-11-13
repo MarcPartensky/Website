@@ -24,5 +24,5 @@ urlpatterns = [
     path('todolist2', MarkdownView.as_view(file_name="test/templates/test/todolist.md"),
          name='todolist2'),
     path('todolist', views.todolist, name='todolist'),
-
+    path('discordbot', views.discordbot, name='discordbot'),
 ]
