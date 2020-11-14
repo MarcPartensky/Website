@@ -38,7 +38,7 @@ cleverbotfree==1.2.2
 click==7.1.1
 colorama==0.4.3
 constantly==15.1.0
-cryptography==2.9.2
+cryptography==3.2
 cssselect==1.1.0
 cycler==0.10.0
 cymem==2.0.3
