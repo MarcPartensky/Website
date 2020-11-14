@@ -53,6 +53,7 @@ urlpatterns = [
     path('gallery/', include('gallery.urls')),
     path('design/', include('design.urls')),
     path('cdn/', include('cdn.urls')),
+    path('api/', include('api.urls')),
     # path('404/', ViewDoesNotExist),
 ]
 

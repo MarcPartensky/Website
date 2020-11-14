@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'gallery.apps.GalleryConfig',
     'design.apps.DesignConfig',
     'cdn.apps.CdnConfig',
+    'api.apps.ApiConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -293,5 +294,12 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ]
+}
+
 
 django_heroku.settings(locals())

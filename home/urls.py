@@ -7,6 +7,7 @@ urlpatterns = [
     path('donation', views.donation, name="donation"),
     path('cv', views.cv, name="cv"),
     path('contact', views.contact, name="contact"),
+    path('resume', views.resume, name="resume"),
 ]
 
 # from django.conf.urls import (

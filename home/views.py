@@ -35,11 +35,14 @@ def donation(request):
 
 def cv(request):
     context = dict(title="CV of Marc Partensky")
-    return render(request, 'home/cv.html', context=context)
+    return render(request, 'home/cv.html', context)
 
 def contact(request):
     context = dict(title="Contact of Marc Partensky")
-    return render(request, 'home/contact.html', context=context)
+    return render(request, 'home/contact.html', context)
+
+def resume(request):
+    return render(request, 'home/resume.html', {})
 
 # HTTP Errors
 # def bad_request(request, exception):
