@@ -51,7 +51,9 @@
     <div class="hero-container">
         <a href="/" class="hero-logo" data-aos="zoom-in"><img style="width: 40%; height: 40%" src="{% static 'home/assets/img/white-orchid.svg' %}" alt=""></a>
       <h1 data-aos="zoom-in">Welcome to the Website of Marc Partensky</h1>
-      <h2 data-aos="fade-up">Studying the day, programming the night</h2>
+      <h2 data-aos="fade-up">
+        I'm a <span class="typed" data-typed-items="Developer, Freelancer, Game Maker, Student"></span>
+      </h2>
       <a data-aos="fade-up" href="#about" class="btn-get-started scrollto">More about me</a>
     </div>
   </section><!-- End Hero -->
@@ -994,11 +996,12 @@
   <script src="{% static 'home/assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
   <script src="{% static 'home/assets/vendor/counterup/counterup.min.js' %}"></script>
   <script src="{% static 'home/assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'resume/assets/vendor/typed.js/typed.min.js' %}"></script>
   <script src="{% static 'home/assets/vendor/aos/aos.js' %}"></script>
 
   <script src="{% static 'base/three.r119.min.js' %}"></script>
   <script src="{% static 'base/vanta.net.min.js' %}"></script>
-<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+  <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
   <script>
   VANTA.NET({
@@ -1017,6 +1020,7 @@
   </script>
 
   <!-- Template Main JS File -->
+  <script src="{% static 'resume/assets/js/main.js' %}"></script>
   <script src="{% static 'home/assets/js/main.js' %}"></script>
 
 </body>
