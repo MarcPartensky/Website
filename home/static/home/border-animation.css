@@ -69,7 +69,6 @@ body{
   padding:20px;
   text-align:center;
   box-shadow: 0 5px 10px rgba(9,0,0,0.5);
-  
 }
 
 .box span{
@@ -80,7 +79,6 @@ body{
   height: 100%;
   display: block;
   box-sizing: border-box;
-  
 }
 
 .box span:nth-child(1)
@@ -127,15 +125,10 @@ body{
   {
     transform:scaleX(1);
   transform-origin: right;
-    
   }
-  
   100%
   {
     transform:scaleX(0);
   transform-origin: right;
-    
   }
-  
-  
 } :
