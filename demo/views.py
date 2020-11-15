@@ -34,3 +34,6 @@ def qrcode(request):
 
 def discord(request):
     return render(request, 'demo/discord.html', {})
+
+def todolist(request):
+    return render(request, 'demo/todolist.html', {})

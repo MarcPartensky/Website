@@ -10,4 +10,5 @@ urlpatterns = [
     path('html', views.html, name='html'),
     path('qrcode', views.qrcode, name='qrcode'),
     path('discord', views.discord, name='discord'),
+    path('todolist', views.todolist, name='todolist'),
 ]
