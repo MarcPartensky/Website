@@ -10,6 +10,7 @@ urlpatterns = [
     path('upload2/', views.FileUploadView.as_view(), name='upload'),
     path('upload/', views.upload_file, name='upload'),
     path('upload-markdown/', views.upload_markdown, name='upload-markdown'),
+    path('view-markdown/', views.view_markdown, name='view-markdown'),
     # path('user/create/', views.user.create, name="user-create"),
     # path('<str:room_name>/', views.room, name='room'),
 ]

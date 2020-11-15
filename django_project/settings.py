@@ -158,7 +158,7 @@ else:
 # print("DATABASE_URL:",DATABASE_URL)
 # DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
-print("BASE_DIR:", BASE_DIR)
+# print("BASE_DIR:", BASE_DIR)
 
 DATABASES = {
     'default': {
@@ -175,7 +175,7 @@ DATABASES = {
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-#
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',

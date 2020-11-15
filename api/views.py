@@ -10,6 +10,8 @@ from .forms import UploadFileForm, UploadMarkdownForm
 
 from django.views.decorators.csrf import csrf_exempt
 
+from .models import MarkdownModel
+
 # Create your views here.
 
 def index(request):
@@ -91,3 +93,7 @@ def upload_markdown(request):
         }
         return render(request, 'api/upload.html', context)
     return HttpResponse('only get and post methods are allowed')
+
+def view_markdown(request):
+    context = {'markdown_object': MarkdownModel.objects.all()[0]}
+    return render(request, 'api/view-markdown.html', context)
