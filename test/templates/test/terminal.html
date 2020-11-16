@@ -7,6 +7,7 @@
 </head>
 <body>
 <script>
+const session = { token: undefined }
 $('body').terminal({
     hello: function() {
         this.echo('Hi! Welcome to this terminal.')
@@ -18,6 +19,18 @@ $('body').terminal({
     echo: function(args) {
         this.echo(args)
     }
+/*    login: function(args) {
+        this.echo(`Trying to login as: ${args[0]}`)
+        $.post('/api/login', {login: args[0], password}, function(data, status) {
+            session.token = data.token
+            this.echo('Successfuly logged in!')
+            this.echo(status)
+        })
+    },
+    python: function(args) {
+        $.get('/api/')
+
+    }*/
 },
 {
     greetings: 'Welcome to the terminal of Marc Partensky'
