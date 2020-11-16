@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'design.apps.DesignConfig',
     'cdn.apps.CdnConfig',
     'api.apps.ApiConfig',
+    'article.apps.ArticleConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,0 +1,9 @@
+{% extends "layout/home.html" %}
+
+{% block content %}
+<ul>
+    {% for article in articles %}
+    <li>{{ article.title }}</li>
+    {% endfor %}
+<ul>
+{% endblock content %}
