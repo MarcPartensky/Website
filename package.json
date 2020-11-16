@@ -1,0 +1,31 @@
+{
+  "name": "websiteofmarcpartensky",
+  "version": "1.0.0",
+  "description": "website of marc partensky",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcpartensky/website.git"
+  },
+  "keywords": [
+    "website",
+    "of",
+    "marc",
+    "partensky"
+  ],
+  "author": "Marc Partensky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcpartensky/website/issues"
+  },
+  "homepage": "https://github.com/marcpartensky/website#readme",
+  "dependencies": {
+    "markdown-styles": "^3.1.10"
+  }
+}

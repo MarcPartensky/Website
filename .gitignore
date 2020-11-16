@@ -16,3 +16,6 @@ env
 
 # Helper folder
 .helper/
+
+# Npm for markdown rendering
+./node_modules/
