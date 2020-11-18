@@ -21,10 +21,14 @@ def make(title):
         # text = "{% extends \"layout/home.html\" %} \
         #         {% load static %} \
         #         {% block content %}" + text + "{% endblock content %}"
-        text = "{% load static %}\n" + text
+        text = "{% load static %}\n\
+                <link href=\"{% static 'home/assets/img/white-orchid.svg' %}\" rel=\"icon\">\n\
+                <link href=\"{% static 'home/assets/img/black-orchid.svg' %}\" rel=\"apple-touch-icon\">"\
+                + text
         text = text.replace(
             "<link rel=\"stylesheet\" href=\"assets/css/style.css\" />",
-            "<link rel=\"stylesheet\" href=\"{% static 'article/assets/css/style.css' %}\"/>")
+            "<link rel=\"stylesheet\" href=\"{% static 'article/assets/css/style-mixu.css' %}\"/>\n\
+            <link rel=\"stylesheet\" href=\"{% static 'article/assets/css/style.css' %}\"/>")
         text = text.replace(
             "<link rel=\"stylesheet\" href=\"assets/css/pilcrow.css\" />",
             "<link rel=\"stylesheet\" href=\"{% static 'article/assets/css/pilcrow.css'%}\"/>")
@@ -42,5 +46,7 @@ def read(request, title):
             text = str(f.read())
         return HttpResponse(text)
     elif not f"{title}.html" in os.listdir(f"{os.getcwd()}/article/templates/article"):
+        print(f'removing {title}.html')
+        os.system(f"rm {os.getcwd()}/article/templates/article/{title}.html")
         make(title)
     return render(request, f"article/{title}.html", {})
