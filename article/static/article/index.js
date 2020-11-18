@@ -7,5 +7,3 @@ $(function() {
         window.location.href = `/article/${file.name.replace('.md', '')}`
     });
 })
-
-

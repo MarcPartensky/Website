@@ -32,7 +32,7 @@ video {
   }
 
 nav {
-  font-size: .9em;
+  font-size: 9em;
   font-style: italic;
   border-bottom: 1px solid #ddd;
   padding: 1em 0;
@@ -47,14 +47,20 @@ nav p {
 h1 {
   margin-top: 0;
   font-weight: normal;
+  margin-top: 3em;
+  scroll-behavior: smooth;
   }
 h2 {
   font-weight: normal;
+  margin-top: 2em;
+  scroll-behavior: smooth;
   }
 h3 {
   font-weight: normal;
   font-style: italic;
-  margin-top:3em;
+  margin-top: 1.7em;
+  margin-bottom: 0.8em;
+  scroll-behavior: smooth;
   }
 p {
   margin-top:0;
@@ -76,12 +82,26 @@ blockquote {
   }
 code {
   font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
-  font-size: .9em;
+  font-size: 1.5em;
   }
 a {
   color: #2484c1;
   text-decoration: none;
   }
+
+li a {
+  color: #303030;
+  font-weight:400;
+  text-decoration:none;
+}
+
+li a:hover {
+  color: black;
+  /* font-weight: bold; */
+  /* font-weight:400; */
+  /* text-decoration:none; */
+}
+
 a:hover {
   text-decoration: underline;
   }

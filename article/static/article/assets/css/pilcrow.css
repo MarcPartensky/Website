@@ -17,7 +17,6 @@ h6:hover .header-link:before {
     color: #888;
     font-size: smaller;
 }
-
 .header-link {
   -webkit-user-select: none;
   -moz-user-select: none;
