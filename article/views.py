@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from .models import ArticleModel
 
 # Create your views here.
 def index(request):
@@ -9,3 +10,4 @@ def index(request):
 
 def read(request, title):
     return HttpResponse('This article does not exist, at least yet ...')
+

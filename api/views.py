@@ -11,6 +11,7 @@ from .forms import UploadFileForm, UploadMarkdownForm
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import MarkdownModel
+import os
 
 # Create your views here.
 
@@ -80,6 +81,13 @@ def upload_markdown(request):
     print('received markdown')
     if request.method == 'POST':
         form = UploadMarkdownForm(request.POST,request.FILES)
+        with open('media/test.md', 'w') as f:
+            f.write(form.files['file'].file.read().decode('utf-8'))
+        # print(form.files['file'].file.read().decode('utf-8'))
+        # print(request.body)
+        # print(request.readline())
+        # for line in request.readline():
+        #     print(line)
         if form.is_valid():
             print(form)
             form.save()

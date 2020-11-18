@@ -1,9 +1,55 @@
 {% extends "layout/home.html" %}
+{% load static %}
+
+{% block head %}
+
+<script src="{% static 'article/index.js' %}"></script>
+
+<style>
+.dropzone {
+  border: 2px dashed #dedede;
+  border-radius: 5px;
+  background: #f5f5f5;
+  height: 100%;
+  margin: 2rem;
+}
+
+.dropzone i{
+  font-size: 5rem;
+}
+
+.dropzone .dz-message {
+  color: rgba(0,0,0,.54);
+  font-weight: 500;
+  font-size: initial;
+  text-transform: uppercase;
+}
+</style>
+
+{% endblock head %}
 
 {% block content %}
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+<script src="https://cdn.rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script
+
+<div class="container">
+    <form enctype="multipart/form-data" action="/api/upload-markdown/" class="dropzone dropzone-single dz-clickable" id="dropzone">
+        <div class="dz-message d-flex flex-column">
+            <i class="material-icons text-muted">cloud_upload</i>
+            Drag &amp; Drop here or click
+        </div>
+    </form>
+</div>
+
 <ul>
     {% for article in articles %}
     <li>{{ article.title }}</li>
     {% endfor %}
 <ul>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js" integrity="sha512-9WciDs0XP20sojTJ9E7mChDXy6pcO0qHpwbEJID1YVavz2H6QBz5eLoDD8lseZOb2yGT8xDNIV7HIe1ZbuiDWg==" crossorigin="anonymous"></script> -->
+
 {% endblock content %}
