@@ -48,7 +48,7 @@ a small {
 }
 
 .wrapper {
-  width:860px;
+  /* width:860px; */
   margin:0 auto;
 }
 
@@ -273,11 +273,12 @@ footer {
   left: auto;
   width: 20%;
   background-color: #fff;
-  padding: 20px;
+  /* padding: 20px; */
   position: fixed;
   z-index: 1;
   display: none;
   height: 100%;
+  padding: 3rem
 }
 
 
@@ -321,12 +322,12 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal; margin-top: 1em; margin-bottom: 0.
 h1, h2 { margin-bottom: 0.5em; }
 
 .post p {
-  max-width: 580px;
+  /* max-width: 70%; */
 }
 
 ul.list, ol.list {
   padding-left: 3.333em;
-  max-width: 580px;
+  /* max-width: 70%; */
 }
 
 .post h2 {
@@ -343,13 +344,13 @@ h6:nth-child(1) {
 }
 
 @media (min-width: 43.75em) {
-  #wrapper {
-    width: 650px;
-    padding: 20px 50px;
-  }
 }
 
 @media (min-width: 62em) {
+  #wrapper {
+    width: 60%;
+    padding: 20px 5%;
+  }
   #toc {
     display: table;
   }

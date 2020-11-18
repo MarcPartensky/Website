@@ -22,9 +22,10 @@ def make(title):
         #         {% load static %} \
         #         {% block content %}" + text + "{% endblock content %}"
         text = "{% load static %}\n\
-                <link href=\"{% static 'home/assets/img/white-orchid.svg' %}\" rel=\"icon\">\n\
-                <link href=\"{% static 'home/assets/img/black-orchid.svg' %}\" rel=\"apple-touch-icon\">"\
-                + text
+        <link href=\"{% static 'home/assets/img/white-orchid.svg' %}\" rel=\"icon\">\n\
+        <link href=\"{% static 'home/assets/img/black-orchid.svg' %}\" rel=\"apple-touch-icon\">\
+        <script src=\"{% static 'home/assets/vendor/waypoints/jquery.waypoints.min.js' %}\"></script>"\
+        + text
         text = text.replace(
             "<link rel=\"stylesheet\" href=\"assets/css/style.css\" />",
             "<link rel=\"stylesheet\" href=\"{% static 'article/assets/css/style-mixu.css' %}\"/>\n\
