@@ -81,7 +81,10 @@ def upload_markdown(request):
     print('received markdown')
     if request.method == 'POST':
         form = UploadMarkdownForm(request.POST,request.FILES)
-        with open('media/test.md', 'w') as f:
+        file = str(form.files['file'])
+        filepath = f"{os.getcwd()}/media/article/{file}"
+        print(filepath)
+        with open(filepath, 'w') as f:
             f.write(form.files['file'].file.read().decode('utf-8'))
         # print(form.files['file'].file.read().decode('utf-8'))
         # print(request.body)

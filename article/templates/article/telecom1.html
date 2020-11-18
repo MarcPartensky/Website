@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notions de bases en télécoms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="{% static 'article/assets/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'article/assets/css/pilcrow.css'%}"/>
+    <link rel="stylesheet" href="{% static 'article/assets/css/hljs-github.min.css' %}"/>
+  </head>
+<body>
+
+  <div id="toc">
+    <div id="toc-inner"><ul class="nav nav-list">
+    <li class="sidebar-header-1"><a href="#notions-de-bases-en-télécoms">Notions de bases en télécoms</a></li>
+    <li class="sidebar-header-2"><a href="#paramètres-d&#x27;une-technologie">Paramètres d&#x27;une technologie</a></li>
+    <li class="sidebar-header-2"><a href="#gestion-spectre">Gestion Spectre</a></li>
+    <li class="sidebar-header-2"><a href="#calcul-du-coefficient">Calcul du coefficient</a></li>
+</ul>
+    </div>
+  </div>
+
+  <div id="wrapper">
+    <div id="header">
+
+    </div>
+
+    <div class="clear"></div>
+    <div id="main">
+      <div id="content" class="post"><h1 id="notions-de-bases-en-télécoms"><a class="header-link" href="#notions-de-bases-en-télécoms"></a>Notions de bases en télécoms</h1>
+<h2 id="paramètres-d'une-technologie"><a class="header-link" href="#paramètres-d'une-technologie"></a>Paramètres d&#39;une technologie</h2>
+<ul class="list">
+<li>fréquence porteuse<ul class="list">
+<li>wifi: 2.4Ghz / 5Ghz</li>
+<li>4G: 800MhZ / 21000Mhz</li>
+</ul>
+</li>
+<li>débits = bits / seconde</li>
+<li>occupation spectrale = bande de fréquence</li>
+<li>puissance de l&#39;émetteur en Watt</li>
+<li>sensibilité du récepteur = puissance minimale de réception</li>
+<li>portée = distance maximale entre l&#39;émetteur et le récepteur</li>
+</ul>
+<h2 id="gestion-spectre"><a class="header-link" href="#gestion-spectre"></a>Gestion Spectre</h2>
+<ul class="list">
+<li>Mondial
+ITU - International Telecommunications Union</li>
+<li>Europe
+CEPT - Conférence Européeenes des Postes de Telecom</li>
+<li>France
+ANFR - Agence Nationale des Radios Fréquences</li>
+</ul>
+<h2 id="calcul-du-coefficient"><a class="header-link" href="#calcul-du-coefficient"></a>Calcul du coefficient</h2>
+<p>Ael(d, f) = 32.4 + 20 * log10 dm + 20 log10 fmhz</p>
+<p>si d &lt; ds
+Ael(f, d) =  = 15.5 + 55 log10 dm</p>
+<p>sinon
+Ael(d, f) = 15.6 + 55 log10 dm - 35 logd10 d/ds</p>
+      </div>
+    </div>
+
+    <div class="clear">
+    </div>
+
+    <div id="footer">
+    </div>
+  </div>
+</body>
+</html>

@@ -1,7 +1,10 @@
+Dropzone.autoDiscover = false;
 $(function() {
-  var dropzone = new Dropzone("#dropzone");
+    const dropzone = new Dropzone("#dropzone");
+    // const dropzone = $("dropzone")
+
     dropzone.on("success", function(file, responseText) {
-      window.location.href = "/api/addition?a=1?b=2"
+        window.location.href = `/article/${file.name.replace('.md', '')}`
     });
 })
 
