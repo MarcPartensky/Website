@@ -2,35 +2,47 @@ from django.shortcuts import render, HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
 from .models import ArticleModel
 import os
+import glob
+import random
+
+class Article:
+    @classmethod
+    def create(cls, title):
+        """Create an article given its title."""
+        print(title)
+        with open(f"{os.getcwd()}/media/article/{title}", "r") as f:
+            preview = str(f.read())[:496]+" ..."
+        title = title.replace('.md', '')
+        return cls(title, preview)
+
+    def __init__(self, title, preview, active=False):
+        "Create an article given its title and preview."
+        self.title = title
+        self.preview = preview
+        self.active = active
 
 # Create your views here.
 def index(request):
     """Select or create an article."""
     titles = os.listdir(f"{os.getcwd()}/media/article")
-    class Article:
-        def __init__(self, title):
-            self.title = title.replace('.md', '')
-            with open(f"{os.getcwd()}/media/article/{title}", "r") as f:
-                self.preview = str(f.read())[:500].replace('\n', '<br>')
-
-    articles = []
-    for title in titles:
-        articles.append(Article(title))
-
-
-    context = {
-        'articles': articles
-    }
+    articles = [Article.create(title) for title in titles if title!='.DS_Store']
+    article = random.choice(articles)
+    article.active = True
+    context = dict(articles=articles)
     return render(request, 'article/index.html', context)
+
+def clean():
+    for file in glob.glob(f"{os.getcwd()}/article/templates/cache/*"):
+        os.remove(file)
 
 def make(title):
     os.system(f"generate-md --layout mixu-radar \
               --input {os.getcwd()}/media/article/{title}.md \
-              --output {os.getcwd()}/article/templates/article")
-    os.system(f"rm -rf {os.getcwd()}/article/templates/article/assets")
-    with open(f"{os.getcwd()}/article/templates/article/{title}.html", "r") as f:
+              --output {os.getcwd()}/article/templates/cache")
+    os.system(f"rm -rf {os.getcwd()}/article/templates/cache/assets")
+    with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "r") as f:
         text = str(f.read())
-    with open(f"{os.getcwd()}/article/templates/article/{title}.html", "w") as f:
+    with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "w") as f:
         # text = "{% extends \"layout/home.html\" %} \
         #         {% load static %} \
         #         {% block content %}" + text + "{% endblock content %}"
@@ -59,6 +71,7 @@ def make(title):
 
 def read(request, title):
     """Read an article."""
+    clean()
     if not f"{title.replace('.md', '')}.md" in os.listdir(f"{os.getcwd()}/media/article"):
         raise Http404("This article was not found.")
     elif title.endswith('.md'):
@@ -68,7 +81,7 @@ def read(request, title):
     # elif not f"{title}.html" in os.listdir(f"{os.getcwd()}/article/templates/article"):
     if title == "index":
         raise PermissionDenied
-    print(f'removing {title}.html')
-    os.system(f"rm {os.getcwd()}/article/templates/article/{title}.html")
+    #print(f'removing {title}.html')
+    #os.system(f"rm {os.getcwd()}/article/templates/article/{title}.html")
     make(title)
-    return render(request, f"article/{title}.html", {})
+    return render(request, f"cache/{title}.html", {})
