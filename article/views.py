@@ -4,6 +4,7 @@ from .models import ArticleModel
 import os
 import glob
 import random
+import re
 
 class Article:
     @classmethod
@@ -67,6 +68,10 @@ def make(title):
         <script src=\"{% static 'home/assets/vendor/waypoints/jquery.waypoints.min.js' %}\"></script>\n\
         <script src=\"{% static 'article/assets/js/main.js' %}\"></script>\n\
         </body>")
+        pattern = re.compile(r'<title>(.*)</title>')
+        wrong_title = re.findall(pattern, text)[0]
+        text = text.replace(f"<title>{wrong_title}</title>",
+                            f"<title>{title.capitalize()}</title>")
         f.write(text)
 
 def read(request, title):
