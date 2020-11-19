@@ -84,13 +84,13 @@ def upload_markdown(request):
         file = str(form.files['file'])
         filepath = f"{os.getcwd()}/media/article/{file}"
         print(filepath)
+        content = form.files['file'].file.read().decode('utf-8')
+        lines = content.split('\n')
+        if lines[0].startswith('#!'):
+            lines = lines[1:]
+        content = '\n'.join(lines).strip()
         with open(filepath, 'w') as f:
-            f.write(form.files['file'].file.read().decode('utf-8'))
-        # print(form.files['file'].file.read().decode('utf-8'))
-        # print(request.body)
-        # print(request.readline())
-        # for line in request.readline():
-        #     print(line)
+            f.write(content)
         if form.is_valid():
             print(form)
             form.save()

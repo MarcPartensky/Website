@@ -4,7 +4,6 @@ from .models import ArticleModel
 import os
 import glob
 import random
-import re
 
 class Article:
     @classmethod
@@ -33,8 +32,12 @@ def index(request):
     return render(request, 'article/index.html', context)
 
 def clean():
-    for file in glob.glob(f"{os.getcwd()}/article/templates/cache/*"):
-        os.remove(file)
+    # os.system(f"rm -rf {os.getcwd()}/article/templates/cache/assets")
+    os.system(f"rm -rf {os.getcwd()}/article/static/article/cache")
+    # for file in glob.glob(f"{os.getcwd()}/article/static/article/cache/*"):
+    #     print(file)
+    #     os.remove(file)
+
 
 def make(title):
     os.system(f"generate-md --layout mixu-radar \
@@ -74,6 +77,21 @@ def make(title):
                             f"<title>{title.capitalize()}</title>")
         f.write(text)
 
+
+def make_marc(title):
+    os.system(f"{os.getcwd()}/node_modules/.bin/generate-md --layout marc \
+              --input {os.getcwd()}/media/article/{title}.md \
+              --output {os.getcwd()}/article/templates/cache")
+    os.rename(f"{os.getcwd()}/article/templates/cache/assets",
+              f"{os.getcwd()}/article/templates/cache/cache")
+    os.system(f"mv {os.getcwd()}/article/templates/cache/cache\
+              {os.getcwd()}/article/static/article")
+    with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "r") as f:
+        text = str(f.read())
+    text = text.replace('&&title&&', title.capitalize())
+    with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "w") as f:
+        f.write(text)
+
 def read(request, title):
     """Read an article."""
     clean()
@@ -88,5 +106,6 @@ def read(request, title):
         raise PermissionDenied
     #print(f'removing {title}.html')
     #os.system(f"rm {os.getcwd()}/article/templates/article/{title}.html")
-    make(title)
+    # make(title)
+    make_marc(title)
     return render(request, f"cache/{title}.html", {})
