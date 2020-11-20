@@ -175,10 +175,20 @@
   });
 
   // jQuery counterUp
-  $('[data-toggle="counter-up"]').counterUp({
-    delay: 10,
-    time: 1000
-  });
+  // $('[data-toggle="counter-up"]').counterUp({
+  //   delay: 10,
+  //   time: 1000
+  // });
+
+   $('.counter').counterUp({
+        delay: 10,
+        time: 1000,
+        offset: 70,
+        beginAt: 100,
+        formatter: function (n) {
+          return n.replace(/,/g, '.');
+         }
+   })
 
   // Init AOS
   function aos_init() {
@@ -187,8 +197,31 @@
       once: true
     });
   }
-  $(window).on('load', function() {
-    aos_init();
-  });
+
+  // const hero = document.getElementById('hero')
+
+    $(document).on('load', function() {
+        aos_init();
+    });
+
+  // $(window).load(function() {
+  //   var f = document.createElement('iframe');
+  //   f.src = url;
+  //   f.width = 1000;
+  //   f.height = 500;
+  //   $('body').append(f);
+  // });
+//
+    window.onload = function(){
+      const calendar = document.getElementById('open-web-calendar')
+      calendar.src = 'https://open-web-calendar.herokuapp.com/calendar.html?url=https%3A%2F%2Fcalendar.google.com%2Fcalendar%2Fical%2Fmarc.partensky%2540gmail.com%2Fpublic%2Fbasic.ics&amp;language=fr'
+      calendar.style = 'center center no-repeat'
+      calendar.sandbox = 'allow-scripts allow-same-origin allow-top-navigation'
+      calendar.allowTransparency = 'true'
+      calendar.scrolling = 'no'
+      calendar.frameborder = '0'
+      calendar.height = '600px'
+      calendar.width = '100%'
+    };
 
 })(jQuery);
