@@ -7,41 +7,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="{% static 'home/assets/img/white-orchid.svg' %}" rel="icon">
     <link href="{% static 'home/assets/img/black-orchid.svg' %}" rel="apple-touch-icon">
-    <link rel="stylesheet" href="{% static 'article/cache/css/style-mixu.css' %}"/>
-    <link rel="stylesheet" href="{% static 'article/cache/css/style.css' %}"/>
-    <link rel="stylesheet" href="{% static 'article/cache/css/pilcrow.css'%}"/>
-    <link rel="stylesheet" href="{% static 'article/cache/css/hljs-github.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'article/cache/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'article/cache/css/pilcrow.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'article/cache/css/hljs-github.min.css' %}" />
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   </head>
 <body>
-
-  <div id="toc">
-      <!-- <button type="button" class="btn btn-primary btn-sm">Back to articles</button> -->
-    <div id="toc-inner">
-        <a class="back" class="container" href="{% url 'article' %}"><p>Back to articles</p></a><div class="fade_rule"></div><ul class="nav nav-list">
-    <li class="sidebar-header-1"><a href="#description">Description</a></li>
-    <li class="sidebar-header-1"><a href="#installation">Installation</a></li>
-    <li class="sidebar-header-1"><a href="#quick-examples:">Quick examples:</a></li>
-    <li class="sidebar-header-1"><a href="#draw-some-moving-points-and-a-circle">Draw some moving Points and a Circle</a></li>
-    <li class="sidebar-header-1"><a href="#draw-bezier-curves">Draw Bezier Curves</a></li>
-    <li class="sidebar-header-1"><a href="#controls">Controls</a></li>
-    <li class="sidebar-header-1"><a href="#geometry-objects">Geometry objects</a></li>
-    <li class="sidebar-header-1"><a href="#physics/maths-objects">Physics/Maths objects</a></li>
-    <li class="sidebar-header-1"><a href="#game-objects">Game objects</a></li>
-    <li class="sidebar-header-1"><a href="#more-technical-physics-objects">More technical physics objects</a></li>
-    <li class="sidebar-header-1"><a href="#enjoy!">Enjoy!</a></li>
-</ul>
-    </div>
-  </div>
-
-  <div id="wrapper">
-    <div id="header">
-
-    </div>
-
-    <div class="clear"></div>
-    <div id="main">
-      <div id="content" class="post"><h1 id="description"><a class="header-link" href="#description"></a>Description</h1>
+<div class="content"><h1 id="description"><a class="header-link" href="#description"></a>Description</h1>
 <p>This is a framework based on pygame that allows an easier process for making games. This is so much more than a tool kit.
 Tested in pygame2 not in pygame1.</p>
 <h1 id="installation"><a class="header-link" href="#installation"></a>Installation</h1>
@@ -167,17 +139,9 @@ ncp=<span class="hljs-number">50</span> <span class="hljs-comment">#number const
 <li>material formcollider</li>
 </ul>
 <h1 id="enjoy!"><a class="header-link" href="#enjoy!"></a>Enjoy!</h1>
-      </div>
-    </div>
-
-    <div class="clear">
-    </div>
-
-    <div id="footer">
-    </div>
-  </div>
+</div>
     <script src="{% static 'home/assets/vendor/jquery/jquery.min.js'%}"></script>
     <script src="{% static 'home/assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
-    <script src="{% static 'article/cache/js/main.js' %}"></script>
+    <script src="{% static 'article/assets/js/main.js' %}"></script>
 </body>
 </html>

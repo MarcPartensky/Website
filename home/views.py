@@ -23,8 +23,6 @@ def home(request):
     context['github_month_commits'] = re.findall(pattern, text)[0][0]
     context['github_month_commits_repos'] = re.findall(pattern, text)[0][1]
 
-    print(context)
-
     return render(request, 'home/home.html', context)
 
 def about(request):

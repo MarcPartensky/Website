@@ -21,28 +21,28 @@ https://github.com/AndrewBelt/WiTeX
 	font-family: 'Latin Modern Roman';
 	font-weight: normal;
 	font-style: normal;
-	src: url('../fonts/lmroman10-regular.woff') format('woff');
+	src: url("../fonts/lmroman10-regular.211a73cb00ea.woff") format('woff');
 }
 
 @font-face {
 	font-family: 'Latin Modern Roman';
 	font-weight: bold;
 	font-style: normal;
-	src: url('../fonts/lmroman10-bold.woff') format('woff');
+	src: url("../fonts/lmroman10-bold.4aecc722c78f.woff") format('woff');
 }
 
 @font-face {
 	font-family: 'Latin Modern Roman';
 	font-weight: normal;
 	font-style: italic;
-	src: url('../fonts/lmroman10-italic.woff') format('woff');
+	src: url("../fonts/lmroman10-italic.d5a0e4ccde2a.woff") format('woff');
 }
 
 @font-face {
 	font-family: 'Latin Modern Roman';
 	font-weight: bold;
 	font-style: italic;
-	src: url('../fonts/lmroman10-bolditalic.woff') format('woff');
+	src: url("../fonts/lmroman10-bolditalic.b6b612b92019.woff") format('woff');
 }
 
 /* Page Layout */

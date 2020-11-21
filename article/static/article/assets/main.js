@@ -1,4 +1,4 @@
-$(".nav-list a").on("click", function (e) {
+$(".sidebar-header-1 a, .nav-list a").on("click", function (e) {
     e.preventDefault();
     const href = $(this).attr("href").replace('#', '');
     const element = document.getElementById(href)

@@ -31,15 +31,8 @@ def index(request):
     context = dict(articles=articles)
     return render(request, 'article/index.html', context)
 
-def clean():
-    # os.system(f"rm -rf {os.getcwd()}/article/templates/cache/assets")
-    os.system(f"rm -rf {os.getcwd()}/article/static/article/cache")
-    # for file in glob.glob(f"{os.getcwd()}/article/static/article/cache/*"):
-    #     print(file)
-    #     os.remove(file)
 
-
-def make(title):
+def old_make(title):
     os.system(f"generate-md --layout mixu-radar \
               --input {os.getcwd()}/media/article/{title}.md \
               --output {os.getcwd()}/article/templates/cache")
@@ -77,9 +70,13 @@ def make(title):
                             f"<title>{title.capitalize()}</title>")
         f.write(text)
 
+def clean():
+    os.system(f"rm -rf {os.getcwd()}/article/static/article/cache")
+    for file in glob.glob(f"{os.getcwd()}/article/templates/cache/*"):
+        os.remove(file)
 
-def make_marc(title):
-    os.system(f"{os.getcwd()}/node_modules/.bin/generate-md --layout marc \
+def make(title:str, layout:str="marc"):
+    os.system(f"{os.getcwd()}/node_modules/.bin/generate-md --layout {layout}\
               --input {os.getcwd()}/media/article/{title}.md \
               --output {os.getcwd()}/article/templates/cache")
     os.rename(f"{os.getcwd()}/article/templates/cache/assets",
@@ -95,6 +92,16 @@ def make_marc(title):
 def read(request, title):
     """Read an article."""
     clean()
+    if 'layout' in request.GET:
+        layout = request.GET['layout']
+    else:
+        layout = "marc"
+    layouts = os.listdir("./node_modules/markdown-styles/layouts")
+    if layout not in layouts:
+    #     str_layouts = '\n'.join(map(lambda l: f"- {l}", layouts))
+    #     text = f"Unauthorized layouts. Your must choose between: \n{str_layouts}"
+        # return HttpResponse(text, status=403)
+        return render(request, 'article/403.html', dict(layouts=layouts))
     if not f"{title.replace('.md', '')}.md" in os.listdir(f"{os.getcwd()}/media/article"):
         raise Http404("This article was not found.")
     elif title.endswith('.md'):
@@ -107,5 +114,5 @@ def read(request, title):
     #print(f'removing {title}.html')
     #os.system(f"rm {os.getcwd()}/article/templates/article/{title}.html")
     # make(title)
-    make_marc(title)
+    make(title, layout)
     return render(request, f"cache/{title}.html", {})
