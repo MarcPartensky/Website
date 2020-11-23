@@ -4,6 +4,7 @@ from .models import ArticleModel
 import os
 import glob
 import random
+from .adapt import adapt
 
 class Article:
     @classmethod
@@ -85,7 +86,8 @@ def make(title:str, layout:str="marc"):
               {os.getcwd()}/article/static/article")
     with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "r") as f:
         text = str(f.read())
-    text = text.replace('&&title&&', title.capitalize())
+    # text = text.replace('&&title&&', title.capitalize())
+    text = adapt(text, title)
     with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "w") as f:
         f.write(text)
 
