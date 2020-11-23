@@ -75,8 +75,8 @@ def clean():
     os.system(f"rm -rf {os.getcwd()}/article/static/article/cache")
     # os.system(f"rm -rf {os.getcwd()}/article/templates/article/cache")
     # os.system(f"mkdir {os.getcwd()}/article/templates/article/cache")
-    # for file in glob.glob(f"{os.getcwd()}/article/templates/cache/*"):
-    #     os.remove(file)
+    for file in glob.glob(f"{os.getcwd()}/article/templates/cache/*"):
+        os.remove(file)
 
 def make(title:str, layout:str="marc"):
     os.system(f"{os.getcwd()}/node_modules/.bin/generate-md --layout {layout}\
