@@ -73,21 +73,26 @@ def old_make(title):
 
 def clean():
     os.system(f"rm -rf {os.getcwd()}/article/static/article/cache")
-    for file in glob.glob(f"{os.getcwd()}/article/templates/cache/*"):
-        os.remove(file)
+    # os.system(f"rm -rf {os.getcwd()}/article/templates/article/cache")
+    # os.system(f"mkdir {os.getcwd()}/article/templates/article/cache")
+    # for file in glob.glob(f"{os.getcwd()}/article/templates/cache/*"):
+    #     os.remove(file)
 
 def make(title:str, layout:str="marc"):
     os.system(f"{os.getcwd()}/node_modules/.bin/generate-md --layout {layout}\
               --input {os.getcwd()}/media/article/{title}.md \
               --output {os.getcwd()}/article/templates/cache")
     os.rename(f"{os.getcwd()}/article/templates/cache/assets",
-              f"{os.getcwd()}/article/templates/cache/cache")
-    os.system(f"mv {os.getcwd()}/article/templates/cache/cache\
-              {os.getcwd()}/article/static/article")
+              f"{os.getcwd()}/article/templates/cache/{layout}")
+    if layout in os.listdir(f"{os.getcwd()}/article/static/article/"):
+        os.system(f"rm -rf {os.getcwd()}/article/templates/cache/{layout}")
+    else:
+        os.system(f"mv {os.getcwd()}/article/templates/cache/{layout}\
+                  {os.getcwd()}/article/static/article")
     with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "r") as f:
         text = str(f.read())
     # text = text.replace('&&title&&', title.capitalize())
-    text = adapt(text, title)
+    text = adapt(text, title, layout)
     with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "w") as f:
         f.write(text)
 
@@ -117,4 +122,4 @@ def read(request, title):
     #os.system(f"rm {os.getcwd()}/article/templates/article/{title}.html")
     # make(title)
     make(title, layout)
-    return render(request, f"cache/{title}.html", {})
+    return render(request, f"cache/{title}.html", request.GET)

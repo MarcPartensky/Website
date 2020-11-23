@@ -1,7 +1,7 @@
 import re
 
-def adapt(text, title):
-    text = correct_assets(text)
+def adapt(text, title, layout):
+    text = correct_assets(text, layout)
     text = add_load_static(text)
     text = correct_title(text, title)
     text = add_icons(text)
@@ -49,7 +49,7 @@ def correct_links(text):
     for file in re.findall(pattern, text):
         print(file)
         text = text.replace(f'href="assets/{file}"',
-                            'href="{% static \'article/cache/'+file+'\' %}"')
+                            'href="{% static \'article/assets/'+file+'\' %}"')
     return text
 
 def correct_scripts(text):
@@ -58,17 +58,17 @@ def correct_scripts(text):
     for file in re.findall(pattern, text):
         text = text.replace(
             '</body>',
-            '<script src="{% static \'article/cache/'+file+'\' %}"></script>\n\
+            '<script src="{% static \'article/assets/'+file+'\' %}"></script>\n\
         </body>')
     return text
 
-def correct_assets(text):
+def correct_assets(text, layout):
     """Correct assets imports."""
     # pattern = re.compile(r'([src|href].?=.?[\'|"]assets\/.*\.[js|css].?[\'|"])')
     pattern = re.compile(r'(assets/.*\.[jc]ss?)')
     for match in re.findall(pattern, text):
-        substitute = "{% static 'article/"+match.replace('assets', 'cache')+"' %}"
-        print(match, substitute)
+        substitute = match.replace('assets', layout)
+        substitute = "{% static 'article/"+substitute+"' %}"
         text = text.replace(match, substitute)
     return text
 
