@@ -72,10 +72,14 @@ def old_make(title):
         f.write(text)
 
 def clean():
+    print(os.listdir(f"{os.getcwd()}/article/static/cache"))
+    print(os.listdir(f"{os.getcwd()}/article/templates/cache"))
+
     os.system(f"rm -rf {os.getcwd()}/article/static/article/cache")
     # os.system(f"rm -rf {os.getcwd()}/article/templates/article/cache")
     # os.system(f"mkdir {os.getcwd()}/article/templates/article/cache")
     for file in glob.glob(f"{os.getcwd()}/article/templates/cache/*"):
+        print(file, 'is deleted.')
         os.remove(file)
 
 def make(title:str, layout:str="marc"):

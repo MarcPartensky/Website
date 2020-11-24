@@ -83,7 +83,7 @@ def upload_markdown(request):
         form = UploadMarkdownForm(request.POST,request.FILES)
         file = str(form.files['file'])
         filepath = f"{os.getcwd()}/media/article/{file}"
-        print(filepath)
+        print('trying to post:', filepath)
         content = form.files['file'].file.read().decode('utf-8')
         lines = content.split('\n')
         if lines[0].startswith('#!'):

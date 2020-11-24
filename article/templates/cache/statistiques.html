@@ -1,0 +1,103 @@
+{% load static %}<!DOCTYPE html>
+<html>
+  <head>
+    <title>Statistiques</title>
+        <link href="{% static 'home/assets/img/white-orchid.svg' %}" rel="icon">
+        <link href="{% static 'home/assets/img/black-orchid.svg' %}" rel="apple-touch-icon">
+        <link href="{% static 'article/assets/css/main.css' %}" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='http://fonts.googleapis.com/css?family=Andika|Droid+Sans+Mono|Cantarell:400,700,400italic' rel='stylesheet' type='text/css' />
+    <script src="{% static 'article/mixu-book/jquery-1.6.1.min.js' %}"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'article/mixu-book/style.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'article/mixu-book/assert.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'article/mixu-book/prettify.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'article/mixu-book/pilcrow.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'article/mixu-book/hljs-github.min.css' %}"/>
+
+    <script type="text/javascript" src="{% static 'article/mixu-book/prettify.js' %}"></script>
+    <!-- Script runner -->
+    <script type="text/javascript" src="{% static 'article/mixu-book/runner.js' %}"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        </head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+    </div>
+    <div class="clear">
+      <hr>
+    </div>
+
+    <div id="main">
+      <div id="container">
+        <div id="content" class="post"><p>#!/usr/local/marc/markdown.py</p>
+<h1 id="chapitre-1:-la-statistique-descriptive"><a class="header-link" href="#chapitre-1:-la-statistique-descriptive"></a>Chapitre 1: La statistique descriptive</h1>
+<h2 id="caractérisation-des-séries-statistiques"><a class="header-link" href="#caractérisation-des-séries-statistiques"></a>Caractérisation des séries statistiques</h2>
+<p>Médiane: valeur qui partage en 2 effectifs égaux les individus rangés par ordre croissant des valeurs prises par la variable statistique</p>
+<ul class="list">
+<li>autant au dessus qu&#39;au dessous</li>
+<li>Fx(xm)</li>
+</ul>
+<h2 id="mode"><a class="header-link" href="#mode"></a>Mode</h2>
+<h2 id="la-moyenne"><a class="header-link" href="#la-moyenne"></a>La Moyenne</h2>
+<p>La différence des différence à la moyenne est nulle.</p>
+<h2 id="étendu"><a class="header-link" href="#étendu"></a>Étendu</h2>
+<p>Différence valeur max et valeur min.</p>
+<h2 id="caractéristiques-de-dispersion"><a class="header-link" href="#caractéristiques-de-dispersion"></a>Caractéristiques de dispersion</h2>
+<p>Référence à la médiane</p>
+<ul class="list">
+<li>Ecart probable: médiane de la série des écarts à la médiane |xi-xm|</li>
+<li>Écart moyen à la médiane: moyenne de la série des écarts à la médiane</li>
+</ul>
+<blockquote>
+<p>$$ e(\bar{x})</p>
+</blockquote>
+<p>$$ \sigma^2 = \frac{1}{n}\sum_{j=1}^N(x_j-\bar{x})^2 $$</p>
+<h3 id="quantiles:"><a class="header-link" href="#quantiles:"></a>Quantiles:</h3>
+<p>Quantile d&#39;ordre alpha la valeur xa telle que:
+$$ F(x_\alpha) = \alpha \space  pour 0 \leq \alpha \leq 1 $$</p>
+<h3 id="quartile"><a class="header-link" href="#quartile"></a>Quartile</h3>
+<h3 id="coefficient-de-pearson"><a class="header-link" href="#coefficient-de-pearson"></a>Coefficient de Pearson</h3>
+<h3 id="coefficient-de-fisher"><a class="header-link" href="#coefficient-de-fisher"></a>Coefficient de Fisher</h3>
+<p>distribution symétrique:
+$$ \gamma_1 = 0 $$</p>
+<h3 id="coefficient-de-forme"><a class="header-link" href="#coefficient-de-forme"></a>Coefficient de forme</h3>
+<p>Coefficient d&#39;aplatissemeent</p>
+<h2 id="en-r"><a class="header-link" href="#en-r"></a>En R</h2>
+<p>La fonction skewness permet de calculer le coefficient d&#39;asymétrie
+La fonction kurtosis() per met de calculer </p>
+
+         <div id="bottom_navi">
+          <a href=".html"> &lt; &lt; Previous Chapter</a> | <a href=".html">Next Chapter &gt; &gt;</a>
+         </div>
+        </div>
+      </div>
+    </div>
+    <div id="sidebar"><ul class="nav nav-list">
+    <li class="sidebar-header-1"><a href="#chapitre-1:-la-statistique-descriptive">Chapitre 1: La statistique descriptive</a></li>
+    <li class="sidebar-header-2"><a href="#caractérisation-des-séries-statistiques">Caractérisation des séries statistiques</a></li>
+    <li class="sidebar-header-2"><a href="#mode">Mode</a></li>
+    <li class="sidebar-header-2"><a href="#la-moyenne">La Moyenne</a></li>
+    <li class="sidebar-header-2"><a href="#étendu">Étendu</a></li>
+    <li class="sidebar-header-2"><a href="#caractéristiques-de-dispersion">Caractéristiques de dispersion</a></li>
+    <li class="sidebar-header-3"><a href="#quantiles:">Quantiles:</a></li>
+    <li class="sidebar-header-3"><a href="#quartile">Quartile</a></li>
+    <li class="sidebar-header-3"><a href="#coefficient-de-pearson">Coefficient de Pearson</a></li>
+    <li class="sidebar-header-3"><a href="#coefficient-de-fisher">Coefficient de Fisher</a></li>
+    <li class="sidebar-header-3"><a href="#coefficient-de-forme">Coefficient de forme</a></li>
+    <li class="sidebar-header-2"><a href="#en-r">En R</a></li>
+</ul>
+    </div>
+    <div class="clear">
+    </div>
+
+    <div id="footer">
+      <p>CSS by <a href="http://mixu.net/">Mikito Takada</a>.</p>
+    </div>
+  </div>
+<script src="{% static 'home/assets/vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'home/assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'article/assets/js/main.js' %}"></script>
+    </body>
+</html>
