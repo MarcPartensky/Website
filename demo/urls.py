@@ -11,4 +11,5 @@ urlpatterns = [
     path('qrcode', views.qrcode, name='qrcode'),
     path('discord', views.discord, name='discord'),
     path('todolist', views.todolist, name='todolist'),
+    path('orasa-beaute', views.orasa_beaute, name='orasa-beaute'),
 ]

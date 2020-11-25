@@ -37,3 +37,6 @@ def discord(request):
 
 def todolist(request):
     return render(request, 'demo/todolist.html', {})
+
+def orasa_beaute(request):
+    return render(request, 'demo/orasa_beaute.html', {})
