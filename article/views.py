@@ -7,14 +7,13 @@ import glob
 import random
 from .adapt import adapt
 
-from django.template.loader import template_source_loaders
+from django.template.loader import engines
 
 def reset_template_cache():
-    if not template_source_loaders:
-        return
-
-    for loader in template_source_loaders:
-        loader.reset()
+    print("engines:", engines)
+    for engine in engines.all():
+        print('engine:', engine.engine.template_loaders[0])
+        engine.engine.template_loaders[0].reset()
 
 class Article:
     @classmethod
