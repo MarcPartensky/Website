@@ -20,3 +20,6 @@ env
 # Npm for markdown rendering
 ./node_modules/*
 !./node_modules/markdown-styles/
+
+# Article cache
+article/templates/cache/

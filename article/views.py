@@ -7,6 +7,15 @@ import glob
 import random
 from .adapt import adapt
 
+from django.template.loader import template_source_loaders
+
+def reset_template_cache():
+    if not template_source_loaders:
+        return
+
+    for loader in template_source_loaders:
+        loader.reset()
+
 class Article:
     @classmethod
     def create(cls, title):
@@ -105,6 +114,7 @@ def make(title:str, layout:str="marc"):
 
 def read(request, title:str):
     """Read an article."""
+    reset_template_cache()
     clean()
     print(request.GET)
     if 'layout' in request.GET:
