@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
+from django.template import loader
 from .models import ArticleModel
 import os
 import glob
@@ -72,15 +73,17 @@ def old_make(title):
         f.write(text)
 
 def clean():
-    print(os.listdir(f"{os.getcwd()}/article/static/cache"))
-    print(os.listdir(f"{os.getcwd()}/article/templates/cache"))
-
+    # print(f"{os.getcwd()}/article/static/cache")
+    # print('machin directory:', os.listdir(f"{os.getcwd()}/article/static"))
+    # print(os.listdir(f"{os.getcwd()}/article/static/cache"))
     os.system(f"rm -rf {os.getcwd()}/article/static/article/cache")
     # os.system(f"rm -rf {os.getcwd()}/article/templates/article/cache")
     # os.system(f"mkdir {os.getcwd()}/article/templates/article/cache")
+    print('before deleting templates', os.listdir(f"{os.getcwd()}/article/templates/cache"))
     for file in glob.glob(f"{os.getcwd()}/article/templates/cache/*"):
         print(file, 'is deleted.')
         os.remove(file)
+        print('after deleting templates', os.listdir(f"{os.getcwd()}/article/templates/cache"))
 
 def make(title:str, layout:str="marc"):
     os.system(f"{os.getcwd()}/node_modules/.bin/generate-md --layout {layout}\
@@ -100,30 +103,47 @@ def make(title:str, layout:str="marc"):
     with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "w") as f:
         f.write(text)
 
-def read(request, title):
+def read(request, title:str):
     """Read an article."""
     clean()
+    print(request.GET)
     if 'layout' in request.GET:
         layout = request.GET['layout']
     else:
         layout = "marc"
     layouts = os.listdir("./node_modules/markdown-styles/layouts")
     if layout not in layouts:
-    #     str_layouts = '\n'.join(map(lambda l: f"- {l}", layouts))
-    #     text = f"Unauthorized layouts. Your must choose between: \n{str_layouts}"
-        # return HttpResponse(text, status=403)
+        print(layout, 'not in ', layouts)
         return render(request, 'article/403.html', dict(layouts=layouts))
-    if not f"{title.replace('.md', '')}.md" in os.listdir(f"{os.getcwd()}/media/article"):
+    elif not f"{title.replace('.md', '')}.md" in os.listdir(f"{os.getcwd()}/media/article"):
+        print(title, 'not in', os.listdir(f"{os.getcwd()}/media/article"))
         raise Http404("This article was not found.")
     elif title.endswith('.md'):
         with open(f"{os.getcwd()}/media/article/{title}", "r") as f:
             text = str(f.read())
         return HttpResponse(text)
     # elif not f"{title}.html" in os.listdir(f"{os.getcwd()}/article/templates/article"):
-    if title == "index":
+    elif title == "index":
+        print("index is reserved")
         raise PermissionDenied
     #print(f'removing {title}.html')
-    #os.system(f"rm {os.getcwd()}/article/templates/article/{title}.html")
-    # make(title)
+    title_layout = title + "." + layout
     make(title, layout)
-    return render(request, f"cache/{title}.html", request.GET)
+    os.system(f"mv \
+        {os.getcwd()}/article/templates/cache/{title}.html \
+        {os.getcwd()}/article/templates/cache/{title_layout}.html"
+    )
+    print(os.listdir(f"{os.getcwd()}/article/templates/cache/"))
+    return render(request, f"cache/{title_layout}.html", request.GET)
+
+    # return render(request, f"cache/{title}.html", request.GET)
+    # context = dict(**request.GET)
+    # print(context)
+    # template = loader.get_template(f"cache/{title_layout}.html")
+    # os.system(f'head -n 20 {os.getcwd()}/article/templates/cache/{title_layout}.html')
+    # html = template.render(context, request)
+    # # template.render()
+    # # template.render(clean=True)
+    # print(html[:1000])
+    # print("code generated")
+    # return HttpResponse(html)
