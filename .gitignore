@@ -22,4 +22,4 @@ env
 !./node_modules/markdown-styles/
 
 # Article cache
-article/templates/cache/*
+# article/templates/cache/*
