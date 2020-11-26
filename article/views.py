@@ -6,6 +6,7 @@ import os
 import glob
 import random
 from .adapt import adapt
+import time
 
 from django.template.loader import engines
 
@@ -136,14 +137,16 @@ def read(request, title:str):
         print("index is reserved")
         raise PermissionDenied
     #print(f'removing {title}.html')
-    title_layout = title + "." + layout
+    # title_layout = title + "." + layout
+    title_template = title + "." + str(time.time())
     make(title, layout)
     os.system(f"mv \
         {os.getcwd()}/article/templates/cache/{title}.html \
-        {os.getcwd()}/article/templates/cache/{title_layout}.html"
+        {os.getcwd()}/article/templates/cache/{title_template}.html"
     )
     print(os.listdir(f"{os.getcwd()}/article/templates/cache/"))
-    return render(request, f"cache/{title_layout}.html", request.GET)
+    # Messing with template loader cache system
+    return render(request, f"cache/{title_template}.html", request.GET)
 
     # return render(request, f"cache/{title}.html", request.GET)
     # context = dict(**request.GET)
