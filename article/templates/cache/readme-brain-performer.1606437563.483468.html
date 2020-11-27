@@ -1,0 +1,146 @@
+{% load static %}<!DOCTYPE html>
+<html>
+    <head>
+        <title>Readme-brain-performer</title>
+        <link href="{% static 'home/assets/img/white-orchid.svg' %}" rel="icon">
+        <link href="{% static 'home/assets/img/black-orchid.svg' %}" rel="apple-touch-icon">
+        <link href="{% static 'article/assets/css/main.css' %}" rel="stylesheet">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link type="text/css" rel="stylesheet" href="{% static 'article/marc/css/style-mixu.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'article/marc/css/style.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'article/marc/css/pilcrow.css' %}" />
+        <link type="text/css" rel="stylesheet" href="{% static 'article/marc/css/hljs-github.min.css' %}"/>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        </head>
+    <body>
+      <div id="toc">
+        <div id="toc-inner">
+        <a class="back" class="container" href="{% url 'article' %}"><p>Back to articles</p></a><div class="fade_rule"></div><ul class="nav nav-list">
+    <li class="sidebar-header-1"><a href="#healing-path">Healing Path</a></li>
+    <li class="sidebar-header-2"><a href="#instructions-newbie-friendly-pour-commencer-le-développement-du-projet">Instructions newbie-friendly pour commencer le développement du projet</a></li>
+    <li class="sidebar-header-3"><a href="#d&#x27;abord-qu&#x27;est-ce-que-quoi?">D&#x27;abord qu&#x27;est-ce que quoi?</a></li>
+    <li class="sidebar-header-3"><a href="#prérequis">Prérequis</a></li>
+    <li class="sidebar-header-4"><a href="#installation-de-logiciels">Installation de logiciels</a></li>
+    <li class="sidebar-header-4"><a href="#connaître-les-bases-des-bases-pour-comprendre-le-projet">Connaître les bases des bases pour comprendre le projet</a></li>
+    <li class="sidebar-header-3"><a href="#sur-github-desktop">Sur github desktop</a></li>
+    <li class="sidebar-header-3"><a href="#sur-éditeur-de-code">Sur éditeur de code</a></li>
+    <li class="sidebar-header-3"><a href="#installer-les-dépendances-du-site-web">Installer les dépendances du site web</a></li>
+    <li class="sidebar-header-3"><a href="#lancer-le-site-sur-sa-machine">Lancer le site sur sa machine</a></li>
+    <li class="sidebar-header-2"><a href="#gérer-le-développement-à-plusieurs-sur-github-desktop">Gérer le développement à plusieurs sur github desktop</a></li>
+    <li class="sidebar-header-2"><a href="#tutoriels-recommandés">Tutoriels recommandés</a></li>
+    <li class="sidebar-header-3"><a href="#bonus">Bonus</a></li>
+    <li class="sidebar-header-2"><a href="#hébergement-gratos">Hébergement gratos</a></li>
+    <li class="sidebar-header-2"><a href="#structure-du-projet">Structure du projet</a></li>
+</ul>
+        </div>
+      </div>
+
+      <div id="wrapper">
+        <div id="header">
+
+        </div>
+
+        <div class="clear"></div>
+        <div id="main">
+          <div id="content" class="post"><h1 id="healing-path"><a class="header-link" href="#healing-path"></a>Healing Path</h1>
+<p>Your brain is the key!  </p>
+<h2 id="instructions-newbie-friendly-pour-commencer-le-développement-du-projet"><a class="header-link" href="#instructions-newbie-friendly-pour-commencer-le-développement-du-projet"></a>Instructions newbie-friendly pour commencer le développement du projet</h2>
+<p>Ces instructions donnent une vue d&#39;ensemble des étapes pour développer ce projet,<br>il ne s&#39;agit pas d&#39;un tutoriel, donc si vous ne comprenez pas bien les instructions,<br>aller voir des tutoriels complets. <strong><em>Hopopop au travail!</em></strong>  </p>
+<h3 id="d'abord-qu'est-ce-que-quoi?"><a class="header-link" href="#d'abord-qu'est-ce-que-quoi?"></a>D&#39;abord qu&#39;est-ce que quoi?</h3>
+<ul class="list">
+<li>git :  programme de gestion de version  </li>
+<li>github : site web le plus connu pour partager du code et qui repose sur git  </li>
+<li>github desktop: application graphique pour gérer github  </li>
+<li>visual studio code: éditeur de code le plus connu  </li>
+<li>terminal / ligne de commande : application pour taper des commandes pour controler son ordinateur   </li>
+<li>mamp/wamp/lamp : application permettant d&#39;exécuter php  </li>
+<li>Composer : permet d&#39;installer simplement des modules PHP  </li>
+<li>twig : Moteur de template pour PHP, doit être installer avec Composer  </li>
+</ul>
+<h3 id="prérequis"><a class="header-link" href="#prérequis"></a>Prérequis</h3>
+<h4 id="installation-de-logiciels"><a class="header-link" href="#installation-de-logiciels"></a>Installation de logiciels</h4>
+<ul class="list">
+<li>Installer <a href="https://desktop.github.com/">github desktop</a>  </li>
+<li>Installer un éditeur de code comme <a href="https://code.visualstudio.com/">Visual Studio Code</a> ou <a href="https://www.jetbrains.com/fr-fr/idea/download/">IntelliJ Pro</a> (La version Pro est gratuite en utilisant ton mail isep lors de l&#39;inscription)</li>
+<li>Si nécessaire installer <a href="https://git-scm.com/download/">git</a>  </li>
+<li>Installer <a href="https://www.mamp.info/en/windows/">mamp ou wamp ou lamp</a>  </li>
+<li>Installer <a href="https://cmder.net/">Cmder</a> </li>
+</ul>
+<h4 id="connaître-les-bases-des-bases-pour-comprendre-le-projet"><a class="header-link" href="#connaître-les-bases-des-bases-pour-comprendre-le-projet"></a>Connaître les bases des bases pour comprendre le projet</h4>
+<p>  On met ici le strict minimum</p>
+<ul class="list">
+<li>Savoir les bases de PHP<ul class="list">
+<li>Regarder les tutos de <a href="https://www.youtube.com/c/grafikart/playlists">Graphikart</a> :<ul class="list">
+<li>Composer</li>
+<li>Structure <a href="https://www.youtube.com/watch?v=a3NZtp3FJEE&amp;feature=emb_logo">MVC</a></li>
+<li>twig</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="sur-github-desktop"><a class="header-link" href="#sur-github-desktop"></a>Sur github desktop</h3>
+<ul class="list">
+<li>Se connecter à son compte github: <a href="https://docs.github.com/en/free-pro-team@latest/desktop/installing-and-configuring-github-desktop/setting-up-github-desktop"> aide </a>  </li>
+<li>Choisir un dossier vide sur son ordinateur et cloner le projet dedans  </li>
+</ul>
+<h3 id="sur-éditeur-de-code"><a class="header-link" href="#sur-éditeur-de-code"></a>Sur éditeur de code</h3>
+<ul class="list">
+<li>Ouvrir le projet cloné  </li>
+<li>Chercher sur google comment ouvrir un terminal sur l&#39;éditeur de text sélectionné  </li>
+</ul>
+<h3 id="installer-les-dépendances-du-site-web"><a class="header-link" href="#installer-les-dépendances-du-site-web"></a>Installer les dépendances du site web</h3>
+<ul class="list">
+<li>taper dans le terminal de son éditeur  <pre class="hljs"><code>composer install  </code></pre></li>
+</ul>
+<h3 id="lancer-le-site-sur-sa-machine"><a class="header-link" href="#lancer-le-site-sur-sa-machine"></a>Lancer le site sur sa machine</h3>
+<ul class="list">
+<li>trouver le projet du site avec mamp  </li>
+<li>lancer mamp  </li>
+<li>ouvrir son navigateur à l&#39;url mamp indiqué surement &quot;<a href="http://localhost:8888/web/index.php&quot;">http://localhost:8888/web/index.php&quot;</a>  </li>
+</ul>
+<p><strong>GG</strong>  </p>
+<h2 id="gérer-le-développement-à-plusieurs-sur-github-desktop"><a class="header-link" href="#gérer-le-développement-à-plusieurs-sur-github-desktop"></a>Gérer le développement à plusieurs sur github desktop</h2>
+<ul class="list">
+<li>Pull: récupère des modifications sur github  </li>
+<li>Commit: ajoute une modification locale dans son historique git  </li>
+<li>Push: envoie ses modifications sur github pour les partager aux autres  </li>
+</ul>
+<h2 id="tutoriels-recommandés"><a class="header-link" href="#tutoriels-recommandés"></a>Tutoriels recommandés</h2>
+<ul class="list">
+<li><a href="https://openclassrooms.com/fr/courses/1946386-comprendre-le-web">le web c&#39;est quoi, au juste?</a>  </li>
+<li><a href="https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3">html/css</a>  </li>
+<li><a href="https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql">php</a>  </li>
+<li><p><a href="https://openclassrooms.com/fr/courses/5641721-utilisez-git-et-github-pour-vos-projets-de-developpement">git et github</a>  </p>
+</li>
+<li><p><a href="https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql">foutre du sql dans php</a>  </p>
+</li>
+<li><a href="https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/2725486-tp-un-formulaire-interactif">un peu de javascript ne fera pas de mal</a>  </li>
+<li><a href="https://openclassrooms.com/fr/courses/1567926-un-site-web-dynamique-avec-jquery">jquery pour les gens plus chauds</a>  </li>
+</ul>
+<h3 id="bonus"><a class="header-link" href="#bonus"></a>Bonus</h3>
+<ul class="list">
+<li><a href="https://openclassrooms.com/fr/courses/4614926/next-page-to-do">c&#39;est quoi un terminal?</a>  </li>
+<li><del><a href="https://getbootstrap.com/">je pue la merde en css, à moi bootstrap</a><br></br><a href="https://getbootstrap.com/docs/4.0/components/buttons/">exemples</a></del>  </li>
+<li><strong><a href="https://www.youtube.com/user/grafikarttv">flemme de lire, je préfère ytb</a></strong>  </li>
+</ul>
+<h2 id="hébergement-gratos"><a class="header-link" href="#hébergement-gratos"></a>Hébergement gratos</h2>
+<p>Tkt je gère! pour le moment..</p>
+<h2 id="structure-du-projet"><a class="header-link" href="#structure-du-projet"></a>Structure du projet</h2>
+<p>...</p>
+          </div>
+        </div>
+
+        <div class="clear">
+        </div>
+
+        <div id="footer">
+        </div>
+      </div>
+    <script src="{% static 'home/assets/vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'home/assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'article/assets/js/main.js' %}"></script>
+    </body>
+<a href="#" class="back-to-top" style="display: inline;         position:fixed; right:15px; bottom:15px; z-index:99999;">         <i style="display: flex; align-items: center; justify-content: center;         font-size: 24px; width: 40px; height: 40px; border-radius: 4px;         background: #7cc576; color: #fff; transition: all 0.4s;"         class="icofont-simple-up"></i></a>
+</html>

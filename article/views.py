@@ -132,22 +132,25 @@ def read(request, title:str):
         with open(f"{os.getcwd()}/media/article/{title}", "r") as f:
             text = str(f.read())
         return HttpResponse(text)
-    # elif not f"{title}.html" in os.listdir(f"{os.getcwd()}/article/templates/article"):
     elif title == "index":
         print("index is reserved")
         raise PermissionDenied
-    #print(f'removing {title}.html')
-    # title_layout = title + "." + layout
+    # Messing with template loader cache system
     title_template = title + "." + str(time.time())
     make(title, layout)
+    path = f"{os.getcwd()}/article/templates/cache/{title_template}.html"
     os.system(f"mv \
         {os.getcwd()}/article/templates/cache/{title}.html \
-        {os.getcwd()}/article/templates/cache/{title_template}.html"
+        {path}"
     )
     print(os.listdir(f"{os.getcwd()}/article/templates/cache/"))
-    # Messing with template loader cache system
-    return render(request, f"cache/{title_template}.html", request.GET)
+    # Fill context with http parameters and article meta data.
+    context = dict(**request.GET, stats=os.stat(path))
+    return render(request, f"cache/{title_template}.html", context)
 
+    #print(f'removing {title}.html')
+    # title_layout = title + "." + layout
+    # elif not f"{title}.html" in os.listdir(f"{os.getcwd()}/article/templates/article"):
     # return render(request, f"cache/{title}.html", request.GET)
     # context = dict(**request.GET)
     # print(context)

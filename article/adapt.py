@@ -9,7 +9,9 @@ def adapt(text, title, layout):
     # text = correct_links(text)
     # text = correct_scripts(text)
     text = add_mathjax(text)
+    text = add_back_to_top_button(text)
     text = add_scroll_support(text)
+    text = correct_check(text)
     return text
 
 def add_load_static(text):
@@ -89,5 +91,23 @@ def add_scroll_support(text):
         <script src="{% static \'home/assets/vendor/waypoints/jquery.waypoints.min.js\' %}"></script>\n\
         <script src="{% static \'article/assets/js/main.js\' %}"></script>\n\
     </body>')
+    return text
+
+def correct_check(text):
+    """Replace markdown check to checked buttons."""
+    text = text.replace('[ ]', '<input type="checkbox" disabled="">')
+    text = text.replace('[x]', '<input type="checkbox" disabled="" checked="">')
+    return text
+
+def add_back_to_top_button(text):
+    """Add back to top button."""
+    text = text.replace(
+        '</body>',
+        '</body>\n<a href="#" class="back-to-top" style="display: inline; \
+        position:fixed; right:15px; bottom:15px; z-index:99999;"> \
+        <i style="display: flex; align-items: center; justify-content: center; \
+        font-size: 24px; width: 40px; height: 40px; border-radius: 4px; \
+        background: #7cc576; color: #fff; transition: all 0.4s;" \
+        class="icofont-simple-up"></i></a>')
     return text
 

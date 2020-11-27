@@ -92,7 +92,7 @@ a {
 
 li a {
   color: #303030;
-  font-weight:400;
+  /* font-weight:400; */
   text-decoration:none;
 }
 
