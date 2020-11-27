@@ -443,7 +443,7 @@ section .container {
   padding: 0;
   margin: 0;
   font-family: "Dancing Script", cursive;
-  font-size: 17px;
+  font-size: 14px;
 }
 
 /*--------------------------------------------------------------
@@ -618,7 +618,7 @@ section .container {
   font-weight: 600;
   text-transform: uppercase;
   font-family: 'Lora', serif;
-  color: #a02020ee;
+  color: #ffffffee;
   margin-bottom: 10px;
 }
 
@@ -759,7 +759,7 @@ section .container {
   line-height: 1;
   text-transform: uppercase;
   color: #000;
-  background: rgba(1, 1, 1, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   margin: 0 3px 10px 3px;
   transition: all 0.3s ease-in-out;
   border-radius: 4px;
@@ -783,7 +783,7 @@ section .container {
 
 .portfolio .portfolio-wrap::before {
   content: "";
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   position: absolute;
   left: 30px;
   right: 30px;

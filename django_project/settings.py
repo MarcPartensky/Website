@@ -35,8 +35,8 @@ CORS_ORIGIN_ALLOW_ALL = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-# DEBUG = False
+# DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+DEBUG = False
 # TEMPLATE_DEBUG = DEBUG
 # TEMPLATE_DEBUG = False
 
