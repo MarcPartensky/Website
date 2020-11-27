@@ -297,14 +297,14 @@ footer {
   right: 0;
   bottom: 0;
   left: auto;
-  width: 30%;
+  /* width: 30%; */
   background-color: #fff;
   /* padding: 20px; */
   position: fixed;
   z-index: 1;
-  /* display: none; */
-  height: 100%;
   overflow: auto;
+  height: 100%;
+  /* display: none; */
   /* margin: 2rem; */
   /* padding: 2rem; */
   /* padding-top: 0rem; */
@@ -462,5 +462,7 @@ h6:nth-child(1) {
   }
   #toc {
     /* display: table; */
+    height: 100%;
+    width: 30%;
   }
 }
