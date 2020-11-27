@@ -2,7 +2,6 @@ import re
 
 def adapt(text, title, layout):
     text = correct_assets(text, layout)
-    text = add_load_static(text)
     text = correct_title(text, title)
     text = add_icons(text)
     text = add_back_to_articles(text)
@@ -12,11 +11,65 @@ def adapt(text, title, layout):
     text = add_back_to_top_button(text)
     text = add_scroll_support(text)
     text = correct_check(text)
+    text = add_load_static(text)
+    # text = add_header(text)
     return text
+
+def add_load_static_and_extends(text):
+    """Add load static on top of the file."""
+    return '{% extends "layout/home.html" %}\n\
+            {% load static %}\n\
+            {% block content %}\n' + text + \
+           '{% endblock content %}'
 
 def add_load_static(text):
     """Add load static on top of the file."""
-    return "{% load static %}" + text
+    return '{% load static %}' + text
+
+def add_header(text):
+    header = """
+  <header id="header" class="d-flex align-items-center">
+    <div class="container">
+
+      <!-- The main logo is shown in mobile version only. The centered nav-logo in nav menu is displayed in desktop view  -->
+      <div class="logo d-block d-lg-none">
+          <a data-aos="fade-down" href="/" class="icon-back-to-top"><img src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul class="nav-inner">
+          <li class="active drop-down"><a href="">Sections</a>
+            <ul>
+              <li><a href="{% url 'touch-typing' %}">Touch typing</a></li>
+              <li><a href="{% url 'calendar' %}">Calendar</a></li>
+              <li><a href="{% url 'first-site' %}">First site</a></li>
+              <li><a href="{% url 'game' %}">Games</a></li>
+              <li><a href="{% url 'blog-home' %}">Blog</a></li>
+              <li><a href="{% url 'cv' %}">Curriculum Vitae</a></li>
+              <li class="drop-down"><a href="#">Projects</a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="/#about">About me</a></li>
+          <li><a href="/#skills">Skills</a></li>
+
+          <li class="nav-logo" style="width: 15%; height: 15%"><a href="/"><img src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a></li>
+
+          <li><a href="/#portfolio">Portfolio</a></li>
+          <li><a href="/#certificates">Certificates</a></li>
+          <li><a href="/#contact">Contact</a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+    """
+    text = text.replace('<div id="header">', header)
+    return text
 
 def add_back_to_articles(text):
     text = text.replace(
