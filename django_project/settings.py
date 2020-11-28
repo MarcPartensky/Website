@@ -89,6 +89,7 @@ INSTALLED_APPS = [
     'markdown_view',
 
     'channels',
+    'django_ftpserver',
 ]
 
 MIDDLEWARE = [

@@ -28,6 +28,7 @@ django-appconf==1.0.4
 django-compressor @ git+https://github.com/django-compressor/django-compressor.git@24f6648723b0b7d3ae88e17a20961ccb3ac1b1e7
 django-cors-middleware==1.5.0
 django-crispy-forms==1.8.1
+django-ftpserver==0.7.0
 django-heroku==0.3.1
 django-libsass==0.8
 django-markdown-view==0.0.4
@@ -62,7 +63,9 @@ parso==0.7.1
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==6.2.1
+pip-autoremove==0.9.1
 pip-review==1.1.0
+pipupgrade==1.7.4
 prompt-toolkit==3.0.8
 psycopg2==2.7.7
 psycopg2-binary==2.8.6
@@ -70,6 +73,7 @@ ptyprocess==0.6.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.20
+pyftpdlib==1.5.6
 Pygments==2.7.2
 PyHamcrest==2.0.2
 pyicloud==0.9.7
