@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.clickjacking import xframe_options_exempt
 
+import requests
 import os
+import re
 
 from django.views.generic import (
     ListView,
@@ -58,3 +60,16 @@ def todolist(request):
 @xframe_options_exempt
 def orasa_beaute(request):
     return render(request, 'demo/orasa-beaute.html', {})
+
+@xframe_options_exempt
+def terminal(request):
+    return render(request, 'demo/terminal.html', {})
+
+def cheat(request, cmd:str):
+    """Request manual on cheat api."""
+    url = f"https://cheat.sh/{cmd}"
+    response = requests.get(url)
+    text = response.text
+    text = re.sub(r'\[[\d;]*m', '', text)
+    text = text.replace('\x1b', '')
+    return HttpResponse(text)

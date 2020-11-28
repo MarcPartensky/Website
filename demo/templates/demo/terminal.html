@@ -18,6 +18,11 @@ $('body').terminal({
     },
     echo: function(args) {
         this.echo(args)
+    },
+    man: function(cmd) {
+        $.get(`/demo/cheat/${cmd}`, function(data) {
+            this.echo(data)
+        }.bind(this))
     }
 /*    login: function(args) {
         this.echo(`Trying to login as: ${args[0]}`)

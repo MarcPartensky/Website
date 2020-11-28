@@ -12,4 +12,6 @@ urlpatterns = [
     path('discord', views.discord, name='discord'),
     path('todolist', views.todolist, name='todolist'),
     path('orasa-beaute', views.orasa_beaute, name='orasa-beaute'),
+    path('terminal', views.terminal, name="terminal"),
+    path('cheat/<str:cmd>', views.cheat, name="cheat"),
 ]

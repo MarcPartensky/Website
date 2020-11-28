@@ -56,8 +56,6 @@ def codemirror_editor(request):
 def xterm(request):
     return render(request, 'test/xterm.html', {})
 
-def terminal(request):
-    return render(request, 'test/terminal.html', {})
 
 def skulpt(request):
     return render(request, 'test/skulpt.html', {})
