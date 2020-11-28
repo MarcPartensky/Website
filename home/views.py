@@ -23,6 +23,13 @@ def home(request):
     context['github_month_commits'] = re.findall(pattern, text)[0][0]
     context['github_month_commits_repos'] = re.findall(pattern, text)[0][1]
 
+    if 'theme' in request.GET:
+        context['theme'] = request.GET['theme']
+    else:
+        context['theme'] = 'light'
+    url = 'https://api.github.com/repos/marcpartensky/website/commits'
+    response = requests.get(url).json()
+    context['date'] = response[0]['commit']['author']['date']
     return render(request, 'home/home.html', context)
 
 def about(request):
