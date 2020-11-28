@@ -95,8 +95,8 @@ def add_scroll_support(text):
 
 def correct_check(text):
     """Replace markdown check to checked buttons."""
-    text = text.replace('[ ]', '<input type="checkbox" disabled="">')
-    text = text.replace('[x]', '<input type="checkbox" disabled="" checked="">')
+    text = text.replace('[ ]', '<input type="checkbox">')
+    text = text.replace('[x]', '<input type="checkbox" checked="">')
     return text
 
 def add_back_to_top_button(text):
