@@ -44,6 +44,10 @@ def contact(request):
 def resume(request):
     return render(request, 'home/resume.html', {})
 
+def mail_form(request):
+    pass
+    # return render()
+
 # HTTP Errors
 # def bad_request(request, exception):
     # response = render(
