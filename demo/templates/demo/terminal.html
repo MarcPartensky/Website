@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +8,10 @@
 </head>
 <body>
 <script>
-const session = { token: undefined }
-$('body').terminal({
+const session = { token: undefined, python: false}
+const commands = {
     hello: function() {
-        this.echo('Hi! Welcome to this terminal.')
+        this.echo('Hi!')
     },
     cat: function() {
         const n = Math.floor(500*Math.random())
@@ -23,22 +24,46 @@ $('body').terminal({
         $.get(`/demo/cheat/${cmd}`, function(data) {
             this.echo(data)
         }.bind(this))
-    }
-/*    login: function(args) {
-        this.echo(`Trying to login as: ${args[0]}`)
-        $.post('/api/login', {login: args[0], password}, function(data, status) {
-            session.token = data.token
-            this.echo('Successfuly logged in!')
-            this.echo(status)
-        })
     },
-    python: function(args) {
-        $.get('/api/')
+    login: function(user, password) {
+        this.echo(`Trying to login as: [[b;#0000ff;]${user}]`)
+        $.post('/api/login', {user, password
+        }).done(function(data, status) {
+            console.log(data)
+            data = JSON.parse(data)
+            session.token = data.token
+            console.log(data.token)
+            this.echo(`[[b;#00ff00;]Access Granted!]`)
+        }.bind(this)).fail(function(err) {
+            this.echo("[[b;#ff0000;]Access Denied!]")
+        }.bind(this))
+    },
+    python: function() {
+        session.python = !session.python;
+        if (session.python) {
+            msg = 'on'
+        } else {
+            msg = 'off'
+        }
+        this.echo(`[[b;#FFA500;]Python mode ${msg}!]`)
+    },
+}
 
-    }*/
-},
-{
-    greetings: 'Welcome to the terminal of Marc Partensky'
+$('body').terminal(commands,{
+    greetings: '{{cmd}}',
+    onCommandNotFound: function(cmd, term) {
+        if (session.python) {
+            cmd_ = escape(cmd)
+            $.post(`/api/python/${cmd_}`, {token:session.token
+            }).done(function(data, status) {
+                this.echo(`[[b;#f0f000;]${unescape(data)}]`)
+            }.bind(this)).fail(function(err) {
+                this.echo(`[[b;#ff0000;]${cmd} is not a valid command]`)
+            }.bind(this))
+        } else {
+            this.echo(`[[b;#ff0000;]${cmd} is not a valid command]`)
+        }
+    }
 });
 </script>
 

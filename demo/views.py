@@ -63,7 +63,9 @@ def orasa_beaute(request):
 
 @xframe_options_exempt
 def terminal(request):
-    return render(request, 'demo/terminal.html', {})
+    """Browser based terminal."""
+    context = dict(cmd="Welcome to this terminal.")
+    return render(request, 'demo/terminal.html', context)
 
 def cheat(request, cmd:str):
     """Request manual on cheat api."""

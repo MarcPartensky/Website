@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.exceptions import PermissionDenied
 import random
 
 from rest_framework.parsers import JSONParser, FileUploadParser
@@ -11,6 +12,12 @@ from .forms import UploadFileForm, UploadMarkdownForm
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import MarkdownModel
+
+from io import StringIO
+
+import html
+import urllib
+import sys
 import os
 
 # Create your views here.
@@ -108,3 +115,58 @@ def upload_markdown(request):
 def view_markdown(request):
     context = {'markdown_object': MarkdownModel.objects.all()[0]}
     return render(request, 'api/view-markdown.html', context)
+
+users = {}
+
+@csrf_exempt
+def login(request):
+    """Log api user view."""
+    print(request.POST)
+    user = request.POST['user']
+    password = request.POST['password']
+    print(user, password)
+    print(os.environ['WEBSITE_USER'],os.environ['WEBSITE_PASSWORD'])
+    if (user,password)!=(os.environ['WEBSITE_USER'],os.environ['WEBSITE_PASSWORD']):
+        raise PermissionDenied
+    token = int(hash(random.random())/1000)
+    print(f"python-shell: {user} logs with {token}\n")
+    users[token] = dict(locals={}, python=False, name=user)
+    return HttpResponse('{"token":'+str(token)+'}')
+
+class Capturing(list):
+    """Capture print output and store it."""
+
+    def __enter__(self):
+        self._stdout = sys.stdout
+        sys.stdout = self._stringio = StringIO()
+        return self
+
+    def __exit__(self, *args):
+        self.extend(self._stringio.getvalue().splitlines())
+        del self._stringio    # free up some memory
+        sys.stdout = self._stdout
+
+
+@csrf_exempt
+def python(request, cmd:str):
+    """Python view."""
+    cmd = html.unescape(cmd)
+    token = int(request.POST['token'])
+    user = users[token]
+    locals_ = user['locals']
+    print(f"python: {user['name']} runs \"{cmd}\" given {locals_}")
+    try:
+        with Capturing() as out:
+            exec(cmd, globals(), locals_)
+        if not out:
+            try:
+                with Capturing() as out:
+                    exec(f"print({cmd})", globals(), locals_)
+            except:
+                out = []
+        print(f"which returns {out}\n")
+        text = '\n'.join([f"{line}" for line in out])
+        return HttpResponse(urllib.parse.quote(text))
+    except:
+        text = '\n'.join([f"{line}" for line in out])
+        return HttpResponse(urllib.parse.quote(text), status=500)

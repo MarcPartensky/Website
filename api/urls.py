@@ -13,4 +13,6 @@ urlpatterns = [
     path('view-markdown/', views.view_markdown, name='view-markdown'),
     # path('user/create/', views.user.create, name="user-create"),
     # path('<str:room_name>/', views.room, name='room'),
+    path('login', views.login, name='api-login'),
+    path('python/<str:cmd>', views.python, name='python'),
 ]
