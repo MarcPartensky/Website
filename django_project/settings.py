@@ -11,6 +11,7 @@ import os
 import django_heroku
 import dj_database_url
 
+SESSION_COOKIE_SECURE = True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 # DEBUG = False
