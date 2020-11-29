@@ -42,45 +42,6 @@ def index(request):
     context = dict(articles=articles)
     return render(request, 'article/index.html', context)
 
-
-def old_make(title):
-    os.system(f"generate-md --layout mixu-radar \
-              --input {os.getcwd()}/media/article/{title}.md \
-              --output {os.getcwd()}/article/templates/cache")
-    os.system(f"rm -rf {os.getcwd()}/article/templates/cache/assets")
-    with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "r") as f:
-        text = str(f.read())
-    with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "w") as f:
-        # text = "{% extends \"layout/home.html\" %} \
-        #         {% load static %} \
-        #         {% block content %}" + text + "{% endblock content %}"
-        text = "{% load static %}\n\
-        <script src=\"{% static 'home/assets/vendor/jquery/jquery.min.js'%}\"></script>\n\
-        <link href=\"{% static 'home/assets/img/white-orchid.svg' %}\" rel=\"icon\">\n\
-        <link href=\"{% static 'home/assets/img/black-orchid.svg' %}\" rel=\"apple-touch-icon\">"\
-        + text
-        text = text.replace(
-            "<link rel=\"stylesheet\" href=\"assets/css/style.css\" />",
-            "<link rel=\"stylesheet\" href=\"{% static 'article/assets/css/style-mixu.css' %}\"/>\n\
-            <link rel=\"stylesheet\" href=\"{% static 'article/assets/css/style.css' %}\"/>")
-            # <link rel=\"stylesheet\" href=\"{% static 'article/assets/css/copy-pre.css' %}\"/>\
-            # <script src=\"{% static 'article/assets/js/copy-pre.js' %}\"><script>")
-        text = text.replace(
-            "<link rel=\"stylesheet\" href=\"assets/css/pilcrow.css\" />",
-            "<link rel=\"stylesheet\" href=\"{% static 'article/assets/css/pilcrow.css'%}\"/>")
-        text = text.replace(
-            "<link type=\"text/css\" rel=\"stylesheet\" href=\"assets/css/hljs-github.min.css\"/>",
-            "<link rel=\"stylesheet\" href=\"{% static 'article/assets/css/hljs-github.min.css' %}\"/>")
-        text = text.replace("</body>", "\
-        <script src=\"{% static 'home/assets/vendor/waypoints/jquery.waypoints.min.js' %}\"></script>\n\
-        <script src=\"{% static 'article/assets/js/main.js' %}\"></script>\n\
-        </body>")
-        pattern = re.compile(r'<title>(.*)</title>')
-        wrong_title = re.findall(pattern, text)[0]
-        text = text.replace(f"<title>{wrong_title}</title>",
-                            f"<title>{title.capitalize()}</title>")
-        f.write(text)
-
 def clean():
     # print(f"{os.getcwd()}/article/static/cache")
     # print('machin directory:', os.listdir(f"{os.getcwd()}/article/static"))
@@ -131,7 +92,7 @@ def read(request, title:str):
     elif title.endswith('.md'):
         with open(f"{os.getcwd()}/media/article/{title}", "r") as f:
             text = str(f.read())
-        return HttpResponse(text)
+        return HttpResponse(text, mimetype="text/markdown")
     elif title == "index":
         print("index is reserved")
         raise PermissionDenied

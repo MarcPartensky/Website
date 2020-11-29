@@ -55,6 +55,7 @@ urlpatterns = [
     path('cdn/', include('cdn.urls')),
     path('api/', include('api.urls')),
     path('article/', include('article.urls')),
+    path('explorer/', include('explorer.urls')),
     # path('404/', ViewDoesNotExist),
 ]
 

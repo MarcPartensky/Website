@@ -85,12 +85,20 @@ INSTALLED_APPS = [
     # 503 error: maintenance service unavailable
     # 'django_503',
 
+    # Compressor for scss to css
     'compressor',
 
+    # Preview Markdown
     'markdown_view',
 
+    # Messing with sockets and channels for chat
     'channels',
+
+    # Use ftp in production
     'django_ftpserver',
+
+    # Read sql data
+    'explorer',
 ]
 
 MIDDLEWARE = [
@@ -307,6 +315,12 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     ]
 }
+
+# SQL Explorer : https://pypi.org/project/django-sql-explorer/
+# EXPLORER_DEFAULT_CONNECTION = 'readonly'
+# EXPLORER_CONNECTIONS = {'Default': 'readonly'}
+EXPLORER_CONNECTIONS = { 'Default': 'default' }
+EXPLORER_DEFAULT_CONNECTION = 'default'
 
 
 django_heroku.settings(locals())
