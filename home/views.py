@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from . import models
 import requests
 import datetime
 import re
@@ -10,16 +11,38 @@ def home(request):
 
     text = requests.get('https://github.com/marcpartensky/').text
 
-    pattern = '<span title=\"(\d+)\" class="Counter ">\d+</span>'
-    context['github_repos_number'] = re.findall(pattern, text)[0]
+    url = 'https://api.github.com/users/marcpartensky'
+    d = requests.get(url).json()
 
-    pattern = '(\d+)</span>\n +followers'
-    context['github_followers'] = re.findall(pattern, text)[0]
+    context['github_repos_number'] = d['public_repos']
+    context['github_followers'] = d['followers']
+    # context['github_year_commits'] = d['followers']
 
-    pattern = '(\d+) contributions'
+    url = 'https://api.github.com/users/marcpartensky/events'
+    d = requests.get(url).json()
+
+    print(len(d))
+
+
+    # repos = requests.get('https://api.github.com/users/marcpartensky/repos').text
+    # context['github_repos_number']= len(repos)
+    # print(len(repos))
+
+    # r = requests.get('https://api.github.com/users/marcpartensky/followers')
+    # context['github_followers'] = len(r.text)
+
+
+    # pattern = '<span title=\"(\d+)\" class="Counter ">\d+</span>'
+    # context['github_repos_number'] = re.findall(pattern, text)[0]
+
+    # pattern = '(\d+)</span>\n +followers'
+    # context['github_followers'] = re.findall(pattern, text)[0]
+
+    pattern = '(,|\d)+ contributions'
     context['github_year_commits'] = re.findall(pattern, text)[0]
 
-    pattern = 'Created (\d+)\n +commits in\n +(\d+)\n +repositories'
+    pattern = 'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
+    print(text, re.findall(pattern, text))
     context['github_month_commits'] = re.findall(pattern, text)[0][0]
     context['github_month_commits_repos'] = re.findall(pattern, text)[0][1]
 
@@ -52,8 +75,13 @@ def resume(request):
     return render(request, 'home/resume.html', {})
 
 def mail_form(request):
-    pass
-    # return render()
+    """View that receives email adresses."""
+    try:
+        notified_mail = models.NotifiedMailList(request.POST['email'])
+        notified_mail.save()
+        return HttpResponse('Added to mail list successfully.')
+    except:
+        HttpResponse('Something went wrong', status=500)
 
 # HTTP Errors
 # def bad_request(request, exception):

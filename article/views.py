@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
 from django.template import loader
-from .models import ArticleModel
+from .models import Article
 import os
 import glob
 import random
@@ -9,6 +9,7 @@ from .adapt import adapt
 import time
 
 from django.template.loader import engines
+from django.views.decorators.csrf import csrf_exempt
 
 def reset_template_cache():
     print("engines:", engines)
@@ -16,11 +17,10 @@ def reset_template_cache():
         print('engine:', engine.engine.template_loaders[0])
         engine.engine.template_loaders[0].reset()
 
-class Article:
+class ArticleObject:
     @classmethod
-    def create(cls, title):
+    def create(cls, title:str):
         """Create an article given its title."""
-        print(title)
         with open(f"{os.getcwd()}/media/article/{title}", "r") as f:
             preview = str(f.read())[:496]+" ..."
         title = title.replace('.md', '')
@@ -36,7 +36,7 @@ class Article:
 def index(request):
     """Select or create an article."""
     titles = os.listdir(f"{os.getcwd()}/media/article")
-    articles = [Article.create(title) for title in titles if title!='.DS_Store']
+    articles = [ArticleObject.create(title) for title in titles if title!='.DS_Store']
     article = random.choice(articles)
     article.active = True
     context = dict(articles=articles)
@@ -123,3 +123,32 @@ def read(request, title:str):
     # print(html[:1000])
     # print("code generated")
     # return HttpResponse(html)
+
+@csrf_exempt
+def upload_article(request):
+    """Article """
+    print('received markdown')
+    if request.method == 'POST':
+        form = ArticleForm(request.POST,request.FILES)
+        file = str(form.files['file'])
+        filepath = f"{os.getcwd()}/media/article/{file}"
+        print('trying to post:', filepath)
+        content = form.files['file'].file.read().decode('utf-8')
+        lines = content.split('\n')
+        if lines[0].startswith('#!'):
+            lines = lines[1:]
+        content = '\n'.join(lines).strip()
+        with open(filepath, 'w') as f:
+            f.write(content)
+        if form.is_valid():
+            print(form)
+            form.save()
+            return HttpResponse('success')
+        else:
+            return HttpResponse('invalid form')
+    elif request.method == 'GET':
+        form = ArticleForm()
+        context = dict(form=form)
+        return render(request, 'api/upload.html', context)
+    else:
+        return HttpResponse('only get and post methods are allowed')

@@ -29,11 +29,13 @@ def test(request):
     return HttpResponse('test')
 
 def addition(request):
+    """Add a and b numbers together."""
     a = int(request.GET.get('a'))
     b = int(request.GET.get('b'))
     return HttpResponse(str(a+b))
 
 def random_req(request):
+    """Return a random number."""
     return HttpResponse(random.randint(0, 1000))
 
 class ExampleView(APIView):

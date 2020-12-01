@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from users.models import Profile
 
-class ArticleModel(models.Model):
+class Article(models.Model):
     """A model to store markdown files"""
 
     title = models.CharField(max_length = 80)
