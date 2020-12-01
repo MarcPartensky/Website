@@ -11,38 +11,39 @@ def home(request):
 
     text = requests.get('https://github.com/marcpartensky/').text
 
-    url = 'https://api.github.com/users/marcpartensky'
-    d = requests.get(url).json()
+    # url = 'https://api.github.com/users/marcpartensky'
+    # d = requests.get(url).json()
 
-    context['github_repos_number'] = d['public_repos']
-    context['github_followers'] = d['followers']
+    # context['github_repos_number'] = d['public_repos']
+    # context['github_followers'] = d['followers']
     # context['github_year_commits'] = d['followers']
 
-    url = 'https://api.github.com/users/marcpartensky/events'
-    d = requests.get(url).json()
+    # url = 'https://api.github.com/users/marcpartensky/events'
+    # d = requests.get(url).json()
 
-    print(len(d))
+    # print(len(d))
 
 
-    # repos = requests.get('https://api.github.com/users/marcpartensky/repos').text
-    # context['github_repos_number']= len(repos)
+    repos = requests.get('https://api.github.com/users/marcpartensky/repos').text
+    context['github_repos_number']= len(repos)
     # print(len(repos))
 
     # r = requests.get('https://api.github.com/users/marcpartensky/followers')
     # context['github_followers'] = len(r.text)
 
 
-    # pattern = '<span title=\"(\d+)\" class="Counter ">\d+</span>'
-    # context['github_repos_number'] = re.findall(pattern, text)[0]
+    pattern = '<span title=\"(\d+)\" class="Counter ">\d+</span>'
+    context['github_repos_number'] = re.findall(pattern, text)[0]
 
-    # pattern = '(\d+)</span>\n +followers'
-    # context['github_followers'] = re.findall(pattern, text)[0]
+    pattern = '(\d+)</span>\n +followers'
+    context['github_followers'] = re.findall(pattern, text)[0]
 
     pattern = '(,|\d)+ contributions'
+    # print(re.findall(pattern, text))
     context['github_year_commits'] = re.findall(pattern, text)[0]
 
     pattern = 'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
-    print(text, re.findall(pattern, text))
+    # print(text, re.findall(pattern, text))
     context['github_month_commits'] = re.findall(pattern, text)[0][0]
     context['github_month_commits_repos'] = re.findall(pattern, text)[0][1]
 
