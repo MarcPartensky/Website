@@ -92,13 +92,13 @@ INSTALLED_APPS = [
     'markdown_view',
 
     # Messing with sockets and channels for chat
-    # 'channels',
+    'channels',
 
     # Use ftp in production
-    # 'django_ftpserver',
+    'django_ftpserver',
 
     # Read sql data
-    # 'explorer',
+    'explorer',
 ]
 
 MIDDLEWARE = [

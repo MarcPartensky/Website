@@ -92,7 +92,7 @@ def read(request, title:str):
     elif title.endswith('.md'):
         with open(f"{os.getcwd()}/media/article/{title}", "r") as f:
             text = str(f.read())
-        return HttpResponse(text, mimetype="text/markdown")
+        return HttpResponse(text, content_type="text/markdown")
     elif title == "index":
         print("index is reserved")
         raise PermissionDenied
