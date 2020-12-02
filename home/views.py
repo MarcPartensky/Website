@@ -9,7 +9,6 @@ import re
 def home(request):
     context = dict(title='Website of Marc Partensky')
 
-    text = requests.get('https://github.com/marcpartensky/').text
 
     # url = 'https://api.github.com/users/marcpartensky'
     # d = requests.get(url).json()
@@ -24,28 +23,52 @@ def home(request):
     # print(len(d))
 
 
-    repos = requests.get('https://api.github.com/users/marcpartensky/repos').text
-    context['github_repos_number']= len(repos)
+    # repos = requests.get('https://api.github.com/users/marcpartensky/repos').text
+    # context['github_repos_number']= len(repos)
     # print(len(repos))
 
     # r = requests.get('https://api.github.com/users/marcpartensky/followers')
     # context['github_followers'] = len(r.text)
 
+    try:
+        text = requests.get('https://github.com/marcpartensky/').text
 
-    pattern = '<span title=\"(\d+)\" class="Counter ">\d+</span>'
-    context['github_repos_number'] = re.findall(pattern, text)[0]
+        pattern = '<span title=\"(\d+)\" class="Counter ">\d+</span>'
+        context['github_repos_number'] = re.findall(pattern, text)[0]
 
-    pattern = '(\d+)</span>\n +followers'
-    context['github_followers'] = re.findall(pattern, text)[0]
+        pattern = '(\d+)</span>\n +followers'
+        context['github_followers'] = re.findall(pattern, text)[0]
 
-    pattern = '(,|\d)+ contributions'
-    # print(re.findall(pattern, text))
-    context['github_year_commits'] = re.findall(pattern, text)[0]
+        pattern = '(,|\d)+ contributions'
+        # print(re.findall(pattern, text))
+        context['github_year_commits'] = re.findall(pattern, text)[0]
 
-    pattern = 'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
-    # print(text, re.findall(pattern, text))
-    context['github_month_commits'] = re.findall(pattern, text)[0][0]
-    context['github_month_commits_repos'] = re.findall(pattern, text)[0][1]
+        pattern = 'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
+        # print(text, re.findall(pattern, text))
+        context['github_month_commits'] = re.findall(pattern, text)[0][0]
+        context['github_month_commits_repos'] = re.findall(pattern, text)[0][1]
+    except:
+        context['github_repos_number'] = '<b>error<b>'
+        context['github_followers'] = '<b>error<b>'
+        context['github_year_commits'] = '<b>error<b>'
+        context['github_month_commits'] = '<b>error<b>'
+        context['github_month_commits_repos'] = '<b>error<b>'
+
+        text = requests.get('https://github.com/marcpartensky/').text
+
+        print(text)
+
+        pattern = '<span title=\"(\d+)\" class="Counter ">\d+</span>'
+        print(re.findall(pattern, text))
+
+        pattern = '(\d+)</span>\n +followers'
+        print(re.findall(pattern, text))
+
+        pattern = '(,|\d)+ contributions'
+        print(re.findall(pattern, text))
+
+        pattern = 'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
+        print(re.findall(pattern, text))
 
     if 'theme' in request.GET:
         context['theme'] = request.GET['theme']
