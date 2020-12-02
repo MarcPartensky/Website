@@ -44,31 +44,35 @@ def home(request):
         context['github_year_commits'] = re.findall(pattern, text)[0]
 
         pattern = 'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
-        # print(text, re.findall(pattern, text))
-        context['github_month_commits'] = re.findall(pattern, text)[0][0]
-        context['github_month_commits_repos'] = re.findall(pattern, text)[0][1]
+        print(text, re.findall(pattern, text))
+        result = re.findall(pattern, text)
+        context['github_month_commits'] = result[0][0]
+        context['github_month_commits_repos'] = result[0][1]
     except:
-        context['github_repos_number'] = '<b>error<b>'
-        context['github_followers'] = '<b>error<b>'
-        context['github_year_commits'] = '<b>error<b>'
-        context['github_month_commits'] = '<b>error<b>'
-        context['github_month_commits_repos'] = '<b>error<b>'
+        print('except')
+        context['github_repos_number'] = 0
+        context['github_followers'] = 0
+        context['github_year_commits'] = 0
+        context['github_month_commits'] = 0
+        context['github_month_commits_repos'] = 0
 
         text = requests.get('https://github.com/marcpartensky/').text
 
-        print(text)
+        # print(text)
 
-        pattern = '<span title=\"(\d+)\" class="Counter ">\d+</span>'
+        pattern = r'<span title=\"(\d+)\" class="Counter ">\d+</span>'
         print(re.findall(pattern, text))
 
-        pattern = '(\d+)</span>\n +followers'
+        pattern = r'(\d+)</span>\n +followers'
         print(re.findall(pattern, text))
 
-        pattern = '(,|\d)+ contributions'
+        pattern = r'(,|\d)+ contributions'
         print(re.findall(pattern, text))
 
-        pattern = 'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
+        pattern = r'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
         print(re.findall(pattern, text))
+    finally:
+        print('wtf')
 
     if 'theme' in request.GET:
         context['theme'] = request.GET['theme']
@@ -77,6 +81,7 @@ def home(request):
     url = 'https://api.github.com/repos/marcpartensky/website/commits'
     response = requests.get(url).json()
     context['date'] = response[0]['commit']['author']['date']
+    print(context)
     return render(request, 'home/home.html', context)
 
 def about(request):

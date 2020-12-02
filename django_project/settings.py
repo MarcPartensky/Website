@@ -13,8 +13,8 @@ import dj_database_url
 
 SESSION_COOKIE_SECURE = True
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-# DEBUG = False
+# DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+DEBUG = False
 # TEMPLATE_DEBUG = DEBUG
 # TEMPLATE_DEBUG = False
 
@@ -92,13 +92,13 @@ INSTALLED_APPS = [
     'markdown_view',
 
     # Messing with sockets and channels for chat
-    'channels',
+    # 'channels',
 
     # Use ftp in production
-    'django_ftpserver',
+    # 'django_ftpserver',
 
     # Read sql data
-    'explorer',
+    # 'explorer',
 ]
 
 MIDDLEWARE = [
