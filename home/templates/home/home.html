@@ -106,7 +106,7 @@
   <link href="{% static 'home/assets/vendor/aos/aos.css' %}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="/static/home/assets/css/{{theme}}.css" rel="stylesheet">
+  <link id="theme" href="/static/home/assets/css/{{theme}}.css" rel="stylesheet">
 
 </head>
 
@@ -130,7 +130,7 @@
 
       <!-- The main logo is shown in mobile version only. The centered nav-logo in nav menu is displayed in desktop view  -->
       <div class="logo d-block d-lg-none">
-          <a data-aos="fade-down" href="/" class="icon-back-to-top"><img src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a>
+          <a data-aos="fade-down" class="icon-back-to-top" onclick="toggleTheme()"><img src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
@@ -156,7 +156,7 @@
           <li class="active"><a href="#about">About me</a></li>
           <li><a href="#skills">Skills</a></li>
 
-          <li class="nav-logo" style="width: 15%; height: 15%"><a href="/"><img src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a></li>
+					<li class="nav-logo" style="width: 15%; height: 15%"><a onclick="toggleTheme()"><img id="theme-img" src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a></li>
 
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#certificates">Certificates</a></li>
@@ -1094,6 +1094,22 @@
     points: 20.00
   })
   </script>
+
+	<script>
+		// toggle the theme
+		function toggleTheme() {
+			var el = document.getElementById("theme");
+			console.log('click')
+			console.log(el)
+			if (el.href.match("{% static 'home/assets/css/light.css' %}")) {
+				el.href = "{% static 'home/assets/css/dark.css' %}";
+			}
+			else {
+				el.href = "{% static 'home/assets/css/light.css' %}";
+			}
+		}
+
+	</script>
 
   <!-- Template Main JS File -->
   <script src="{% static 'resume/assets/js/main.js' %}"></script>
