@@ -96,6 +96,10 @@ def cv(request):
     context = dict(title="CV of Marc Partensky")
     return render(request, 'home/cv.html', context)
 
+def cv_1p(request):
+    context = dict(title="CV of Marc Partensky")
+    return render(request, 'home/cv-1p.html', context)
+
 def contact(request):
     context = dict(title="Contact of Marc Partensky")
     return render(request, 'home/contact.html', context)
