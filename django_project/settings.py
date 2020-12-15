@@ -71,13 +71,13 @@ INSTALLED_APPS = [
     'storages',
     'crispy_forms',
 
-    #allauth stuff
+    # allauth stuff
     'django.contrib.sites',
-    'social_app',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    # 'social_app',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
 
     # cors stuff
     'corsheaders',
@@ -298,6 +298,9 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['GOOGLE_OAUTH2_KEY']
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['GOOGLE_OAUTH2_SECRET']
+
 
 # Channels
 ASGI_APPLICATION = 'django_project.routing.application'
