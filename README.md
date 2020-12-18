@@ -1,6 +1,6 @@
 # Website
 
-This is the code for my personal website.
+This is the code of my personal website.
 [https://websiteofmarcpartensky.herokuapp.com/](https://websiteofmarcpartensky.herokuapp.com/)
 
 ## Light theme
@@ -11,18 +11,19 @@ This is the code for my personal website.
 
 ## Install
 
-### Docker (still failing)
-```sh
-docker push marcpartensky/website
-```
-
-### From source
+### From [source](https://github.com/MarcPartensky/Website) (requires [git](https://git-scm.com/), [python](https://www.python.org/), [pip](https://pip.pypa.io/en/stable/installing/))
 ```sh
 git clone https://github.com/marcpartensky/website
 pip install -r requirements.txt
 gunicorn django_project.wsgi
 ```
+## Deploy
 
-## QR Code
+### With [Docker](docker.com)
+```sh
+docker run -it -e SECRET_KEY=[RANDOMSTRING] -p 8000:8000 marcpartensky/website
+```
+
+## Add me as a contact
 ![qrcode](./static/qrcode.svg)
 **Scan to add me as a contact**
