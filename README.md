@@ -23,7 +23,16 @@ gunicorn django_project.wsgi
 ```sh
 docker run -it -e SECRET_KEY=[RANDOMSTRING] -p 8000:8000 marcpartensky/website
 ```
+### Or
+
+```sh
+git clone https://github.com/marcpartensky/website
+docker-compose up
+```
 
 ## Add me as a contact
 ![qrcode](./static/qrcode.svg)
 **Scan to add me as a contact**
+
+## Useful links
+https://docs.docker.com/compose/gettingstarted/

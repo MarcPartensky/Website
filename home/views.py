@@ -1,99 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from home.context import hydrate, home, base
 
-from . import models
-import requests
-import datetime
-import re
-
-def home(request):
-    context = dict(title='Website of Marc Partensky')
-
-
-    # url = 'https://api.github.com/users/marcpartensky'
-    # d = requests.get(url).json()
-
-    # context['github_repos_number'] = d['public_repos']
-    # context['github_followers'] = d['followers']
-    # context['github_year_commits'] = d['followers']
-
-    # url = 'https://api.github.com/users/marcpartensky/events'
-    # d = requests.get(url).json()
-
-    # print(len(d))
-
-
-    # repos = requests.get('https://api.github.com/users/marcpartensky/repos').text
-    # context['github_repos_number']= len(repos)
-    # print(len(repos))
-
-    # r = requests.get('https://api.github.com/users/marcpartensky/followers')
-    # context['github_followers'] = len(r.text)
-
-    try:
-        text = requests.get('https://github.com/marcpartensky/').text
-
-        pattern = '<span title=\"(\d+)\" class="Counter ">\d+</span>'
-        context['github_repos_number'] = re.findall(pattern, text)[0]
-
-        pattern = '(\d+)</span>\n +followers'
-        context['github_followers'] = re.findall(pattern, text)[0]
-
-        pattern = '(,|\d)+ contributions'
-        # print(re.findall(pattern, text))
-        context['github_year_commits'] = re.findall(pattern, text)[0]
-
-        pattern = 'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
-        print(text, re.findall(pattern, text))
-        result = re.findall(pattern, text)
-        context['github_month_commits'] = result[0][0]
-        context['github_month_commits_repos'] = result[0][1]
-    except:
-        print('except')
-        context['github_repos_number'] = 0
-        context['github_followers'] = 0
-        context['github_year_commits'] = 0
-        context['github_month_commits'] = 0
-        context['github_month_commits_repos'] = 0
-
-        text = requests.get('https://github.com/marcpartensky/').text
-
-        # print(text)
-
-        pattern = r'<span title=\"(\d+)\" class="Counter ">\d+</span>'
-        print(re.findall(pattern, text))
-
-        pattern = r'(\d+)</span>\n +followers'
-        print(re.findall(pattern, text))
-
-        pattern = r'(,|\d)+ contributions'
-        print(re.findall(pattern, text))
-
-        pattern = r'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
-        print(re.findall(pattern, text))
-    finally:
-        print('wtf')
-
-    if 'theme' in request.GET:
-        context['theme'] = request.GET['theme']
-    else:
-        context['theme'] = 'light'
-    url = 'https://api.github.com/repos/marcpartensky/website/commits'
-    response = requests.get(url).json()
-    context['date'] = response[0]['commit']['author']['date']
-    print(context)
+@hydrate(home)
+def home(request, context):
     return render(request, 'home/home.html', context)
 
-def about(request):
-    context = dict(title="About Marc Partensky")
+@hydrate(base)
+def about(request, context={}):
+    context['title'] = "About Marc Partensky"
+    # context = dict(title="About Marc Partensky")
     return render(request, 'home/about.html', context)
 
+@hydrate(base)
 def donation(request):
     context = dict(title='Donate to Marc Partensky')
     return render(request, 'home/donation.html', context)
 
-def cv(request):
-    context = dict(title="CV of Marc Partensky")
+@hydrate(base)
+def cv(request, context):
+    context['title'] = "CV of Marc Partensky"
     return render(request, 'home/cv.html', context)
 
 def cv_1p(request):

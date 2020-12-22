@@ -303,7 +303,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 # Channels
-ASGI_APPLICATION = 'django_project.routing.application'
+ASGI_APPLICATION = 'django_project.asgi.application'
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',

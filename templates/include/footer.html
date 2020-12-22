@@ -1,0 +1,43 @@
+{% load static %}
+<footer id="footer">
+
+	<div class="footer-top">
+
+		<div class="container">
+
+			<div class="row justify-content-center">
+				<div class="col-lg-6">
+						<a href="#header" class="scrollto footer-logo"><img src="{% static 'home/assets/img/white-orchid.svg' %}" alt=""></a>
+					<h3>Marc Partensky</h3>
+					<p>If you wish to be notified about my activities enter your mail here.</p>
+				</div>
+			</div>
+
+			<div class="row footer-newsletter justify-content-center">
+				<div class="col-lg-6">
+				<form method="post">
+						<input id="email" type="email" name="email" placeholder="Enter your Email"><input type="submit" value="Subscribe">
+					</form>
+				</div>
+			</div>
+
+			<div class="social-links">
+				{% comment %}<a href="https://www.facebook.com/marc.partensky/" class="twitter"><i class="bx bxl-twitter"></i></a>{% endcomment %}
+				<a target="_blank" href="https://www.facebook.com/marc.partensky/" class="facebook"><i class="bx bxl-facebook"></i></a>
+				<a target="_blank" href="https://www.instagram.com/marcpartensky/" class="instagram"><i class="bx bxl-instagram"></i></a>
+				<a target="_blank" href="https://www.linkedin.com/in/marc-partensky/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+				<a target="_blank" href="github.com/marcpartensky/" class="github"><i class="bx bxl-github"></i></a>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container footer-bottom clearfix">
+		<div class="copyright">
+			&copy; Copyright <strong><span>Marc Partensky</span></strong>. All Rights Reserved
+		</div>
+		<div class="credits">
+			Designed by <a href="/">Marc Partensky</a>
+		</div>
+	</div>
+</footer>

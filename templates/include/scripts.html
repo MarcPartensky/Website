@@ -1,0 +1,46 @@
+{% load static %}
+<script src="{% static 'home/assets/vendor/jquery/jquery.min.js' %}"></script>
+<script async src="{% static 'home/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script async src="{% static 'home/assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+<script async src="{% static 'home/assets/vendor/php-email-form/validate.js' %}"></script>
+<script async src="{% static 'home/assets/vendor/jquery-sticky/jquery.sticky.js' %}"></script>
+<script async src="{% static 'home/assets/vendor/venobox/venobox.min.js' %}"></script>
+<script async src="{% static 'home/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script async src="{% static 'home/assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+<script async src="{% static 'home/assets/vendor/counterup/counterup.min.js' %}"></script>
+<script async src="{% static 'home/assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+<script async src="{% static 'home/assets/vendor/aos/aos.js' %}"></script>
+
+<script src="{% static 'base/three.r119.min.js' %}"></script>
+<script src="{% static 'base/vanta.net.min.js' %}"></script>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+
+<script>
+VANTA.NET({
+	el: "#footer",
+	mouseControls: true,
+	touchControls: true,
+	gyroControls: false,
+	minHeight: 200.00,
+	minWidth: 200.00,
+	scale: 1.00,
+	scaleMobile: 1.00,
+	color: 0x770000,
+	backgroundColor: 0x0,
+	points: 10.00
+})
+
+// toggle the theme
+function toggleTheme() {
+	var el = document.getElementById("theme");
+	console.log('click')
+	console.log(el)
+	if (el.href.match("{% static 'home/assets/css/light.css' %}")) {
+		el.href = "{% static 'home/assets/css/dark.css' %}";
+	}
+	else {
+		el.href = "{% static 'home/assets/css/light.css' %}";
+	}
+}
+
+</script>
