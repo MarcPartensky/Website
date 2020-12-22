@@ -20,6 +20,7 @@ gunicorn django_project.wsgi
 ## Deploy
 
 ### With [Docker](docker.com)
+> Build : > 10 minutes
 ```sh
 docker run -it -e SECRET_KEY=[RANDOMSTRING] -p 8000:8000 marcpartensky/website
 ```
