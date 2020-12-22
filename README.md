@@ -24,9 +24,9 @@ gunicorn django_project.wsgi
 docker run -it -e SECRET_KEY=[RANDOMSTRING] -p 8000:8000 marcpartensky/website
 ```
 ### Or
-
 ```sh
 git clone https://github.com/marcpartensky/website
+cd website
 docker-compose up
 ```
 
