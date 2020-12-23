@@ -4,9 +4,10 @@ services:
     env_file: .env
     build: .
     ports:
-      - "8000:8000"
-    volumes:
-      - .:/code
+      - "80:8000"
+      - "21:10021"
+    # volumes:
+    #   - .:.
     links:
       - redis
   redis:

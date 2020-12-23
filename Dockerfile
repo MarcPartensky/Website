@@ -11,5 +11,6 @@ COPY . .
 WORKDIR .
 
 EXPOSE 8000
+EXPOSE 10021
 
-ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8000", "django_project.wsgi"]
+ENTRYPOINT ["./run.sh"]

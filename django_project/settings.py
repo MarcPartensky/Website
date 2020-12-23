@@ -284,7 +284,7 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #allauth
 AUTHENTICATION_BACKENDS = (
  'django.contrib.auth.backends.ModelBackend',
- 'allauth.account.auth_backends.AuthenticationBackend',
+ # 'allauth.account.auth_backends.AuthenticationBackend',
 )
 SITE_ID = 1
 SOCIALACCOUNT_PROVIDERS = {
