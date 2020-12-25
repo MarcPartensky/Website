@@ -1,0 +1,454 @@
+{% extends 'layout/home.html' %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+<center>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div id="modal-dialog" class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-title">title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <center>
+            <div id="canvas">
+                <canvas id="mycanvas"></canvas>
+            </div>
+        </center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</center>
+<!-- JS code -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<!--JS below-->
+
+<!--<script src="lib/codemirror.js"></script>-->
+<!--<link rel="stylesheet" href="lib/codemirror.css">-->
+<!--<script src="mode/javascript/javascript.js"></script>-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.css" integrity="sha512-xIf9AdJauwKIVtrVRZ0i4nHP61Ogx9fSRAkCLecmE2dL/U8ioWpDvFCAy4dcfecN72HHB9+7FfQj3aiO68aaaw==" crossorigin="anonymous" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/dialog/dialog.min.css" integrity="sha512-Vogm+Cii1SXP5oxWQyPdkA91rHB776209ZVvX4C/i4ypcfBlWVRXZGodoTDAyyZvO36JlTqDqkMhVKAYc7CMjQ==" crossorigin="anonymous" />
+
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/theme/ayu-dark.min.css" integrity="sha512-3/qeNGuMFHa3JQVnHybYEdUbc0ktOoIqqkNiF+UpjroQ0StzmwFvMtEWL6Bt+9SUF6xgYYeW29x3SXC07MwvDw==" crossorigin="anonymous" />-->
+
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/theme/midnight.min.css" integrity="sha512-ZTF0X2l7PXEFDyP+MSOK0QM3Qh+C+lQ70Tqx4vQb3+6Uxh2lYkwmbSbpDmksZaX8w0sSz8ctVBnPSzAR1TQlzA==" crossorigin="anonymous" />-->
+
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/theme/solarized.min.css" integrity="sha512-9eh7EKENNB3CJcWthLysOUEcOw1hCVES0IoNcgLeKRgcG1j1HRNXST3b1i7SV/XQEFGAvg7RMm5XbHfdaA0juQ==" crossorigin="anonymous" />-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/theme/material-palenight.min.css" integrity="sha512-WcJFeiToPv3ZknO2qXQq505rxYSisraahZ9mdI04HHdx0x7nhr7VP4thoY1ub2GTYiVUEUpy+8tJ+kpgz8pt+A==" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.js" integrity="sha512-WWC1A/JchDFZ2ZGaNyMC7CmPFXGLI/6Ih7WN6YG0DX1NGMkW5lqCVFxCmEx3e56Z7iqdQGpO0f+m2t9CJhdb2Q==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/python/python.min.js" integrity="sha512-DS+asaww1mE0V/N6YGVgoNIRj+yXB9hAV68vM6rVeWs0G+OyMd24LKrnS4Z+g26rgghU7qvGeEnRVUArV7nVog==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/dialog/dialog.min.js" integrity="sha512-YU8ue8QADzIU/tOodVSM+D74vp1FICLl737eY54IbYYuu+ZsG/JEoZFgfUGOXWWyp3lo02wKTnPHrroWRy+Fgg==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/search/searchcursor.min.js" integrity="sha512-DVIRH6DkN3F/ZpyO69rw0Z4v2KmSXzt281MckBasGKgKfLSi2n4n5L0SByrLFZzZP1cunvJY8xkjhtZKk9k8HA==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/edit/matchbrackets.min.js" integrity="sha512-zgTUY40c9HFb3Kr25lTW3gpnSt+xVc0yWPYwa6Yu7kChiaOHfNlyA4bM8Y3YLzjeQfrNFy40UcbOE/Cmmb29nQ==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/keymap/vim.min.js" integrity="sha512-iisxvAO2iQQD52++It/lOo+oBpZT/S7j3NevR7Vp0317oGVv48FoEr2/yLqt8CcJmSrnzvM9Cu7EIR/jYhYp+A==" crossorigin="anonymous"></script>
+
+
+<!--
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+<script src="http://www.skulpt.org/js/skulpt.min.js" type="text/javascript"></script>
+<script src="http://www.skulpt.org/js/skulpt-stdlib.js" type="text/javascript"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@s524797336/skulpt@1.0.3/skulpt.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/@s524797336/skulpt@1.0.3/skulpt-stdlib.js" type="text/javascript"></script>
+-->
+
+
+<script src="https://petlja.github.io/pygame4skulpt/skulpt_dist/skulpt.min.js" type="text/javascript"></script>
+<script src="https://petlja.github.io/pygame4skulpt/skulpt_dist/skulpt-stdlib.js" type="text/javascript"></script>
+
+
+<style>
+#code {
+    height: 100%;
+}
+card {
+    margin: 2rem;
+}
+#modal-dialog {
+    width: 100%;
+    height: 100%;
+}
+#mycanvas {
+    width: 100%;
+}
+
+</style>
+
+
+<form id="code-form">
+    <textarea id="code" name="code">
+import pygame as pg
+from random import randint
+
+pg.init()
+side = 30
+w = 30
+h = 15
+disp = pg.display.set_mode((w * side, h * side))
+
+game_running = 0
+
+dirs = [pg.K_RIGHT, pg.K_DOWN, pg.K_LEFT, pg.K_UP]
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+snake = [(7, 3), (7, 4)]
+direction = 0
+
+
+def place_apple():
+    a = (randint(0, w - 1), randint(0, h - 1))
+    while a in snake:
+        a = (randint(0, w - 1), randint(0, h - 1))
+    return a
+
+
+apple = place_apple()
+
+
+def check_collisions():
+    head = snake[-1]
+    for i in range(len(snake) - 1):
+        if head == snake[i]:
+            return 2
+    if head[0] >= w or head[0] < 0:
+        return 3
+    if head[1] >= h or head[1] < 0:
+        return 3
+    if head == apple:
+        return 1
+    return 0
+
+
+clock = pg.time.Clock()
+f = pg.font.SysFont('console', 24, True)
+
+while True:
+    clock.tick(8)
+    for e in pg.event.get():
+        if e.type == pg.QUIT:
+            pg.quit()
+            break
+        if e.type == pg.KEYDOWN:
+            if game_running == 0:
+                game_runnig = 1
+            if e.key == pg.K_SPACE:
+                game_running = 0
+                snake = [(7, 3), (7, 4)]
+                direction = 0
+                apple = place_apple()
+            for i in range(4):
+                if e.key == dirs[i] and direction != (i + 2) % 4:
+                    direction = i
+    if game_running == 2:
+        disp.fill(pg.Color("black"))
+        disp.blit(f.render("Game over!", False, pg.Color("blue")), (3 * side, 3 * side))
+        pg.display.update()
+        game_running = 3
+    if game_running == 3:
+        continue
+    snake.append((snake[-1][0] + dx[direction], snake[-1][1] + dy[direction]))
+    coll = check_collisions()
+    if coll >= 2:
+        game_running = 2
+        pass
+    elif coll == 1:
+        apple = place_apple()
+        pass
+    elif coll == 0:
+        snake.pop(0)
+    disp.fill(pg.Color("black"))
+    for i in range(len(snake)):
+        pg.draw.rect(disp, pg.Color("green"), pg.Rect(snake[i][0] * side, snake[i][1] * side, side, side))
+    pg.draw.rect(disp, pg.Color("red"), pg.Rect(apple[0] * side, apple[1] * side, side, side))
+    pg.display.update()</textarea>
+</form>
+
+
+
+<div class="container">
+    <div class="card">
+        {% comment %}<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modal-canvas" type="submit" onclick="runit()">Run</button>{% endcomment %}
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" type="submit" onclick="runit()">Run</button>
+        {% comment %}<button type="button" class="btn btn-secondary" onclick="toggleFullscreen()">Fullscreen</button>{% endcomment %}
+        {% comment %}<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">{% endcomment %}
+          {% comment %}Launch demo modal{% endcomment %}
+        {% comment %}</button>{% endcomment %}
+
+        {% comment %}<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#canvas-modal">{% endcomment %}
+          {% comment %}Launch demo modal{% endcomment %}
+        {% comment %}</button>{% endcomment %}
+
+        <div class="card-body">
+            <div style="font-size: 13px; width: 300px; height: 30px;">Key buffer: <span id="command-display" class="badge badge-primary"></span></div>
+            <div style="font-size: 13px; width: 300px; height: 30px;">Vim mode: <span id="vim-mode" class="badge badge-info"></span></div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">filename</span>
+                </div>
+                <input id="filename" type="text" class="form-control" placeholder="script.py" aria-label="script.py" aria-describedby="basic-addon1">
+            </div>
+        </div>
+        {% comment %}<p class="card-text">{% endcomment %}
+            {% comment %}<small class="text-muted">{% endcomment %}
+                {% comment %}<p id="stderr"></p>{% endcomment %}
+            {% comment %}</small>{% endcomment %}
+        {% comment %}</p>{% endcomment %}
+        <div class="card-footer text-muted">
+            <code><pre id="output"></pre></code>
+        </div>
+
+    </div>
+</div>
+
+
+{% comment %}<div id="main-target"></div>{% endcomment %}
+
+{% comment %}<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Screen</button>{% endcomment %}
+
+<script>
+var basePath = 'https://cdn.rawgit.com/Petlja/pygame4skulpt/3435847b/pygame/';
+Sk.externalLibraries = {
+    pygame: {
+        path: basePath + '__init__.js',
+    },
+    'pygame.display': {
+        path: basePath + 'display.js',
+    },
+    'pygame.draw': {
+        path: basePath + 'draw.js',
+    },
+    'pygame.event': {
+        path: basePath + 'event.js',
+    },
+    'pygame.font': {
+        path: basePath + 'font.js',
+    },
+    'pygame.image': {
+        path: basePath + 'image.js',
+    },
+    'pygame.key': {
+        path: basePath + 'key.js',
+    },
+    'pygame.mouse': {
+        path: basePath + 'mouse.js',
+    },
+    'pygame.time': {
+        path: basePath + 'time.js',
+    },
+    'pygame.transform': {
+        path: basePath + 'transform.js',
+    },
+    'pygame.version': {
+        path: basePath + 'version.js',
+    },
+  numpy : {
+    path: 'https://raw.githubusercontent.com/ebertmi/skulpt_numpy/master/dist/numpy/__init__.js',
+    dependencies: ['https://raw.githubusercontent.com/ebertmi/skulpt_numpy/master/deps/math.js'],
+  },
+  'numpy.random' : {
+    path: 'https://raw.githubusercontent.com/ebertmi/skulpt_numpy/master/dist/numpy/random/__init__.js',
+    dependencies: ['https://raw.githubusercontent.com/ebertmi/skulpt_numpy/master/deps/math.js'],
+  },
+  matplotlib : {
+    path: 'https://raw.githubusercontent.com/ebertmi/skulpt_matplotlib/master/matplotlib/__init__.js',
+  },
+  'matplotlib.pyplot' : {
+    path: 'https://raw.githubusercontent.com/ebertmi/skulpt_matplotlib/master/matplotlib/pyplot/__init__.js',
+    dependencies: [
+      'https://raw.githubusercontent.com/ebertmi/skulpt_matplotlib/master/deps/d3.min.js',
+      'https://raw.githubusercontent.com/ebertmi/skulpt_matplotlib/master/deps/jquery.js',
+    ],
+  },
+  'turtle': {
+    path: 'https://raw.githubusercontent.com/trinketapp/turtle/master/__init__.js',
+  }
+};
+
+</script>
+
+<script>
+
+$(window).bind("resize", function(){
+    var w = $(window).width();
+    var h = $(window).height();
+
+    $("#mycanvas").css("width", w + "px");
+    $("#mycanvas").css("height", h + "px");
+});
+
+isFullscreen = false
+
+function toggleFullscreen() {
+    if (isFullscreen) {
+        //now i want to cancel fullscreen
+        document.webkitCancelFullScreen(); //Chrome
+        document.mozCancelFullScreen(); //Firefox
+    } else {
+        //using HTML5 for fullscreen (only newest Chrome + FF)
+        $("#mycanvas")[0].webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT); //Chrome
+        $("#mycanvas")[0].mozRequestFullScreen(); //Firefox
+    }
+
+}
+
+
+</script>
+
+<script>
+function saveTextAsFile() {
+  var textToWrite = editor.getValue();
+  var textFileAsBlob = new Blob([textToWrite], {
+    type: "text/plain;charset=utf-8"
+  });
+    var filename = document.getElementById('filename')
+  var fileNameToSaveAs = filename.value || filename.placeholder
+
+  var downloadLink = document.createElement("a");
+  downloadLink.download = fileNameToSaveAs;
+  downloadLink.innerHTML = "Download File";
+  if (window.webkitURL != null) {
+    // Chrome allows the link to be clicked
+    // without actually adding it to the DOM.
+    downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+  } else {
+    // Firefox requires the link to be added to the DOM
+    // before it can be clicked.
+    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+  }
+
+  downloadLink.click();
+}
+
+var input = document.getElementById("filename");
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        saveTextAsFile()
+    }
+});
+</script>
+
+
+<script>
+  CodeMirror.commands.save = saveTextAsFile;
+  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+    theme: "material-palenight",
+    lineNumbers: true,
+    mode: "text/x-python",
+    keyMap: "vim",
+    matchBrackets: true,
+    showCursorWhenSelecting: true
+  });
+  var commandDisplay = document.getElementById('command-display');
+  var keys = '';
+  CodeMirror.on(editor, 'vim-keypress', function(key) {
+    keys = keys + key;
+    commandDisplay.innerText = keys;
+  });
+  CodeMirror.on(editor, 'vim-command-done', function(e) {
+    keys = '';
+    commandDisplay.innerHTML = keys;
+  });
+  var vimMode = document.getElementById('vim-mode');
+  CodeMirror.on(editor, 'vim-mode-change', function(e) {
+    vimMode.innerText = JSON.stringify(e);
+  });
+</script>
+
+
+<script type="text/javascript">
+// output functions are configurable.  This one just appends some text
+// to a pre element.
+function outf(text) {
+    var mypre = document.getElementById("output");
+    mypre.innerHTML = mypre.innerHTML + text;
+}
+
+{% comment %}function builtinRead(x) {{% endcomment %}
+    {% comment %}if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined){% endcomment %}
+            {% comment %}throw "File not found: '" + x + "'";{% endcomment %}
+    {% comment %}return Sk.builtinFiles["files"][x];{% endcomment %}
+{% comment %}}{% endcomment %}
+
+
+function builtinRead(file) {
+  console.log("Attempting file: " + Sk.ffi.remapToJs(file));
+
+  {% comment %}if (externalLibs[file] !== undefined) {{% endcomment %}
+    {% comment %}return Sk.misceval.promiseToSuspension({% endcomment %}
+      {% comment %}fetch(externalLibs[file]).then({% endcomment %}
+        {% comment %}function (resp){ return resp.text(); }{% endcomment %}
+      {% comment %}));{% endcomment %}
+  {% comment %}}{% endcomment %}
+
+  if (Sk.builtinFiles === undefined || Sk.builtinFiles.files[file] === undefined) {
+    throw "File not found: '" + file + "'";
+  }
+
+  return Sk.builtinFiles.files[file];
+}
+
+// Here's everything you need to run a python program in skulpt
+// grab the code from your textarea
+// get a reference to your pre element for output
+// configure the output function
+// call Sk.importMainWithBody()
+
+
+
+Sk.main_canvas = document.getElementById("mycanvas");
+
+function runit() {
+
+    var modalTitle = document.getElementById('modal-title')
+    var filename = document.getElementById('filename')
+    modalTitle.innerHTML = filename.value || filename.placeholder
+
+   var prog = editor.getValue()
+   var output = document.getElementById("output");
+   output.innerHTML = '';
+   Sk.pre = "output";
+   Sk.configure({output:outf, read:builtinRead});
+   (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+
+    {% comment %}Sk.quitHandler = function () {{% endcomment %}
+        {% comment %}$('.modal').modal('hide');{% endcomment %}
+    {% comment %}};{% endcomment %}
+    {% comment %}addModal();{% endcomment %}
+
+   var myPromise = Sk.misceval.asyncToPromise(function() {
+       return Sk.importMainWithBody("<stdin>", false, prog, true);
+   });
+   myPromise.then(function(mod) {
+       console.log('success');
+   },
+   function(err) {
+       output.innerHTML = '<div class="alert alert-danger" role="alert">'+err.toString()+'</div>'
+   });
+}
+</script>
+
+{% endblock content%}
