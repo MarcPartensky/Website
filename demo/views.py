@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.clickjacking import xframe_options_exempt
+from home.context import hydrate, base
 
 import requests
 import os
@@ -15,47 +16,57 @@ from django.views.generic import (
 )
 
 @xframe_options_exempt
-def index(request):
-    demos = os.listdir(f'{os.getcwd()}/demo/templates/demo')
-    demos = [demo.split('.')[0] for demo in demos]
-    blacklist = ('', 'index', 'portfolio-details')
-    demos = [demo for demo in demos if not demo in blacklist]
-    context = dict(title=f"{len(demos)} Demonstration",
-                   demos=demos)
+@hydrate(base, debug=True)
+def index(request, context={}):
+    """List all demos available."""
+    # demos = os.listdir(f'{os.getcwd()}/demo/templates/demo')
+    # demos = [demo.split('.')[0] for demo in demos]
+    # blacklist = ('', 'index', 'portfolio-details')
+    # demos = [demo for demo in demos if not demo in blacklist]
+    context['title'] = f"Demonstrations of Marc Partensky"
+                   # demos=demos)
     return render(request, 'demo/index.html', context)
 
 @xframe_options_exempt
-def pixel_art(request):
+# @hydrate(base)
+def pixel_art(request, context={}):
     context = dict(title="Pixel-Art")
     return render(request, 'demo/pixel-art.html', context)
 
 @xframe_options_exempt
-def garage(request):
-    return render(request, 'demo/garage.html', {})
+# @hydrate(base)
+def garage(request, context={}):
+    return render(request, 'demo/garage.html', context)
 
 @xframe_options_exempt
-def calendar(request):
-    return render(request, 'demo/calendar.html', {})
+@hydrate(base)
+def calendar(request, context={}):
+    return render(request, 'demo/calendar.html', context)
 
 @xframe_options_exempt
-def google_calendar(request):
-    return render(request, 'demo/google-calendar.html', {})
+# @hydrate(base)
+def google_calendar(request, context={}):
+    return render(request, 'demo/google-calendar.html', context)
 
 @xframe_options_exempt
-def html(request):
-    return render(request, 'demo/html.html', {})
+# @hydrate(base)
+def html(request, context={}):
+    return render(request, 'demo/html.html', context)
 
 @xframe_options_exempt
-def qrcode(request):
-    return render(request, 'demo/qrcode.html', {})
+@hydrate(base)
+def qrcode(request, context={}):
+    return render(request, 'demo/qrcode.html', context)
 
 @xframe_options_exempt
-def discord(request):
-    return render(request, 'demo/discord.html', {})
+@hydrate(base)
+def discord(request, context={}):
+    return render(request, 'demo/discord.html', context)
 
 @xframe_options_exempt
-def todolist(request):
-    return render(request, 'demo/todolist.html', {})
+@hydrate(base)
+def todolist(request, context={}):
+    return render(request, 'demo/todolist.html', context)
 
 @xframe_options_exempt
 def orasa_beaute(request):

@@ -1,48 +1,40 @@
+import time
+import os
+import glob
+import random
+
 from django.shortcuts import render, HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
 from django.template import loader
 from .models import Article
-import os
-import glob
-import random
 from .adapt import adapt
-import time
 
 from django.template.loader import engines
 from django.views.decorators.csrf import csrf_exempt
 
+from home.context import home, hydrate
+from .context import get_articles_objects
+
+def get_article_context(request):
+    """Create the context of the article view."""
+    d = home(request)
+    d.update(get_articles_objects())
+    return d
+
 def reset_template_cache():
+    """Attempt to get rid of template caching of django."""
     print("engines:", engines)
     for engine in engines.all():
         print('engine:', engine.engine.template_loaders[0])
         engine.engine.template_loaders[0].reset()
 
-class ArticleObject:
-    @classmethod
-    def create(cls, title:str):
-        """Create an article given its title."""
-        with open(f"{os.getcwd()}/media/article/{title}", "r") as f:
-            preview = str(f.read())[:496]+" ..."
-        title = title.replace('.md', '')
-        return cls(title, preview)
-
-    def __init__(self, title, preview, active=False):
-        "Create an article given its title and preview."
-        self.title = title
-        self.preview = preview
-        self.active = active
-
-# Create your views here.
-def index(request):
+@hydrate(get_article_context)
+def index(request, context={}):
     """Select or create an article."""
-    titles = os.listdir(f"{os.getcwd()}/media/article")
-    articles = [ArticleObject.create(title) for title in titles if title!='.DS_Store']
-    article = random.choice(articles)
-    article.active = True
-    context = dict(articles=articles)
     return render(request, 'article/index.html', context)
 
 def clean():
+    """Remove the unused templates."""
     # print(f"{os.getcwd()}/article/static/cache")
     # print('machin directory:', os.listdir(f"{os.getcwd()}/article/static"))
     # print(os.listdir(f"{os.getcwd()}/article/static/cache"))
@@ -55,7 +47,8 @@ def clean():
         os.remove(file)
         print('after deleting templates', os.listdir(f"{os.getcwd()}/article/templates/cache"))
 
-def make(title:str, layout:str="marc"):
+def make(title: str, layout: str = "marc"):
+    """Build the template and its assets."""
     os.system(f"{os.getcwd()}/node_modules/.bin/generate-md --layout {layout}\
               --input {os.getcwd()}/media/article/{title}.md \
               --output {os.getcwd()}/article/templates/cache")
@@ -73,7 +66,7 @@ def make(title:str, layout:str="marc"):
     with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "w") as f:
         f.write(text)
 
-def read(request, title:str):
+def read(request, title: str):
     """Read an article."""
     reset_template_cache()
     clean()
@@ -126,7 +119,7 @@ def read(request, title:str):
 
 @csrf_exempt
 def upload_article(request):
-    """Article """
+    """Upload a new article."""
     print('received markdown')
     if request.method == 'POST':
         form = ArticleForm(request.POST,request.FILES)

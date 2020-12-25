@@ -1,83 +1,82 @@
 {% load static %}
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta name="revised" content="{{ date }}" />
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="revised" content="{{ date }}" />
 
-	{% if title %}
-		<title>{{ title }}</title>
-	{% else %}
-		<title> Marc Partensky </title>
-	{% endif %}
+{% if title %}
+	<title>{{ title }}</title>
+{% else %}
+	<title> Marc Partensky </title>
+{% endif %}
 
-  <!-- Basic Html Meta Tags -->
-  <meta content="Marc Partensky, marc.partensky@gmail.com" name="author">
-  <meta content="My name is Marc Partensky. i am 20 years old and i study at isep.
+<!-- Basic Html Meta Tags -->
+<meta content="Marc Partensky, marc.partensky@gmail.com" name="author">
+<meta content="My name is Marc Partensky. i am 20 years old and i study at isep.
 * actively looking for a job.
 * hyperactive on github.
 * 5 certificates in deep learning
 * fluent in english" name="description"/>
-  <meta content="My name is Marc Partensky. i am 20 years old and i study at isep.
+<meta content="My name is Marc Partensky. i am 20 years old and i study at isep.
 * actively looking for a job.
 * hyperactive on github.
 * 5 certificates in deep learning
 * fluent in english" name="keywords"/>
-  <meta name="theme-color" content="#000000" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="language" content="en">
-  <meta name="topic" content="promotion projects resume portfolio certificates">
-  <meta name="coverage" content="Worldwide">
-  <meta name="distribution" content="Global">
-  <meta name="subject" content="website of marc partensky">
-  <meta name="copyright"content="marc.partensky@gmail.com">
-  <meta name="reply-to" content="marc.partensky@gmail.com">
-  <meta name="designer" content="Marc Partensky">
-  <meta name="owner" content="Marc Partensky">
-  <meta name="url" content="https://websiteofmarcpartensky.herokuapp.com">
-  <meta name="identifier-URL" content="https://websiteofmarcpartensky.herokuapp.com">
-  <meta name="category" content="personal website">
+<meta name="theme-color" content="#000000" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="language" content="en">
+<meta name="topic" content="promotion projects resume portfolio certificates">
+<meta name="coverage" content="Worldwide">
+<meta name="distribution" content="Global">
+<meta name="subject" content="website of marc partensky">
+<meta name="copyright"content="marc.partensky@gmail.com">
+<meta name="reply-to" content="marc.partensky@gmail.com">
+<meta name="designer" content="Marc Partensky">
+<meta name="owner" content="Marc Partensky">
+<meta name="url" content="https://websiteofmarcpartensky.herokuapp.com">
+<meta name="identifier-URL" content="https://websiteofmarcpartensky.herokuapp.com">
+<meta name="category" content="personal website">
 
 <meta name="robots" content="index,follow" />
 <meta name="abstract" content="">
 <meta name="summary" content="">
 
-  <!-- OpenGraph Meta Tags -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://websiteofmarcpartensky.herokuapp.com"/>
-  <meta property="og:title" content="Website of Marc Partensky"/>
-  <meta property="og:name" content="Website of Marc Partensky"/>
-  <meta property="og:description" content="My name is Marc Partensky. i am 20 years old and i study at isep.
+<!-- OpenGraph Meta Tags -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://websiteofmarcpartensky.herokuapp.com"/>
+<meta property="og:title" content="Website of Marc Partensky"/>
+<meta property="og:name" content="Website of Marc Partensky"/>
+<meta property="og:description" content="My name is Marc Partensky. i am 20 years old and i study at isep.
 * actively looking for a job.
 * hyperactive on github.
 * 5 certificates in deep learning
 * fluent in english"/>
-  <meta property="og:image" content="{% static 'home/assets/img/welcome.png' %}"/>
-  <meta property="og:video" content="{% static 'home/assets/vid/welcome.mp4' %}"/>
-  <meta property="og:video:type" content="video/mp4">
-  <meta property="og:video:url" content="{% static 'home/assets/vid/welcome.mp4' %}" />
-  <meta property="og:video:secure_url" content="{% static 'home/assets/vid/welcome.mp4' %}" />
+<meta property="og:image" content="{% static 'home/assets/img/welcome.png' %}"/>
+<meta property="og:video" content="{% static 'home/assets/vid/welcome.mp4' %}"/>
+<meta property="og:video:type" content="video/mp4">
+<meta property="og:video:url" content="{% static 'home/assets/vid/welcome.mp4' %}" />
+<meta property="og:video:secure_url" content="{% static 'home/assets/vid/welcome.mp4' %}" />
 
-  <meta name="og:locality" content="Versailles"/>
-  <meta name="og:region" content="Île de France"/>
-  <meta name="og:postal-code" content="78000"/>
-  <meta name="og:country-name" content="France"/>
-  <meta name="og:email" content="marc.partensky@gmail.com"/>
-  <meta name="og:phone_number" content="07 67 44 36 62"/>
+<meta name="og:locality" content="Versailles"/>
+<meta name="og:region" content="Île de France"/>
+<meta name="og:postal-code" content="78000"/>
+<meta name="og:country-name" content="France"/>
+<meta name="og:email" content="marc.partensky@gmail.com"/>
+<meta name="og:phone_number" content="07 67 44 36 62"/>
 
-  <!-- Apple -->
-  <meta name="apple-mobile-web-app-title" content="Website of Marc Partensky">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta content="yes" name="apple-touch-fullscreen" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <link rel="apple-touch-startup-image" href="{% static 'home/assets/img/welcome.png' %}">
-  <link rel="apple-touch-icon" type="image/png" href="{% static 'home/assets/img/welcome.png' %}" />
+<!-- Apple -->
+<meta name="apple-mobile-web-app-title" content="Website of Marc Partensky">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta content="yes" name="apple-touch-fullscreen" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-startup-image" href="{% static 'home/assets/img/welcome.png' %}">
+<link rel="apple-touch-icon" type="image/png" href="{% static 'home/assets/img/welcome.png' %}" />
 
-  <!-- Internet explorer -->
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta name="msapplication-starturl" content="https://websiteofmarcpartensky.herokuapp.com"/>
-  <meta name="application-name" content="Website of Marc Partensky"/>
+<!-- Internet explorer -->
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="msapplication-starturl" content="https://websiteofmarcpartensky.herokuapp.com"/>
+<meta name="application-name" content="Website of Marc Partensky"/>
 
-  <link rel='index' title='Website of Marc Partensky' href='https://websiteofmarcpartensky.herokuapp.com' />
+<link rel='index' title='Website of Marc Partensky' href='https://websiteofmarcpartensky.herokuapp.com' />
 
 <!-- Icons -->
 <link rel="stylesheet" href="{% static 'base/devicon.min.css' %}">
@@ -85,29 +84,27 @@
 
 <style>
 .icon-language {
-    font-size: 5rem;
+	font-size: 5rem;
 }
 .iconify {
-    font-size: 5rem;
+	font-size: 5rem;
 }
 </style>
 
-  <!-- Favicons -->
-  <link href="{% static 'home/assets/img/white-orchid.svg' %}" type="image/png" rel="icon">
-  <link href="{% static 'home/assets/img/black-orchid.svg' %}" type="image/png" rel="apple-touch-icon">
+<!-- Favicons -->
+<link href="{% static 'home/assets/img/white-orchid.svg' %}" type="image/png" rel="icon">
+<link href="{% static 'home/assets/img/black-orchid.svg' %}" type="image/png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'home/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'home/assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
-  <link href="{% static 'home/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'home/assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
-  <link href="{% static 'home/assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-  <link href="{% static 'home/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+<!-- Vendor CSS Files -->
+<link href="{% static 'home/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'home/assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+<link href="{% static 'home/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+<link href="{% static 'home/assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+<link href="{% static 'home/assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+<link href="{% static 'home/assets/vendor/aos/aos.css' %}" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link id="theme" href="/static/home/assets/css/{{theme}}.css" rel="stylesheet">
-
-</head>
+<!-- Template Main CSS File -->
+<link id="theme" href="/static/home/assets/css/{{theme}}.css" rel="stylesheet">

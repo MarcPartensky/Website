@@ -1,8 +1,13 @@
-from . import models
-import requests
-import datetime
+"""Return the context of the views in the home section."""
+
+# import datetime
 import re
 import os
+
+import requests
+
+from article.context import get_articles
+
 
 def get_github_info():
     """Use github api to fetch informations about my account."""
@@ -31,22 +36,22 @@ def get_github_info():
     try:
         text = requests.get('https://github.com/marcpartensky/').text
 
-        pattern = '<span title=\"(\d+)\" class="Counter ">\d+</span>'
+        pattern = r'<span title=\"(\d+)\" class="Counter ">\d+</span>'
         context['github_repos_number'] = re.findall(pattern, text)[0]
 
-        pattern = '(\d+)</span>\n +followers'
+        pattern = r'(\d+)</span>\n +followers'
         context['github_followers'] = re.findall(pattern, text)[0]
 
-        pattern = '(,|\d)+ contributions'
+        pattern = r'(,|\d)+ contributions'
         # print(re.findall(pattern, text))
         context['github_year_commits'] = re.findall(pattern, text)[0]
 
-        pattern = 'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
+        pattern = r'Created (,|\d+)+\n +commits? in\n +(,|\d+)+\n +repositor(ies|y)'
         # print(text, re.findall(pattern, text))
         result = re.findall(pattern, text)
         context['github_month_commits'] = result[0][0]
         context['github_month_commits_repos'] = result[0][1]
-    except:
+    except Exception:
         # print('except')
         context['github_repos_number'] = 0
         context['github_followers'] = 0
@@ -93,9 +98,9 @@ def get_demos():
     demos = [demo for demo in demos if not demo in blacklist]
     return dict(demos=demos)
 
-def get_articles():
-    """Return the articles."""
-    return {}
+# def get_articles():
+#     """Return the articles."""
+#     return {}
 
 
 def get_games():
@@ -131,28 +136,17 @@ def base(request):
 #     return d
 
 
-def hydrate(*context_getters):
+def hydrate(*context_getters, debug=False):
     """Double decorator that updates the context."""
     def view_decorator(view):
         """Dec"""
-        def view_decorated(request, context={}):
+        def view_decorated(request, context: dict = {}):
             """Decorated view."""
             context_hydrated = {}
             for context_getter in context_getters:
                 context_hydrated.update(context_getter(request))
             context.update(context_hydrated)
+            if debug: print(context)
             return view(request, context)
         return view_decorated
     return view_decorator
-
-
-
-
-
-
-
-
-
-
-
-

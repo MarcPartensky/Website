@@ -2,7 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% include 'include/head.html' %}
+<head>
+	{% include 'include/head.html' %}
+	{% block styles %}
+	{% endblock styles %}
+</head>
 
 <body>
   <!-- ======= Header ======= -->
@@ -10,8 +14,8 @@
   <!-- End Header -->
 
   <main id="main">
-      {% block content %}
-      {% endblock content %}
+		{% block content %}
+		{% endblock content %}
   </main><!-- End #main -->
 
 	<!-- Footer -->
@@ -26,7 +30,6 @@
 	<!-- Template Main JS File -->
   {% block script %}
   {% endblock script %}
-
 </body>
 
 </html>

@@ -1,8 +1,7 @@
 {% extends "layout/home.html" %}
 {% load static %}
 
-{% block head %}
-
+{% block styles %}
 <style>
 .dropzone {
   border: 2px dashed #dedede;
@@ -33,9 +32,11 @@
     padding: 1rem;
 }
 
+#preview {
+	padding: 1em;
+}
 </style>
-
-{% endblock head %}
+{% endblock styles %}
 
 {% block content %}
 
@@ -68,8 +69,8 @@
             <div class="tab-pane fade {% if article.active %}show active{% endif %}" id="content-{{ article.title }}" role="tabpanel" aria-labelledby="list-home-list"><a href="/article/{{ article.title }}">
                     <button type="button" class="btn btn-success btn-lg btn-block">Read</button>
                 </a>
-                <!-- <pre>{{ article.preview }}</pre> -->
-                <iframe src="/article/{{article}}"></iframe>
+                <pre id="preview">{{ article.preview }}</pre>
+                {#<iframe src="/article/{{article}}"></iframe>#}
               </div>
         {% endfor %}
         </div>
