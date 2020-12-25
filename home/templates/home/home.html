@@ -1,7 +1,119 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-	{% include 'include/head.html' %}
+	{#{% include 'include/head.html' %}#}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="revised" content="{{ date }}" />
+
+	{% if title %}
+		<title>{{ title }}</title>
+	{% else %}
+		<title> Marc Partensky </title>
+	{% endif %}
+
+  <!-- Basic Html Meta Tags -->
+  <meta content="Marc Partensky, marc.partensky@gmail.com" name="author">
+  <meta content="My name is Marc Partensky. i am 20 years old and i study at isep.
+* actively looking for a job.
+* hyperactive on github.
+* 5 certificates in deep learning
+* fluent in english" name="description"/>
+  <meta content="My name is Marc Partensky. i am 20 years old and i study at isep.
+* actively looking for a job.
+* hyperactive on github.
+* 5 certificates in deep learning
+* fluent in english" name="keywords"/>
+  <meta name="theme-color" content="#000000" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="language" content="en">
+  <meta name="topic" content="promotion projects resume portfolio certificates">
+  <meta name="coverage" content="Worldwide">
+  <meta name="distribution" content="Global">
+  <meta name="subject" content="website of marc partensky">
+  <meta name="copyright"content="marc.partensky@gmail.com">
+  <meta name="reply-to" content="marc.partensky@gmail.com">
+  <meta name="designer" content="Marc Partensky">
+  <meta name="owner" content="Marc Partensky">
+  <meta name="url" content="https://websiteofmarcpartensky.herokuapp.com">
+  <meta name="identifier-URL" content="https://websiteofmarcpartensky.herokuapp.com">
+  <meta name="category" content="personal website">
+
+<meta name="robots" content="index,follow" />
+<meta name="abstract" content="">
+<meta name="summary" content="">
+
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://websiteofmarcpartensky.herokuapp.com"/>
+  <meta property="og:title" content="Website of Marc Partensky"/>
+  <meta property="og:name" content="Website of Marc Partensky"/>
+  <meta property="og:description" content="My name is Marc Partensky. i am 20 years old and i study at isep.
+* actively looking for a job.
+* hyperactive on github.
+* 5 certificates in deep learning
+* fluent in english"/>
+  <meta property="og:image" content="{% static 'home/assets/img/welcome.png' %}"/>
+  <meta property="og:video" content="{% static 'home/assets/vid/welcome.mp4' %}"/>
+  <meta property="og:video:type" content="video/mp4">
+  <meta property="og:video:url" content="{% static 'home/assets/vid/welcome.mp4' %}" />
+  <meta property="og:video:secure_url" content="{% static 'home/assets/vid/welcome.mp4' %}" />
+
+  <meta name="og:locality" content="Versailles"/>
+  <meta name="og:region" content="Île de France"/>
+  <meta name="og:postal-code" content="78000"/>
+  <meta name="og:country-name" content="France"/>
+  <meta name="og:email" content="marc.partensky@gmail.com"/>
+  <meta name="og:phone_number" content="07 67 44 36 62"/>
+
+  <!-- Apple -->
+  <meta name="apple-mobile-web-app-title" content="Website of Marc Partensky">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta content="yes" name="apple-touch-fullscreen" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-startup-image" href="{% static 'home/assets/img/welcome.png' %}">
+  <link rel="apple-touch-icon" type="image/png" href="{% static 'home/assets/img/welcome.png' %}" />
+
+  <!-- Internet explorer -->
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="msapplication-starturl" content="https://websiteofmarcpartensky.herokuapp.com"/>
+  <meta name="application-name" content="Website of Marc Partensky"/>
+
+  <link rel='index' title='Website of Marc Partensky' href='https://websiteofmarcpartensky.herokuapp.com' />
+
+<!-- Icons -->
+<link rel="stylesheet" href="{% static 'base/devicon.min.css' %}">
+<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+<style>
+.icon-language {
+    font-size: 5rem;
+}
+.iconify {
+    font-size: 5rem;
+}
+</style>
+
+  <!-- Favicons -->
+  <link href="{% static 'home/assets/img/white-orchid.svg' %}" type="image/png" rel="icon">
+  <link href="{% static 'home/assets/img/black-orchid.svg' %}" type="image/png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'home/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link id="theme" href="/static/home/assets/css/{{theme}}.css" rel="stylesheet">
+
+</head>
 <body>
 
   <!-- ======= Hero Section ======= -->
@@ -17,7 +129,80 @@
   </section><!-- End Hero -->
 
   <!-- ======= Header ======= -->
-	{% include 'include/header.html' %}
+	{#{% include 'include/header.html' %}#}
+  <header id="header" class="d-flex align-items-center">
+    <div class="container">
+
+      <!-- The main logo is shown in mobile version only. The centered nav-logo in nav menu is displayed in desktop view  -->
+      <div class="logo d-block d-lg-none">
+          <a data-aos="fade-down" class="icon-back-to-top" onclick="toggleTheme()"><img src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul class="nav-inner">
+
+          <li class="drop-down"><a href="">Explore</a>
+            <ul>
+              <li class="drop-down"><a href="{% url 'demo' %}">Demos</a>
+                <ul>
+									{% for demo in demos %}
+									<li><a href="/demo/{{ demo }}">{{ demo }}</a></li>
+									{% empty %}
+									<li>No demo for now.</li>
+									{% endfor %}
+                </ul>
+							</li>
+              <li class="drop-down"><a href="{% url 'article' %}">Articles</a>
+                <ul>
+									{% for article in articles %}
+									<li><a href="/article/{{ article }}">{{ article }}</a></li>
+									{% empty %}
+									<li>No article for now.</li>
+									{% endfor %}
+                </ul>
+							</li>
+              <li><a href="{% url 'touch-typing' %}">Touch typing</a></li>
+              <li><a href="{% url 'planning' %}">Planning</a></li>
+              <li><a href="{% url 'first-site' %}">First site</a></li>
+              <li class="drop-down"><a href="{% url 'game' %}">Games</a>
+								<ul>
+									{% for game in games %}
+									<li><a href="/game/{{ game }}">{{ game }}</a></li>
+									{% empty %}
+									<li>No game for now.</li>
+									{% endfor %}
+								</ul>
+							</li>
+              <li><a href="{% url 'blog-home' %}">Blog</a></li>
+              <li class="drop-down"><a href="{% url 'cv' %}">Curriculum Vitae</a>
+                <ul>
+									<li><a href="/cv/1p">1 page version</a></li>
+									<li><a href="/cv/2p">2 pages version</a></li>
+                </ul>
+							</li>
+              <!-- <li class="drop-down"><a href="#">Projects</a> -->
+              <!--   <ul> -->
+              <!--     <li><a href="#">Not</a></li> -->
+              <!--     <li><a href="#">Available</a></li> -->
+              <!--   </ul> -->
+              </li>
+            </ul>
+          </li>
+          <li class="active"><a href="#about">About me</a></li>
+          <li><a href="#skills">Skills</a></li>
+
+					<li class="nav-logo" style="width: 15%; height: 15%"><a onclick="toggleTheme()"><img id="theme-img" src="{% static 'home/assets/img/black-orchid.svg' %}" alt="" class="img-fluid"></a></li>
+
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#certificates">Certificates</a></li>
+          <li><a href="#contact">Contact</a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header>
+
 	<!-- End Header -->
 
   <main id="main">
@@ -226,10 +411,16 @@
             <div class="tab-content">
               <div class="tab-pane active show" id="tab-1">
                 <figure>
-                    <iframe async id="open-web-calendar">Loading...</iframe>
+                    <!-- <iframe async id="open-web-calendar">Loading...</iframe> -->
+                    <iframe async id="open-web-calendar"
+                        style="center center no-repeat"
+												src="https://open-web-calendar.herokuapp.com/calendar.html?specification_url=https://gist.githubusercontent.com/MarcPartensky/1c20873acf6a628bd38b4ace58527838/raw/facf84c8caf648ca19c554043c685fec77865134/calendar.json"
+                        sandbox="allow-scripts allow-same-origin allow-top-navigation"
+                        allowTransparency="true" scrolling="no"
+                        frameborder="0" height="600px" width="100%"></iframe>
                     <!-- <iframe async id="open-web-calendar" -->
                     <!--     style="center center no-repeat" -->
-                    <!--     src="https://open-web-calendar.herokuapp.com/calendar.html?url=https%3A%2F%2Fcalendar.google.com%2Fcalendar%2Fical%2Fmarc.partensky%2540gmail.com%2Fpublic%2Fbasic.ics&amp;language=fr" -->
+                    <!--     src="https://open-web-calendar.herokuapp.com/calendar.html?specification=https://gist.githubusercontent.com/MarcPartensky/1c20873acf6a628bd38b4ace58527838/raw/facf84c8caf648ca19c554043c685fec77865134/calendar.json" -->
                     <!--     sandbox="allow-scripts allow-same-origin allow-top-navigation" -->
                     <!--     allowTransparency="true" scrolling="no" -->
                     <!--     frameborder="0" height="600px" width="100%"></iframe> -->
@@ -867,7 +1058,49 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-	{% include 'include/footer.html' %}
+	{#{% include 'include/footer.html' %}#}
+	<footer id="footer">
+
+		<div class="footer-top">
+
+			<div class="container">
+
+				<div class="row justify-content-center">
+					<div class="col-lg-6">
+							<a href="#header" class="scrollto footer-logo"><img src="{% static 'home/assets/img/white-orchid.svg' %}" alt=""></a>
+						<h3>Marc Partensky</h3>
+						<p>If you wish to be notified about my activities enter your mail here.</p>
+					</div>
+				</div>
+
+				<div class="row footer-newsletter justify-content-center">
+					<div class="col-lg-6">
+					<form method="post">
+							<input id="email" type="email" name="email" placeholder="Enter your Email"><input type="submit" value="Subscribe">
+						</form>
+					</div>
+				</div>
+
+				<div class="social-links">
+					{% comment %}<a href="https://www.facebook.com/marc.partensky/" class="twitter"><i class="bx bxl-twitter"></i></a>{% endcomment %}
+					<a target="_blank" href="https://www.facebook.com/marc.partensky/" class="facebook"><i class="bx bxl-facebook"></i></a>
+					<a target="_blank" href="https://www.instagram.com/marcpartensky/" class="instagram"><i class="bx bxl-instagram"></i></a>
+					<a target="_blank" href="https://www.linkedin.com/in/marc-partensky/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+					<a target="_blank" href="github.com/marcpartensky/" class="github"><i class="bx bxl-github"></i></a>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="container footer-bottom clearfix">
+			<div class="copyright">
+				&copy; Copyright <strong><span>Marc Partensky</span></strong>. All Rights Reserved
+			</div>
+			<div class="credits">
+				Designed by <a href="/">Marc Partensky</a>
+			</div>
+		</div>
+	</footer>
 	<!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
@@ -876,7 +1109,7 @@
 	{% include 'include/scripts.html' %}
 
   <!-- Template Main JS File -->
-  <!-- <script src="{% static 'resume/assets/js/main.js' %}"></script> -->
+	{#<script src="{% static 'resume/assets/js/main.js' %}"></script>#}
   <script src="{% static 'home/assets/js/main.js' %}"></script>
 
 </body>

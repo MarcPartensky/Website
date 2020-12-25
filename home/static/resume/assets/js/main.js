@@ -4,8 +4,10 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-!(function($) {
+function resume($) {
   "use strict";
+
+	console.log('function resume');
 
   // Hero typed
   if ($('.typed').length) {
@@ -189,5 +191,10 @@
   $(window).on('load', function() {
     aos_init();
   });
+}
 
-})(jQuery);
+$(document).ready(function() {
+	console.log('resume main.js')
+	resume($);
+});
+
