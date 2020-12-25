@@ -421,7 +421,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 3px;
   transition: 0.5s;
   margin: 10px;
-  color: #whitesmoke;
+  color: whitesmoke;
   background: #7cc576;
 }
 
@@ -610,7 +610,6 @@ section {
 --------------------------------------------------------------*/
 .why-us {
   background: #040610;
-  padding: 0;
 }
 
 .why-us .content {
