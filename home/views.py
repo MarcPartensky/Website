@@ -1,41 +1,43 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-# from home.context import hydrate, home, base
-from home.context import home as get_home_context
-from home.context import base as get_base_context
+from home.context import hydrate, home, base
+# from home.context import home as get_home_context
+# from home.context import base as get_base_context
 
-# @hydrate(home)
-def home(request):
-    context = get_home_context(request)
+@hydrate(home)
+def home(request, context={}):
+    # context = get_home_context(request)
     print(context)
     return render(request, 'home/home.html', context)
 
-# @hydrate(base)
+@hydrate(base)
 def about(request, context={}):
     context['title'] = "About Marc Partensky"
-    # context = dict(title="About Marc Partensky")
     return render(request, 'home/about.html', context)
 
-# @hydrate(base)
-def donation(request):
-    context = dict(title='Donate to Marc Partensky')
+@hydrate(base)
+def donation(request, context={}):
+    context['title'] = "Donate to Marc Partensky"
     return render(request, 'home/donation.html', context)
 
-# @hydrate(base)
+@hydrate(base)
 def cv(request, context={}):
     context['title'] = "CV of Marc Partensky"
     return render(request, 'home/cv.html', context)
 
-def cv_1p(request):
-    context = get_base_context(request)
+@hydrate(base)
+def cv_1p(request, context={}):
+    # context = get_base_context(request)
     context['title'] = "CV of Marc Partensky"
     return render(request, 'home/cv-1p.html', context)
 
-def contact(request):
-    context = dict(title="Contact of Marc Partensky")
+@hydrate(base)
+def contact(request, context={}):
+    context['title'] = "Contact Marc Partensky"
     return render(request, 'home/contact.html', context)
 
-def resume(request):
+@hydrate(base)
+def resume(request, context={}):
     return render(request, 'home/resume.html', {})
 
 def mail_form(request):
