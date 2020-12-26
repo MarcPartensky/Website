@@ -1,0 +1,23 @@
+setup:
+  pip install -r requirements.txt
+  npm install --save
+update:
+  pipupgrade
+  npm update
+start:
+  source env/bin/activate
+stop:
+  deactivate
+run:
+  ./manage.py runserver
+commit:
+  git add -A
+  git commit -m "$@"
+push:
+  git push github main
+deploy:
+  git push heroku main
+pull:
+  git pull github main
+build:
+  docker build . -t marcpartensky/website

@@ -1,5 +1,0 @@
-git add -A
-git commit -m "build minutes"
-[master 33a9d3d] build minutes
- 2 files changed, 2 insertions(+)
- create mode 100644 10

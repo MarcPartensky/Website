@@ -14,7 +14,7 @@ def script(request, context: dict = {}):
 
 def user(request, user: str, context: dict = {}):
     """Render a user."""
-    return render(request, 'editor/user.html' context)
+    return render(request, 'editor/user.html', context)
 
 def project(request,
             user: str,
@@ -29,5 +29,5 @@ def file(request,
          filepath: str,
          context: dict = {}):
     """Render a file."""
-    return render(request, 'editor/file.html')
+    return render(request, 'editor/file.html', context)
 
