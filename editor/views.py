@@ -1,30 +1,65 @@
 """Coding app so that I can code anywhere."""
 
 from django.shortcuts import render
-from home.context import hydrate, home
+from .models import Script
+from home.context import hydrate
+from home.context import fake_base as base
+from django.contrib.auth.decorators import login_required
+
+print(base.__doc__)
 
 class OnlyGetAndPost(Exception):
+    """Exception retured when requesting a view only compatible with GET and
+    POST methods."""
     def __str__(self):
         return "Only get and post exceptions are supported."
 
 
-@hydrate(home)
+@hydrate(base)
 def index(request, context: dict = {}):
     """Render all code projects."""
     return render(request, 'editor/index.html', context)
 
-def script(request, context: dict = {}):
+@hydrate(base)
+def script_index(request, context: dict = {}):
+    """Render a list of scripts."""
+    scripts = Script.objects.all()
+    context['scripts'] = scripts
+    return render(request, 'editor/script_index.html', context)
+
+@login_required
+@hydrate(base)
+def script(request, title: str, context: dict = {}):
     """Render a script."""
     if request.method == 'GET':
+        scripts = Script.objects.filter(title=title)
+        if scripts:
+            # Use the script found.
+            script = scripts[0]
+        else:
+            # Create a new script if one does not exist.
+            script = Script(title=title, author=request.user)
+            script.save()
+        context['script'] = script
         return render(request, 'editor/script.html', context)
     elif request.method == 'POST':
+        print(f'attempting to post {title}')
+        for (k,v) in request.POST.items():
+            print(k, '=', v)
+        # print(request.)
         pass
     else:
         raise OnlyGetAndPost
 
+@hydrate(base)
 def user(request, user: str, context: dict = {}):
     """Render a user."""
     return render(request, 'editor/user.html', context)
+
+@hydrate(base)
+def user_index(request, context: dict = {}):
+    """Render a list of developers."""
+    return render(request, 'editor/user_index.html', context)
 
 def project(request,
             user: str,
@@ -33,6 +68,7 @@ def project(request,
     """Render a code project."""
     return render(request, 'editor/project.html', context)
 
+@hydrate(base)
 def file(request,
          user: str,
          project: str,

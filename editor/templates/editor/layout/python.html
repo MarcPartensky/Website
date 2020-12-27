@@ -1,42 +1,14 @@
 {% extends 'layout/home.html' %}
 
-{% block content %}
-
+{% block styles %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-
-<center>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div id="modal-dialog" class="modal-dialog modal-xl modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modal-title">title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <center>
-            <div id="canvas">
-                <canvas id="mycanvas"></canvas>
-            </div>
-        </center>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-</center>
-<!-- JS code -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-<!--JS below-->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
 
 <!--<script src="lib/codemirror.js"></script>-->
 <!--<link rel="stylesheet" href="lib/codemirror.css">-->
 <!--<script src="mode/javascript/javascript.js"></script>-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.css" integrity="sha512-xIf9AdJauwKIVtrVRZ0i4nHP61Ogx9fSRAkCLecmE2dL/U8ioWpDvFCAy4dcfecN72HHB9+7FfQj3aiO68aaaw==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.css" integrity="sha512-xIf9AdJauwKIVtrVRZ0i4nHP61Ogx9fSRAkCLecmE2dL/U8ioWpDvFCAy4dcfecN72HHB9+7FfQj3aiO68aaaw==" crossorigin="anonymos" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/dialog/dialog.min.css" integrity="sha512-Vogm+Cii1SXP5oxWQyPdkA91rHB776209ZVvX4C/i4ypcfBlWVRXZGodoTDAyyZvO36JlTqDqkMhVKAYc7CMjQ==" crossorigin="anonymous" />
 
@@ -71,13 +43,10 @@
 -->
 
 
-<script src="https://petlja.github.io/pygame4skulpt/skulpt_dist/skulpt.min.js" type="text/javascript"></script>
-<script src="https://petlja.github.io/pygame4skulpt/skulpt_dist/skulpt-stdlib.js" type="text/javascript"></script>
-
-
 <style>
 #code {
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
 }
 card {
     margin: 2rem;
@@ -86,101 +55,20 @@ card {
     width: 100%;
     height: 100%;
 }
+/*
 #mycanvas {
     width: 100%;
 }
+*/
 
 </style>
+{% endblock styles %}
 
-
-<form id="code-form">
+{% block content %}
+<form id="code-form" action="/editor/code/script">
     <textarea id="code" name="code">
-import pygame as pg
-from random import randint
-
-pg.init()
-side = 30
-w = 30
-h = 15
-disp = pg.display.set_mode((w * side, h * side))
-
-game_running = 0
-
-dirs = [pg.K_RIGHT, pg.K_DOWN, pg.K_LEFT, pg.K_UP]
-dx = [1, 0, -1, 0]
-dy = [0, 1, 0, -1]
-snake = [(7, 3), (7, 4)]
-direction = 0
-
-
-def place_apple():
-    a = (randint(0, w - 1), randint(0, h - 1))
-    while a in snake:
-        a = (randint(0, w - 1), randint(0, h - 1))
-    return a
-
-
-apple = place_apple()
-
-
-def check_collisions():
-    head = snake[-1]
-    for i in range(len(snake) - 1):
-        if head == snake[i]:
-            return 2
-    if head[0] >= w or head[0] < 0:
-        return 3
-    if head[1] >= h or head[1] < 0:
-        return 3
-    if head == apple:
-        return 1
-    return 0
-
-
-clock = pg.time.Clock()
-f = pg.font.SysFont('console', 24, True)
-
-while True:
-    clock.tick(8)
-    for e in pg.event.get():
-        if e.type == pg.QUIT:
-            pg.quit()
-            break
-        if e.type == pg.KEYDOWN:
-            if game_running == 0:
-                game_runnig = 1
-            if e.key == pg.K_SPACE:
-                game_running = 0
-                snake = [(7, 3), (7, 4)]
-                direction = 0
-                apple = place_apple()
-            for i in range(4):
-                if e.key == dirs[i] and direction != (i + 2) % 4:
-                    direction = i
-    if game_running == 2:
-        disp.fill(pg.Color("black"))
-        disp.blit(f.render("Game over!", False, pg.Color("blue")), (3 * side, 3 * side))
-        pg.display.update()
-        game_running = 3
-    if game_running == 3:
-        continue
-    snake.append((snake[-1][0] + dx[direction], snake[-1][1] + dy[direction]))
-    coll = check_collisions()
-    if coll >= 2:
-        game_running = 2
-        pass
-    elif coll == 1:
-        apple = place_apple()
-        pass
-    elif coll == 0:
-        snake.pop(0)
-    disp.fill(pg.Color("black"))
-    for i in range(len(snake)):
-        pg.draw.rect(disp, pg.Color("green"), pg.Rect(snake[i][0] * side, snake[i][1] * side, side, side))
-    pg.draw.rect(disp, pg.Color("red"), pg.Rect(apple[0] * side, apple[1] * side, side, side))
-    pg.display.update()</textarea>
+{% block code %}{% endblock code %}</textarea>
 </form>
-
 
 
 <div class="container">
@@ -205,7 +93,7 @@ while True:
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">filename</span>
                 </div>
-                <input id="filename" type="text" class="form-control" placeholder="script.py" aria-label="script.py" aria-describedby="basic-addon1">
+                <input id="filename" type="text" class="form-control" placeholder="blank" aria-label="blank" aria-describedby="basic-addon1">
             </div>
         </div>
         {% comment %}<p class="card-text">{% endcomment %}
@@ -219,8 +107,9 @@ while True:
 
     </div>
 </div>
+{% endblock content %}
 
-
+{% block script %}
 {% comment %}<div id="main-target"></div>{% endcomment %}
 
 {% comment %}<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Screen</button>{% endcomment %}
@@ -387,22 +276,9 @@ function outf(text) {
     mypre.innerHTML = mypre.innerHTML + text;
 }
 
-{% comment %}function builtinRead(x) {{% endcomment %}
-    {% comment %}if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined){% endcomment %}
-            {% comment %}throw "File not found: '" + x + "'";{% endcomment %}
-    {% comment %}return Sk.builtinFiles["files"][x];{% endcomment %}
-{% comment %}}{% endcomment %}
-
 
 function builtinRead(file) {
   console.log("Attempting file: " + Sk.ffi.remapToJs(file));
-
-  {% comment %}if (externalLibs[file] !== undefined) {{% endcomment %}
-    {% comment %}return Sk.misceval.promiseToSuspension({% endcomment %}
-      {% comment %}fetch(externalLibs[file]).then({% endcomment %}
-        {% comment %}function (resp){ return resp.text(); }{% endcomment %}
-      {% comment %}));{% endcomment %}
-  {% comment %}}{% endcomment %}
 
   if (Sk.builtinFiles === undefined || Sk.builtinFiles.files[file] === undefined) {
     throw "File not found: '" + file + "'";
@@ -419,7 +295,7 @@ function builtinRead(file) {
 
 
 
-Sk.main_canvas = document.getElementById("mycanvas");
+// Sk.main_canvas = document.getElementById("mycanvas");
 
 function runit() {
 
@@ -450,5 +326,5 @@ function runit() {
    });
 }
 </script>
-
-{% endblock content%}
+{% endblock script %}
+u

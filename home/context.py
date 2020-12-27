@@ -109,7 +109,7 @@ def get_games():
 
 
 def home(request):
-    """Return the context."""
+    """Return the home context."""
     # context = dict(title='Website of Marc Partensky')
     return dict(
         **get_github_info(),
@@ -120,13 +120,19 @@ def home(request):
     )
 
 def base(request):
-    """Return the context."""
+    """Return the base context."""
     # context = dict(title='Website of Marc Partensky')
     return dict(
         **get_theme(request),
         **get_demos(),
         **get_articles(),
         **get_games()
+    )
+
+def fake_base(request):
+    """Return a fake base context to avoid connectin to third parties."""
+    return dict(
+        theme="dark",
     )
 
 # def combine_dicts(dicts):
@@ -140,13 +146,13 @@ def hydrate(*context_getters, debug=False):
     """Double decorator that updates the context."""
     def view_decorator(view):
         """Dec"""
-        def view_decorated(request, context: dict = {}):
+        def view_decorated(request, *args, context: dict = {}, **kwargs):
             """Decorated view."""
             context_hydrated = {}
             for context_getter in context_getters:
                 context_hydrated.update(context_getter(request))
             context.update(context_hydrated)
             if debug: print(context)
-            return view(request, context)
+            return view(request, *args, context=context, **kwargs)
         return view_decorated
     return view_decorator
