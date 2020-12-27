@@ -3,6 +3,11 @@
 from django.shortcuts import render
 from home.context import hydrate, home
 
+class OnlyGetAndPost(Exception):
+    def __str__(self):
+        return "Only get and post exceptions are supported."
+
+
 @hydrate(home)
 def index(request, context: dict = {}):
     """Render all code projects."""
@@ -10,7 +15,12 @@ def index(request, context: dict = {}):
 
 def script(request, context: dict = {}):
     """Render a script."""
-    return render(request, 'editor/script.html', context)
+    if request.method == 'GET':
+        return render(request, 'editor/script.html', context)
+    elif request.method == 'POST':
+        pass
+    else:
+        raise OnlyGetAndPost
 
 def user(request, user: str, context: dict = {}):
     """Render a user."""

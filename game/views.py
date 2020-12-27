@@ -12,25 +12,44 @@ from django.views.generic import (
     DeleteView,
 )
 
-# Create your views here.
-def game(request):
-    context = dict(
+from home.context import hydrate, base
+
+
+@hydrate(base)
+def game(request, context={}):
+    """Render a game."""
+    context.update(dict(
         title="game",
         gameposts = GamePost.objects.all(),
         gamepostcomments = GamePostComment.objects.all(),
-    )
+    ))
     return render(request, 'game/game.html', context=context)
 
 class GamePostListView(ListView):
+    """List all games."""
     model = GamePost
     template_name = 'game/game.html'
     context_object_name = 'gameposts'
     ordering = ['-timestamp']
 
+    def get_context_data(self, **kwargs):
+        """Compute the context."""
+        context = super().get_context_data(**kwargs)
+        context.update(base(self.request))
+        return context
+
 class GamePostDetailView(DetailView):
+    """Render a detailled view of a game."""
     model = GamePost
 
+    def get_context_data(self, **kwargs):
+        """Compute the context."""
+        context = super().get_context_data(**kwargs)
+        context.update(base(self.request))
+        return context
+
 class GamePostCreateView(LoginRequiredMixin, CreateView):
+    """Create a new game."""
     model = GamePost
     fields = ['title', 'content', 'thumbnail', 'play']
 
@@ -38,7 +57,14 @@ class GamePostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        """Compute the context."""
+        context = super().get_context_data(**kwargs)
+        context.update(base(self.request))
+        return context
+
 class GamePostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """Update an existing game."""
     model = GamePost
     fields = ['title', 'content', 'thumbnail', 'play']
 
@@ -50,7 +76,14 @@ class GamePostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         post = self.get_object()
         return self.request.user == post.author
 
+    def get_context_data(self, **kwargs):
+        """Compute the context."""
+        context = super().get_context_data(**kwargs)
+        context.update(base(self.request))
+        return context
+
 class GamePostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """Delete a game."""
     model = GamePost
     success_url = "/game"
 
@@ -58,3 +91,8 @@ class GamePostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         post = self.get_object()
         return self.request.user == post.author
 
+    def get_context_data(self, **kwargs):
+        """Compute the context."""
+        context = super().get_context_data(**kwargs)
+        context.update(base(self.request))
+        return context
