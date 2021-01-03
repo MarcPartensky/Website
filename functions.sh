@@ -2,8 +2,6 @@ mkcdir()  {
     mkdir -p -- "$1" &&
       cd -P -- "$1"
 }
-alias mcd="mkcdir"
-alias go="mkcdir"
 
 alias startmamp='cd /Applications/MAMP/bin && ./start.sh'
 alias stopmamp='cd /Applications/MAMP/bin && ./stop.sh'
@@ -67,7 +65,13 @@ function troll {
 	done
 }
 
-alias touch-typing="open -a 'Google Chrome' 'https://www.typingclub.com/sportal/program-3.game'"
+function touch-typing {
+	open -a 'Google Chrome' 'https://www.typingclub.com/sportal/program-3.game'
+}
+
+function keybr {
+	open -a 'Google Chrome' 'https://keybr.com'
+}
 
 function speedtest {
 	curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
@@ -81,9 +85,9 @@ function dl-music {
 	youtube-dl -ciw -x --audio-format "mp3" --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title)s.%(ext)s' --rm-cache-dir  $*
 }
 
-alias ytdl="youtube-dl -ciw -x --audio-format 'mp3' --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title)s.%(ext)s' --rm-cache-dir"
-
-export YTOPTS="-ciw -x --audio-format 'mp3' --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title    )s.%(ext)s' --rm-cache-dir"
+function ytdl {
+	youtube-dl -ciw -x --audio-format 'mp3' --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title)s.%(ext)s' --rm-cache-dir
+}
 
 function weather {
 	curl wttr.in

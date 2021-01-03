@@ -55,9 +55,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # autoload -Uz compinit
 # compinit
 
-source ~/.sh/functions.sh
-source ~/.sh/exports.sh
-echo "files sourced";
+source ./aliases.sh
+source ./functions.sh
+source ./exports.sh
 
 # End of lines added by compinstall
 

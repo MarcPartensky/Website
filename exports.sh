@@ -1,4 +1,18 @@
+export PATH=$PATH:/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/bin
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH="/opt/local/bin:$PATH"
+export PATH="/Users/marcpartensky/flutter/bin:$PATH"
+export PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export CLICOLOR=1
+export TEST="This is a test"
+export PRODUCTION=false
+export DEBUG_VALUE="True"
+export DEVELOPMENT=true
 export WEBSITE_URL="https://websiteofmarcpartensky.herokuapp.com"
+export WEBSITE_USER="marcpartensky"
+export WEBSITE_PASSWORD="glouaymay"
 export ISEP_ID="mapa60217"
 export ISEP_PORTAL_PASSWORD="fKY?Td7B"
 export ISEP_HYPERPLANNING_PASSWORD="7SaxUGjq"
@@ -36,3 +50,16 @@ export BRAWLSTARS_MAIL="marc.gptl44@gmail.com"
 export BRAWLSTARS_PASSWORD="marc.partensky@brawlstars"
 export BRAWLSTARS_TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImQzY2EzNjMxLWIwZTAtNDA4NC05MGUwLTIyMDg5MmY2OTMwNiIsImlhdCI6MTU5MjUxNzE0NCwic3ViIjoiZGV2ZWxvcGVyLzdmYzlhMjM2LTVkMTMtMzgxNC1kYmJkLWUwYmU0YzFlOTdjMiIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbWl0cyI6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsiY2lkcnMiOlsiOTEuMTY1LjIxLjg3Il0sInR5cGUiOiJjbGllbnQifV19.EHXW9ji-11Av8p9oFBpQ02idYPGxapNKbFG6P6AprjlgkLLjZ1WN2VM7hkM2b9aPjJKbIlmE4BJEij5dvM-rfg"
 export PP_PASSWORD="yaM-yauolG44"
+export JAVA_HOME=$(/usr/libexec/java_home)
+export DISCORD_PREFIX="?"
+export DISCORD_DEPLOYMENT="DEVELOPMENT"
+export YTOPTS="-ciw -x --audio-format 'mp3' --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title    )s.%(ext)s' --rm-cache-dir"
+
+# For Pyenv
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+
+# if command -v pyenv 1>/dev/null 2>&1; then
+#  eval "$(pyenv init -)"
+# fi
+# Java
