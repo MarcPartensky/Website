@@ -1,2 +1,5 @@
 alias mcd="mkcdir"
 alias go="mkcdir"
+alias dotfiles="cd ~/Programs/Dotfiles"
+alias programs="cd ~/Programs"
+alias p="programs"
