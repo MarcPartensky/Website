@@ -1,17 +1,28 @@
 # vim mode inside the terminal
-# set -o vi
-# set editing-mode vi
-# set keymap vi
-# set shiftwidth=4
-# set clipboard=unnamed
+set -o vi
+set editing-mode vi
+set keymap vi
+set shiftwidth=4
+set clipboard=unnamed
+
 
 #\\\_ COMPLETIONS _///#
-# zstyle :compinstall filename '/Users/fd0/.zshrc'
-# zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+ # zstyle :compinstall filename '/Users/fd0/.zshrc'
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+autoload -Uz compinit
+compinit
+autoload -Uz bashcompinit
+bashcompinit
+# The following lines were added by compinstall
+# zstyle :compinstall filename '/Users/marcpartensky/.zshrc'
+
 # autoload -Uz compinit
 # compinit
-# autoload -Uz bashcompinit
-# bashcompinit
+
+# autocompletion
+source ~/.zsh-plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+zstyle ':autocomplete:*' config off
+
 
 # pip zsh completion start
 function _pip_completion {
@@ -24,42 +35,30 @@ function _pip_completion {
 }
 compctl -K _pip_completion pip3
 
-#Esclave
-alias esclave="cd ~/discordbot/esclave"
-alias esclave-aws="ssh -i 'discordbotofmarcpartensky.pem' ubuntu@ec2-15-236-33-61.eu-west-3.compute.amazonaws.com"
-
-
-mcd() {
-    mkdir -p -- "$1" &&
-      cd -P -- "$1"
-}
-
-# Mamp
-alias startmamp='cd /Applications/MAMP/bin && ./start.sh'
-alias stopmamp='cd /Applications/MAMP/bin && ./stop.sh'
-
-
-alias json-beautifer="chrome https://jsonformatter.curiousconcept.com/"
-alias github="chrome https://github.com/MarcPartensky/"
-
+# Antigen
 source ~/antigen.zsh
-# antigen theme romkatv/powerlevel10k
+antigen theme romkatv/powerlevel10k
+antigen theme eastwood
+antigen theme kardan
+# antigen theme candy
+# antigen theme robbyrussell
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
 #antigen bundle soimort/translate-shell
 antigen apply
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-# The following lines were added by compinstall
-# zstyle :compinstall filename '/Users/marcpartensky/.zshrc'
+bindkey '\t' autosuggest-accept
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 
-# autoload -Uz compinit
-# compinit
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
-source ./aliases.sh
-source ./functions.sh
-source ./exports.sh
+source ${0:a:h}/aliases.sh
+source ${0:a:h}/functions.sh
+source ${0:a:h}/exports.sh
 
-# End of lines added by compinstall
+echo 'done'
+
+# ZSH_THEME="eastwood"
 
 # When started as 'evim', evim.vim will already have done these settings, bail out.
 # if v:progname =~? "evim"
@@ -100,8 +99,6 @@ source ./exports.sh
 # if [has('syntax') -a has('eval')]; then
 #  packadd! matchit
 # fi
-
-# Shouldn't have to do that but doing it anyway
 
 # prompt_context() {
 #   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
