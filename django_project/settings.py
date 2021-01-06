@@ -309,7 +309,9 @@ SOCIALACCOUNT_PROVIDERS = {
 # SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['GOOGLE_OAUTH2_KEY']
 # SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['GOOGLE_OAUTH2_SECRET']
 
-print(os.environ.get('REDIS_TLS_URL'))
+REDIS_URL = os.environ.get('REDIS_URL_STUNNEL') or \
+            os.environ.get('REDIS_URL') or \
+            os.environ.get('REDIS_TLS_URL')
 
 
 if DEBUG:
@@ -324,8 +326,8 @@ CHANNEL_LAYERS = {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
             "hosts": debug_hosts + [
-                # os.environ.get('REDIS_TLS_URL'),
-                os.environ.get('REDIS_URL', 'redis://localhost:6379'),
+                REDIS_URL,
+                # 'redis://localhost:6379'
             ],
             "symmetric_encryption_keys": [SECRET_KEY],
         },
