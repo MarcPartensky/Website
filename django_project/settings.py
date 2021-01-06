@@ -324,8 +324,8 @@ CHANNEL_LAYERS = {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
             "hosts": debug_hosts + [
-                os.environ.get('REDIS_TLS_URL'),
-                # os.environ.get('REDIS_URL', 'redis://localhost:6379'),
+                # os.environ.get('REDIS_TLS_URL'),
+                os.environ.get('REDIS_URL', 'redis://localhost:6379'),
             ],
             "symmetric_encryption_keys": [SECRET_KEY],
         },
