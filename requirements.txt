@@ -85,6 +85,7 @@ pylint==2.6.0
 pyOpenSSL==19.1.0
 pyparsing==2.4.7
 python-dateutil==2.8.1
+python-dotenv==0.15.0
 python3-openid==3.2.0
 pytz==2019.3
 rcssmin==1.0.6

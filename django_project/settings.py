@@ -11,6 +11,9 @@ import os
 import django_heroku
 import dj_database_url
 
+from dotenv import load_dotenv
+load_dotenv()
+
 SESSION_COOKIE_SECURE = True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
@@ -309,6 +312,7 @@ SOCIALACCOUNT_PROVIDERS = {
 # SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['GOOGLE_OAUTH2_KEY']
 # SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['GOOGLE_OAUTH2_SECRET']
 
+print(os.environ.get('REDIS_URL'))
 
 # Channels
 ASGI_APPLICATION = 'django_project.asgi.application'
@@ -316,8 +320,11 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            # "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')]
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [
+                # ('127.0.0.1', 6379),
+                os.environ.get('REDIS_URL'),
+                # os.environ.get('REDIS_URL', 'redis://localhost:6379'),
+            ]
         },
         "ROOTING": "chat.routing.channel_routing",
     },
