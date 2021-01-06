@@ -312,7 +312,10 @@ SOCIALACCOUNT_PROVIDERS = {
 print(os.environ.get('REDIS_TLS_URL'))
 
 
-if DEBUG: debug_hosts = [('127.0.0.1', 6379)]
+if DEBUG:
+    debug_hosts = [('127.0.0.1', 6379)]
+else:
+    debug_hosts = []
 
 # Channels
 ASGI_APPLICATION = 'django_project.asgi.application'
