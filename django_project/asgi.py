@@ -7,6 +7,8 @@ from . import routing
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
 
+# print(routing.websocket_urlpatterns)
+
 application = ProtocolTypeRouter({
   "http": get_asgi_application(),
   "websocket": AuthMiddlewareStack(
