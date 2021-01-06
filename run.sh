@@ -1,7 +1,7 @@
 trap 'kill $BGPID; exit' INT
 # background command
 echo -e "Starting \e[33mDjango"
-daphne django_project.asgi:application &
+daphne -p 80 django_project.asgi:application &
 BGPID=$!
 # foreground command of the script
 echo -e "Starting \e[32mFtp Server"
