@@ -322,9 +322,10 @@ CHANNEL_LAYERS = {
         'CONFIG': {
             "hosts": [
                 # ('127.0.0.1', 6379),
-                os.environ.get('REDIS_URL'),
+                os.environ.get('REDIS_TLS_URL'),
                 # os.environ.get('REDIS_URL', 'redis://localhost:6379'),
-            ]
+            ],
+            "symmetric_encryption_keys": [SECRET_KEY],
         },
         "ROOTING": "chat.routing.channel_routing",
     },
