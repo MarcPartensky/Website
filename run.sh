@@ -1,7 +1,7 @@
 trap 'kill $BGPID; exit' INT
 # background command
 echo -e "Starting \e[33mDjango"
-gunicorn --bind 127.0.0.1:8000 django_project.wsgi &
+daphne django_project.asgi:application &
 BGPID=$!
 # foreground command of the script
 echo -e "Starting \e[32mFtp Server"
