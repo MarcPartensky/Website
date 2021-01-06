@@ -311,14 +311,16 @@ SOCIALACCOUNT_PROVIDERS = {
 
 print(os.environ.get('REDIS_TLS_URL'))
 
+
+if DEBUG: debug_hosts = [('127.0.0.1', 6379)]
+
 # Channels
 ASGI_APPLICATION = 'django_project.asgi.application'
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [
-                ('127.0.0.1', 6379),
+            "hosts": debug_hosts + [
                 os.environ.get('REDIS_TLS_URL'),
                 # os.environ.get('REDIS_URL', 'redis://localhost:6379'),
             ],
