@@ -1,3 +1,10 @@
+author: Marc Partensky
+name: Website of Marc Partensky
+date: 8/10/2019
+---
+
+[![ViewCount](http://hits.dwyl.com/MarcPartensky/website.svg)](https://github.com/MarcPartensky/Website)
+
 # Website
 
 This is the code of my personal website.
