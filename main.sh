@@ -38,7 +38,7 @@ compctl -K _pip_completion pip3
 
 # Antigen
 ANTIGEN_CACHE=false
-source ~/antigen.zsh
+source /usr/local/share/antigen/antigen.zsh
 antigen theme romkatv/powerlevel10k
 antigen theme eastwood
 antigen theme kardan
