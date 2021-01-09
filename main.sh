@@ -21,7 +21,8 @@ bashcompinit
 
 # autocompletion
 source ~/.zsh-plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-zstyle ':autocomplete:*' config off
+# zstyle ':autocomplete:*' config off
+zstyle ':autocomplete:*' min-input 3
 
 
 # pip zsh completion start
@@ -36,10 +37,12 @@ function _pip_completion {
 compctl -K _pip_completion pip3
 
 # Antigen
+# ANTIGEN_CACHE=false
 source ~/antigen.zsh
 antigen theme romkatv/powerlevel10k
 antigen theme eastwood
 antigen theme kardan
+antigen theme nicoulaj
 # antigen theme candy
 # antigen theme robbyrussell
 antigen bundle zsh-users/zsh-autosuggestions
@@ -48,17 +51,15 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 bindkey '\t' autosuggest-accept
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 # ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="eastwood"
 
 source ${0:a:h}/aliases.sh
 source ${0:a:h}/functions.sh
 source ${0:a:h}/exports.sh
 
-echo 'done'
-
-# ZSH_THEME="eastwood"
 
 # When started as 'evim', evim.vim will already have done these settings, bail out.
 # if v:progname =~? "evim"
