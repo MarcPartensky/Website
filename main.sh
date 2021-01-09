@@ -37,7 +37,7 @@ function _pip_completion {
 compctl -K _pip_completion pip3
 
 # Antigen
-# ANTIGEN_CACHE=false
+ANTIGEN_CACHE=false
 source ~/antigen.zsh
 antigen theme romkatv/powerlevel10k
 antigen theme eastwood
