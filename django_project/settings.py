@@ -13,8 +13,8 @@ import dj_database_url
 
 SESSION_COOKIE_SECURE = True
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-# DEBUG = False
+# DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+DEBUG = False
 # TEMPLATE_DEBUG = DEBUG
 # TEMPLATE_DEBUG = False
 
@@ -160,8 +160,8 @@ TEMPLATES = [
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
-COMPRESS_ENABLED = True
 
+COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = True
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
@@ -182,6 +182,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'production': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd59smuva82cfb6',
+        'USER': 'gtoozrehzdzlzx',
+        'PASSWORD': 'd03dbda64da2711cb730e8a6afc2de92c5d7edfbb6bbd4e60e0370117bf5f09a',
+        'HOST': 'ec2-54-78-127-245.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -343,9 +351,9 @@ REST_FRAMEWORK = {
 
 # SQL Explorer : https://pypi.org/project/django-sql-explorer/
 # EXPLORER_DEFAULT_CONNECTION = 'readonly'
-# EXPLORER_CONNECTIONS = {'Default': 'readonly'}
-EXPLORER_CONNECTIONS = { 'Default': 'default' }
-EXPLORER_DEFAULT_CONNECTION = 'default'
+EXPLORER_CONNECTIONS = {'Default': 'default', 'Production': 'production'}
+# EXPLORER_CONNECTIONS = { 'Default': 'default' }
+EXPLORER_DEFAULT_CONNECTION = 'production'
 
 
 django_heroku.settings(locals())
