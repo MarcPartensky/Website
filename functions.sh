@@ -92,10 +92,6 @@ function speedtest {
 	curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
 }
 
-function finder {
-	open .
-}
-
 function dl-music {
 	youtube-dl -ciw -x --audio-format "mp3" --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title)s.%(ext)s' --rm-cache-dir  $*
 }
@@ -107,4 +103,3 @@ function ytdl {
 function weather {
 	curl wttr.in
 }
-:

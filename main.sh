@@ -60,7 +60,6 @@ source ${0:a:h}/aliases.sh
 source ${0:a:h}/functions.sh
 source ${0:a:h}/exports.sh
 
-
 # When started as 'evim', evim.vim will already have done these settings, bail out.
 # if v:progname =~? "evim"
 #  finish
