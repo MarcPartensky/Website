@@ -1,7 +1,11 @@
 {% extends "layout/home.html" %}
-{% block content %}
 {% load static %}
+
+{% block style %}
 <link rel="stylesheet" type="text/css" href="{% static 'donation/donation.css' %}">
+{% endblock style %}
+
+{% block content %}
 <!-- <div class="row">
   <div class="col-75"> -->
 <div class="container" id="donationcontainer">
