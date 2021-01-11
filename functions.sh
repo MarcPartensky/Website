@@ -103,3 +103,11 @@ function ytdl {
 function weather {
 	curl wttr.in
 }
+
+function p {
+	cd ~/Programs/$@
+}
+
+function pj {
+	cd ~/git-projects/$@
+}

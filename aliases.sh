@@ -1,8 +1,6 @@
 alias mcd="mkcdir"
 alias go="mkcdir"
 alias dotfiles="cd ~/Programs/Dotfiles"
-alias programs="cd ~/Programs"
-alias p="programs"
 alias esclave="cd ~/discordbot/esclave"
 alias esclave-aws="ssh -i 'discordbotofmarcpartensky.pem' ubuntu@ec2-15-236-33-61.eu-west-3.compute.amazonaws.com"
 alias startmamp='cd /Applications/MAMP/bin && ./start.sh'
