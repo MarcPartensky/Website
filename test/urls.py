@@ -24,4 +24,5 @@ urlpatterns = [
          name='todolist2'),
     path('todolist', views.todolist, name='todolist'),
     path('discordbot', views.discordbot, name='discordbot'),
+    # path('mdeditor', views.mdeditor, name='mdeditor'),
 ]

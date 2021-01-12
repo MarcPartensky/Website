@@ -37,6 +37,7 @@ urlpatterns = [
     path('explorer/', include('explorer.urls')),
     path('code/', include('editor.urls')),
     # path('accounts/', include('allauth.urls')),
+    path('mdeditor/', include('mdeditor.urls')),
     path('404/', not_found_view, name='404'),
 ]
 

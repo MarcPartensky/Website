@@ -68,3 +68,6 @@ def todolist(request):
 
 def discordbot(request):
     return render(request, 'test/discordbot.html', {})
+
+# def mdeditor(request):
+#     return render(request, 'tes')

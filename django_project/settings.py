@@ -91,6 +91,7 @@ INSTALLED_APPS = [
 
     # Preview Markdown
     'markdown_view',
+    'mdeditor',
 
     # Messing with sockets and channels for chat
     'channels',
@@ -132,6 +133,9 @@ CORS_ALLOW_HEADERS = (
 )
 
 ROOT_URLCONF = 'django_project.urls'
+
+# Not safe
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # https://stackoverflow.com/questions/29492617/base-template-for-all-apps-in-django
 # print(os.path.join("django_project", 'templates'))
