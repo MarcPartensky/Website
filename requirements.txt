@@ -16,7 +16,7 @@ channels-redis==3.2.0
 chardet==3.0.4
 click==7.1.1
 constantly==15.1.0
-cryptography==3.2.1
+cryptography==3.3.1
 daphne==3.0.0
 decorator==4.4.2
 defusedxml==0.6.0
@@ -24,6 +24,7 @@ dj-database-url==0.5.0
 Django==3.0.1
 django-503==0.1
 django-admin==2.0.1
+django-allauth==0.44.0
 django-appconf==1.0.4
 django-compressor @ git+https://github.com/django-compressor/django-compressor.git@24f6648723b0b7d3ae88e17a20961ccb3ac1b1e7
 django-cors-middleware==1.5.0
@@ -81,6 +82,7 @@ pyftpdlib==1.5.6
 Pygments==2.7.2
 PyHamcrest==2.0.2
 pyicloud==0.9.7
+PyJWT==2.0.0
 pylint==2.6.0
 pyOpenSSL==19.1.0
 pyparsing==2.4.7

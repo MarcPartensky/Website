@@ -74,9 +74,9 @@ INSTALLED_APPS = [
 
     # allauth stuff
     'django.contrib.sites',
-    # 'social_app',
-    # 'allauth',
-    # 'allauth.account',
+    'social_app',
+    'allauth',
+    'allauth.account',
     'allauth.socialaccount',
     # 'allauth.socialaccount.providers.google',
 
