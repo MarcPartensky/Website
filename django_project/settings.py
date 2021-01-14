@@ -11,6 +11,10 @@ import os
 import django_heroku
 import dj_database_url
 
+import dotenv
+
+dotenv.load_dotenv()
+
 SESSION_COOKIE_SECURE = True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
@@ -37,6 +41,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'exhlfdat&vfum(-34*c2uroi(($ww(yo$9pv98=e6p^gl(-eoj'
 SECRET_KEY = os.environ.get('SECRET_KEY')
+print(SECRET_KEY)
 
 
 ALLOWED_HOSTS = ["websiteofmarcpartensky.herokuapp.com", "localhost"]
@@ -189,13 +194,15 @@ DATABASES = {
     },
     'production': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd59smuva82cfb6',
-        'USER': 'gtoozrehzdzlzx',
-        'PASSWORD': 'd03dbda64da2711cb730e8a6afc2de92c5d7edfbb6bbd4e60e0370117bf5f09a',
-        'HOST': 'ec2-54-78-127-245.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
+        'NAME': os.environ.get('PRODUCTION_NAME'),
+        'USER': os.environ.get('PRODUCTION_USER'),
+        'PASSWORD': os.environ.get('PRODUCTION_PASSWORD'),
+        'HOST': os.environ.get('PRODUCTION_HOST'),
+        'PORT': os.environ.get('PRODUCTION_PORT'),
     }
 }
+
+print(os.environ.get('PRODUCTION_PORT'))
 
 # print("DATABASES:", DATABASES)
 
