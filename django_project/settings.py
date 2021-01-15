@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
-import dj_database_url
+# import dj_database_url
 
 import dotenv
 
@@ -41,7 +41,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'exhlfdat&vfum(-34*c2uroi(($ww(yo$9pv98=e6p^gl(-eoj'
 SECRET_KEY = os.environ.get('SECRET_KEY')
-print(SECRET_KEY)
+# print('secret key:', SECRET_KEY)
 
 
 ALLOWED_HOSTS = ["websiteofmarcpartensky.herokuapp.com", "localhost"]
@@ -194,24 +194,17 @@ DATABASES = {
     },
     'production': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('PRODUCTION_NAME'),
-        'USER': os.environ.get('PRODUCTION_USER'),
-        'PASSWORD': os.environ.get('PRODUCTION_PASSWORD'),
-        'HOST': os.environ.get('PRODUCTION_HOST'),
-        'PORT': os.environ.get('PRODUCTION_PORT'),
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
+        'PORT': os.environ.get('POSTGRES_PORT'),
     }
 }
 
-print(os.environ.get('PRODUCTION_PORT'))
+# print('production port:', os.environ.get('POSTGRES_PORT'))
 
 # print("DATABASES:", DATABASES)
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 
 # DATABASES = {
 #     'default': {

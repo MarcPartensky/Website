@@ -212,3 +212,15 @@ def public_profile(request, context={}):
         'p_form' : p_form
     })
     return render(request, 'users/profile.html', context)
+
+@login_required
+@hydrate(base)
+def preference(request, context):
+    """Edit preferences of an user.
+    Preferences are stored as JSONField."""
+    if request.method == 'GET':
+        return render(request, 'users/preference.html', context)
+    elif request.method == 'POST':
+        raise NotImplementedError
+
+

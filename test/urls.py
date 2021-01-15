@@ -8,7 +8,8 @@ urlpatterns = [
     path('count', views.count, name="count"),
     path('url', views.url, name="url"),
     path('args/(?.*)', views.url, name='args'),
-    re_path('addition/?(d/)*', views.addition, name='addition'),
+    re_path('addition-1/?(d/)*', views.addition1, name='addition'),
+    re_path('addition-2', views.addition2, name='addition'),
     path('user-agent', views.user_agent, name="user-agent"),
     path('homepage1', views.homepage1, name="homepage1"),
     path('vanta-net', views.vanta_net, name="vanta-net"),
@@ -24,5 +25,6 @@ urlpatterns = [
          name='todolist2'),
     path('todolist', views.todolist, name='todolist'),
     path('discordbot', views.discordbot, name='discordbot'),
+    path('websocket', views.websocket, name='websocket'),
     # path('mdeditor', views.mdeditor, name='mdeditor'),
 ]
