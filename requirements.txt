@@ -33,6 +33,7 @@ django-excel-base==1.0.4
 django-excel-response2==3.0.2
 django-ftpserver==0.7.0
 django-heroku==0.3.1
+django-jsonfield-backport==1.0.2
 django-libsass==0.8
 django-markdown-view==0.0.4
 django-mdeditor==0.1.18

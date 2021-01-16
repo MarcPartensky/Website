@@ -34,7 +34,7 @@ urlpatterns = [
     path('cdn/', include('cdn.urls')),
     path('api/', include('api.urls')),
     path('article/', include('article.urls')),
-    path('explorer/', include('explorer.urls')),
+    path('sql/', include('explorer.urls')),
     path('code/', include('editor.urls')),
     # path('accounts/', include('allauth.urls')),
     path('mdeditor/', include('mdeditor.urls')),

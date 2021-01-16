@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
+from django.http.request import HttpRequest
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth import views as auth_views
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
+
+from .models import Profile, Preference
 
 from home.context import hydrate, base
 
@@ -215,10 +218,12 @@ def public_profile(request, context={}):
 
 @login_required
 @hydrate(base)
-def preference(request, context):
+def preference(request:HttpRequest, context:dict):
     """Edit preferences of an user.
     Preferences are stored as JSONField."""
     if request.method == 'GET':
+        profile = Profile.objects.filter(user=request.user).first()
+        print(profile)
         return render(request, 'users/preference.html', context)
     elif request.method == 'POST':
         raise NotImplementedError

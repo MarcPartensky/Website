@@ -191,7 +191,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
+    }
+}
+
+# if not DEBUG:
+DATABASES.update({
     'production': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('POSTGRES_NAME'),
@@ -200,7 +204,7 @@ DATABASES = {
         'HOST': os.environ.get('POSTGRES_HOST'),
         'PORT': os.environ.get('POSTGRES_PORT'),
     }
-}
+})
 
 # print('production port:', os.environ.get('POSTGRES_PORT'))
 
@@ -389,7 +393,10 @@ MDEDITOR_CONFIGS = {
 # EXPLORER_DEFAULT_CONNECTION = 'readonly'
 EXPLORER_CONNECTIONS = {'Default': 'default', 'Production': 'production'}
 # EXPLORER_CONNECTIONS = { 'Default': 'default' }
-EXPLORER_DEFAULT_CONNECTION = 'production'
+if DEBUG:
+    EXPLORER_DEFAULT_CONNECTION = 'default'
+else:
+    EXPLORER_DEFAULT_CONNECTION = 'production'
 
 
 django_heroku.settings(locals())
