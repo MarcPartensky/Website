@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from home.context import hydrate, home, base
+from . import models
 # from home.context import home as get_home_context
 # from home.context import base as get_base_context
 
@@ -47,7 +48,7 @@ def mail_form(request):
         notified_mail.save()
         return HttpResponse('Added to mail list successfully.')
     except:
-        HttpResponse('Something went wrong', status=500)
+        return HttpResponse('Something went wrong', status=500)
 
 # HTTP Errors
 # def bad_request(request, exception):

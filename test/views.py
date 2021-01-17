@@ -106,3 +106,13 @@ def discordbot(request):
 def websocket(request, context):
     """Test websocket and channels."""
     return render(request, 'test/websocket.html', context)
+
+@hydrate(base)
+def valentin(request, context):
+    """C'est la page de valentin c'est pas moi."""
+    return render(request, 'test/valentin.html', context)
+
+@hydrate(base)
+def paul(request, context):
+    """C'est la page de paul c'est pas moi."""
+    return render(request, 'test/paul.html', context)

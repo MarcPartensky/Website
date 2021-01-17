@@ -26,5 +26,7 @@ urlpatterns = [
     path('todolist', views.todolist, name='todolist'),
     path('discordbot', views.discordbot, name='discordbot'),
     path('websocket', views.websocket, name='websocket'),
+    path('valentin', views.valentin, name='valentin'),
+    path('paul', views.paul, name='paul'),
     # path('mdeditor', views.mdeditor, name='mdeditor'),
 ]
