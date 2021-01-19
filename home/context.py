@@ -130,7 +130,7 @@ def base(request):
     )
 
 def fake_base(request):
-    """Return a fake base context to avoid connectin to third parties."""
+    """Return a fake base context to avoid connecting to third parties."""
     return dict(
         theme="dark",
     )
@@ -145,7 +145,7 @@ def fake_base(request):
 def hydrate(*context_getters, debug=False):
     """Double decorator that updates the context."""
     def view_decorator(view):
-        """Dec"""
+        """Decorator view."""
         def view_decorated(request, *args, context: dict = {}, **kwargs):
             """Decorated view."""
             context_hydrated = {}

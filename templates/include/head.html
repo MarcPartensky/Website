@@ -107,4 +107,4 @@
 <link href="{% static 'home/assets/vendor/aos/aos.css' %}" rel="stylesheet">
 
 <!-- Template Main CSS File -->
-<link id="theme" href="/static/home/assets/css/{{theme}}.css" rel="stylesheet">
+<link id="theme" href="/static/home/assets/css/{{ theme | default:'light' }}.css" rel="stylesheet">
