@@ -5,33 +5,33 @@ Models required for the todolist system.
 from django.db import models
 from django.contrib.auth.models import User
 
-class StateTodo(models.Model):
+class TodoState(models.Model):
     """Represent the state of a todo.
     Examples states are:
         - todo
         - in progress
         - done
     These are inspired from TFS."""
-    title = models.CharField(mex_length=255, unique=True)
+    title = models.CharField(max_length=255, unique=True)
     description = models.TextField()
-    created = models.DateTimeField(auto_add_now=True)
-    updated = models.DateTimeField(add_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         """Return the title of the state."""
         return self.title
 
-class StateTodolist(models.Model):
+class TodolistState(models.Model):
     """Represent the state of a todolist.
     Example states are:
         - todo
         - in progress
         - done
     These are inspired from TFS."""
-    title = models.CharField(mex_length=255, unique=True)
+    title = models.CharField(max_length=255, unique=True)
     description = models.TextField()
-    created = models.DateTimeField(auto_add_now=True)
-    updated = models.DateTimeField(add_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         """Return the title of the state."""
@@ -44,11 +44,13 @@ class Todo(models.Model):
     content = models.TextField()
     title = models.CharField(null=True, max_length=255, unique=True)
     duration = models.DurationField(null=True)
-    parent = models.OneToOneField(Todo, on_delete=models.CASCADE)
-    state = models.OneToOneField(StateTodo, on_delete=models.PROTECT)
+    # parent = models.OneToOneField(Todo, on_delete=models.CASCADE)
+    parent = models.ForeignKey("self", null=True,
+        related_name="children", on_delete=models.SET_NULL)
+    state = models.OneToOneField(TodoState, on_delete=models.PROTECT)
     # done = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_add_now=True)
-    updated = models.DateTimeField(add_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         """Return a string representation of a todo."""
@@ -67,9 +69,9 @@ class Todolist(models.Model):
     title = models.CharField(null=True, max_length=255, unique=True)
     description = models.TextField()
     todos = models.ManyToManyField(Todo)
-    state = models.OneToOneField(StateTodolist, on_delete=models.PROTECT)
-    created = models.DateTimeField(auto_add_now=True)
-    updated = models.DateTimeField(add_now=True)
+    state = models.OneToOneField(TodolistState, on_delete=models.PROTECT)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     @property
     def url(self):
@@ -80,31 +82,31 @@ class TodoAssignment(models.Model):
     """Assignment of a user to a todo."""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     todo = models.OneToOneField(Todo, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_add_now=True)
-    updated = models.DateTimeField(add_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
 class TodolistAssignment(models.Model):
     """Assignment of a user to a todolist."""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     todolist = models.OneToOneField(Todolist, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_add_now=True)
-    updated = models.DateTimeField(add_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
 class Event(models.Model):
     """Represent an event of an activity."""
-    created = models.DateTimeField(auto_add_now=True)
-    updated = models.DateTimeField(add_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
 class Calendar(models.Model):
     """Calendar of a user."""
-    created = models.DateTimeField(auto_add_now=True)
-    updated = models.DateTimeField(add_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
 class Activity(models.Model):
     """Represent an activity."""
     events = models.ManyToManyField(Event)
-    created = models.DateTimeField(auto_add_now=True)
-    updated = models.DateTimeField(add_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
 
 # class Task(models.Model):

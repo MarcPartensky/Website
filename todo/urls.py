@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('todo', views.todo, name='todo'),
+    path('todo-state', views.todo_state, name='todo-state'),
     path('todo-done', views.todo_done, name='todo-done'),
     path('todo-new', views.todo_new, name='todo-new'),
     path('todo/:id/update', views.todo_update, name='todo-update'),
