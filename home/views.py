@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from home.context import hydrate, home, base
+from django.views.decorators.csrf import csrf_protect
+
 from . import models
+from . import forms
 # from home.context import home as get_home_context
 # from home.context import base as get_base_context
 
@@ -41,14 +44,20 @@ def contact(request, context={}):
 def resume(request, context={}):
     return render(request, 'home/resume.html', {})
 
-def mail_form(request):
-    """View that receives email adresses."""
+@csrf_protect
+def notified_mail_form(request):
+    """View that receives email adresses send in forms footers."""
     try:
-        notified_mail = models.NotifiedMailList(request.POST['email'])
-        notified_mail.save()
+        d = dict(**request.POST)
+        # d.update(request.POST)
+        if request.user.is_authenticated:
+            print(request.user)
+            d.update(dict(user=request.user))
+            form = forms.NotifiedMailListForm(d)
+        # form.save()
         return HttpResponse('Added to mail list successfully.')
-    except:
-        return HttpResponse('Something went wrong', status=500)
+    except Exception as e:
+        return HttpResponse('Something went wrong: '+str(e), status=500)
 
 # HTTP Errors
 # def bad_request(request, exception):

@@ -10,6 +10,8 @@ urlpatterns = [
     path('cv/2p', views.cv, name="cv-2p"),
     path('contact', views.contact, name="contact"),
     path('resume', views.resume, name="resume"),
+    path('notified-mail-form', views.notified_mail_form,
+         name="notified-mail-form")
 ]
 
 # from django.conf.urls import (
