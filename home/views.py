@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from home.context import hydrate, home, base
 from django.views.decorators.csrf import csrf_protect
+from django.contrib import messages
 
 from . import models
 from . import forms
@@ -49,13 +50,20 @@ def notified_mail_form(request):
     """View that receives email adresses send in forms footers."""
     try:
         d = dict(**request.POST)
-        # d.update(request.POST)
         if request.user.is_authenticated:
             print(request.user)
             d.update(dict(user=request.user))
-            form = forms.NotifiedMailListForm(d)
-        # form.save()
-        return HttpResponse('Added to mail list successfully.')
+        form = forms.NotifiedMailListForm(d)
+        if form.is_valid():
+            print('invalid form')
+            # form.save()
+            return HttpResponse("invalid", status=500)
+        else:
+            print('success')
+            # print('Added to mail list successfully.')
+            # messages.success(request, 'Form submission successful')
+            return HttpResponse("success", status=500)
+        # return HttpResponse("not connected", status=403)
     except Exception as e:
         return HttpResponse('Something went wrong: '+str(e), status=500)
 

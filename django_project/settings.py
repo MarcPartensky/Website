@@ -10,8 +10,10 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import django_heroku
 # import dj_database_url
-
 import dotenv
+
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
 
 dotenv.load_dotenv()
 

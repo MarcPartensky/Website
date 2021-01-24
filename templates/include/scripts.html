@@ -16,32 +16,9 @@
 <script src="{% static 'base/vanta.net.min.js' %}"></script>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
+<script src="{% static 'assets/js/main.js' %}"></script>
+
 <script>
-VANTA.NET({
-	el: "#footer",
-	mouseControls: true,
-	touchControls: true,
-	gyroControls: false,
-	minHeight: 200.00,
-	minWidth: 200.00,
-	scale: 1.00,
-	scaleMobile: 1.00,
-	color: 0x770000,
-	backgroundColor: 0x0,
-	points: 10.00
-})
-
-// toggle the theme
-function toggleTheme() {
-	var el = document.getElementById("theme");
-	console.log('click')
-	console.log(el)
-	if (el.href.match("{% static 'home/assets/css/light.css' %}")) {
-		el.href = "{% static 'home/assets/css/dark.css' %}";
-	}
-	else {
-		el.href = "{% static 'home/assets/css/light.css' %}";
-	}
-}
-
+const CSS_THEME_LIGHT = "{% static 'home/assets/css/light.css' %}"
+const CSS_THEME_DARK = "{% static 'home/assets/css/dark.css' %}"
 </script>
