@@ -6,4 +6,4 @@ class NotifiedMailListForm(forms.ModelForm):
     of the activities of Marc Partensky."""
     class Meta:
         model = models.NotifiedMailList
-        fields = '__all__'
+        fields = ['email', 'user']

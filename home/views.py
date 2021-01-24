@@ -49,23 +49,33 @@ def resume(request, context={}):
 def notified_mail_form(request):
     """View that receives email adresses send in forms footers."""
     try:
-        d = dict(**request.POST)
+        d = dict(email=request.POST['email'])
         if request.user.is_authenticated:
-            print(request.user)
             d.update(dict(user=request.user))
+        print(d)
         form = forms.NotifiedMailListForm(d)
         if form.is_valid():
-            print('invalid form')
-            # form.save()
-            return HttpResponse("invalid", status=500)
-        else:
             print('success')
+            messages.success(request, 'Form submission successful.')
+            form.save()
+            return HttpResponse("success", status=200)
+        else:
+            messages.error(request, 'Form submission error.',
+                             extra_tags="danger")
+            print('invalid form')
             # print('Added to mail list successfully.')
-            # messages.success(request, 'Form submission successful')
-            return HttpResponse("success", status=500)
+            return HttpResponse(str(form.errors.as_text()), status=500)
         # return HttpResponse("not connected", status=403)
     except Exception as e:
         return HttpResponse('Something went wrong: '+str(e), status=500)
+
+@hydrate(base)
+def notified_mail_list(request, context:dict={}):
+    """View that shows notified people."""
+    context['notified_list'] = models.NotifiedMailList.objects.all()
+    return render(request, 'home/notified_mail_list.html', context)
+
+
 
 # HTTP Errors
 # def bad_request(request, exception):

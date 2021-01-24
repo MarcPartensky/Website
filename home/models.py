@@ -7,6 +7,6 @@ from django.contrib.auth.models import User
 class NotifiedMailList(models.Model):
     """Notify all users from that list
     when an event pops out."""
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     user = models.OneToOneField(User, null=True, on_delete=models.SET_NULL)
     timestamp = models.DateTimeField(auto_now_add=True)

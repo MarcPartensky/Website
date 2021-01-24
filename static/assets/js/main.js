@@ -24,20 +24,26 @@ function dontReloadOnFormSubmit() {
 				statusCode: {
 					200: function(value) {
 						$('#main-modal').modal('toggle')
-						$('#main-modal-title').innerText = "Success!"
-						$('#main-modal-body').innerText = "Subcribed to notified list successfully!"
+						$('.modal-content').addClass('alert')
+						$('.modal-content').addClass('alert-success')
+						$('#main-modal-title').first()[0].firstChild.data = "Success!"
+						$('#main-modal-body').first()[0].firstChild.data = value.responseText
 						console.log(value)
 					},
 					403: function(value) {
 						$('#main-modal').modal('toggle')
-						$('#main-modal-title').innerText = "Forbidden!"
-						$('#main-modal-body').innerText = "You can't subscribe."
+						$('.modal-content').addClass('alert')
+						$('.modal-content').addClass('alert-danger')
+						$('#main-modal-title').first()[0].firstChild.data = "Forbidden!"
+						$('#main-modal-body').first()[0].firstChild.data = value.responseText
 						console.log(value)
 					},
 					500: function(value) {
 						$('#main-modal').modal('toggle')
-						$('#main-modal-title').innerText = "Error"
-						$('#main-modal-body').innerText = "Bidule"
+						$('.modal-content').addClass('alert')
+						$('.modal-content').addClass('alert-danger')
+						$('#main-modal-title').first()[0].firstChild.data = "Error"
+						$('#main-modal-body').first()[0].firstChild.data = value.responseText
 						console.log(value)
 					}
 				}
