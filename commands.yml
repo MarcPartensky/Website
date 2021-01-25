@@ -4,9 +4,9 @@ setup:
 update:
   pipupgrade
   npm update
-start:
+activate:
   source env/bin/activate
-stop:
+deactivate:
   deactivate
 run:
   ./manage.py runserver
@@ -21,3 +21,7 @@ pull:
   git pull github main
 build:
   docker build . -t marcpartensky/website
+compose:
+  docker-compose up
+echo-test:
+  echo test
