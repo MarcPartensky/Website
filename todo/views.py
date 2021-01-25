@@ -25,14 +25,13 @@ def todo_done(request, context:dict={}):
     """View main todos done."""
     return render(request, 'todo/todo_done.html', context)
 
-
 def todo_new(request, context:dict={}):
     """View new todos."""
     if request.method == 'POST':
         redirect(reverse('todo'))
         form = forms.TodoForm(request.POST)
         form.save()
-        redirect('/')
+        redirect('/todo')
 
     form = forms.TodoForm()
     context['form'] = form

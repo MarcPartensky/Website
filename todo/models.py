@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class TodoState(models.Model):
     """Represent the state of a todo.
     Examples states are:
-        - todo
+        - undone
         - in progress
         - done
     These are inspired from TFS."""
@@ -24,7 +24,7 @@ class TodoState(models.Model):
 class TodolistState(models.Model):
     """Represent the state of a todolist.
     Example states are:
-        - todo
+        - undone
         - in progress
         - done
     These are inspired from TFS."""
@@ -44,10 +44,10 @@ class Todo(models.Model):
     content = models.TextField()
     title = models.CharField(null=True, max_length=255, unique=True)
     duration = models.DurationField(null=True)
+    progress = models.FloatField(default=0)
     # parent = models.OneToOneField(Todo, on_delete=models.CASCADE)
     parent = models.ForeignKey("self", null=True,
         related_name="children", on_delete=models.SET_NULL)
-    state = models.OneToOneField(TodoState, on_delete=models.PROTECT)
     # done = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

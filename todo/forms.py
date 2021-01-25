@@ -7,4 +7,4 @@ class TodoForm(forms.ModelForm):
 
     class Meta:
         model = models.Todo
-        fields = '__all__'
+        fields = ['content', 'title', 'duration']
