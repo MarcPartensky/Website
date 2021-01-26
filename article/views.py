@@ -7,6 +7,7 @@ from django.shortcuts import render, HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
 from django.template import loader
 from .models import Article
+from .forms import ArticleForm
 from .adapt import adapt
 
 from django.template.loader import engines
@@ -118,11 +119,12 @@ def read(request, title: str):
     # return HttpResponse(html)
 
 @csrf_exempt
-def upload_article(request):
+def upload(request):
     """Upload a new article."""
     print('received markdown')
     if request.method == 'POST':
-        form = ArticleForm(request.POST,request.FILES)
+        print(request.FILES)
+        form = ArticleForm(request.POST, request.FILES)
         file = str(form.files['file'])
         filepath = f"{os.getcwd()}/media/article/{file}"
         print('trying to post:', filepath)
@@ -135,7 +137,7 @@ def upload_article(request):
             f.write(content)
         if form.is_valid():
             print(form)
-            form.save()
+            # form.save()
             return HttpResponse('success')
         else:
             return HttpResponse('invalid form')
@@ -144,4 +146,4 @@ def upload_article(request):
         context = dict(form=form)
         return render(request, 'api/upload.html', context)
     else:
-        return HttpResponse('only get and post methods are allowed')
+        return HttpResponse('only get and post methods are allowed', status=403)

@@ -1,13 +1,16 @@
+import os
+import subprocess
+
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from home.context import hydrate, home, base
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 
 from . import models
 from . import forms
-# from home.context import home as get_home_context
-# from home.context import base as get_base_context
+
 
 @hydrate(home)
 def home(request, context={}):
@@ -76,6 +79,39 @@ def notified_mail_list(request, context:dict={}):
     return render(request, 'home/notified_mail_list.html', context)
 
 
+db_graph_extensions = [
+    'png',
+    'svg',
+    'jpeg',
+    'jpg',
+    'tiff',
+]
+
+def db_graph(request, extension:str):
+    """Return database graph in png format."""
+    path = f'media/assets/img/db_graph.{extension}'
+    print('image path:', path)
+    if extension not in db_graph_extensions:
+        raise PermissionDenied
+    cache = False
+    print(request.GET)
+    if request.GET['cache']:
+        print(request.GET['cache'])
+        cache = request.GET['cache'].lower() == 'true'
+    if not cache:
+        command = f'python manage.py graph_models -a -o {path}'
+        print('running:', command)
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+        process.wait()
+        print('process over:', process.returncode)
+    else:
+        print('loading from cache')
+    with open(path, 'rb') as img:
+        # response = FileResponse(img.read())
+        t = img.read()
+    # print('loaded response')
+    response = HttpResponse(t, content_type=f'image/{extension}')
+    return response
 
 # HTTP Errors
 # def bad_request(request, exception):

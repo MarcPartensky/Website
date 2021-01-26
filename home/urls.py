@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
@@ -14,6 +14,7 @@ urlpatterns = [
          name="notified-mail-form"),
     path('notified-mail-list', views.notified_mail_list,
          name="notified-mail-list"),
+    re_path(r'^db_graph\.([a-z]*)', views.db_graph, name="db-graph"),
 ]
 
 # from django.conf.urls import (

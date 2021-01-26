@@ -26,3 +26,7 @@ env
 
 # Article cache
 # article/templates/cache/*
+
+# SSL Certificate key
+key.pem
+cert.pem

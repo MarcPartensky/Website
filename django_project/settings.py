@@ -80,6 +80,8 @@ INSTALLED_APPS = [
     'storages',
     'crispy_forms',
 
+    'django_extensions',
+
     # allauth stuff
     'django.contrib.sites',
     'social_app',
@@ -109,6 +111,7 @@ INSTALLED_APPS = [
 
     # Read sql data
     'explorer',
+
 ]
 
 MIDDLEWARE = [

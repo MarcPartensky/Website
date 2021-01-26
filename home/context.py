@@ -152,7 +152,7 @@ def hydrate(*context_getters, debug=False):
             for context_getter in context_getters:
                 context_hydrated.update(context_getter(request))
             context.update(context_hydrated)
-            if debug: print(context)
+            # if debug: print(context)
             return view(request, *args, context=context, **kwargs)
         return view_decorated
     return view_decorator
