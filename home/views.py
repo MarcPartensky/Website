@@ -7,6 +7,7 @@ from home.context import hydrate, home, base
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
+from rich import print
 
 from . import models
 from . import forms
@@ -95,15 +96,18 @@ def db_graph(request, extension:str):
         raise PermissionDenied
     cache = False
     print(request.GET)
-    if request.GET['cache']:
+    if request.GET.get('cache'):
         print(request.GET['cache'])
         cache = request.GET['cache'].lower() == 'true'
     if not cache:
         command = f'python manage.py graph_models -a -o {path}'
-        print('running:', command)
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
-        process.wait()
-        print('process over:', process.returncode)
+        print(f'[yellow]running[/]: [magenta]{command}[/]')
+        try:
+            process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+            process.wait()
+            print('[yellow]process over[/]:', process.returncode)
+        except Exception as e:
+            print(f'[red]failed[/]: {e}')
     else:
         print('loading from cache')
     with open(path, 'rb') as img:

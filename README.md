@@ -57,3 +57,11 @@ https://docs.docker.com/compose/gettingstarted/
 find . -type f | wc -l
 ```
 for now there are 31938 files (folders not included)
+
+## Heroku Buildpacks
+
+```
+heroku/python
+heroku/node
+https://github.com/weibeld/heroku-buildpack-graphviz
+```
