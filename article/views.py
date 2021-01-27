@@ -2,6 +2,7 @@ import time
 import os
 import glob
 import random
+import datetime
 
 from django.shortcuts import render, HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
@@ -12,14 +13,19 @@ from .adapt import adapt
 
 from django.template.loader import engines
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 from home.context import home, hydrate
 from .context import get_articles_objects
+from rich import print
 
 def get_article_context(request):
     """Create the context of the article view."""
     d = home(request)
-    d.update(get_articles_objects())
+    objects = Article.objects.filter(public=True)
+    if request.user.is_authenticated:
+        objects.union(Article.objects.filter(author=request.user))
+    d['objects'] = objects
     return d
 
 def reset_template_cache():
@@ -34,7 +40,7 @@ def index(request, context={}):
     """Select or create an article."""
     return render(request, 'article/index.html', context)
 
-def clean():
+def clean_templates():
     """Remove the unused templates."""
     # print(f"{os.getcwd()}/article/static/cache")
     # print('machin directory:', os.listdir(f"{os.getcwd()}/article/static"))
@@ -48,8 +54,11 @@ def clean():
         os.remove(file)
         print('after deleting templates', os.listdir(f"{os.getcwd()}/article/templates/cache"))
 
-def make(title: str, layout: str = "marc"):
+def build_template(title:str, article:Article, layout:str="marc"):
     """Build the template and its assets."""
+    with open(f"{os.getcwd()}/media/article/{title}.md", 'w') as f:
+        f.write(article.content)
+
     os.system(f"{os.getcwd()}/node_modules/.bin/generate-md --layout {layout}\
               --input {os.getcwd()}/media/article/{title}.md \
               --output {os.getcwd()}/article/templates/cache")
@@ -70,30 +79,40 @@ def make(title: str, layout: str = "marc"):
 def read(request, title: str):
     """Read an article."""
     reset_template_cache()
-    clean()
-    print(request.GET)
-    if 'layout' in request.GET:
-        layout = request.GET['layout']
-    else:
-        layout = "marc"
+    clean_templates()
+
+    print('GET:', request.GET)
+    layout = request.GET.get('layout') or 'marc'
     layouts = os.listdir("./node_modules/markdown-styles/layouts")
+
+    title_no_md = (title[:-3] if title.endswith('.md') else title)
+    print('title without `.md`:', title_no_md)
+
+    article = Article.objects.filter(title=title_no_md).first()
+    if not article:
+        raise Http404("This article was not found.")
+
+    article.read = datetime.datetime.now()
+    article.view_count += 1
+    article.save()
+
     if layout not in layouts:
         print(layout, 'not in ', layouts)
         return render(request, 'article/403.html', dict(layouts=layouts))
-    elif not f"{title.replace('.md', '')}.md" in os.listdir(f"{os.getcwd()}/media/article"):
-        print(title, 'not in', os.listdir(f"{os.getcwd()}/media/article"))
-        raise Http404("This article was not found.")
-    elif title.endswith('.md'):
-        with open(f"{os.getcwd()}/media/article/{title}", "r") as f:
-            text = str(f.read())
-        return HttpResponse(text, content_type="text/markdown")
-    elif title == "index":
-        print("index is reserved")
+
+    if title.endswith('.md'):
+        return HttpResponse(article.content, content_type="text/markdown")
+
+    # Never happens since order matters in `urls.py`.
+    if title == "index":
         raise PermissionDenied
+
+    build_template(title, article, layout)
+
     # Messing with template loader cache system
     title_template = title + "." + str(time.time())
-    make(title, layout)
     path = f"{os.getcwd()}/article/templates/cache/{title_template}.html"
+
     os.system(f"mv \
         {os.getcwd()}/article/templates/cache/{title}.html \
         {path}"
@@ -118,32 +137,51 @@ def read(request, title: str):
     # print("code generated")
     # return HttpResponse(html)
 
+def fetch_article_data(file, request):
+    """Read a file to fetch data to fill the sql fields."""
+    d = {}
+    d['title'] = request.POST.get('title') or str(file)
+    if d['title'].endswith('.md'):
+        d['title'] = d['title'][:-3]
+    print(type(file))
+    # d['file'] = file
+    d['content'] = file.read().decode('utf-8')
+    if request.user:
+        d['author'] = request.user
+    d['public'] = request.POST.get('public') or False
+    print(d)
+    return d
+
+# file = str(form.files['file'])
+# filepath = f"{os.getcwd()}/media/article/{file}"
+# print('trying to post:', filepath)
+# content = form.files['file'].file.read().decode('utf-8')
+# lines = content.split('\n')
+# if lines[0].startswith('#!'):
+#     lines = lines[1:]
+# content = '\n'.join(lines).strip()
+# with open(filepath, 'w') as f:
+#     f.write(content)
+
 @csrf_exempt
 def upload(request):
     """Upload a new article."""
     print('received markdown')
     if request.method == 'POST':
         print(request.FILES)
-        form = ArticleForm(request.POST, request.FILES)
-        file = str(form.files['file'])
-        filepath = f"{os.getcwd()}/media/article/{file}"
-        print('trying to post:', filepath)
-        content = form.files['file'].file.read().decode('utf-8')
-        lines = content.split('\n')
-        if lines[0].startswith('#!'):
-            lines = lines[1:]
-        content = '\n'.join(lines).strip()
-        with open(filepath, 'w') as f:
-            f.write(content)
+        d = fetch_article_data(request.FILES['file'], request)
+        form = ArticleForm(d)
         if form.is_valid():
-            print(form)
-            # form.save()
+            print(f'[lightgreen]valid form[/]')
+            form.save()
             return HttpResponse('success')
         else:
-            return HttpResponse('invalid form')
+            print(f'[red]invalid form[/]')
+            print(f'[red]{form.errors.as_data()}[/]')
+            return HttpResponse('invalid form', status=500)
     elif request.method == 'GET':
         form = ArticleForm()
         context = dict(form=form)
         return render(request, 'api/upload.html', context)
     else:
-        return HttpResponse('only get and post methods are allowed', status=403)
+        raise PermissionDenied('Only GET and POST methods are allowed')

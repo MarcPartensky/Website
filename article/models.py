@@ -5,18 +5,21 @@ from django.contrib.auth.models import User
 class Article(models.Model):
     """A model to store markdown files"""
 
-    title = models.CharField(max_length=80)
-    file = models.FileField(upload_to='article/')
+    title = models.CharField(max_length=255, unique=True)
+    # file = models.FileField(upload_to='article/')
+    content = models.TextField(null=True)
 
-    author = models.ForeignKey(
+    author = models.OneToOneField(
         User, on_delete=models.SET_NULL, blank=True, null=True)
-    view_count = models.IntegerField(default=0)
-    like_count = models.IntegerField(default=0)
+    public = models.BooleanField(default=False)
+    description = models.TextField(null=True, blank=True)
+
+    view_count = models.PositiveIntegerField(default=0)
+    like_count = models.PositiveIntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    read = models.DateTimeField(blank=True)
-    public = models.BooleanField(default=False)
-    description = models.TextField(null=True)
+    read = models.DateTimeField(null=True)
+    # uuid = models.UUIDField(editable=False)
 
     class Meta:
         ordering = ['title']
@@ -25,12 +28,9 @@ class Article(models.Model):
         """Return the title of the article."""
         return f"{self.title}"
 
-    @property
-    def markdown(self):
-        """Return the markdown representation of the article."""
-        with open(self.file, 'r') as f:
-            text = f.read()
-        return text
+    # @property
+    # def preview(self, n=500):
+    #     """"""
 
 # class WritersGroup
 # article = models.ForeignKey(ArticleModel)

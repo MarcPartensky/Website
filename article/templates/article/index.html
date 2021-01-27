@@ -38,12 +38,14 @@
 </style>
 {% endblock styles %}
 
+
 {% block content %}
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.rawgit.com/enyo/dropzone/master/dist/dropzone.css">
-<script src="https://cdn.rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+
+
 
 <div class="container">
     <form enctype="multipart/form-data" action="/article/upload" class="dropzone dropzone-single dz-clickable" id="dropzone">
@@ -59,7 +61,16 @@
       <div class="col-4">
         <div class="list-group" id="list-tab" role="tablist">
         {% for article in articles %}
-        <a class="list-group-item list-group-item-action {% if article.active %}active{% endif %}" id="title-{{article.title}}" data-toggle="list" href="#content-{{ article.title }}" role="tab" aria-controls="settings">{{ article.title }}</a>
+        <a style="display: flex" class="list-group-item list-group-item-action {% if article.active %}active{% endif %}" id="title-{{article.title}}" data-toggle="list" href="#content-{{ article.title }}" role="tab" aria-controls="settings">{{ article.title }}
+				<div>
+					<button style="margin-left: 30%; display: flex" type="button" class="btn btn-primary btn-sm">
+						Views <span style="margin-left: 10%; justify-content: center" class="badge badge-light">{{article.view_count}}</span>
+					</button>
+				</div>
+				</a>
+				{% if article.public %}
+				<span class="badge badge-info">Public</span>
+				{% endif %}
         {% endfor %}
         </div>
       </div>
@@ -69,7 +80,7 @@
             <div class="tab-pane fade {% if article.active %}show active{% endif %}" id="content-{{ article.title }}" role="tabpanel" aria-labelledby="list-home-list"><a href="/article/{{ article.title }}">
                     <button type="button" class="btn btn-success btn-lg btn-block">Read</button>
                 </a>
-                <pre id="preview">{{ article.preview }}</pre>
+                <pre id="preview">{{ article.content|truncatechars:500 }}</pre>
                 {#<iframe src="/article/{{article}}"></iframe>#}
               </div>
         {% endfor %}
@@ -83,4 +94,5 @@
 
 {% block script %}
 <script src="{% static 'article/index.js' %}"></script>
+<script src="https://cdn.rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 {% endblock script %}

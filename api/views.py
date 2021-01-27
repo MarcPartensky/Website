@@ -1,26 +1,25 @@
+"""
+Api views that don't necessarily provide a gui interface.
+"""
+import random
+import html
+import urllib
+import sys
+import os
+
+from io import StringIO
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.exceptions import PermissionDenied
-import random
 
 from rest_framework.parsers import JSONParser, FileUploadParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .forms import UploadFileForm, UploadMarkdownForm
-
 from django.views.decorators.csrf import csrf_exempt
-
 from .models import MarkdownModel
 
-from io import StringIO
-
-import html
-import urllib
-import sys
-import os
-
-# Create your views here.
 
 def index(request):
     return render(request, 'index/index.html', {})
@@ -127,8 +126,9 @@ def login(request):
     user = request.POST['user']
     password = request.POST['password']
     print(user, password)
-    print(os.environ['WEBSITE_USER'],os.environ['WEBSITE_PASSWORD'])
-    if (user,password)!=(os.environ['WEBSITE_USER'],os.environ['WEBSITE_PASSWORD']):
+    print(os.environ['WEBSITE_USER'],
+          os.environ['WEBSITE_PASSWORD'])
+    if (user, password) != (os.environ['WEBSITE_USER'], os.environ['WEBSITE_PASSWORD']):
         raise PermissionDenied
     token = int(hash(random.random())/1000)
     print(f"python-shell: {user} logs with {token}\n")
