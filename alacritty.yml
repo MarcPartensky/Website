@@ -679,13 +679,15 @@ key_bindings:
   - { key: N,      mods: Command,            action: SpawnNewInstance }
   - { key: F,      mods: Command|Control,    action: ToggleFullscreen }
 
-  - { key: S,      mods: Command,            chars: ":w\x0a" }
-  - { key: W,      mods: Command,            chars: ":q\x0a" }
+  - { key: S,      mods: Command,            chars: "\x1b:w\x0a" }
+  - { key: W,      mods: Command,            chars: "\x1b:q\x0a" }
   - { key: T,      mods: Command,            chars: ":tabnew | terminal\x0a" }
   - { key: Left,   mods: Command|Alt,        chars: ":tabprevious\x0a" }
   - { key: Right,  mods: Command|Alt,        chars: ":tabnext\x0a" }
   - { key: Slash,  mods: Command,            chars: ":Commentary\x0a" }
-  - { key: I,      mods: Command,            chars: ":!\"%:p\"\x0a" }
+  - { key: I,      mods: Command,            chars: ":\x1b!\"%:p\"\x0a" }
+  - { key: A,      mods: Command,            chars: "\x1bggVG" }
+  # - { key: J,      mods: Command,            chars: "v\x0a" }
 
 # debug:
   # Display the time it takes to redraw each frame.
