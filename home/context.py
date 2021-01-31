@@ -7,6 +7,7 @@ import os
 import requests
 
 from article.context import get_articles
+from django_project.settings import DEBUG
 
 
 def get_github_info():
@@ -98,6 +99,15 @@ def get_demos():
     demos = [demo for demo in demos if not demo in blacklist]
     return dict(demos=demos)
 
+def get_vanta():
+    """Return the context of the vanta config."""
+    # print('debug for vanta:', DEBUG)
+    if DEBUG:
+        vanta_points = 0.1
+    else:
+        vanta_points = 10.0
+    return dict(vanta_points=vanta_points)
+
 # def get_articles():
 #     """Return the articles."""
 #     return {}
@@ -116,6 +126,7 @@ def home(request):
         **get_theme(request),
         **get_demos(),
         **get_articles(),
+        **get_vanta(),
         **get_games()
     )
 
@@ -126,6 +137,7 @@ def base(request):
         **get_theme(request),
         **get_demos(),
         **get_articles(),
+        **get_vanta(),
         **get_games()
     )
 
@@ -133,7 +145,9 @@ def fake_base(request):
     """Return a fake base context to avoid connecting to third parties."""
     return dict(
         theme="dark",
+        **get_vanta(),
     )
+
 
 # def combine_dicts(dicts):
 #     d = {}

@@ -15,7 +15,7 @@
 
 			<div class="row footer-newsletter justify-content-center">
 				<div class="col-lg-6">
-					<form method="post" action="/notified-mail-form">{% csrf_token %}
+					<form id="notified-mail-form" method="post" action="/notified-mail-form">{% csrf_token %}
 						<input id="email" type="email" name="email" placeholder="Enter your Email"><input type="submit" value="Subscribe">
 					</form>
 				</div>

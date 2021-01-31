@@ -356,7 +356,7 @@ CHANNEL_LAYERS = {
             ],
             "symmetric_encryption_keys": [SECRET_KEY],
         },
-        "ROOTING": "chat.routing.channel_routing",
+        # "ROOTING": "chat.routing.channel_routing",
     },
 }
 

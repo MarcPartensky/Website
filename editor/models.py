@@ -19,7 +19,7 @@ class File(models.Model):
 
     def __str__(self):
         """Return the string representation of the game."""
-        return self.filename
+        return str(self.file)
 
 class Script(models.Model):
     """Representation of a script."""
@@ -37,7 +37,7 @@ class Script(models.Model):
 
     def __str__(self):
         """Return the string representation of the game."""
-        return self.filename
+        return str(self.file)
 
 # class GamePostImageUrl(models.Model):
 #     """Representation of a gamepost image url."""

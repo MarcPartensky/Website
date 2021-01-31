@@ -1,9 +1,9 @@
 function dontReloadOnFormSubmit() {
-	const forms = document.forms;
+	// const forms = document.forms;
+	const forms = [document.getElementById('notified-mail-form')]
 	const url = `/notified-mail-form`
-	console.log(forms)
 	for (let form of forms) {
-		console.log(form)
+		// console.log(form)
 
 		$(form).submit(function(event) {
 			console.log('Sending:')
@@ -78,7 +78,7 @@ function main() {
 		scaleMobile: 1.00,
 		color: 0x770000,
 		backgroundColor: 0x0,
-		points: 10.00
+		points: VANTA_POINTS ?? 10.00
 	})
 }
 

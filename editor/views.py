@@ -1,18 +1,18 @@
 """Coding app so that I can code anywhere."""
 
 from django.shortcuts import render
-from .models import Script
+from . import models
 from home.context import hydrate
 from home.context import fake_base as base
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, PermissionDenied
 
 print(base.__doc__)
 
-class OnlyGetAndPost(Exception):
+class OnlyGetAndPost(PermissionDenied):
     """Exception retured when requesting a view only compatible with GET and
     POST methods."""
     def __str__(self):
-        return "Only get and post exceptions are supported."
+        return f"{super().__str__()}: Only get and post exceptions are supported."
 
 
 @hydrate(base)
@@ -23,7 +23,7 @@ def index(request, context: dict = {}):
 @hydrate(base)
 def script_index(request, context: dict = {}):
     """Render a list of scripts."""
-    scripts = Script.objects.all()
+    scripts = models.Script.objects.all()
     context['scripts'] = scripts
     return render(request, 'editor/script_index.html', context)
 
@@ -32,13 +32,11 @@ def script_index(request, context: dict = {}):
 def script(request, title: str, context: dict = {}):
     """Render a script."""
     if request.method == 'GET':
-        scripts = Script.objects.filter(title=title)
-        if scripts:
-            # Use the script found.
-            script = scripts[0]
-        else:
-            # Create a new script if one does not exist.
-            script = Script(title=title, author=request.user)
+        script = models.Script.objects.filter(title=title).first()
+        # Use the script found.
+        if not script:
+            # or create a new script if one does not exist.
+            script = models.Script(title=title, author=request.user)
             script.save()
         context['script'] = script
         return render(request, 'editor/script.html', context)
