@@ -16,7 +16,7 @@ class Article(models.Model):
 
     view_count = models.PositiveIntegerField(default=0)
     like_count = models.PositiveIntegerField(default=0)
-    # dislike_count = models.PositiveIntegerField(default=0)
+    dislike_count = models.PositiveIntegerField(default=0)
     update_count = models.PositiveIntegerField(default=0) # version
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
