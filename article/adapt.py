@@ -3,6 +3,7 @@ import re
 def adapt(text, title, layout):
     text = correct_assets(text, layout)
     text = add_load_static(text)
+    text = add_meta_data(text)
     text = correct_title(text, title)
     text = add_icons(text)
     text = add_back_to_articles(text)
@@ -111,3 +112,32 @@ def add_back_to_top_button(text):
         class="icofont-simple-up"></i></a>')
     return text
 
+def add_meta_data(text):
+    """Add a like button for an article."""
+    text = text.replace('<body>',
+        """<body>
+        <div style="clear: both;">
+            <div style="float: left">
+                {{ like_count }}
+                <span class="iconify" data-icon="fluent-thumb-like-16-regular" data-inline="false"></span>
+                {{ dislike_count }}
+                <span class="iconify" data-icon="fluent:thumb-dislike-24-regular"data-inline="false"></span>
+                <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+                {{ view_count }}
+                <span class="iconify" data-icon="carbon:view" data-inline="false"></span>
+            </div>
+            <div style="float: right">
+                <small style="text-align: right">{{ created }}</small>
+                {% if update_count > 0 %}
+                <small> modified </small>
+                {% endif %}
+            </div>
+        </div>
+        """)
+    # text = text.replace('</body>',
+    #     """
+    #     <hr>
+    #     created: {{ updated }}<br>
+    #     </body>
+    #     """)
+    return text

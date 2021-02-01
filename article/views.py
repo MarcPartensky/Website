@@ -119,7 +119,11 @@ def read(request, title: str):
     )
     print(os.listdir(f"{os.getcwd()}/article/templates/cache/"))
     # Fill context with http parameters and article meta data.
-    context = dict(**request.GET, stats=os.stat(path))
+    context = dict(
+        **request.GET,
+        **article.__dict__,
+        stats=os.stat(path)
+    )
     return render(request, f"cache/{title_template}.html", context)
 
     #print(f'removing {title}.html')

@@ -112,6 +112,9 @@ INSTALLED_APPS = [
     # Read sql data
     'explorer',
 
+    # Cluster manager
+    'django_q',
+
 ]
 
 MIDDLEWARE = [
