@@ -30,3 +30,6 @@ env
 # SSL Certificate key
 key.pem
 cert.pem
+
+# Heroku database dump
+*.dump
