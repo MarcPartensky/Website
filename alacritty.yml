@@ -591,9 +591,10 @@ live_config_reload: true
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
 key_bindings:
-  #- { key: Paste,                                action: Paste          }
-  #- { key: Copy,                                 action: Copy           }
-  #- { key: L,         mods: Control,             action: ClearLogNotice }
+  # - { key: Paste,                                action: Paste          }
+  # - { key: Copy,                                 action: Copy           }
+  # - { key: Copy,                                 action: ClearSelection }
+  # - { key: L,         mods: Control,             action: ClearLogNotice }
   #- { key: L,         mods: Control, mode: ~Vi,  chars: "\x0c"          }
   #- { key: PageUp,    mods: Shift,   mode: ~Alt, action: ScrollPageUp,  }
   #- { key: PageDown,  mods: Shift,   mode: ~Alt, action: ScrollPageDown }
@@ -671,7 +672,10 @@ key_bindings:
   - { key: K,      mods: Command,            action: ClearHistory     }
   - { key: V,      mods: Command,            action: Paste            }
   - { key: C,      mods: Command,            action: Copy             }
-  - { key: C,      mods: Command, mode: Vi,  action: ClearSelection   }
+  # - { key: C,      mods: Command,            action: ClearSelection   }
+  # - { key: Copy,   mods: Command,            action: ClearSelection   }
+  # - { key: C,      mods: Command, mode: Vi,  action: Copy             }
+  # - { key: Copy,   mods: Command, mode: Vi,  action: ClearSelection   }
   - { key: H,      mods: Command,            action: Hide             }
   - { key: M,      mods: Command,            action: Minimize         }
   - { key: Q,      mods: Command,            action: Quit             }
@@ -685,7 +689,8 @@ key_bindings:
   - { key: Left,   mods: Command|Alt,        chars: ":tabprevious\x0a" }
   - { key: Right,  mods: Command|Alt,        chars: ":tabnext\x0a" }
   - { key: Slash,  mods: Command,            chars: ":Commentary\x0a" }
-  - { key: I,      mods: Command,            chars: ":\x1b!\"%:p\"\x0a" }
+  - { key: I,      mods: Command,            chars: "\x1b:!\"%:p\"\x0a" }
+  - { key: Y,      mods: Command,            chars: "\x1b:!pylint %\x0a" }
   - { key: A,      mods: Command,            chars: "\x1bggVG" }
   # - { key: J,      mods: Command,            chars: "v\x0a" }
 

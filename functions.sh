@@ -89,7 +89,7 @@ function keybr {
 }
 
 function speedtest {
-	curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+	python /usr/local/marc/speedtest.py
 }
 
 function dl-music {
@@ -110,4 +110,15 @@ function p {
 
 function pj {
 	cd ~/git-projects/$@
+}
+
+function nodesktopicon {
+	defaults write com.apple.finder CreateDesktop false
+	killall Finder
+}
+
+
+function desktopicon {
+	defaults write com.apple.finder CreateDesktop true
+	killall Finder
 }

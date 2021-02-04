@@ -10,7 +10,7 @@ export TEST="This is a test"
 export PRODUCTION=false
 export DEBUG_VALUE="True"
 export DEVELOPMENT=true
-export WEBSITE_URL="https://websiteofmarcpartensky.herokuapp.com"
+export WEBSITE_URL="https://marcpartensky.herokuapp.com"
 export WEBSITE_USER="marcpartensky"
 export WEBSITE_PASSWORD="glouaymay"
 export ISEP_ID="mapa60217"
@@ -49,11 +49,11 @@ export BRAWLSTARS_ID="8YC89YRL0"
 export BRAWLSTARS_MAIL="marc.gptl44@gmail.com"
 export BRAWLSTARS_PASSWORD="marc.partensky@brawlstars"
 export BRAWLSTARS_TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImQzY2EzNjMxLWIwZTAtNDA4NC05MGUwLTIyMDg5MmY2OTMwNiIsImlhdCI6MTU5MjUxNzE0NCwic3ViIjoiZGV2ZWxvcGVyLzdmYzlhMjM2LTVkMTMtMzgxNC1kYmJkLWUwYmU0YzFlOTdjMiIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbWl0cyI6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsiY2lkcnMiOlsiOTEuMTY1LjIxLjg3Il0sInR5cGUiOiJjbGllbnQifV19.EHXW9ji-11Av8p9oFBpQ02idYPGxapNKbFG6P6AprjlgkLLjZ1WN2VM7hkM2b9aPjJKbIlmE4BJEij5dvM-rfg"
-export PP_PASSWORD="yaM-yauolG44"
-export JAVA_HOME=$(/usr/libexec/java_home)
 export DISCORD_PREFIX="?"
 export DISCORD_DEPLOYMENT="DEVELOPMENT"
 export YTOPTS="-ciw -x --audio-format 'mp3' --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title    )s.%(ext)s' --rm-cache-dir"
+export PP_PASSWORD="yaM-yauolG44"
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # For Pyenv
 # export PYENV_ROOT="$HOME/.pyenv"

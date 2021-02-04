@@ -1,9 +1,11 @@
+export DOTFILES_PATH=$(pwd)
+
 # vim mode inside the terminal
 set -o vi
 set editing-mode vi
 set keymap vi
 set shiftwidth=4
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 
 #\\\_ COMPLETIONS _///#
@@ -62,6 +64,8 @@ export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
 source ${0:a:h}/aliases.sh
 source ${0:a:h}/functions.sh
 source ${0:a:h}/exports.sh
+
+ln -snf ${0:a:h}/.zshenv ~
 
 # When started as 'evim', evim.vim will already have done these settings, bail out.
 # if v:progname =~? "evim"
