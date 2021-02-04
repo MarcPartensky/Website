@@ -15,7 +15,7 @@ alias desk="desktop"
 alias ports="lsof -Pn -i4"
 alias ports2="netstat -ap tcp"
 alias network="watch -n 1 \"netstat -p tcp\""
-alias cat=ccat
+# alias cat=ccat
 
 ### Games ###
 alias tetris=bastet

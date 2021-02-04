@@ -1,4 +1,8 @@
 export DOTFILES_PATH=$(pwd)
+export PROGRAMS_PATH=$(pwd)/..
+
+echo $DOTFILES_PATH
+echo $PROGRAMS_PATH
 
 # vim mode inside the terminal
 set -o vi
@@ -22,7 +26,7 @@ bashcompinit
 # compinit
 
 # autocompletion
-source ~/.zsh-plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source ~/.zsh-plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # zstyle ':autocomplete:*' config off
 zstyle ':autocomplete:*' min-input 3
 
@@ -59,13 +63,18 @@ bindkey '\t' autosuggest-accept
 # ZSH_THEME="eastwood"
 
 # export GREP_OPTIONS="--color=always"
-export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
+# export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
+
+echo test
 
 source ${0:a:h}/aliases.sh
 source ${0:a:h}/functions.sh
 source ${0:a:h}/exports.sh
 
+echo test2
+
 ln -snf ${0:a:h}/.zshenv ~
+
 
 # When started as 'evim', evim.vim will already have done these settings, bail out.
 # if v:progname =~? "evim"
