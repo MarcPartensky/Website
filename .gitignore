@@ -30,3 +30,11 @@ env
 # SSL Certificate key
 key.pem
 cert.pem
+*.pem
+
+# Article pages loaded
+article/templates/cache/
+article/templates/cache/*
+
+# Media files stored
+media/article/
