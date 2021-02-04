@@ -1,5 +1,6 @@
-export DOTFILES_PATH=$(pwd)
-export PROGRAMS_PATH=$(pwd)/..
+export DOTFILES_PATH=${0:a:h}
+export PROGRAMS_PATH=$(readlink -f "$DOTFILES_PATH/..")
+# $(readlink -f "$(which $0)/..")
 
 # vim mode inside the terminal
 set -o vi
