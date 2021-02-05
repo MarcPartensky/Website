@@ -129,7 +129,7 @@ def add_meta_data(text):
             <div style="float: right">
                 <small style="text-align: right">{{ created }}</small>
                 {% if update_count > 0 %}
-                <small> modified </small>
+                <small> V{{ update_count }}</small>
                 {% endif %}
             </div>
         </div>

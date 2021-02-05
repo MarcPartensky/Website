@@ -2,9 +2,40 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-class Article(models.Model):
-    """A model to store markdown files"""
+# class ArticleLayout(models.Model):
+#     """A model that stores possible article layouts."""
+#     name = models.CharField(max_length=255)
+#     author = models.OneToOneField(
+#         User, on_delete=models.SET_NULL, blank=True, null=True)
+#     created = models.DateTimeField(auto_now_add=True)
+#     modified = models.DateTimeField(auto_now_add=True)
 
+#     def __str__(self):
+#         """Return the name of the article layout."""
+#         return f"{self.name}"
+
+class ArticleLayout(models.TextChoices):
+    BOOTSTRAP3 = 'bootstrap3'
+    GITHUB = 'github'
+    JASONM23_DARK = 'jasonm23-dark'
+    JASONM23_FOGHORN = 'jasonm23-foghorn'
+    JASONM23_MARKDOWN = 'jasonm23-foghorn'
+    JASONM23_SWISS = 'jasonm23-swiss'
+    MARC = 'marc'
+    MARKEDAPP_BYWORD = 'markedapp-byword'
+    MIXU_BOOK = 'mixu-book'
+    MIXU_BOOTSTRAP_2COL = 'mixu_bootstrap-2col'
+    MIXU_BOOTSTRAP = 'mixu-bootstrap'
+    MIXU_GRAY = 'mixu-gray'
+    MIXU_PAGE = 'mixu-page'
+    MIXU_RADAR = 'mixu-radar'
+    RORYG_GHOSTWRITER = 'roryg_ghostwriter'
+    THOMASF_SOLARIZEDCSSDARK = 'thomasf_solarizedcssdark'
+    THOMASF_SOLARIZEDCSSLIGHT = 'thomasf_solarizedcsslight'
+
+
+class Article(models.Model):
+    """A model to store markdown files."""
     title = models.CharField(max_length=255, unique=True)
     # file = models.FileField(upload_to='article/')
     content = models.TextField(null=True)
@@ -21,7 +52,12 @@ class Article(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     read = models.DateTimeField(null=True)
-    # uuid = models.UUIDField(editable=False)
+    layout = models.CharField(
+        max_length=255,
+        choices=ArticleLayout.choices,
+        default=ArticleLayout.MARC)
+    # Unique way to identify an article which never changes
+    uuid = models.UUIDField(editable=False, unique=True)
 
     class Meta:
         ordering = ['title']
