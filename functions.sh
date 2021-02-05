@@ -112,13 +112,3 @@ function pj {
 	cd ~/git-projects/$@
 }
 
-function nodesktopicon {
-	defaults write com.apple.finder CreateDesktop false
-	killall Finder
-}
-
-
-function desktopicon {
-	defaults write com.apple.finder CreateDesktop true
-	killall Finder
-}

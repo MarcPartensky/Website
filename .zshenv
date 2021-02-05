@@ -74,6 +74,17 @@ function p { cd ~/programs/$@ }
 function pj { cd ~/git-projects/$@ }
 export programs=~/programs
 
+function nodesktopicon {
+	defaults write com.apple.finder CreateDesktop false
+	killall Finder
+}
+
+
+function desktopicon {
+	defaults write com.apple.finder CreateDesktop true
+	killall Finder
+}
+
 # python shortcuts
 alias pip=pip3
 alias py=python
