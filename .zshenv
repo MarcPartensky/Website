@@ -55,45 +55,56 @@ alias images="cd ~/images"
 alias downloads="cd ~/downloads"
 
 # Programming shortcuts
-alias programs='cd ~/Programs/'
-alias website='cd ~/Programs/Website'
-alias web='cd ~/Programs/Web'
-alias javascript='cd ~/Programs/Web/Javascript'
-alias canvas='cd ~/Programs/Web/Javascript/Canvas'
-alias html='cd ~/Programs/Web/Html'
-alias css="cd ~/Programs/Web/Css"
-alias markdown="cd ~/Programs/Markdown"
-alias wadjet='cd ~/Unity Games/Asteroids'
+alias programs='cd ~/programs/'
+alias website='cd ~/programs/website'
+alias web='cd ~/programs/web'
+alias javascript='cd ~/programs/web/javascript'
+alias canvas='cd ~/programs/web/javascript/canvas'
+alias html='cd ~/programs/web/html'
+alias css="cd ~/programs/web/css"
+alias markdown="cd ~/programs/markdown"
+alias wadjet='cd ~/unity games/asteroids'
 alias gitprojects="cd ~/git-projects"
-alias brain="cd ~/programs/BrainPerformer"
+alias brain="cd ~/programs/brainperformer"
 
 # Quick temporary aliases
-alias asteroids="cd ~/Programs/Web/Javascript/Canvas/Asteroids"
+alias asteroids="cd ~/programs/web/javascript/canvas/asteroids"
 
-function p { cd ~/Programs/$@ }
+function p { cd ~/programs/$@ }
 function pj { cd ~/git-projects/$@ }
 export programs=~/programs
 
-# Python shortcuts
+function nodesktopicon {
+	defaults write com.apple.finder CreateDesktop false
+	killall Finder
+}
+
+
+function desktopicon {
+	defaults write com.apple.finder CreateDesktop true
+	killall Finder
+}
+
+# python shortcuts
 alias pip=pip3
 alias py=python
 alias activate="source env/bin/activate"
-alias py20='cd ~/Programs/Python/Repository-2020'
-alias pygames='cd ~/Programs/Python/Repository-Games'
-alias pyml='cd ~/Programs/Python/Machine-Learning'
-alias pyhome='cd ~/Programs/Python'
-alias pypackages='cd /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/'
-alias pypi='cd ~/Programs/Python/Pypi'
+alias py20='cd ~/programs/python/repository-2020'
+alias pygames='cd ~/programs/python/repository-games'
+alias pyml='cd ~/programs/python/machine-learning'
+alias pyhome='cd ~/programs/python'
+alias pypackages='cd /library/frameworks/python.framework/versions/3.8/lib/python3.8/site-packages/'
+alias pypi='cd ~/programs/python/pypi'
 
-# Python programs
-alias webpfix='py /Users/marcpartensky/Programs/Python/Repository-2020/webpfix.py'
-alias glou="py /Users/marcpartensky/git-projects/Glou"
-alias noscreenshots='python /Users/marcpartensky/Programs/Python/Repository-2020/no-screenshots.py'
-alias video2gif='python /Users/marcpartensky/Programs/Python/Repository-2020/video2gif.py'
-alias hyperplanning="python /Users/marcpartensky/programs/python/repository-2020/isep-hyperplanning.py"
-alias portail="python /Users/marcpartensky/programs/python/repository-2020/isep-portal.py"
+# python programs
+alias webpfix='py /users/marcpartensky/programs/python/repository-2020/webpfix.py'
+alias glou="py /users/marcpartensky/git-projects/glou"
+alias noscreenshots='python /users/marcpartensky/programs/python/repository-2020/no-screenshots.py'
+alias video2gif='python /users/marcpartensky/programs/python/repository-2020/video2gif.py'
+alias hyperplanning="python /users/marcpartensky/programs/python/repository-2020/isep-hyperplanning.py"
+alias portail="python /users/marcpartensky/programs/python/repository-2020/isep-portal.py"
 
-# Messenger
+# messenger
 alias vivelescookies="chrome https://www.facebook.com/messages/t/1830795903602344"
 alias alexandre="chrome https://www.facebook.com/messages/t/alexandre.partensky"
 alias maman="chrome https://www.facebook.com/messages/t/pew.pradithja.1"
@@ -105,7 +116,7 @@ alias paul="chrome https://www.facebook.com/messages/t/100009925413499"
 alias arnaud="chrome https://www.facebook.com/messages/t/100013962188251"
 alias etienne="chrome https://www.facebook.com/messages/t/etienne.faviere"
 alias baptiste="chrome https://www.facebook.com/messages/t/100009848792300"
-alias lovinsky="chrome https://www.facebook.com/messages/t/Skyns82"
+alias lovinsky="chrome https://www.facebook.com/messages/t/skyns82"
 alias maxime="chrome https://www.facebook.com/messages/t/100011382659168"
 alias jp="chrome https://www.facebook.com/messages/t/jeanpascal.vostatek"
 alias maximilien="chrome https://www.facebook.com/messages/t/maximilien.delagastine"
@@ -116,14 +127,14 @@ alias medhi="chrome https://www.facebook.com/messages/t/mehdi.haffoudhi.9"
 alias hugues="chrome https://www.facebook.com/messages/t/hugues.rubin"
 alias kevin="chrome https://www.facebook.com/messages/t/pandasus.pandasus.1"
 
-# Applications
-alias chrome="open -a 'Google Chrome' $1"
-alias unity="open -a 'Unity'"
-alias daisy="open -a 'DaisyDisk'"
-alias terminal="open -a 'iTerm'"
-alias postman="open -a 'Postman'"
+# applications
+alias chrome="open -a 'google chrome' $1"
+alias unity="open -a 'unity'"
+alias daisy="open -a 'daisydisk'"
+alias terminal="open -a 'iterm'"
+alias postman="open -a 'postman'"
 alias keybr="chrome https://www.keybr.com/"
-alias touch-typing="open -a 'Google Chrome' 'https://www.typingclub.com/sportal/program-3.game'"
+alias touch-typing="open -a 'google chrome' 'https://www.typingclub.com/sportal/program-3.game'"
 alias change-extension="for file in *.$1; do mv '$file' '${file%.txt}.$2'; done"
 function finder { open . }
 function search { open -a 'Google Chrome' "https://www.google.com/search?q=$*" }
