@@ -14,8 +14,6 @@ from PIL import Image
 #     LIGHT = 1
 #     DARK = 2
 
-# class ArticleLayout
-
 
 class Preference(models.Model):
     """Representation of a preference."""
