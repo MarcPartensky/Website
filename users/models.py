@@ -3,7 +3,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django_jsonfield_backport.models import JSONField
 
-import article
+# from . import article
+from article.models import ArticleLayout
 
 from PIL import Image
 
@@ -18,13 +19,19 @@ from PIL import Image
 
 class Preference(models.Model):
     """Representation of a preference."""
+    # data = models.JSONField(blank=True, null=True)
     data = JSONField(blank=True, null=True)
+    article_layout = models.CharField(
+        max_length=255,
+        choices=ArticleLayout.choices,
+        null=True,
+    )
     # article_layout = models.OneToOneField(
-    #     article.models.ArticleLayout,
+    #     ArticleLayout,
     #     on_delete=models.SET_NULL,
     #     null=True,
     #     blank=True)
-    theme = models.PositiveSmallIntegerField(choices=)
+    # theme = models.PositiveSmallIntegerField(choices=)
     theme = models.IntegerChoices("Theme", "LIGHT DARK")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

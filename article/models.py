@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+import uuid
+
 # class ArticleLayout(models.Model):
 #     """A model that stores possible article layouts."""
 #     name = models.CharField(max_length=255)
@@ -19,7 +21,7 @@ class ArticleLayout(models.TextChoices):
     GITHUB = 'github'
     JASONM23_DARK = 'jasonm23-dark'
     JASONM23_FOGHORN = 'jasonm23-foghorn'
-    JASONM23_MARKDOWN = 'jasonm23-foghorn'
+    JASONM23_MARKDOWN = 'jasonm23-markdown'
     JASONM23_SWISS = 'jasonm23-swiss'
     MARC = 'marc'
     MARKEDAPP_BYWORD = 'markedapp-byword'
@@ -57,7 +59,8 @@ class Article(models.Model):
         choices=ArticleLayout.choices,
         default=ArticleLayout.MARC)
     # Unique way to identify an article which never changes
-    uuid = models.UUIDField(editable=False, unique=True)
+    # uuid = models.UUIDField(
+    #     editable=False, unique=True, default=uuid.uuid4)
 
     class Meta:
         ordering = ['title']
