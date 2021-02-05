@@ -18,6 +18,10 @@ mimetypes.add_type("text/css", ".css", True)
 dotenv.load_dotenv()
 
 SESSION_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 # DEBUG = False
@@ -45,8 +49,11 @@ CORS_ORIGIN_ALLOW_ALL = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # print('secret key:', SECRET_KEY)
 
-
-ALLOWED_HOSTS = ["websiteofmarcpartensky.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = [
+    "websiteofmarcpartensky.herokuapp.com",
+    "localhost",
+    "marcpartensky.com"
+]
 
 # Application definition
 

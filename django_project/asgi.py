@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 """
 https://docs.djangoproject.com/en/3.1/howto/deployment/asgi/
 """
