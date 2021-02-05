@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'article.apps.ArticleConfig',
     'editor.apps.EditorConfig',
     'todo.apps.TodoConfig',
+    'business.apps.BusinessConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',

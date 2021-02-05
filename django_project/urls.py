@@ -15,6 +15,7 @@ def not_found_view(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('business/', include('business.urls')),
     # path('users/login/', auth_views.LoginView.as_view()),
     # path('', include('django.contrib.auth.urls')),
     path('', include('users.urls')),
