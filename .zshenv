@@ -88,7 +88,7 @@ function desktopicon {
 # python shortcuts
 alias pip=pip3
 alias py=python
-alias activate="source env/bin/activate"
+alias activate="source venv/bin/activate"
 alias py20='cd ~/programs/python/repository-2020'
 alias pygames='cd ~/programs/python/repository-games'
 alias pyml='cd ~/programs/python/machine-learning'

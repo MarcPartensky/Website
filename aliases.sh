@@ -19,4 +19,3 @@ alias mampstop='~/Library/Applications/MAMP/bin/stop.sh'
 alias jsonbeautify="chrome https://jsonformatter.curiousconcept.com/"
 alias github="chrome https://github.com/MarcPartensky/"
 alias finder="open ."
-alias automation="cd $PROGRAMS_PATH/automation"
