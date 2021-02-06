@@ -42,7 +42,7 @@ compctl -K _pip_completion pip3
 
 # Antigen
 ANTIGEN_CACHE=false
-source /usr/local/share/antigen/antigen.zsh
+source ${0:a:h}/antigen.zsh
 antigen theme romkatv/powerlevel10k
 antigen theme eastwood
 antigen theme kardan
@@ -69,6 +69,8 @@ source ${0:a:h}/exports.sh
 
 ln -snf ${0:a:h}/.zshenv ~
 ln -snf ${0:a:h}/.p10k.zsh ~
+source ${0:a:h}/.zshenv
+source ${0:a:h}/.p10k.zsh
 
 
 # When started as 'evim', evim.vim will already have done these settings, bail out.
