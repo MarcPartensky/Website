@@ -11,6 +11,6 @@ COPY . .
 WORKDIR .
 
 EXPOSE 8000
-EXPOSE 10021
+# EXPOSE 10021
 
-ENTRYPOINT ["./run.sh"]
+ENTRYPOINT ["daphne", "django_project.asgi:application", "--port", "8000", "--bind", "0.0.0.0", "-v2"]

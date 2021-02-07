@@ -1,0 +1,11 @@
+build:
+  docker:
+    web: Dockerfile
+  config:
+    DJANGO_SETTINGS_MODULE: django_project.settings
+run:
+  web: daphne django_project.asgi:application -b 0.0.0.0 -p $PORT -v2
+release:
+  image: marcpartensky/website
+  command:
+    - python manage.py collectstatic --noinput
