@@ -17,6 +17,7 @@ from PIL import Image
 
 class Preference(models.Model):
     """Representation of a preference."""
+
     # data = models.JSONField(blank=True, null=True)
     data = JSONField(blank=True, null=True)
     article_layout = models.CharField(
@@ -42,16 +43,17 @@ class Preference(models.Model):
 
 class Profile(models.Model):
     """Representation of a user profile."""
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', null=True)
-    preference = models.ForeignKey(
-        to=Preference, on_delete=models.SET_NULL, null=True)
+    image = models.ImageField(default="default.jpg", null=True)
+    preference = models.ForeignKey(to=Preference, on_delete=models.SET_NULL, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         """Return the string representation of a string."""
-        return f'{self.user.username} Profile'
+        return f"{self.user.username} Profile"
+
 
 """
     def save(self,*args,**kwargs):

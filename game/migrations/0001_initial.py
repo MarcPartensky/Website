@@ -16,35 +16,81 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='GamePost',
+            name="GamePost",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('thumbnail', models.URLField()),
-                ('content', models.TextField()),
-                ('timestamp', models.DateTimeField(default=django.utils.timezone.now)),
-                ('likes', models.PositiveIntegerField()),
-                ('dislikes', models.PositiveIntegerField()),
-                ('views', models.PositiveIntegerField()),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                ("thumbnail", models.URLField()),
+                ("content", models.TextField()),
+                ("timestamp", models.DateTimeField(default=django.utils.timezone.now)),
+                ("likes", models.PositiveIntegerField()),
+                ("dislikes", models.PositiveIntegerField()),
+                ("views", models.PositiveIntegerField()),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='GamePostImageUrl',
+            name="GamePostImageUrl",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('url', models.URLField()),
-                ('gamepost', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='game.GamePost')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("url", models.URLField()),
+                (
+                    "gamepost",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="game.GamePost"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='GamePostComment',
+            name="GamePostComment",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.CharField(max_length=1000)),
-                ('timestamp', models.DateTimeField(default=django.utils.timezone.now)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('game', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='game.GamePost')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("content", models.CharField(max_length=1000)),
+                ("timestamp", models.DateTimeField(default=django.utils.timezone.now)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "game",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="game.GamePost"
+                    ),
+                ),
             ],
         ),
     ]

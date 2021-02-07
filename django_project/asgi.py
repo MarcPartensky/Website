@@ -12,6 +12,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
 # print('DJANGO_SETTINGS_MODULE:', os.environ.get('DJANGO_SETTINGS_MODULE'))
 
 import django
+
 django.setup()
 
 from channels.auth import AuthMiddlewareStack
@@ -22,9 +23,9 @@ from . import routing
 
 # print(routing.websocket_urlpatterns)
 
-application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
-    "websocket": AuthMiddlewareStack(
-        URLRouter(routing.websocket_urlpatterns)
-    ),
-})
+application = ProtocolTypeRouter(
+    {
+        "http": get_asgi_application(),
+        "websocket": AuthMiddlewareStack(URLRouter(routing.websocket_urlpatterns)),
+    }
+)

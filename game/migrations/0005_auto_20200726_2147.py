@@ -7,43 +7,43 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('game', '0004_gamepost_play'),
+        ("game", "0004_gamepost_play"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='gamepostcomment',
-            name='dislikes',
+            model_name="gamepostcomment",
+            name="dislikes",
             field=models.PositiveIntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='gamepostcomment',
-            name='likes',
+            model_name="gamepostcomment",
+            name="likes",
             field=models.PositiveIntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='gamepostcomment',
-            name='views',
+            model_name="gamepostcomment",
+            name="views",
             field=models.PositiveIntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='gamepostimageurl',
-            name='dislikes',
+            model_name="gamepostimageurl",
+            name="dislikes",
             field=models.PositiveIntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='gamepostimageurl',
-            name='likes',
+            model_name="gamepostimageurl",
+            name="likes",
             field=models.PositiveIntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='gamepostimageurl',
-            name='timestamp',
+            model_name="gamepostimageurl",
+            name="timestamp",
             field=models.DateTimeField(default=django.utils.timezone.now),
         ),
         migrations.AddField(
-            model_name='gamepostimageurl',
-            name='views',
+            model_name="gamepostimageurl",
+            name="views",
             field=models.PositiveIntegerField(default=0),
         ),
     ]

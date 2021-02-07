@@ -38,19 +38,22 @@ from . import models
 #         """Return the title of the article."""
 #         return self.title
 
+
 def get_articles_objects():
     """Return the list of article objects."""
-#     titles = os.listdir(f"{os.getcwd()}/media/article")
-#     articles = [ArticleObject.create(title) for title in titles if title!='.DS_Store']
-#     article = random.choice(articles)
-#     article.active = True
+    #     titles = os.listdir(f"{os.getcwd()}/media/article")
+    #     articles = [ArticleObject.create(title) for title in titles if title!='.DS_Store']
+    #     article = random.choice(articles)
+    #     article.active = True
     return dict(articles=models.Article.objects.all())
+
 
 def get_articles():
     """Return the list of articles."""
-#     titles = os.listdir(f"{os.getcwd()}/media/article")
-#     articles = [title.replace('.md', '') for title in titles if title!='.DS_Store']
+    #     titles = os.listdir(f"{os.getcwd()}/media/article")
+    #     articles = [title.replace('.md', '') for title in titles if title!='.DS_Store']
     return dict(articles=models.Article.objects.all())
+
 
 def article(request):
     """Create the context of the article view."""
@@ -62,5 +65,6 @@ def article(request):
         **get_articles(),
         **get_games()
     )
+
 
 # def article(view):

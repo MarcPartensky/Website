@@ -16,43 +16,91 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ProjectPost',
+            name="ProjectPost",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('thumbnail', models.URLField()),
-                ('content', models.TextField()),
-                ('play', models.URLField()),
-                ('timestamp', models.DateTimeField(default=django.utils.timezone.now)),
-                ('likes', models.PositiveIntegerField(default=0)),
-                ('dislikes', models.PositiveIntegerField(default=0)),
-                ('views', models.PositiveIntegerField(default=0)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                ("thumbnail", models.URLField()),
+                ("content", models.TextField()),
+                ("play", models.URLField()),
+                ("timestamp", models.DateTimeField(default=django.utils.timezone.now)),
+                ("likes", models.PositiveIntegerField(default=0)),
+                ("dislikes", models.PositiveIntegerField(default=0)),
+                ("views", models.PositiveIntegerField(default=0)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ProjectPostImageUrl',
+            name="ProjectPostImageUrl",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('url', models.URLField()),
-                ('timestamp', models.DateTimeField(default=django.utils.timezone.now)),
-                ('likes', models.PositiveIntegerField(default=0)),
-                ('dislikes', models.PositiveIntegerField(default=0)),
-                ('views', models.PositiveIntegerField(default=0)),
-                ('projectpost', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='project.ProjectPost')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("url", models.URLField()),
+                ("timestamp", models.DateTimeField(default=django.utils.timezone.now)),
+                ("likes", models.PositiveIntegerField(default=0)),
+                ("dislikes", models.PositiveIntegerField(default=0)),
+                ("views", models.PositiveIntegerField(default=0)),
+                (
+                    "projectpost",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="project.ProjectPost",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ProjectPostComment',
+            name="ProjectPostComment",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.CharField(max_length=1000)),
-                ('timestamp', models.DateTimeField(default=django.utils.timezone.now)),
-                ('likes', models.PositiveIntegerField(default=0)),
-                ('dislikes', models.PositiveIntegerField(default=0)),
-                ('views', models.PositiveIntegerField(default=0)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('projectpost', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='project.ProjectPost')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("content", models.CharField(max_length=1000)),
+                ("timestamp", models.DateTimeField(default=django.utils.timezone.now)),
+                ("likes", models.PositiveIntegerField(default=0)),
+                ("dislikes", models.PositiveIntegerField(default=0)),
+                ("views", models.PositiveIntegerField(default=0)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "projectpost",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="project.ProjectPost",
+                    ),
+                ),
             ],
         ),
     ]

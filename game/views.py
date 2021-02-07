@@ -18,28 +18,34 @@ from home.context import hydrate, base
 @hydrate(base)
 def game(request, context={}):
     """Render a game."""
-    context.update(dict(
-        title="game",
-        gameposts = GamePost.objects.all(),
-        gamepostcomments = GamePostComment.objects.all(),
-    ))
-    return render(request, 'game/game.html', context=context)
+    context.update(
+        dict(
+            title="game",
+            gameposts=GamePost.objects.all(),
+            gamepostcomments=GamePostComment.objects.all(),
+        )
+    )
+    return render(request, "game/game.html", context=context)
+
 
 class GamePostListView(ListView):
     """List all games."""
+
     model = GamePost
-    template_name = 'game/game.html'
-    context_object_name = 'gameposts'
-    ordering = ['-timestamp']
+    template_name = "game/game.html"
+    context_object_name = "gameposts"
+    ordering = ["-timestamp"]
 
     def get_context_data(self, **kwargs):
         """Compute the context."""
         context = super().get_context_data(**kwargs)
         context.update(base(self.request))
         return context
+
 
 class GamePostDetailView(DetailView):
     """Render a detailled view of a game."""
+
     model = GamePost
 
     def get_context_data(self, **kwargs):
@@ -48,10 +54,12 @@ class GamePostDetailView(DetailView):
         context.update(base(self.request))
         return context
 
+
 class GamePostCreateView(LoginRequiredMixin, CreateView):
     """Create a new game."""
+
     model = GamePost
-    fields = ['title', 'content', 'thumbnail', 'play']
+    fields = ["title", "content", "thumbnail", "play"]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -63,10 +71,12 @@ class GamePostCreateView(LoginRequiredMixin, CreateView):
         context.update(base(self.request))
         return context
 
+
 class GamePostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Update an existing game."""
+
     model = GamePost
-    fields = ['title', 'content', 'thumbnail', 'play']
+    fields = ["title", "content", "thumbnail", "play"]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -82,8 +92,10 @@ class GamePostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         context.update(base(self.request))
         return context
 
+
 class GamePostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """Delete a game."""
+
     model = GamePost
     success_url = "/game"
 

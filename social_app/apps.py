@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class SocialAppConfig(AppConfig):
-    name = 'social_app'
+    name = "social_app"

@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0002_auto_20210123_1258'),
+        ("home", "0002_auto_20210123_1258"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='notifiedmaillist',
-            name='timestamp',
+            model_name="notifiedmaillist",
+            name="timestamp",
             field=models.DateTimeField(auto_now_add=True),
         ),
     ]

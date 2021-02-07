@@ -8,25 +8,40 @@ import django_jsonfield_backport.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0001_initial'),
+        ("users", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Preference',
+            name="Preference",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('data', django_jsonfield_backport.models.JSONField(blank=True, null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "data",
+                    django_jsonfield_backport.models.JSONField(blank=True, null=True),
+                ),
             ],
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='image',
-            field=models.ImageField(default='default.jpg', null=True, upload_to=''),
+            model_name="profile",
+            name="image",
+            field=models.ImageField(default="default.jpg", null=True, upload_to=""),
         ),
         migrations.AddField(
-            model_name='profile',
-            name='preference',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='users.Preference'),
+            model_name="profile",
+            name="preference",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="users.Preference",
+            ),
         ),
     ]

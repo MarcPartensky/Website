@@ -9,18 +9,23 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('article', '0004_auto_20210127_0029'),
+        ("article", "0004_auto_20210127_0029"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='article',
-            name='author',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL),
+            model_name="article",
+            name="author",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AlterField(
-            model_name='article',
-            name='description',
+            model_name="article",
+            name="description",
             field=models.TextField(blank=True, null=True),
         ),
     ]

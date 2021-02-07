@@ -9,30 +9,44 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('editor', '0001_initial'),
+        ("editor", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='script',
-            name='title',
+            model_name="script",
+            name="title",
             field=models.CharField(max_length=256, unique=True),
         ),
         migrations.CreateModel(
-            name='File',
+            name="File",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=256)),
-                ('file', models.FileField(upload_to='script/')),
-                ('public', models.BooleanField(default=True)),
-                ('description', models.TextField(blank=True)),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('read', models.DateTimeField(blank=True)),
-                ('likes', models.PositiveIntegerField(default=0)),
-                ('dislikes', models.PositiveIntegerField(default=0)),
-                ('views', models.PositiveIntegerField(default=0)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=256)),
+                ("file", models.FileField(upload_to="script/")),
+                ("public", models.BooleanField(default=True)),
+                ("description", models.TextField(blank=True)),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                ("updated", models.DateTimeField(auto_now=True)),
+                ("read", models.DateTimeField(blank=True)),
+                ("likes", models.PositiveIntegerField(default=0)),
+                ("dislikes", models.PositiveIntegerField(default=0)),
+                ("views", models.PositiveIntegerField(default=0)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
