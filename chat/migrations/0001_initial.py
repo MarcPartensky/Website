@@ -16,25 +16,53 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Conversation',
+            name="Conversation",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('thumbnail', models.URLField()),
-                ('timestamp', models.DateTimeField(default=django.utils.timezone.now)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                ("thumbnail", models.URLField()),
+                ("timestamp", models.DateTimeField(default=django.utils.timezone.now)),
             ],
         ),
         migrations.CreateModel(
-            name='Message',
+            name="Message",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.TextField()),
-                ('likes', models.PositiveIntegerField(default=0)),
-                ('dislikes', models.PositiveIntegerField(default=0)),
-                ('views', models.PositiveIntegerField(default=0)),
-                ('timestamp', models.DateTimeField(default=django.utils.timezone.now)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('conversation', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='chat.Conversation')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("content", models.TextField()),
+                ("likes", models.PositiveIntegerField(default=0)),
+                ("dislikes", models.PositiveIntegerField(default=0)),
+                ("views", models.PositiveIntegerField(default=0)),
+                ("timestamp", models.DateTimeField(default=django.utils.timezone.now)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "conversation",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="chat.Conversation",
+                    ),
+                ),
             ],
         ),
     ]

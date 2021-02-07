@@ -2,8 +2,8 @@
 
 from channels.generic.websocket import WebsocketConsumer
 
-class TestConsummer(WebsocketConsumer):
 
+class TestConsummer(WebsocketConsumer):
     def __init__(self, *args, **kwargs):
         """Create a test consummer."""
         super().__init__(*args, **kwargs)
@@ -24,4 +24,3 @@ class TestConsummer(WebsocketConsumer):
 
     def disconnect(self, message):
         """Delete a user from the list of connected."""
-

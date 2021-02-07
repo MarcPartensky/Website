@@ -22,32 +22,39 @@ from .models import MarkdownModel
 
 
 def index(request):
-    return render(request, 'index/index.html', {})
+    return render(request, "index/index.html", {})
+
 
 def test(request):
-    return HttpResponse('test')
+    return HttpResponse("test")
+
 
 def addition(request):
     """Add a and b numbers together."""
-    a = int(request.GET.get('a'))
-    b = int(request.GET.get('b'))
-    return HttpResponse(str(a+b))
+    a = int(request.GET.get("a"))
+    b = int(request.GET.get("b"))
+    return HttpResponse(str(a + b))
+
 
 def random_req(request):
     """Return a random number."""
     return HttpResponse(random.randint(0, 1000))
 
+
 class ExampleView(APIView):
     """A view that can accept POST requests with JSON content."""
+
     parser_classes = [JSONParser]
 
     def post(self, request, format=None):
-        print('receiving stuff')
+        print("receiving stuff")
         print(request.data)
-        return Response({'received data': request.data})
+        return Response({"received data": request.data})
+
 
 class FileUploadView(APIView):
     """A view that can receive files."""
+
     parser_classes = [FileUploadParser]
 
     def put(self, request, filename, format=None):
@@ -69,71 +76,74 @@ class FileUploadView(APIView):
 @csrf_exempt
 def upload_file(request):
     """Another view that can receive files."""
-    if request.method == 'POST':
-        print('pass')
+    if request.method == "POST":
+        print("pass")
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            print(request.FILES['file'])
+            print(request.FILES["file"])
             # handle_uploaded_file(request.FILES['file'])
-            return HttpResponseRedirect('/success/url/')
+            return HttpResponseRedirect("/success/url/")
     else:
-        print('did not pass')
+        print("did not pass")
         form = UploadFileForm()
-    return HttpResponse('response')
+    return HttpResponse("response")
     # return render(request, 'upload.html', {'form': form})
 
 
 @csrf_exempt
 def upload_markdown(request):
     """Markdown Uploader"""
-    print('received markdown')
-    if request.method == 'POST':
-        form = UploadMarkdownForm(request.POST,request.FILES)
-        file = str(form.files['file'])
+    print("received markdown")
+    if request.method == "POST":
+        form = UploadMarkdownForm(request.POST, request.FILES)
+        file = str(form.files["file"])
         filepath = f"{os.getcwd()}/media/article/{file}"
-        print('trying to post:', filepath)
-        content = form.files['file'].file.read().decode('utf-8')
-        lines = content.split('\n')
-        if lines[0].startswith('#!'):
+        print("trying to post:", filepath)
+        content = form.files["file"].file.read().decode("utf-8")
+        lines = content.split("\n")
+        if lines[0].startswith("#!"):
             lines = lines[1:]
-        content = '\n'.join(lines).strip()
-        with open(filepath, 'w') as f:
+        content = "\n".join(lines).strip()
+        with open(filepath, "w") as f:
             f.write(content)
         if form.is_valid():
             print(form)
             form.save()
-            return HttpResponse('success')
+            return HttpResponse("success")
         else:
-            return HttpResponse('invalid form')
-    elif request.method == 'GET':
+            return HttpResponse("invalid form")
+    elif request.method == "GET":
         form = UploadMarkdownForm()
         context = {
-            'form':form,
+            "form": form,
         }
-        return render(request, 'api/upload.html', context)
-    return HttpResponse('only get and post methods are allowed')
+        return render(request, "api/upload.html", context)
+    return HttpResponse("only get and post methods are allowed")
+
 
 def view_markdown(request):
-    context = {'markdown_object': MarkdownModel.objects.all()[0]}
-    return render(request, 'api/view-markdown.html', context)
+    context = {"markdown_object": MarkdownModel.objects.all()[0]}
+    return render(request, "api/view-markdown.html", context)
+
 
 users = {}
+
 
 @csrf_exempt
 def login(request):
     """Log api user view."""
     print(request.POST)
-    user = request.POST['user']
-    password = request.POST['password']
+    user = request.POST["user"]
+    password = request.POST["password"]
     print(user, password)
-    print(os.environ['WEBSITE_USER'],
-          os.environ['WEBSITE_PASSWORD'])
-    if (user, password) != (os.environ['WEBSITE_USER'], os.environ['WEBSITE_PASSWORD']):
+    print(os.environ["WEBSITE_USER"], os.environ["WEBSITE_PASSWORD"])
+    if (user, password) != (os.environ["WEBSITE_USER"], os.environ["WEBSITE_PASSWORD"]):
         raise PermissionDenied
-    token = int(hash(random.random())/1000)
+    token = int(hash(random.random()) / 1000)
     print(f"python-shell: {user} logs with {token}\n")
     users[token] = dict(locals={}, python=False, name=user)
-    return HttpResponse('{"token":'+str(token)+'}')
+    return HttpResponse('{"token":' + str(token) + "}")
+
 
 class Capturing(list):
     """Capture print output and store it."""
@@ -145,17 +155,17 @@ class Capturing(list):
 
     def __exit__(self, *args):
         self.extend(self._stringio.getvalue().splitlines())
-        del self._stringio    # free up some memory
+        del self._stringio  # free up some memory
         sys.stdout = self._stdout
 
 
 @csrf_exempt
-def python(request, cmd:str):
+def python(request, cmd: str):
     """Python view."""
     cmd = html.unescape(cmd)
-    token = int(request.POST['token'])
+    token = int(request.POST["token"])
     user = users[token]
-    locals_ = user['locals']
+    locals_ = user["locals"]
     print(f"python: {user['name']} runs \"{cmd}\" given {locals_}")
     try:
         with Capturing() as out:
@@ -167,8 +177,8 @@ def python(request, cmd:str):
             except:
                 out = []
         print(f"which returns {out}\n")
-        text = '\n'.join([f"{line}" for line in out])
+        text = "\n".join([f"{line}" for line in out])
         return HttpResponse(urllib.parse.quote(text))
     except:
-        text = '\n'.join([f"{line}" for line in out])
+        text = "\n".join([f"{line}" for line in out])
         return HttpResponse(urllib.parse.quote(text), status=500)

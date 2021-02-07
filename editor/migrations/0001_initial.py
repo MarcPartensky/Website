@@ -15,20 +15,34 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Script',
+            name="Script",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=256)),
-                ('file', models.FileField(upload_to='script/')),
-                ('public', models.BooleanField(default=True)),
-                ('description', models.TextField(blank=True)),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('read', models.DateTimeField(blank=True)),
-                ('likes', models.PositiveIntegerField(default=0)),
-                ('dislikes', models.PositiveIntegerField(default=0)),
-                ('views', models.PositiveIntegerField(default=0)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=256)),
+                ("file", models.FileField(upload_to="script/")),
+                ("public", models.BooleanField(default=True)),
+                ("description", models.TextField(blank=True)),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                ("updated", models.DateTimeField(auto_now=True)),
+                ("read", models.DateTimeField(blank=True)),
+                ("likes", models.PositiveIntegerField(default=0)),
+                ("dislikes", models.PositiveIntegerField(default=0)),
+                ("views", models.PositiveIntegerField(default=0)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

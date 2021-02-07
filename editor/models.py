@@ -3,10 +3,12 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 
+
 class File(models.Model):
     """Representation of a file."""
+
     title = models.CharField(max_length=256)
-    file = models.FileField(upload_to='script/')
+    file = models.FileField(upload_to="script/")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     public = models.BooleanField(default=True)
     description = models.TextField(blank=True)
@@ -21,10 +23,12 @@ class File(models.Model):
         """Return the string representation of the game."""
         return str(self.file)
 
+
 class Script(models.Model):
     """Representation of a script."""
+
     title = models.CharField(max_length=256, unique=True)
-    file = models.FileField(upload_to='script/')
+    file = models.FileField(upload_to="script/")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     public = models.BooleanField(default=True)
     description = models.TextField(blank=True)
@@ -38,6 +42,7 @@ class Script(models.Model):
     def __str__(self):
         """Return the string representation of the game."""
         return str(self.file)
+
 
 # class GamePostImageUrl(models.Model):
 #     """Representation of a gamepost image url."""

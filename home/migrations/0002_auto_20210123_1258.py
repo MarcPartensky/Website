@@ -10,19 +10,25 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('home', '0001_initial'),
+        ("home", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='notifiedmaillist',
-            name='timestamp',
-            field=models.DateTimeField(auto_created=True, default=django.utils.timezone.now),
+            model_name="notifiedmaillist",
+            name="timestamp",
+            field=models.DateTimeField(
+                auto_created=True, default=django.utils.timezone.now
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='notifiedmaillist',
-            name='user',
-            field=models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL),
+            model_name="notifiedmaillist",
+            name="user",
+            field=models.OneToOneField(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]
