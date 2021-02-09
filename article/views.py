@@ -49,48 +49,79 @@ def clean_templates():
     # print(f"{os.getcwd()}/article/static/cache")
     # print('machin directory:', os.listdir(f"{os.getcwd()}/article/static"))
     # print(os.listdir(f"{os.getcwd()}/article/static/cache"))
-    os.system(f"rm -rf {os.getcwd()}/article/static/article/cache")
     # os.system(f"rm -rf {os.getcwd()}/article/templates/article/cache")
     # os.system(f"mkdir {os.getcwd()}/article/templates/article/cache")
+    static_cache_path = os.path.join(os.getcwd(), "article/static/article/cache")
+    templates_cache_path = os.path.join(os.getcwd(), "article/templates/cache")
+
+    os.system(f"rm -rf {static_cache_path}")
+    # print("static:", static_cache_path)
+    # print("templates:", templates_cache_path)
+
     print(
         "before deleting templates",
-        os.listdir(f"{os.getcwd()}/article/templates/cache"),
+        os.listdir(templates_cache_path),
     )
-    for file in glob.glob(f"{os.getcwd()}/article/templates/cache/*"):
+    path = os.path.join(templates_cache_path, "*")
+    # print('path:', path)
+    for file in glob.glob(path):
         print(file, "is deleted.")
         os.remove(file)
         print(
             "after deleting templates",
-            os.listdir(f"{os.getcwd()}/article/templates/cache"),
+            os.listdir(templates_cache_path),
         )
 
 
 def build_template(title: str, article: Article, layout: str = "marc"):
     """Build the template and its assets."""
-    with open(f"{os.getcwd()}/media/article/{title}.md", "w") as f:
+    markdown_path = os.path.join(
+        os.getcwd(),
+        f"media/article/{title}.md"
+    )
+    html_path = os.path.join(
+        os.getcwd(),
+        f"article/templates/cache/{title}.html"
+    )
+    article_templates = os.path.join(
+        os.getcwd(),
+        "article/templates/cache"
+    )
+
+    article_static = os.path.join(
+        os.getcwd(),
+        "article/static/article"
+    )
+
+    with open(markdown_path, "w") as f:
         f.write(article.content)
 
-    os.system(
-        f"{os.getcwd()}/node_modules/.bin/generate-md --layout {layout}\
-              --input {os.getcwd()}/media/article/{title}.md \
-              --output {os.getcwd()}/article/templates/cache"
-    )
+    cmd = " ".join((
+        os.path.join(os.getcwd(), "node_modules/.bin/generate-md"),
+        f" --layout {layout}",
+        f" --input {markdown_path}",
+        f" --output {article_templates}"
+    ))
+
+    print(cmd)
+    os.system(cmd)
+
+    layout_path = os.path.join(article_templates, layout)
+
     os.rename(
-        f"{os.getcwd()}/article/templates/cache/assets",
-        f"{os.getcwd()}/article/templates/cache/{layout}",
+        os.path.join(article_templates, "assets"),
+        layout_path
     )
-    if layout in os.listdir(f"{os.getcwd()}/article/static/article/"):
-        os.system(f"rm -rf {os.getcwd()}/article/templates/cache/{layout}")
-    else:
-        os.system(
-            f"mv {os.getcwd()}/article/templates/cache/{layout}\
-                  {os.getcwd()}/article/static/article"
-        )
-    with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "r") as f:
+
+    if layout in os.listdir(article_static):
+        os.system(f"rm -rf {layout_path}")
+    # else:
+    os.system(f"mv {layout_path} {article_static}")
+
+    with open(html_path, "r") as f:
         text = str(f.read())
-    # text = text.replace('&&title&&', title.capitalize())
     text = adapt(text, title, layout)
-    with open(f"{os.getcwd()}/article/templates/cache/{title}.html", "w") as f:
+    with open(html_path, "w") as f:
         f.write(text)
 
 
@@ -129,14 +160,15 @@ def read(request, title: str):
 
     # Messing with template loader cache system
     title_template = title + "." + str(time.time())
-    path = f"{os.getcwd()}/article/templates/cache/{title_template}.html"
 
-    os.system(
-        f"mv \
-        {os.getcwd()}/article/templates/cache/{title}.html \
-        {path}"
-    )
-    print(os.listdir(f"{os.getcwd()}/article/templates/cache/"))
+    path = os.path.join(os.getcwd(), f"article/templates/cache/{title_template}.html")
+
+    title_path = os.path.join(os.getcwd(), f"article/templates/cache/{title}.html")
+
+    os.system(f"mv {title_path} {path}")
+
+    print(os.listdir(os.path.join(os.getcwd(), f"article/templates/cache/")))
+
     # Fill context with http parameters and article meta data.
     # Deal with priority when combined dictionaries
     # have the same keys.
