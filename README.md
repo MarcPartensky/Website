@@ -52,11 +52,6 @@ From https://docs.docker.com/compose/gettingstarted/
 https://docs.docker.com/compose/gettingstarted/
 
 ## Bonus
-### Counts how many files there are
-```sh
-find . -type f | wc -l
-```
-for now there are 31938 files (folders not included)
 
 ## Heroku Buildpacks
 
