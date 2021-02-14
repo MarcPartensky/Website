@@ -36,6 +36,7 @@ article/templates/cache/*
 
 # Media files stored
 media/article/
+media/files/
 
 # Heroku database dump
 *.dump

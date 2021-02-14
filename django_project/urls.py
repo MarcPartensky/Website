@@ -16,12 +16,12 @@ def not_found_view(request):
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("business/", include("business.urls")),
     # path('users/login/', auth_views.LoginView.as_view()),
     # path('', include('django.contrib.auth.urls')),
     path("", include("users.urls")),
     path("", include("home.urls")),
     path("", include("todo.urls")),
+    path("", include("file.urls")),
     path("blog/", include("blog.urls")),
     path("first-site/", include("first_site.urls")),
     path("demo/", include("demo.urls")),
@@ -42,6 +42,7 @@ urlpatterns = [
     # path('accounts/', include('allauth.urls')),
     path("mdeditor/", include("mdeditor.urls")),
     path("404/", not_found_view, name="404"),
+    path("business/", include("business.urls")),
 ]
 
 # handler404 = response_error_handler

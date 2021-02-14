@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     "editor.apps.EditorConfig",
     "todo.apps.TodoConfig",
     "business.apps.BusinessConfig",
+    "file.apps.FileConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
