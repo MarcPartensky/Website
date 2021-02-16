@@ -43,6 +43,7 @@ urlpatterns = [
     path("mdeditor/", include("mdeditor.urls")),
     path("404/", not_found_view, name="404"),
     path("business/", include("business.urls")),
+    path("avatar/", include('avatar.urls')),
 ]
 
 # handler404 = response_error_handler

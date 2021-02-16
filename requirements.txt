@@ -32,6 +32,7 @@ django-503==0.1
 django-admin==2.0.1
 django-allauth==0.44.0
 django-appconf==1.0.4
+django-avatar==5.0.0
 django-compressor @ git+https://github.com/django-compressor/django-compressor.git@24f6648723b0b7d3ae88e17a20961ccb3ac1b1e7
 django-cors-middleware==1.5.0
 django-crispy-forms==1.8.1

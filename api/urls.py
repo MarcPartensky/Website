@@ -15,4 +15,6 @@ urlpatterns = [
     # path('<str:room_name>/', views.room, name='room'),
     path("login", views.login, name="api-login"),
     path("python/<str:cmd>", views.python, name="python"),
+    path("todo", views.todo_index, name="api-todo-index"),
+    path("todo/<str:id>", views.todo, name="api-todo"),
 ]

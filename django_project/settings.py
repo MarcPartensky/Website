@@ -115,6 +115,8 @@ INSTALLED_APPS = [
     "explorer",
     # Cluster manager
     "django_q",
+    # Default avatar generator
+    "avatar",
 ]
 
 MIDDLEWARE = [

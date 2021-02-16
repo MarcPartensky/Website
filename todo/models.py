@@ -44,7 +44,12 @@ class TodolistState(models.Model):
 
 class Todo(models.Model):
     """Represent something todo.
-    A todo can be shared between multiple persons and multiple todolists."""
+
+    A todo can:
+        * be shared between multiple persons and multiple todolists
+        * have a parent todo
+        * have other todos as dependencies
+    """
 
     content = models.TextField()
     title = models.CharField(null=True, max_length=255, unique=True)
@@ -54,6 +59,8 @@ class Todo(models.Model):
     parent = models.ForeignKey(
         "self", null=True, related_name="children", on_delete=models.SET_NULL
     )
+
+    dependencies = models.ManyToManyField("self")
     # done = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -76,7 +83,7 @@ class Todolist(models.Model):
 
     title = models.CharField(null=True, max_length=255, unique=True)
     description = models.TextField()
-    todos = models.ManyToManyField(Todo)
+    # todos = models.ManyToManyField(Todo)
     state = models.OneToOneField(TodolistState, on_delete=models.PROTECT)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

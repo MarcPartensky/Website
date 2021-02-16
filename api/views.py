@@ -9,16 +9,19 @@ import os
 
 from io import StringIO
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.core.exceptions import PermissionDenied
 
 from rest_framework.parsers import JSONParser, FileUploadParser
+from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .forms import UploadFileForm, UploadMarkdownForm
 from django.views.decorators.csrf import csrf_exempt
 from .models import MarkdownModel
+
+from todo.models import Todo
 
 
 def index(request):
@@ -182,3 +185,26 @@ def python(request, cmd: str):
     except:
         text = "\n".join([f"{line}" for line in out])
         return HttpResponse(urllib.parse.quote(text), status=500)
+
+
+def todo_index(request: HttpRequest):
+    """View todos or post new todo."""
+    if request.method == "GET":
+        snippets = Todo.objects.all()
+        # serializer = SnippetSerializer(snippets, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == "POST":
+        data = JSONParser().parse(request)
+        serializer = SnippetSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
+
+
+def todo(request: HttpRequest):
+    """View, update or delete existing todo."""
+    # data = JSONParser().parse(request)
+
+    # return Json
