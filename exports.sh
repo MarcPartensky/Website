@@ -4,6 +4,8 @@ export PATH="/opt/local/bin:$PATH"
 export PATH="/Users/marcpartensky/flutter/bin:$PATH"
 export PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 export CLICOLOR=1
 export TEST="This is a test"
