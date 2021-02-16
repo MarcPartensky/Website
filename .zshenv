@@ -20,7 +20,7 @@ alias network="watch -n 1 \"netstat -p tcp\""
 ### Games ###
 alias tetris=bastet
 alias spaceinvader=ninvaders
-alias tshark="/Applications/Wireshark.app/Contents/MacOS/tshark"
+# alias tshark="/Applications/Wireshark.app/Contents/MacOS/tshark"
 
 # Git shortcuts
 alias gi="git init"

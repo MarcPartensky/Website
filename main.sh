@@ -56,6 +56,9 @@ antigen apply
 
 bindkey '\t' autosuggest-accept
 
+source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME="eastwood"

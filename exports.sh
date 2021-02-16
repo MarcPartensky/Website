@@ -4,6 +4,8 @@ export PATH="/opt/local/bin:$PATH"
 export PATH="/Users/marcpartensky/flutter/bin:$PATH"
 export PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 export CLICOLOR=1
 export TEST="This is a test"
@@ -53,6 +55,7 @@ export DISCORD_PREFIX="?"
 export DISCORD_DEPLOYMENT="DEVELOPMENT"
 export YTOPTS="-ciw -x --audio-format 'mp3' --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title    )s.%(ext)s' --rm-cache-dir"
 export PP_PASSWORD="yaM-yauolG44"
+export LS_COLORS="auto"
 # export JAVA_HOME=$(/usr/libexec/java_home)
 
 # For Pyenv
