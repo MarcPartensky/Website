@@ -61,6 +61,7 @@ export DISCORD_PREFIX="?"
 export DISCORD_DEPLOYMENT="DEVELOPMENT"
 export YTOPTS="-ciw -x --audio-format 'mp3' --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title    )s.%(ext)s' --rm-cache-dir"
 export PP_PASSWORD="yaM-yauolG44"
+export LS_COLORS="auto"
 
 # export JAVA_HOME=$(/usr/libexec/java_home)
 # For Pyenv
