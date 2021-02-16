@@ -66,9 +66,11 @@ source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlight
 # export GREP_OPTIONS="--color=always"
 # export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
 
+eval "$(pyenv init -)"
+
+source ${0:a:h}/exports.sh
 source ${0:a:h}/aliases.sh
 source ${0:a:h}/functions.sh
-source ${0:a:h}/exports.sh
 
 ln -snf ${0:a:h}/.zshenv ~
 ln -snf ${0:a:h}/.p10k.zsh ~
