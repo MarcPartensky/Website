@@ -23,7 +23,7 @@ alias network="watch -n 1 \"netstat -p tcp\""
 ### Games ###
 alias tetris=bastet
 alias spaceinvader=ninvaders
-alias tshark="/Applications/Wireshark.app/Contents/MacOS/tshark"
+# alias tshark="/Applications/Wireshark.app/Contents/MacOS/tshark"
 
 # Git shortcuts
 alias gi="git init"
@@ -88,16 +88,6 @@ function desktopicon {
 	killall Finder
 }
 
-# python shortcuts
-alias pip=pip3
-alias py=python
-alias activate="source venv/bin/activate"
-alias py20='cd ~/programs/python/repository-2020'
-alias pygames='cd ~/programs/python/repository-games'
-alias pyml='cd ~/programs/python/machine-learning'
-alias pyhome='cd ~/programs/python'
-alias pypackages='cd /library/frameworks/python.framework/versions/3.8/lib/python3.8/site-packages/'
-alias pypi='cd ~/programs/python/pypi'
 
 # python programs
 alias webpfix='py /users/marcpartensky/programs/python/repository-2020/webpfix.py'

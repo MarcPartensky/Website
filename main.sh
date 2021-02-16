@@ -60,9 +60,11 @@ bindkey '\t' autosuggest-accept
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME="eastwood"
 
+# Deprecated
 # export GREP_OPTIONS="--color=always"
 # export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
 
+# pyenv setup
 eval "$(pyenv init -)"
 
 source ${0:a:h}/exports.sh
