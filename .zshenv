@@ -8,6 +8,9 @@ alias vimrc='nvim ~/.vimrc'
 alias ev='nvim ~/.config/nvim'
 alias todo="nvim ~/programs/markdown/todolist/todolist.md"
 alias t="todo"
+alias pip="python -m pip"
+alias pip3="python2 -m pip"
+alias pip3="python3 -m pip"
 
 alias alacritty="v ~/.config/alacritty/alacritty.yml"
 alias isep="cd /Volumes/$/isep"
