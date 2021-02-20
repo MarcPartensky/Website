@@ -57,7 +57,7 @@ class Todo(models.Model):
     progress = models.FloatField(default=0)
     # parent = models.OneToOneField(Todo, on_delete=models.CASCADE)
     parent = models.ForeignKey(
-        "self", null=True, related_name="children", on_delete=models.SET_NULL
+        "self", null=True, on_delete=models.SET_NULL
     )
 
     dependencies = models.ManyToManyField("self")

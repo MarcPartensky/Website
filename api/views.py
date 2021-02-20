@@ -1,11 +1,13 @@
 """
 Api views that don't necessarily provide a gui interface.
 """
-import random
-import html
-import urllib
-import sys
+
 import os
+import sys
+import json
+import html
+import random
+import urllib
 
 from io import StringIO
 from django.shortcuts import render
@@ -17,7 +19,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .forms import UploadFileForm, UploadMarkdownForm
+from .forms import UploadFileForm, UploadMarkdownForm, TodoForm
 from django.views.decorators.csrf import csrf_exempt
 from .models import MarkdownModel
 
@@ -186,25 +188,43 @@ def python(request, cmd: str):
         text = "\n".join([f"{line}" for line in out])
         return HttpResponse(urllib.parse.quote(text), status=500)
 
-
+@csrf_exempt
 def todo_index(request: HttpRequest):
     """View todos or post new todo."""
     if request.method == "GET":
-        snippets = Todo.objects.all()
+        todos = Todo.objects.all()
+        print(todos)
         # serializer = SnippetSerializer(snippets, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        # return JsonResponse(serializer.data, safe=False)
+        content = json.dumps(list(todos))
+        return HttpResponse(content)
 
     elif request.method == "POST":
-        data = JSONParser().parse(request)
-        serializer = SnippetSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse(serializer.errors, status=400)
+        print(request)
+        form = TodoForm(request)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("ok", status=200)
+        return HttpResponse("not", status=500)
+        # data = JSONParser().parse(request)
+        # print(data)
+        # serializer = SnippetSerializer(data=data)
+        # if serializer.is_valid():
+        #     serializer.save()
+            # return JsonResponse(serializer.data, status=200)
+        # return JsonResponse(serializer.errors, status=400)
 
 
-def todo(request: HttpRequest):
+@csrf_exempt
+def todo(request: HttpRequest, id: int):
     """View, update or delete existing todo."""
-    # data = JSONParser().parse(request)
+    todo = Todo.objects.filter(id=id)
+    if request.method == "GET":
+        content = json.dumps(todo.__dict__)
+        return HttpResponse(content, mimetype="application/x-json")
+
+    elif request.method == "POST":
+        pass
+    data = JSONParser().parse(request)
 
     # return Json

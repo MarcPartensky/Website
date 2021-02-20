@@ -43,17 +43,21 @@ class Preference(models.Model):
 
 class Profile(models.Model):
     """Representation of a user profile."""
+    default_avatar = "media/assets/img/default_avatar.svg",
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default="default.jpg", null=True)
+    image = models.ImageField(null=True)
     preference = models.ForeignKey(to=Preference, on_delete=models.SET_NULL, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         """Return the string representation of a string."""
-        return f"{self.user.username} Profile"
+        return self.user.username
 
+    def get_avatar(self):
+        """Return an avatar."""
+        return self.image or Profile.default_avatar
 
 """
     def save(self,*args,**kwargs):

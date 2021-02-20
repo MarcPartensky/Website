@@ -13,7 +13,7 @@
 	<div id="card" class="card border-light border-solid mb-3" style="text-align: center; margin: 3rem">
 		<div class="card-body">
 			<div class="media">
-				<img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+				<img class="rounded-circle account-img" src="{{ user.profile.get_avatar }}">
 				<div class="media-body">
 					<h2 class="account-heading">{{ user.username }}</h2>
 					<p class="text-secondary">{{ user.email }}</p>

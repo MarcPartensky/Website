@@ -1,5 +1,6 @@
 from django import forms
 from .models import MarkdownModel
+from todo.models import Todo
 
 
 class UploadFileForm(forms.Form):
@@ -13,6 +14,18 @@ class UploadMarkdownForm(forms.ModelForm):
         fields = (
             "title",
             "file",
+        )
+
+class TodoForm(forms.ModelForm):
+    """Form of a todo."""
+    class Meta:
+        model = Todo
+        fields = (
+            "content",
+            "title",
+            "duration",
+            "parent",
+            "dependencies"
         )
 
     # def save(self, *args, **kwargs):
