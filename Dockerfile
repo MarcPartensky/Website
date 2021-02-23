@@ -1,6 +1,6 @@
-FROM python:3.7.3
+FROM python:3.7.7
 
-RUN apt update
+RUN apt-get update
 # RUN apk add git jpeg-dev zlib-dev libjpeg libffi-dev postgresql-dev gcc build-base python3-dev musl-dev
 
 # No pyo
