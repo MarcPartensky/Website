@@ -1,0 +1,249 @@
+fr:
+  nav_bar:
+    home: "Accueil"
+    about: "À propos"
+    services: "Services"
+    portefolio: "Portefolio"
+    team: "Équipe"
+    pricing: "Prix"
+    # dropdown: ""
+    contact: "Contact"
+    get_started: "Voir plus"
+  welcome:
+    title: "Construisons ensemble un site internet qui vous ressemble."
+    description: "Nous sommes une équipe d'étudiants freelancers avec des compétences en développement web."
+    get_started: "Voir plus"
+  services:
+    title: "Services"
+    description: "Services to consider."
+    sections:
+      - title: "Développement"
+        description: "Nous réaliserons votre site web à partir de zéro selon vos goûts."
+        icon: "bxl-dribbble"
+      - title: "Hosting"
+        description: "We will host and maintain your website for you, so won't have to worry about a thing."
+        icon: "bx-file"
+      - title: "Domain name"
+        description: "We will setup the domain name you prefer for the right price."
+        icon: "bx-tachometer"
+      - title: "Security"
+        description: "We will secure your websites through encrypted connexion and tls certificates."
+        icon: "bx-world"
+  faq:
+    title: "Foire aux questions"
+    items:
+      - question: "Combien de temps la maintenance est-elle assurée pour les offres business et professionnelle?"
+        answer: "La maintenance en cas de panne naturelle est assurée sur 2 ans sans frais. En cas de mise à jour ou tout autre cause celle-ci est facturé à hauteur de 200€ par intervention."
+      - question: "Est-il possible d'améliorer son site après l'achat?"
+        answer: "Bien sûr le site peut être améliorer après un achat et les termes sont à négocier avec nous."
+      - question: "En combien de temps le site sera-t'il prêt?"
+        answer: "Cela dépend de l'offre choisie et du travail à réaliser sur le site. Dans le cas d'un site statique simple cela peut prendre 1 mois maximum sinon dans le cas d'un site dynamique environ 3 mois maximum."
+  contact:
+    title: "Contactez nous"
+    subtitle: "Réseaux sociaux"
+    description: "Rejoignez-nous sur les réseaux sociaux"
+    social_networks:
+      # facebook: "https://marcpartensky"
+      # - name: "website"
+      #   url: "https://marcpartensky.com"
+      - name: "linkedin"
+        url: "https://linkedin.com/in/marc-partensky"
+    address: "78000 Versailles"
+    email: "marc.partensky@gmail.com"
+    phone: "07 67 44 36 62"
+    form:
+      name: "Votre nom"
+      email: "Votre adresse email"
+      subject: "Sujet"
+      message: "Votre message"
+      send: "Envoyer"
+  footer:
+    copyright: "Copyright"
+    rights: "All rights reserved"
+    designed: "Designed by"
+    author: "Marc Partensky"
+    home: "Home"
+    about: "About"
+    policy: "Privacy policy"
+    terms: "Terms of Use"
+en:
+  title: "Business"
+  nav_bar:
+    home: "Home"
+    about: "About"
+    services: "Services"
+    portefolio: "Portefolio"
+    team: "Teams"
+    pricing: "Pricing"
+    # dropdown: ""
+    contact: "Contact"
+    get_started: "Get started"
+  welcome:
+    title: "Let's build together the website that suits you best!"
+    description: "We are a team of talented web developers."
+    get_started: "Get started"
+  about:
+    title: "About us"
+    item_title: "Why choose us over others?"
+    items:
+      - "You will be proprietary of your website, there is no rent to pay."
+      - "We will propose you many website templates until you agree on one that really suits you."
+      - "We can take care of the hosting and the domain name for you so you won't have to worry about it."
+      - "We have knowledge of common security issues and we will make it secure."
+      - "We can give you access to the source code and you are free to host it yourself anytime."
+      - "We will walk you through the basics of the web so that you have the best understanding of you needs before taking any decision."
+    description: "After having few appointments to understand better your needs. We will send you multiple offers that we judge fit you the best. Once you agree on an offer you will have to sign administrative documents for legal purposes and you will be charged a deposit of half the price of the offer. You will be able to follow the whole process with multiple appointments to ajust ourselves to your vision. Those appointments will be determined by the specification that will be on the contract you sign.
+
+    Note: The appointments before you sign do not engage you to purchase any of our services."
+    learn: "Learn more"
+    learn_href: "#services"
+  counts:
+    happy:
+      count: 0
+      strong: "Happy clients"
+      text: ""
+    projects:
+      count: 0
+      strong: "Projects"
+      text: ""
+    experience:
+      count: 0
+      strong: "Years of experience"
+      text: ""
+    awards:
+      count: 0
+      strong: "Awards"
+      text: ""
+  services:
+    title: "Services"
+    description: "Services to consider."
+    sections:
+      - title: "Development"
+        description: "We will build your website from the ground up given your taste."
+        icon: "bxl-dribbble"
+      - title: "Hosting"
+        description: "We will host and maintain your website for you, so won't have to worry about a thing."
+        icon: "bx-file"
+      - title: "Domain name"
+        description: "We will setup the domain name you prefer for the right price."
+        icon: "bx-tachometer"
+      - title: "Security"
+        description: "We will secure your websites through encrypted connexion and tls certificates."
+        icon: "bx-world"
+    cards:
+      development:
+        url: ""
+        title: "Development"
+        description: ""
+      hosting:
+        url: ""
+        title: "Hosting"
+        description: ""
+      domain_name:
+        url: ""
+        title: "Domain name"
+        description: ""
+      security:
+        url: ""
+        title: "Security"
+        description: ""
+  features:
+    title: "Features"
+    description: ""
+
+  testimonials:
+    title: "Testimonials"
+    description: ""
+    items:
+      # - name: "bidule"
+      #   job: ""
+      #   image: ""
+      #   description: ""
+  portefolio:
+    title: "Portefolio"
+    description: ""
+  team:
+    title: "Team"
+    description: "Our team"
+    members:
+      - name: "Marc Partensky"
+        image: "/static/business/img/team/marc.png"
+        role: "Business Owner and Main Developer"
+      - name: "Samy Haffoudhi"
+        role: "Consulting"
+        image: "/static/business/img/team/samy.png"
+      # - name: "Duangdao Pradithja"
+  pricing:
+    title: "Pricing"
+    description: "Price offers"
+    buy: "Buy now"
+    money: "$"
+    month: "month"
+    plans:
+      - title: "Basic"
+        price: 500
+        url: "#"
+        services:
+          - name: "frontend"
+          - name: "hosting"
+          - name: "backend"
+            crossed: true
+          - name: "maintenance"
+            crossed: true
+      - title: "Business"
+        price: 1000
+        month: "month"
+        url: "#"
+        services:
+          - name: "frontend"
+          - name: "backend"
+          - name: "hosting"
+            crossed: true
+          - name: "maintenance"
+            crossed: true
+      - title: "Professional"
+        price: 1500
+        url: "#"
+        services:
+          - name: "frontend"
+          - name: "backend"
+          - name: "hosting"
+          - name: "maintenance"
+
+  faq:
+    title: "Frequently asked questions"
+    items:
+      - question: "How much is ma"
+        answer: "that much"
+      - question: "test"
+        answer: "test"
+  contact:
+    title: "Contact us"
+    subtitle: "Social networks"
+    description: "Interested? Join us on my social networks. Or send us a form with your email and preferably with your phone number so we can discuss your needs. We will not spam you with emails or sms."
+    social_networks:
+      # facebook: "https://marcpartensky"
+      # - name: "website"
+      #   url: "https://marcpartensky.com"
+      - name: "linkedin"
+        url: "https://linkedin.com/in/marc-partensky"
+    address: "78000 Versailles"
+    email: "marc.partensky@gmail.com"
+    phone: "07 67 44 36 62"
+    form:
+      name: "Your name"
+      email: "Your email"
+      subject: "Subject"
+      message: "Your message"
+      send: "Send"
+  footer:
+    copyright: "Copyright"
+    rights: "All rights reserved"
+    designed: "Designed by"
+    author: "Marc Partensky"
+    loading: "Loading"
+    thanks_message: "Your message has been sent. Thank you!"
+    home: "Home"
+    about: "About"
+    policy: "Privacy policy"
+    terms: "Terms of Use"
