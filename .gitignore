@@ -45,4 +45,8 @@ media/files/
 nohup.out
 
 # Dockerignore
-.dockerignore
+# .dockerignore
+
+# Pyenv virtualenv - pipenv
+Pipfile
+Pipfile.lock
