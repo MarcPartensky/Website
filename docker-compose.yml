@@ -1,8 +1,12 @@
 version: "3.9"
 services:
-  web:
+  website:
     env_file: .env
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        env_file: .env
     ports:
       - 443:443
       # - 21:10021

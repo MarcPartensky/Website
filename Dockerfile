@@ -3,21 +3,21 @@ FROM python:3.7.7
 RUN apt-get update
 # RUN apk add git jpeg-dev zlib-dev libjpeg libffi-dev postgresql-dev gcc build-base python3-dev musl-dev
 
-# No pyo
+# No .pyo
 ENV PYTHONDONTWRITEBYTECODE 1
 # Easier debugging
 ENV PYTHONUNBUFFERED 1
 
-COPY . .
-WORKDIR .
+COPY . /app
+WORKDIR /app
 
 RUN pip install -U pip
 RUN pip install -r requirements.txt
 # RUN chmod +x /django_project/asgi.py
 
-RUN ./manage.py makemigrations
-RUN ./manage.py migrate
-RUN ./manage.py collectstatic --noinput
+# RUN ./manage.py makemigrations
+# RUN ./manage.py migrate
+# RUN ./manage.py collectstatic --noinput
 
 
 EXPOSE 443
