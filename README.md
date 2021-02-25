@@ -38,7 +38,7 @@ cd website
 docker-compose up
 ```
 
-> If you’re using Docker natively on Linux, Docker Desktop for Mac, or Docker Desktop for Windows, then the web app should now be listening on port 8000 on your Docker daemon host. Point your web browser to http://localhost:8000 to find the Hello World message. If this doesn’t resolve, you can also try http://127.0.0.1:8000.
+> If you’re using Docker natively on Linux, Docker Desktop for Mac, or Docker Desktop for Windows, then the web app should now be listening on port 443 on your Docker daemon host. Point your web browser to http://localhost:443 to find the Hello World message. If this doesn’t resolve, you can also try http://127.0.0.1:443.
 
 > If you’re using Docker Machine on a Mac or Windows, use docker-machine ip MACHINE_VM to get the IP address of your Docker host. Then, open http://MACHINE_VM_IP:8000 in a browser.
 
