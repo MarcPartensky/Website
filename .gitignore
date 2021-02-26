@@ -17,6 +17,7 @@ venv/
 # Editors
 .vscode/
 .idea/
+.vim/
 
 # Helper folder
 .helper/
