@@ -20,10 +20,12 @@ RUN pip install -r requirements.txt
 # RUN ./manage.py collectstatic --noinput
 
 
-EXPOSE 443
+# EXPOSE 443
+EXPOSE 8000
 # EXPOSE 8000
 # EXPOSE  40000-50000
 # EXPOSE 10021
 
 # ENTRYPOINT ["daphne", "django_project.asgi:application", "--port", "8000", "--bind", "0.0.0.0", "-v2"]
-ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=key.pem:certKey=cert.pem", "django_project.asgi:application"]
+# ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=key.pem:certKey=cert.pem", "django_project.asgi:application"]
+ENTRYPOINT ["daphne", "-e", "ssl:8000:privateKey=key.pem:certKey=cert.pem", "django_project.asgi:application"]
