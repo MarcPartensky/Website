@@ -30,7 +30,7 @@ RUN /app/run.sh
 
 
 # ENTRYPOINT ["daphne", "django_project.asgi:application", "--port", "8000", "--bind", "0.0.0.0", "-v2"]
-# ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=key.pem:certKey=cert.pem", "django_project.asgi:application"]
-ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]
+ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=privkey.pem:certKey=fullchain.pem", "django_project.asgi:application"]
+# ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]
 
 # ENTRYPOINT run

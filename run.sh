@@ -1,10 +1,10 @@
 #!/bin/sh
 
-run() {
-	daphne -e "ssl:7000:privateKey=$KEY:certKey=$CERT" django_project.asgi:application
+run () {
+	"daphne -e ssl:7000:privateKey=$KEY:certKey=$CERT django_project.asgi:application"
 }
 
-run_all() {
+run_all () {
 	trap 'kill $BGPID; exit' INT
 	# background command
 	echo -e "Starting \e[33mDjango"
