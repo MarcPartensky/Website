@@ -22,11 +22,15 @@ RUN pip install -r requirements.txt
 
 # EXPOSE 443
 EXPOSE 7000
+RUN /app/run.sh
 # EXPOSE  40000-50000
 # EXPOSE 10021
 
-RUN alias run="daphne -e ssl:7000:privateKey=key.pem:certKey=cert.pem django_project.asgi:application"
+# RUN alias run="daphne -e ssl:7000:privateKey=key.pem:certKey=cert.pem django_project.asgi:application"
+
 
 # ENTRYPOINT ["daphne", "django_project.asgi:application", "--port", "8000", "--bind", "0.0.0.0", "-v2"]
 # ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=key.pem:certKey=cert.pem", "django_project.asgi:application"]
-# ENTRYPOINT ["daphne", "-e", "ssl:7000:privateKey=key.pem:certKey=cert.pem", "django_project.asgi:application"]
+ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]
+
+# ENTRYPOINT run
