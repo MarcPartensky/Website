@@ -29,7 +29,7 @@ gunicorn django_project.wsgi
 ### With [Docker](docker.com)
 > Build : > 10 minutes
 ```sh
-docker run -it -e SECRET_KEY=[RANDOMSTRING] -p 8000:8000 marcpartensky/website
+docker run -it -e SECRET_KEY=[RANDOMSTRING] -p 7000:7000 marcpartensky/website
 ```
 ### Or
 ```sh
@@ -40,7 +40,7 @@ docker-compose up
 
 > If you’re using Docker natively on Linux, Docker Desktop for Mac, or Docker Desktop for Windows, then the web app should now be listening on port 443 on your Docker daemon host. Point your web browser to http://localhost:443 to find the Hello World message. If this doesn’t resolve, you can also try http://127.0.0.1:443.
 
-> If you’re using Docker Machine on a Mac or Windows, use docker-machine ip MACHINE_VM to get the IP address of your Docker host. Then, open http://MACHINE_VM_IP:8000 in a browser.
+> If you’re using Docker Machine on a Mac or Windows, use docker-machine ip MACHINE_VM to get the IP address of your Docker host. Then, open http://MACHINE_VM_IP:7000 in a browser.
 
 From https://docs.docker.com/compose/gettingstarted/
 
