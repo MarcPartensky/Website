@@ -1,7 +1,6 @@
 FROM python:3.7.7
 
 RUN apt-get update
-# RUN apk add git jpeg-dev zlib-dev libjpeg libffi-dev postgresql-dev gcc build-base python3-dev musl-dev
 
 # No .pyo
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -13,24 +12,14 @@ WORKDIR /app
 
 RUN pip install -U pip
 RUN pip install -r requirements.txt
-# RUN chmod +x /django_project/asgi.py
 
 # RUN ./manage.py makemigrations
 # RUN ./manage.py migrate
 # RUN ./manage.py collectstatic --noinput
 
-
 # EXPOSE 443
-EXPOSE 7000
-RUN /app/run.sh
-# EXPOSE  40000-50000
-# EXPOSE 10021
-
-# RUN alias run="daphne -e ssl:7000:privateKey=key.pem:certKey=cert.pem django_project.asgi:application"
-
+# RUN /app/run.sh
 
 # ENTRYPOINT ["daphne", "django_project.asgi:application", "--port", "8000", "--bind", "0.0.0.0", "-v2"]
-ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=privkey.pem:certKey=fullchain.pem", "django_project.asgi:application"]
-# ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]
-
-# ENTRYPOINT run
+# ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=privkey.pem:certKey=fullchain.pem", "django_project.asgi:application"]
+ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]

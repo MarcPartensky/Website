@@ -8,13 +8,14 @@ services:
       args:
         env_file: .env
     ports:
-      - 443:443
+      - "7000:7000"
+      # - 443:443
       # - 21:10021
     # volumes:
     #   - .:.
-    links:
-      - redis
+    # links:
+    #   - redis
     # networks:
 
-  redis:
-    image: redis:alpine
+  # redis:
+  #   image: redis:alpine
