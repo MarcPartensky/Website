@@ -3,3 +3,5 @@ venv
 .github/
 .vim/
 .buildpacks
+*.pem
+*.crt

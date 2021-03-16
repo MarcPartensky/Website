@@ -29,7 +29,12 @@ gunicorn django_project.wsgi
 ### With [Docker](docker.com)
 > Build : > 10 minutes
 ```sh
-docker run -it -e SECRET_KEY=[RANDOMSTRING] -p 7000:7000 marcpartensky/website
+docker run -it \
+	-env CERT # You must export a ssl certificate path
+	-env KEY  # You must export a pem key path
+	-e SECRET_KEY=$(openssl rand -base64 32) \
+	-p 443:443 \
+	marcpartensky/website
 ```
 ### Or
 ```sh
