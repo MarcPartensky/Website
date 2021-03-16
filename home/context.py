@@ -121,6 +121,15 @@ def get_games():
     return {}
 
 
+def get_calendar_url():
+    """Return the calendar url."""
+    # calendar_url = "https://open-web-calendar.herokuapp.com/calendar.html?specification_url=https://gist.githubusercontent.com/MarcPartensky/1c20873acf6a628bd38b4ace58527838/raw/facf84c8caf648ca19c554043c685fec77865134/calendar.json"
+
+    calendar_url = "https://calendar.marcpartensky.com/calendar.html?specification_url=https://gist.githubusercontent.com/MarcPartensky/1c20873acf6a628bd38b4ace58527838/raw/facf84c8caf648ca19c554043c685fec77865134/calendar.json"
+
+    return dict(calendar_url=calendar_url)
+
+
 def home(request):
     """Return the home context."""
     # context = dict(title='Website of Marc Partensky')
@@ -131,6 +140,7 @@ def home(request):
         **get_articles(),
         **get_vanta(),
         **get_games(),
+        **get_calendar_url(),
     )
 
 
