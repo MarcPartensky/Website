@@ -90,7 +90,7 @@ parso==0.8.1
 pathspec==0.8.1
 pexpect==4.8.0
 pickleshare==0.7.5
-Pillow==6.2.1
+Pillow==8.1.1
 pip-autoremove==0.9.1
 pip-conflict-checker==0.6.0
 pip-review==1.1.0
