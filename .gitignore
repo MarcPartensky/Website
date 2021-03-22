@@ -33,11 +33,13 @@ cert.pem
 
 # Article pages loaded
 article/templates/cache/
-article/templates/cache/*
+!article/templates/cache/.gitignore
 
 # Media files stored
-media/article/
+media/article/*
+!media/article/.gitignore
 media/files/
+!media/files/.gitignore
 
 # Heroku database dump
 *.dump

@@ -1,0 +1,8 @@
+databases:
+  default:
+    ENGINE: django.db.backends.postgresql
+    NAME: marc
+    USER: marc
+    PASSWORD: marc
+    HOST: postgres
+    PORT: 5432
