@@ -5,17 +5,24 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        env_file: .env
     ports:
-      - "7000:7000"
+      # - 80:80
       # - 443:443
-      # - 21:10021
-    # volumes:
-    #   - .:.
-    # links:
-    #   - redis
-    # networks:
+      - "8000:8000"
+    working_dir: /app
+    entrypoint: ./manage.py runserver 0.0.0.0:8000
+    links:
+      - redis
+      - mysql
 
-  # redis:
-  #   image: redis:alpine
+  redis:
+    image: redis:latest
+    # env_file: .env
+    ports:
+      - "6379:6379"
+
+  mysql:
+    image: mysql:latest
+    env_file: .env
+    ports:
+      - "3306:3306"

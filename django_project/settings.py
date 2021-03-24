@@ -341,14 +341,19 @@ REDIS_URL = (
     os.environ.get("REDIS_URL_STUNNEL")
     or os.environ.get("REDIS_URL")
     or os.environ.get("REDIS_TLS_URL")
-    or "127.0.0.1"
+    or "127.0.0.1:6379"
 )
 
-REDIS_PORT = os.environ.get("REDIS_PORT") or 6379
+if ":" in REDIS_URL:
+    REDIS_HOST, REDIS_PORT = REDIS_URL.split(":")
+    REDIS_PORT = int(REDIS_PORT)
+else:
+    REDIS_HOST = REDIS_URL
+    REDIS_PORT = 6379
 
-print("Redis:", f"{REDIS_URL}:{REDIS_PORT}")
+print("Redis:", f"{REDIS_HOST}:{REDIS_PORT}")
 
-channel_hosts = [(REDIS_URL, REDIS_PORT)]
+channel_hosts = [(REDIS_HOST, REDIS_PORT)]
 
 # Channels
 ASGI_APPLICATION = "django_project.asgi.application"
