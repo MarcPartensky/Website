@@ -341,13 +341,14 @@ REDIS_URL = (
     os.environ.get("REDIS_URL_STUNNEL")
     or os.environ.get("REDIS_URL")
     or os.environ.get("REDIS_TLS_URL")
+    or "127.0.0.1"
 )
 
+REDIS_PORT = os.environ.get("REDIS_PORT") or 6379
 
-if DEBUG:
-    debug_hosts = [("127.0.0.1", 6379)]
-else:
-    debug_hosts = []
+print("Redis:", f"{REDIS_URL}:{REDIS_PORT}")
+
+channel_hosts = [(REDIS_URL, REDIS_PORT)]
 
 # Channels
 ASGI_APPLICATION = "django_project.asgi.application"
@@ -355,11 +356,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": debug_hosts
-            + [
-                REDIS_URL,
-                # 'redis://localhost:6379'
-            ],
+            "hosts": channel_hosts,
             "symmetric_encryption_keys": [SECRET_KEY],
         },
         # "ROOTING": "chat.routing.channel_routing",
