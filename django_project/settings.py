@@ -53,9 +53,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # print('secret key:', SECRET_KEY)
 
 ALLOWED_HOSTS = [
+    "marcpartensky.com",
+    "marcpartensky.herokuapp.com",
     "websiteofmarcpartensky.herokuapp.com",
     "localhost",
-    "marcpartensky.com",
 ]
 
 # Application definition
@@ -344,16 +345,17 @@ REDIS_URL = (
     or "127.0.0.1:6379"
 )
 
-if ":" in REDIS_URL:
-    REDIS_HOST, REDIS_PORT = REDIS_URL.split(":")
-    REDIS_PORT = int(REDIS_PORT)
-else:
-    REDIS_HOST = REDIS_URL
-    REDIS_PORT = 6379
+# if ":" in REDIS_URL:
+#     REDIS_HOST, REDIS_PORT = REDIS_URL.split(":")
+#     REDIS_PORT = int(REDIS_PORT)
+# else:
+#     REDIS_HOST = REDIS_URL
+#     REDIS_PORT = 6379
 
-print("Redis:", f"{REDIS_HOST}:{REDIS_PORT}")
+# print("Redis:", f"{REDIS_HOST}:{REDIS_PORT}")
+# channel_hosts = [(REDIS_HOST, REDIS_PORT)]
 
-channel_hosts = [(REDIS_HOST, REDIS_PORT)]
+channel_hosts = [REDIS_URL]
 
 # Channels
 ASGI_APPLICATION = "django_project.asgi.application"
