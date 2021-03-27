@@ -8,7 +8,7 @@ date: 8/10/2019
 # Website
 
 This is the code of my personal website.
-[https://websiteofmarcpartensky.herokuapp.com/](https://websiteofmarcpartensky.herokuapp.com/)
+[https://marcpartensky.com/](https://marcpartensky.com/)
 
 ## Light theme
 [![light theme](https://cdn.discordapp.com/attachments/702863598761803806/782335262499930112/light.png)](https://websiteofmarcpartensky.herokuapp.com)
