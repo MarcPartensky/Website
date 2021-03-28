@@ -185,40 +185,32 @@ COMPRESS_OFFLINE = True
 WSGI_APPLICATION = "django_project.wsgi.application"
 
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-if ON_HEROKU:
-    DATABASE_URL = "postgresql:///postgresql"
-else:
-    DATABASE_URL = "sqlite://" + os.path.join(BASE_DIR, "db.sqlite3")
+# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 # print("DATABASE_URL:",DATABASE_URL)
 # DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
-
 # print("BASE_DIR:", BASE_DIR)
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
+debug = {
+    "ENGINE": "django.db.backends.sqlite3",
+    "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
 }
 
-# if not DEBUG:
-DATABASES.update(
-    {
-        "production": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.environ.get("POSTGRES_NAME"),
-            "USER": os.environ.get("POSTGRES_USER"),
-            "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-            "HOST": os.environ.get("POSTGRES_HOST"),
-            "PORT": os.environ.get("POSTGRES_PORT"),
-        }
-    }
-)
+production = {
+    "ENGINE": "django.db.backends.postgresql",
+    "NAME": os.environ.get("POSTGRES_NAME"),
+    "USER": os.environ.get("POSTGRES_USER"),
+    "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+    "HOST": os.environ.get("POSTGRES_HOST"),
+    "PORT": os.environ.get("POSTGRES_PORT"),
+}
+
+if DEBUG:
+    DATABASES = dict(default=debug, production=production)
+else:
+    DATABASES = dict(default=production, debug=debug)
 
 # print('production port:', os.environ.get('POSTGRES_PORT'))
-
 # print("DATABASES:", DATABASES)
 
 # DATABASES = {
@@ -232,9 +224,8 @@ DATABASES.update(
 #     }
 # }
 
-
 # Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -252,7 +243,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
+# https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
 
