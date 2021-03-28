@@ -440,12 +440,11 @@ MDEDITOR_CONFIGS = {
 
 # SQL Explorer : https://pypi.org/project/django-sql-explorer/
 # EXPLORER_DEFAULT_CONNECTION = 'readonly'
-EXPLORER_CONNECTIONS = {"Default": "default", "Production": "production"}
-# EXPLORER_CONNECTIONS = { 'Default': 'default' }
 if DEBUG:
-    EXPLORER_DEFAULT_CONNECTION = "default"
+    EXPLORER_CONNECTIONS = {"Default": "default", "Production": "production"}
 else:
-    EXPLORER_DEFAULT_CONNECTION = "production"
+    EXPLORER_CONNECTIONS = {"Default": "default", "Debug": "debug"}
 
+EXPLORER_DEFAULT_CONNECTION = "default"
 
 django_heroku.settings(locals())
