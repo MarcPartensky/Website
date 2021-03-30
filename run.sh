@@ -1,5 +1,5 @@
 #!/bin/sh
-source .env
+/bin/sh .env
 
 run_bg() {
 	daphne -p $1 django_project.asgi:application > /dev/null &
@@ -46,4 +46,32 @@ all() {
 	ftp &
 	up
 	down
+}
+
+
+# build the project for docker
+build() {
+	./manage.py collectstatic --noinput
+	docker build . -t marcpartensky/website
+}
+
+push() {
+	./manage.py collectstatic --noinput
+	docker build . -t marcpartensky/website
+	docker push marcpartensky/website
+	git push all
+}
+
+deploy() {
+	./manage.py collectstatic --noinput
+	./manage.py makemigrations
+	./manage.py migrate
+	run
+}
+
+update() {
+	git pull
+	pip install -U pip
+	pip install -r requirements.txt -U
+	npm update
 }
