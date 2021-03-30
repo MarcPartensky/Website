@@ -185,12 +185,6 @@ COMPRESS_OFFLINE = True
 WSGI_APPLICATION = "django_project.wsgi.application"
 
 # Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-# print("DATABASE_URL:",DATABASE_URL)
-# DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
-# print("BASE_DIR:", BASE_DIR)
-
 debug = {
     "ENGINE": "django.db.backends.sqlite3",
     "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
