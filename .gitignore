@@ -23,8 +23,8 @@ venv/
 .helper/
 
 # Npm for markdown rendering
-node_modules/
-!./node_modules/markdown-styles/
+node_modules/*
+!node_modules/markdown-styles/
 
 # SSL Certificate key
 key.pem
