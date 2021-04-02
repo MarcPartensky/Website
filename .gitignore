@@ -23,7 +23,7 @@ venv/
 .helper/
 
 # Npm for markdown rendering
-./node_modules/*
+node_modules/
 !./node_modules/markdown-styles/
 
 # SSL Certificate key
@@ -41,7 +41,7 @@ media/article/*
 media/files/
 !media/files/.gitignore
 
-# Heroku database dump
+# Database dump
 *.dump
 
 # Nohup for running the website in background
