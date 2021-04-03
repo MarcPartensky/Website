@@ -5,6 +5,7 @@ import re
 import os
 
 import requests
+import datetime
 
 from article.context import get_articles
 from django_project.settings import DEBUG
@@ -126,8 +127,15 @@ def get_calendar_url():
     # calendar_url = "https://open-web-calendar.herokuapp.com/calendar.html?specification_url=https://gist.githubusercontent.com/MarcPartensky/1c20873acf6a628bd38b4ace58527838/raw/facf84c8caf648ca19c554043c685fec77865134/calendar.json"
 
     calendar_url = "https://calendar.marcpartensky.com/calendar.html?specification_url=https://gist.githubusercontent.com/MarcPartensky/1c20873acf6a628bd38b4ace58527838/raw/facf84c8caf648ca19c554043c685fec77865134/calendar.json"
-
     return dict(calendar_url=calendar_url)
+
+
+def get_marc_age():
+    """Return the age of Marc computed."""
+    birth = datetime.datetime(year=2000, month=1, day=12)
+    now = datetime.datetime.now()
+    delta = now - birth
+    return dict(marc_age=delta.days // 365)
 
 
 def home(request):
@@ -141,6 +149,7 @@ def home(request):
         **get_vanta(),
         **get_games(),
         **get_calendar_url(),
+        **get_marc_age(),
     )
 
 

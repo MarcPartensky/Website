@@ -24,7 +24,7 @@ venv/
 
 # Npm for markdown rendering
 node_modules/*
-!node_modules/markdown-styles/
+!node_modules/markdown-styles/layouts/marc/*
 
 # SSL Certificate key
 key.pem
