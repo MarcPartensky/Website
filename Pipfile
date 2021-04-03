@@ -154,6 +154,7 @@ service_identity = "*"
 Twisted = "*"
 
 [dev-packages]
+black = "*"
 
 [requires]
 python_version = "3.7.7"
