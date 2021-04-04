@@ -13,7 +13,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container">
-        <a href="/" class="hero-logo"><img id="firstorchid" style="width: 40%; height: 40%" src="{% static 'home/assets/img/white-orchid.svg' %}" alt=""></a>
+        <a href="/" class="hero-logo"><img id="firstorchid" style="width: 40%; height: 40%" src="{% static 'home/assets/img/white-orchid.svg' %}" alt="orchid-icon"></a>
       <h1 data-aos="zoom-in">Welcome to the Website of Marc Partensky</h1>
       <h2 data-aos="fade-up">
         I'm a <span class="typed" data-typed-items="Developer, Freelancer, Game Maker, Student"></span>
@@ -161,7 +161,7 @@
           </div>
 
             <div class="embed-responsive embed-responsive-1by1 image col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                <iframe async class="embed-responsive-item" src="{% static 'cv/cv.pdf' %}" type="application/pdf" allowfullscreen></iframe>
+                <iframe loading="lazy" class="embed-responsive-item" src="{% static 'cv/cv.pdf' %}" type="application/pdf" allowfullscreen></iframe>
             </div>
         </div>
 
@@ -233,7 +233,7 @@
               <div class="tab-pane active show" id="tab-1">
                 <figure>
                     <!-- <iframe async id="open-web-calendar">Loading...</iframe> -->
-                    <iframe id="open-web-calendar"
+                    <iframe defer id="open-web-calendar"
                         style="center center no-repeat"
 												src="{{ calendar_url }}"
                         sandbox="allow-scripts allow-same-origin allow-top-navigation"
@@ -249,17 +249,17 @@
               </div>
               <div class="tab-pane" id="tab-2">
                 <figure>
-                    <img src="{% static 'home/assets/img/setup.jpg' %}" alt="" class="img-fluid">
+                    <img loading="lazy" src="{% static 'home/assets/img/setup.jpg' %}" alt="my-setup" class="img-fluid">
                 </figure>
               </div>
               <div class="tab-pane" id="tab-3">
                 <figure>
-                    <img src="{% static 'home/assets/img/featured/featured-1.png' %}" alt="" class="img-fluid">
+                    <img loading="lazy" src="{% static 'home/assets/img/featured/featured-1.png' %}" alt="featured" class="img-fluid">
                 </figure>
               </div>
               <div class="tab-pane" id="tab-4">
                 <figure>
-									<img src="{% static 'home/assets/img/marc.jpg' %}" alt="" class="img-fluid">
+									<img loading="lazy" src="{% static 'home/assets/img/marc.jpg' %}" alt="marc" class="img-fluid">
                 </figure>
               </div>
             </div>
@@ -358,7 +358,7 @@
           </div>
 
           <div class="col-lg-5 order-1 order-lg-2 align-items-stretch video-box" data-aos="zoom-in" style="text-align: center; padding: 5rem">
-              <img src="{% static 'qrcode.svg' %}" style="width: 70%; height: 70%">
+              <img loading="lazy" src="{% static 'qrcode.svg' %}" style="width: 70%; height: 70%">
               <p><b>Scan to add me as a contact.</b></p>
           </div>
 
@@ -391,7 +391,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-simulation">
             <div class="portfolio-wrap">
-							<img src="{% static 'home/assets/img/fourier.png' %}" class="img-fluid" alt="">
+							<img loading="lazy" src="{% static 'home/assets/img/fourier.png' %}" class="img-fluid" alt="fourier">
               <div class="portfolio-info">
                 <h4>Fourier drawing</h4>
                 <p>Simulation</p>
@@ -405,7 +405,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-library">
             <div class="portfolio-wrap">
-                <img src="{% static 'home/assets/img/spaceships.png' %}" class="img-fluid" alt="">
+                <img loading="lazy" src="{% static 'home/assets/img/spaceships.png' %}" class="img-fluid" alt="spaceships">
               <div class="portfolio-info">
                 <h4>Pygame geometry</h4>
                 <p>Library</p>
@@ -419,7 +419,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-simulation">
             <div class="portfolio-wrap">
-                <img src="{% static 'home/assets/img/sand-simulation-v2.png' %}" class="img-fluid" alt="">
+                <img loading="lazy" src="{% static 'home/assets/img/sand-simulation-v2.png' %}" class="img-fluid" alt="sand-simulation">
               <div class="portfolio-info">
                 <h4>Sand simulation</h4>
                 <p>Simulation</p>
@@ -433,7 +433,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-game">
             <div class="portfolio-wrap">
-							<img src="{% static 'home/assets/img/asteroids.png' %}" class="img-fluid" alt="">
+							<img loading="lazy" src="{% static 'home/assets/img/asteroids.png' %}" class="img-fluid" alt="asteroids">
               <div class="portfolio-info">
                 <h4>Asteroids</h4>
                 <p>Game</p>
@@ -447,7 +447,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-game">
             <div class="portfolio-wrap">
-                <img src="{% static 'home/assets/img/retrocube.jpg' %}" class="img-fluid" alt="">
+                <img loading="lazy" src="{% static 'home/assets/img/retrocube.jpg' %}" class="img-fluid" alt="retrocube">
               <div class="portfolio-info">
                 <h4>Retro cube</h4>
                 <p>Game</p>
@@ -461,7 +461,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-simulation">
             <div class="portfolio-wrap">
-                <img src="{% static 'home/assets/img/sand.png' %}" class="img-fluid" alt="">
+                <img loading="lazy" src="{% static 'home/assets/img/sand.png' %}" class="img-fluid" alt="sand">
               <div class="portfolio-info">
                 <h4>Granular flow</h4>
                 <p>Simulation</p>
@@ -475,7 +475,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-library">
             <div class="portfolio-wrap">
-                <img src="{% static 'home/assets/img/pygame.png' %}" class="img-fluid" alt="">
+                <img loading="lazy" src="{% static 'home/assets/img/pygame.png' %}" class="img-fluid" alt="pygame">
               <div class="portfolio-info">
                 <h4>Pygame Geometry</h4>
                 <p>Library</p>
@@ -489,7 +489,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-game">
             <div class="portfolio-wrap">
-                <img src="{% static 'home/assets/img/othello.png' %}" class="img-fluid" alt="">
+                <img loading="lazy" src="{% static 'home/assets/img/othello.png' %}" class="img-fluid" alt="othello">
               <div class="portfolio-info">
                 <h4>Othello</h4>
                 <p>Game</p>
@@ -503,7 +503,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-simulation">
             <div class="portfolio-wrap">
-                <img src="{% static 'home/assets/img/mandelbrot.png' %}" class="img-fluid" alt="">
+                <img loading="lazy" src="{% static 'home/assets/img/mandelbrot.png' %}" class="img-fluid" alt="mandelbrot">
               <div class="portfolio-info">
                 <h4>Mandelbrot set</h4>
                 <p>Simulation</p>
@@ -532,7 +532,7 @@
             <p>
               Delivered by Coursera in March 2020
             </p>
-						<a href="{% static 'home/assets/pdf/certificate-1.pdf' %}"><img src="{% static 'home/assets/img/coursera1.jpeg' %}"></img></a>
+						<a href="{% static 'home/assets/pdf/certificate-1.pdf' %}"><img loading="lazy" src="{% static 'home/assets/img/coursera1.jpeg' %}"></img></a>
             <h3>Neural Networks and Deep Learning</h3>
             <h4><a target="_blank" href="https://coursera.org/verify/85SDPU4SWDQM">Verify</a></h4>
           </div>
@@ -541,7 +541,7 @@
             <p>
               Delivered by Coursera in March 2020
             </p>
-							<a href="{% static 'home/assets/pdf/certificate-2.pdf' %}"><img src="{% static 'home/assets/img/coursera2.jpeg' %}"></img></a>
+							<a href="{% static 'home/assets/pdf/certificate-2.pdf' %}"><img loading="lazy" src="{% static 'home/assets/img/coursera2.jpeg' %}"></img></a>
             <h3>Improving Deep Neural Networks: Hyperparameter tunning, Regularization and Optimization</h3>
             <h4><a target="_blank" href="https://coursera.org/verify/GCQZS7H8HFM4">Verify</a></h4>
           </div>
@@ -550,7 +550,7 @@
             <p>
               Delivered by Coursera in April 2020
             </p>
-							<a href="{% static 'home/assets/pdf/certificate-3.pdf' %}"><img src="{% static 'home/assets/img/coursera3.jpeg' %}"></img></a>
+							<a href="{% static 'home/assets/pdf/certificate-3.pdf' %}"><img loading="lazy" src="{% static 'home/assets/img/coursera3.jpeg' %}"></img></a>
 							{% comment %}<iframe async class="embed-responsive-item" src="{% static 'home/assets/pdf/certificate-3.pdf' %}" type="application/pdf" allowfullscreen></iframe>{% endcomment %}
             <h3>Structuring Machine Learning Projects</h3>
             <h4><a target="_blank" href="https://coursera.org/verify/G52ATN4KSM69">Verify</a></h4>
@@ -560,7 +560,7 @@
             <p>
               Delivered by Coursera in April 2020
             </p>
-							<a href="{% static 'home/assets/pdf/certificate-4.pdf' %}"><img src="{% static 'home/assets/img/coursera4.jpeg' %}"></img></a>
+							<a href="{% static 'home/assets/pdf/certificate-4.pdf' %}"><img loading="lazy" src="{% static 'home/assets/img/coursera4.jpeg' %}"></img></a>
 							{% comment %}<iframe async class="embed-responsive-item" src="{% static 'home/assets/pdf/certificate-4.pdf' %}" type="application/pdf" allowfullscreen></iframe>{% endcomment %}
             <h3>Convolutional Neural Networks</h3>
             <h4><a target="_blank" href="https://coursera.org/verify/C76NP3CMBMB3">Verify</a></h4>
@@ -570,7 +570,7 @@
             <p>
               Delivered by Coursera in April 2020
             </p>
-							<a href="{% static 'home/assets/pdf/certificate-5.pdf' %}"><img src="{% static 'home/assets/img/coursera5.jpeg' %}"></img></a>
+							<a href="{% static 'home/assets/pdf/certificate-5.pdf' %}"><img loading="lazy" src="{% static 'home/assets/img/coursera5.jpeg' %}"></img></a>
 							{% comment %}<iframe async class="embed-responsive-item" src="{% static 'home/assets/pdf/certificate-5.pdf' %}" type="application/pdf" allowfullscreen></iframe>{% endcomment %}
             <h3>Sequence Models</h3>
             <h4><a target="_blank" href="https://coursera.org/verify/23X8YKXP69CZ">Verify</a></h4>
@@ -802,7 +802,7 @@
         </div>
 
         <div style="width: 100%">
-					<iframe async width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Boulevard%20Saint%20Antoine,%20Versailles+(My%20home)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+					<iframe defer width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Boulevard%20Saint%20Antoine,%20Versailles+(My%20home)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
             <a href="https://www.maps.ie/route-planner.htm">Journey Planner</a>
         </div>
 

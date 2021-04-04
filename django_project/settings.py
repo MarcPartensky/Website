@@ -8,12 +8,12 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import django_heroku
+from urllib.parse import urlparse
 
 # import dj_database_url
-import dotenv
-
 import mimetypes
+import dotenv
+import django_heroku
 
 mimetypes.add_type("text/css", ".css", True)
 
@@ -118,6 +118,8 @@ INSTALLED_APPS = [
     "django_q",
     # Default avatar generator
     "avatar",
+    # Generate robots.txt
+    "robots",
 ]
 
 MIDDLEWARE = [
@@ -143,7 +145,8 @@ CORS_ALLOW_HEADERS = (
     "accept",
     "origin",
     "authorization",
-    "x-csrftoken" "x-frame-options",
+    "x-csrftoken",
+    "x-frame-options",
 )
 
 ROOT_URLCONF = "django_project.urls"
@@ -159,7 +162,7 @@ TEMPLATES = [
         "DIRS": [
             (os.path.join(BASE_DIR, "templates")),
         ],
-        "APP_DIRS": True,
+        # "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -167,14 +170,21 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
-            # 'loaders': [
-            #     ('django.template.loaders.cached.Loader', [
-            #         'django.template.loaders.filesystem.Loader',
-            #         'django.template.loaders.app_directories.Loader',
-            #     ]),
-            # ],
+            "loaders": [
+                (
+                    "django.template.loaders.cached.Loader",
+                    [
+                        "django.template.loaders.filesystem.Loader",
+                        "django.template.loaders.app_directories.Loader",
+                    ],
+                ),
+            ],
         },
     },
+    # {
+    #     "BACKEND": "django.template.backends.django.DjangoTemplates",
+    #     "APP_DIRS": True,
+    # },
 ]
 
 COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
@@ -323,12 +333,17 @@ SOCIALACCOUNT_PROVIDERS = {
 # SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['GOOGLE_OAUTH2_KEY']
 # SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['GOOGLE_OAUTH2_SECRET']
 
+
 REDIS_URL = (
     os.environ.get("REDIS_URL_STUNNEL")
     or os.environ.get("REDIS_URL")
     or os.environ.get("REDIS_TLS_URL")
     or "127.0.0.1:6379"
 )
+
+parse_result = urlparse(REDIS_URL)
+REDIS_PORT = parse_result.port
+REDIS_HOST = parse_result.hostname
 
 # if ":" in REDIS_URL:
 #     REDIS_HOST, REDIS_PORT = REDIS_URL.split(":")
@@ -440,5 +455,24 @@ else:
     EXPLORER_CONNECTIONS = {"Default": "default", "Debug": "debug"}
 
 EXPLORER_DEFAULT_CONNECTION = "default"
+
+# settings.py example
+Q_CLUSTER = {
+    "name": "django_project",
+    "workers": 8,
+    "recycle": 500,
+    "timeout": 60,
+    "compress": True,
+    "save_limit": 250,
+    "queue_limit": 500,
+    "cpu_affinity": 1,
+    "label": "Django Q",
+    "redis": {
+        "host": REDIS_HOST,
+        "port": REDIS_PORT,
+        "db": 0,
+    },
+}
+
 
 django_heroku.settings(locals())

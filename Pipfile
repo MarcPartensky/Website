@@ -152,6 +152,7 @@ PyYAML = "*"
 SecretStorage = "*"
 service_identity = "*"
 Twisted = "*"
+django-robots = "*"
 
 [dev-packages]
 black = "*"

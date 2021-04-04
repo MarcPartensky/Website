@@ -11,11 +11,11 @@ def adapt(text, title, layout):
     # text = correct_links(text)
     # text = correct_scripts(text)
     text = add_mathjax(text)
+    text = add_plantuml(text)
     text = add_back_to_top_button(text)
     text = add_scroll_support(text)
     text = correct_check(text)
     return text
-
 
 def add_load_static(text):
     """Add load static on top of the file."""
@@ -99,6 +99,14 @@ def add_mathjax(text):
     )
     return text
 
+def add_plantuml(text):
+    """Render plantuml diagrams."""
+    text = text.replace(
+        "</head>",
+        '<script src="https://cdn.jsdelivr.net/npm/node-plantuml@0.9.0/index.min.js"></script>\n\
+        </head>',
+    )
+    return text
 
 def add_scroll_support(text):
     """Add scroll support."""
