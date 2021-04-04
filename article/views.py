@@ -130,16 +130,17 @@ def read(request, title: str):
     reset_template_cache()
     clean_templates()
 
-    print("GET:", request.GET)
-    layout = request.GET.get("layout") or "marc"
-    layouts = os.listdir("./node_modules/markdown-styles/layouts")
-
     title_no_md = title[:-3] if title.endswith(".md") else title
     print("title without `.md`:", title_no_md)
 
     article = Article.objects.filter(title=title_no_md).first()
     if not article:
         raise Http404("This article was not found.")
+
+    print("GET:", request.GET)
+    layout = request.GET.get("layout") or article.layout or "marc"
+    layouts = os.listdir("./node_modules/markdown-styles/layouts")
+
 
     article.read = datetime.datetime.now()
     article.view_count += 1
