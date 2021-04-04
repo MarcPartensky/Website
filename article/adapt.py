@@ -148,13 +148,13 @@ def add_meta_data(text):
         """<body>
         <div style="clear: both;">
             <div style="float: left">
+                {{ view_count }}
+                <span class="iconify" data-icon="carbon:view" data-inline="false"></span>
                 {{ like_count }}
                 <span class="iconify" data-icon="fluent-thumb-like-16-regular" data-inline="false"></span>
                 {{ dislike_count }}
                 <span class="iconify" data-icon="fluent:thumb-dislike-24-regular"data-inline="false"></span>
                 <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-                {{ view_count }}
-                <span class="iconify" data-icon="carbon:view" data-inline="false"></span>
             </div>
             <div style="float: right">
                 <small style="text-align: right">{{ created }}</small>

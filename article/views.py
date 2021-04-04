@@ -153,6 +153,9 @@ def read(request, title: str):
     if title.endswith(".md"):
         return HttpResponse(article.content, content_type="text/markdown")
 
+    if title.endswith(".pdf"):
+        return read_as_pdf(article)
+
     # Never happens since order matters in `urls.py`.
     if title == "index":
         raise PermissionDenied
@@ -208,6 +211,9 @@ def fetch_article_data(file, request):
     d["public"] = request.POST.get("public") or False
     print(d)
     return d
+
+def read_as_pdf(article: Article):
+    """Read the markdown as a pdf using the pandoc api."""
 
 
 # file = str(form.files['file'])
