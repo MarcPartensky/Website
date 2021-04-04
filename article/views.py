@@ -3,6 +3,7 @@ import os
 import glob
 import random
 import datetime
+import requests
 
 from django.shortcuts import render, HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
@@ -75,43 +76,30 @@ def clean_templates():
 
 def build_template(title: str, article: Article, layout: str = "marc"):
     """Build the template and its assets."""
-    markdown_path = os.path.join(
-        os.getcwd(),
-        f"media/article/{title}.md"
-    )
-    html_path = os.path.join(
-        os.getcwd(),
-        f"article/templates/cache/{title}.html"
-    )
-    article_templates = os.path.join(
-        os.getcwd(),
-        "article/templates/cache"
-    )
+    markdown_path = os.path.join(os.getcwd(), f"media/article/{title}.md")
+    html_path = os.path.join(os.getcwd(), f"article/templates/cache/{title}.html")
+    article_templates = os.path.join(os.getcwd(), "article/templates/cache")
 
-    article_static = os.path.join(
-        os.getcwd(),
-        "article/static/article"
-    )
+    article_static = os.path.join(os.getcwd(), "article/static/article")
 
     with open(markdown_path, "w") as f:
         f.write(article.content)
 
-    cmd = " ".join((
-        os.path.join(os.getcwd(), "node_modules/.bin/generate-md"),
-        f" --layout {layout}",
-        f" --input {markdown_path}",
-        f" --output {article_templates}"
-    ))
+    cmd = " ".join(
+        (
+            os.path.join(os.getcwd(), "node_modules/.bin/generate-md"),
+            f" --layout {layout}",
+            f" --input {markdown_path}",
+            f" --output {article_templates}",
+        )
+    )
 
     print(cmd)
     os.system(cmd)
 
     layout_path = os.path.join(article_templates, layout)
 
-    os.rename(
-        os.path.join(article_templates, "assets"),
-        layout_path
-    )
+    os.rename(os.path.join(article_templates, "assets"), layout_path)
 
     if layout in os.listdir(article_static):
         os.system(f"rm -rf {layout_path}")
@@ -130,17 +118,16 @@ def read(request, title: str):
     reset_template_cache()
     clean_templates()
 
-    title_no_md = title[:-3] if title.endswith(".md") else title
-    print("title without `.md`:", title_no_md)
+    title_no_extension = "".join(title.split(".")[:-1])
+    print("title no extension:", title_no_extension)
 
-    article = Article.objects.filter(title=title_no_md).first()
+    article = Article.objects.filter(title=title_no_extension).first()
     if not article:
         raise Http404("This article was not found.")
 
     print("GET:", request.GET)
     layout = request.GET.get("layout") or article.layout or "marc"
     layouts = os.listdir("./node_modules/markdown-styles/layouts")
-
 
     article.read = datetime.datetime.now()
     article.view_count += 1
@@ -153,8 +140,11 @@ def read(request, title: str):
     if title.endswith(".md"):
         return HttpResponse(article.content, content_type="text/markdown")
 
-    if title.endswith(".pdf"):
-        return read_as_pdf(article)
+    extensions = ["pdf", "docs"]
+
+    for extension in extensions:
+        if title.endswith(extension):
+            return read_as(article, extension)
 
     # Never happens since order matters in `urls.py`.
     if title == "index":
@@ -212,21 +202,26 @@ def fetch_article_data(file, request):
     print(d)
     return d
 
-def read_as_pdf(article: Article):
+
+def read_as(article: Article, extension: str):
     """Read the markdown as a pdf using the pandoc api."""
+    from django_project.settings import PANDOC_API_URL as host
 
+    # Post markdown to pandoc api
+    post_url = f"{host}/api/{article.title}.{extension}"
+    print("post url:", post_url)
+    requests.post(
+        post_url,
+        files={"file": (article.title, article.content)},
+        data={"output": "extension"},
+    )
 
-# file = str(form.files['file'])
-# filepath = f"{os.getcwd()}/media/article/{file}"
-# print('trying to post:', filepath)
-# content = form.files['file'].file.read().decode('utf-8')
-# lines = content.split('\n')
-# if lines[0].startswith('#!'):
-#     lines = lines[1:]
-# content = '\n'.join(lines).strip()
-# with open(filepath, 'w') as f:
-#     f.write(content)
-
+    # Get generated page in pandoc api
+    get_url = f"{host}/file/{article.title}.{extension}"
+    print("get url:", get_url)
+    return HttpResponse(
+        requests.get(get_url).content, content_type=f"application/{extension}"
+    )
 
 @csrf_exempt
 def upload(request):
