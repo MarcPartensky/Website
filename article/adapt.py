@@ -17,6 +17,7 @@ def adapt(text, title, layout):
     text = correct_check(text)
     return text
 
+
 def add_load_static(text):
     """Add load static on top of the file."""
     return "{% load static %}" + text
@@ -99,6 +100,7 @@ def add_mathjax(text):
     )
     return text
 
+
 def add_plantuml(text):
     """Render plantuml diagrams."""
     text = text.replace(
@@ -107,6 +109,7 @@ def add_plantuml(text):
         </head>',
     )
     return text
+
 
 def add_scroll_support(text):
     """Add scroll support."""
