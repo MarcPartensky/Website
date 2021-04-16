@@ -1,10 +1,13 @@
 """Coding app so that I can code anywhere."""
 
+import requests
+
 from django.shortcuts import render
 from . import models
 from home.context import hydrate
 from home.context import fake_base as base
 from django.contrib.auth.decorators import login_required, PermissionDenied
+from django.http.response import HttpResponse
 
 print(base.__doc__)
 
@@ -75,3 +78,9 @@ def project(request, user: str, project: str, context: dict = {}):
 def file(request, user: str, project: str, filepath: str, context: dict = {}):
     """Render a file."""
     return render(request, "editor/file.html", context)
+
+
+def github_shell(request, script: str):
+    """Finds shell script on github and makes it available from website."""
+    url = f"https://raw.githubusercontent.com/MarcPartensky/Shell/master/{script}"
+    return HttpResponse(requests.get(url))
