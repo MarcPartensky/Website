@@ -71,3 +71,7 @@ update() {
 	pipenv run pip install -r requirements.txt -U
 	npm update
 }
+
+lock() {
+	pipenv lock --pre --clear
+}
