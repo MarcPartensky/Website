@@ -47,5 +47,5 @@ media/files/
 # Nohup for running the website in background
 nohup.out
 
-# Dockerignore
-# .dockerignore
+# Staticfiles
+staticfiles
