@@ -2,7 +2,7 @@
 /bin/sh .env
 
 run_bg() {
-	daphne -p $1 django_project.asgi:application > /dev/null &
+	pipenv run daphne -p $1 django_project.asgi:application > /dev/null &
 }
 
 mysql() {
@@ -19,7 +19,7 @@ django() {
 	echo -e "Starting \e[92mDjango\e[0m"
 	# ./manage.py runserver 0.0.0.0:8000
 	# daphne -p 8000 -b 0.0.0.0 django_project.asgi:application
-	daphne -e "ssl:${PORT}:privateKey=${KEY}:certKey=${CERT}" django_project.asgi:application
+	pipenv run daphne -e "ssl:${PORT}:privateKey=${KEY}:certKey=${CERT}" django_project.asgi:application
 }
 
 alias run=django
@@ -39,7 +39,7 @@ down() {
 
 ftp() {
 	echo -e "Starting \e[92mFTP Server\e[0m"
-	./manage.py ftpserver $FTP_URL
+	pipenv run ./manage.py ftpserver $FTP_URL
 }
 
 all() {
@@ -51,27 +51,27 @@ all() {
 
 # build the project for docker
 build() {
-	./manage.py collectstatic --noinput
+	pipenv run ./manage.py collectstatic --noinput
 	docker build . -t marcpartensky/website
 }
 
 push() {
-	./manage.py collectstatic --noinput
+	pipenv run ./manage.py collectstatic --noinput
 	docker build . -t marcpartensky/website
 	docker push marcpartensky/website
 	git push all
 }
 
 deploy() {
-	./manage.py collectstatic --noinput
-	./manage.py makemigrations
-	./manage.py migrate
+	pipenv run ./manage.py collectstatic --noinput
+	pipenv run ./manage.py makemigrations
+	pipenv run ./manage.py migrate
 	run
 }
 
 update() {
 	git pull
-	pip install -U pip
-	pip install -r requirements.txt -U
+	pipenv run pip install -U pip
+	pipenv run pip install -r requirements.txt -U
 	npm update
 }
