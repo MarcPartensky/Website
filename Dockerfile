@@ -23,6 +23,10 @@ RUN ./manage.py collectstatic --noinput
 
 RUN ./run.sh
 
+# HEALTHCHECK --interval=5s \
+#             --timeout=5s \
+#             CMD curl -f http://127.0.0.1:443 || exit 1
+
 EXPOSE 443
 
 ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]
