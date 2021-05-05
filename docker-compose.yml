@@ -1,28 +1,59 @@
 version: "3.9"
+x-common:
+  website:
+    &website
+    DJANGO_SETTINGS_MODULE: django_project.settings
+    SECRET_KEY: openssl rand -base64 64
+    FTP_URL: 0.0.0.0:21
+  postgres:
+    &postgres
+    POSTGRES_NAME: website
+    POSTGRESQL_USER: root
+    POSTGRES_PASSWORD: openssl rand -base64 64
+    POSTGRES_HOST: postgres
+    POSTGRES_PORT: 5432
+  redis:
+    &redis
+    REDIS_URL: redis:6379
+
 services:
   website:
-    env_file: .env
+    environment:
+      <<: *website
+      <<: *postgres
+      <<: *redis
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      # - 80:80
-      # - 443:443
       - "8000:8000"
     working_dir: /app
-    entrypoint: ./manage.py runserver 0.0.0.0:8000
-    links:
+    entrypoint: >
+       sh -c "./manage.py migrate;
+              ./manage.py runserver 0.0.0.0:8000"
+    depends_on:
       - redis
-      - mysql
+      - postgres
+    networks:
+      - website
 
   redis:
-    image: redis:latest
-    # env_file: .env
+    image: redis
+    environment:
+      <<: *redis
     ports:
       - "6379:6379"
+    networks:
+      - website
 
-  mysql:
-    image: mysql:latest
-    env_file: .env
+  postgres:
+    image: postgres
+    environment:
+      <<: *postgres
     ports:
       - "3306:3306"
+    networks:
+      - website
+
+networks:
+  website:
