@@ -23,12 +23,17 @@ RUN ./manage.py collectstatic --noinput
 
 RUN ./run.sh
 
-# HEALTHCHECK --interval=5s \
-#             --timeout=5s \
-#             CMD curl -f http://127.0.0.1:443 || exit 1
+ENV PORT 80
 
-EXPOSE 443
+HEALTHCHECK --interval=5s \
+            --timeout=5s \
+             CMD curl -f http://127.0.0.1:$PORT || exit 1
 
-ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]
+# EXPOSE 443
+EXPOSE 80
+
+ENTRYPOINT run.sh
+
+# ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]
 
 # ENTRYPOINT ["daphne", "django_project.asgi:application", "--port", "80", "--bind", "website", "-v2"]

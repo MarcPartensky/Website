@@ -1,5 +1,5 @@
 #!/bin/sh
-/bin/sh .env
+source .env
 
 run_bg() {
 	pipenv run daphne -p $1 django_project.asgi:application > /dev/null &
