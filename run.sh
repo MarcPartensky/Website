@@ -53,13 +53,9 @@ all() {
 build() {
 	pipenv run ./manage.py collectstatic --noinput
 	docker build . -t marcpartensky/website
-}
-
-push() {
-	pipenv run ./manage.py collectstatic --noinput
-	docker build . -t marcpartensky/website
 	docker push marcpartensky/website
-	git push all
+	git pull --all
+	git push -ll
 }
 
 deploy() {
