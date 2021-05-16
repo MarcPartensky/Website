@@ -62,6 +62,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    "url.apps.UrlConfig",
     "game.apps.GameConfig",
     "touch_typing.apps.TouchTypingConfig",
     "project.apps.ProjectConfig",
