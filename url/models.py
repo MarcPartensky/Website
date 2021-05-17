@@ -15,9 +15,14 @@ def get_uuid():
 
 
 class Url(models.Model):
-    """Url representation for redirection."""
+    """Url representation for redirecton."""
 
-    route = ShortUUIDField(editable=True, default=get_uuid, max_length=6, unique=True)
+    route = ShortUUIDField(
+        editable=True,
+        default=get_uuid,
+        max_length=6,
+        unique=True,
+    )
     target = models.URLField()
     description = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)

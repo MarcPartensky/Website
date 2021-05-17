@@ -22,9 +22,7 @@ def url(request: HttpRequest, route: str = None):
         return HttpResponsePermanentRedirect(redirect_to=url.target)
 
     elif request.method == "POST":
-        if route == "":
-            route = get_uuid()
-        print("route")
+        route = route or get_uuid()
         if isinstance(request.user, User):
             url = Url(
                 route=route,
@@ -40,8 +38,11 @@ def url(request: HttpRequest, route: str = None):
             )
         url_found = Url.objects.filter(route=route).first()
         if url_found:
+            print("found so updated")
             url_found.delete()
         url.save()
+        print(get_uuid())
+        print(url.route)
         return HttpResponse(
             request._get_scheme() + "://" + request.get_host() + "/u" + url.route
         )
