@@ -22,7 +22,6 @@ urlpatterns = [
     path("", include("home.urls")),
     path("", include("todo.urls")),
     path("", include("file.urls")),
-    path("", include("url.urls")),
     path("blog/", include("blog.urls")),
     path("first-site/", include("first_site.urls")),
     path("demo/", include("demo.urls")),
@@ -46,6 +45,7 @@ urlpatterns = [
     path("business/", include("business.urls")),
     path("avatar/", include("avatar.urls")),
     path("robots.txt", include("robots.urls")),
+    path("", include("url.urls")),  # Last url pattern to put
 ]
 
 # handler404 = response_error_handler
