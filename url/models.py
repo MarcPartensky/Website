@@ -31,3 +31,11 @@ class Url(models.Model):
     def __str__(self):
         """Return the title of the url model."""
         return self.route + " -> " + self.target
+
+
+class Request(models.Model):
+    """Request of url."""
+
+    url = models.ForeignKey(Url, on_delete=models.CASCADE)
+    ip = models.GenericIPAddressField()
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
