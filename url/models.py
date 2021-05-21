@@ -27,8 +27,8 @@ class Url(models.Model):
     target = models.URLField()
     description = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
-    created = models.DateTimeField(auto_now_add=True, default=timezone.now)
-    updated = models.DateTimeField(auto_now=True, default=timezone.now)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     def __str__(self):
         """Return the title of the url model."""

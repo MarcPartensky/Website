@@ -11,7 +11,7 @@ down:
 	docker-compose down
 run:
 	./manage.py runserver 0.0.0.0:8000
-makemigrations:
+migrations:
 	./manage.py makemigrations
 migrate:
 	./manage.py migrate
