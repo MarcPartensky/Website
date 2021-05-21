@@ -38,7 +38,7 @@ up() {
 down() {
 	docker-compose down
 	echo -e "Ended \e[31mRedis\e[0m"
-	echo -e "Ended \e[31mMySQL\e[0m"
+	echo -e "Ended \e[31mPostgreSQL\e[0m"
 	kill % && echo -e "Ended \e[31mDjango\e[0m"	&& echo -e "Ended \e[31mFTP\e[0m"
 }
 

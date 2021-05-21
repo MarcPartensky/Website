@@ -51,7 +51,8 @@ services:
     environment:
       <<: *postgres
     ports:
-      - "3306:3306"
+      # - "3306:3306"
+      - "5432:5432"
     networks:
       - website
 
