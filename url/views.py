@@ -5,6 +5,7 @@ from django.http import (
     HttpResponsePermanentRedirect,
     JsonResponse,
 )
+from django.core.exceptions import PermissionDenied
 from .models import Url, Request, get_uuid
 from django.contrib.auth import login
 from django.contrib.auth.models import User
@@ -22,35 +23,39 @@ def url(request: HttpRequest, route: str = None):
             ip = x_forwarded_for.split(",")[0]
         else:
             ip = request.META.get("REMOTE_ADDR")
-        Request(url=url, ip=ip, user=request.user).save()
+        if isinstance(request.user, User):
+            user = request.user
+        else:
+            user = None
+        Request(url=url, ip=ip, user=user).save()
         url.save()
         return HttpResponsePermanentRedirect(redirect_to=url.target)
 
     elif request.method == "POST":
         route = route or get_uuid()
-        if isinstance(request.user, User):
+        url = Url.objects.filter(route=route).first()
+        if not url:
+            if isinstance(request.user, User):
+                author = request.user
+            else:
+                author = None
             url = Url(
                 route=route,
                 target=request.POST.get("target"),
                 description=request.POST.get("description"),
-                author=request.user,
+                author=author,
             )
+        elif request.user == url.author:
+            url.target = request.POST.get("target")
+            url.description = request.POST.get("description")
         else:
-            url = Url(
-                route=route,
-                target=request.POST.get("target"),
-                description=request.POST.get("description"),
-            )
-        url_found = Url.objects.filter(route=route).first()
-        if url_found:
-            print("found so updated")
-            url_found.delete()
+            raise PermissionDenied
         url.save()
+        print(request.META)
+        scheme = request.META.get("HTTP_X_FORWARDED_PROTO") or request._get_scheme()
         print(get_uuid())
         print(url.route)
-        return HttpResponse(
-            request._get_scheme() + "://" + request.get_host() + "/u" + url.route
-        )
+        return HttpResponse(scheme + "://" + request.get_host() + "/u" + url.route)
 
     # elif request.method == "PUT":
     #     url = Url.objects.filter(route=route).first()
