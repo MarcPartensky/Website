@@ -5,6 +5,7 @@ import shortuuid
 from django.db import models
 from shortuuidfield import ShortUUIDField
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 URL_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~"
 
@@ -26,7 +27,8 @@ class Url(models.Model):
     target = models.URLField()
     description = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
-    count = models.PositiveIntegerField(default=0)
+    created = models.DateTimeField(auto_now_add=True, default=timezone.now)
+    updated = models.DateTimeField(auto_now=True, default=timezone.now)
 
     def __str__(self):
         """Return the title of the url model."""
@@ -39,3 +41,4 @@ class Request(models.Model):
     url = models.ForeignKey(Url, on_delete=models.CASCADE)
     ip = models.GenericIPAddressField()
     user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)

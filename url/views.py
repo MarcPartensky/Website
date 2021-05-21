@@ -5,7 +5,7 @@ from django.http import (
     HttpResponsePermanentRedirect,
     JsonResponse,
 )
-from .models import Url, get_uuid
+from .models import Url, Request, get_uuid
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
@@ -17,7 +17,12 @@ def url(request: HttpRequest, route: str = None):
 
     if request.method == "GET":
         url = Url.objects.filter(route=route).first()
-        url.count += 1
+        x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(",")[0]
+        else:
+            ip = request.META.get("REMOTE_ADDR")
+        Request(url=url, ip=ip, user=request.user).save()
         url.save()
         return HttpResponsePermanentRedirect(redirect_to=url.target)
 
@@ -60,11 +65,29 @@ def urls(request: HttpRequest):
     """Return the list of all urls."""
     urls = [
         dict(
+            id=url.id,
             route=url.route,
             target=url.target,
             description=url.description,
-            author=str(url.author),
+            created=str(url.created),
+            updated=str(url.updated),
+            author=(url.author.id if url.author else None),
         )
         for url in Url.objects.all()
     ]
     return JsonResponse(dict(urls=urls), safe=True)
+
+
+def requests(request: HttpRequest):
+    """Return the list of all requests."""
+    requests = [
+        dict(
+            id=request.id,
+            url=request.url.id,
+            ip=request.ip,
+            timestamp=request.timestamp,
+            user=(request.user.id if request.user else None),
+        )
+        for request in Request.objects.all()
+    ]
+    return JsonResponse(dict(requests=requests), safe=True)
