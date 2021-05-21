@@ -10,6 +10,11 @@ mysql() {
 	docker-compose up -d mysql
 }
 
+postgres() {
+	echo -e "Starting \e[92mPostgreSQL\e[0m"
+	docker-compose up -d postgres
+}
+
 redis() {
 	echo -e "Starting \e[92mRedis\e[0m"
 	docker-compose up -d redis
@@ -25,7 +30,7 @@ django() {
 alias run=django
 
 up() {
-	mysql
+	postgres
 	redis
 	django
 }
