@@ -55,7 +55,7 @@ def url(request: HttpRequest, route: str = None):
         scheme = request.META.get("HTTP_X_FORWARDED_PROTO") or request._get_scheme()
         print(get_uuid())
         print(url.route)
-        return HttpResponse(scheme + "://" + request.get_host() + "/u" + url.route)
+        return HttpResponse(scheme + "://" + request.get_host() + "//" + url.route)
 
     # elif request.method == "PUT":
     #     url = Url.objects.filter(route=route).first()
