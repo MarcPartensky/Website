@@ -10,7 +10,7 @@ up:
 down:
 	docker-compose down
 run:
-	pipenv run ./manage.py runserver localhost:8000
+	pipenv run ./manage.py runserver 0.0.0.0:8000
 migrations:
 	pipenv run ./manage.py makemigrations
 migrate:
