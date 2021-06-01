@@ -10,15 +10,15 @@ up:
 down:
 	docker-compose down
 run:
-	./manage.py runserver 0.0.0.0:8000
+	pipenv run ./manage.py runserver localhost:8000
 migrations:
-	./manage.py makemigrations
+	pipenv run ./manage.py makemigrations
 migrate:
-	./manage.py migrate
+	pipenv run ./manage.py migrate
 shell:
-	./manage.py shell
+	pipenv run ./manage.py shell
 test:
-	./manage.py runserver 0.0.0.0:8000 &
+	pipenv run ./manage.py runserver 0.0.0.0:8000 &
 	curl localhost:8000
 	kill %
 
