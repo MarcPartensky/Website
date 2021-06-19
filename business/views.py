@@ -10,11 +10,12 @@ from django.shortcuts import render
 from home.context import hydrate, base
 
 @hydrate(base)
-def index(request, context, lang: str="en"):
+def index(request, context, lang: str="fr"):
     """Business page view."""
     path = "business/text.yaml"
     with open(path, "r") as stream:
         text = yaml.safe_load(stream)
+    lang = request.GET.get('lang') or lang
     context.update(text[lang])
     print(context)
     if request.GET.get("json"):
