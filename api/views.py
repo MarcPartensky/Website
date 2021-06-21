@@ -8,6 +8,7 @@ import json
 import html
 import random
 import urllib
+import subprocess
 
 from io import StringIO
 from django.shortcuts import render
@@ -188,6 +189,7 @@ def python(request, cmd: str):
         text = "\n".join([f"{line}" for line in out])
         return HttpResponse(urllib.parse.quote(text), status=500)
 
+
 @csrf_exempt
 def todo_index(request: HttpRequest):
     """View todos or post new todo."""
@@ -211,7 +213,7 @@ def todo_index(request: HttpRequest):
         # serializer = SnippetSerializer(data=data)
         # if serializer.is_valid():
         #     serializer.save()
-            # return JsonResponse(serializer.data, status=200)
+        # return JsonResponse(serializer.data, status=200)
         # return JsonResponse(serializer.errors, status=400)
 
 
@@ -228,3 +230,12 @@ def todo(request: HttpRequest, id: int):
     data = JSONParser().parse(request)
 
     # return Json
+
+
+def port(request: HttpRequest):
+    """Return a random available port within a given range."""
+    port_min = os.environ.get('PORT_MIN') or 8000
+    port_max = os.environ.get('PORT_MAX') or 8099
+    cmd = f"comm -23 <(seq {port_min} {port_max} | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+    result = subprocess.run(cmd, stdout=subprocess.PIPE)
+    return result.stdout
