@@ -1,6 +1,4 @@
-"""
-Api views that don't necessarily provide a gui interface.
-"""
+"""API that doesn't necessarily provide a gui interface."""
 
 import os
 import sys

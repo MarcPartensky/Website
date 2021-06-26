@@ -56,7 +56,6 @@ ALLOWED_HOSTS = [
     "marcpartensky.com",
     "marcpartensky.herokuapp.com",
     "websiteofmarcpartensky.herokuapp.com",
-    "localhost",
 ]
 
 # Application definition
@@ -84,6 +83,7 @@ INSTALLED_APPS = [
     "todo.apps.TodoConfig",
     "business.apps.BusinessConfig",
     "file.apps.FileConfig",
+    "shell.apps.ShellConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
