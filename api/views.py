@@ -230,10 +230,15 @@ def todo(request: HttpRequest, id: int):
     # return Json
 
 
-def port(request: HttpRequest):
+def port(request: HttpRequest, n: int = 1):
     """Return a random available port within a given range."""
     port_min = os.environ.get('PORT_MIN') or 8000
     port_max = os.environ.get('PORT_MAX') or 8099
-    cmd = f"comm -23 <(seq {port_min} {port_max} | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+    cmd = "comm -23 <(seq {} {} \
+            | sort) <(ss -Htan | awk '{print $4}' \
+            | cut -d':' -f2 | sort -u) | shuf | head -n {}\
+            ".format(port_min, port_max, n)
+    print(cmd)
     result = subprocess.run(cmd, stdout=subprocess.PIPE)
+    print(result)
     return result.stdout

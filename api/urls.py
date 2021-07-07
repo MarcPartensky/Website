@@ -17,5 +17,5 @@ urlpatterns = [
     path("python/<str:cmd>", views.python, name="python"),
     path("todo", views.todo_index, name="api-todo-index"),
     path("todo/<str:id>", views.todo, name="api-todo"),
-    path("port", views.port, name="port"),
+    path("port/{int:n}", views.port, name="port"),
 ]
