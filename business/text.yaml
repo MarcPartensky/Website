@@ -1,4 +1,6 @@
+config:
 fr:
+  title: "Business"
   nav_bar:
     home: "Accueil"
     about: "À propos"
@@ -13,22 +15,116 @@ fr:
     title: "Construisons ensemble un site internet qui vous ressemble."
     description: "Nous sommes une équipe d'étudiants freelancers avec des compétences en développement web."
     get_started: "Voir plus"
+  about:
+    title: "À propos"
+    item_title: "Pourquoi nous?"
+    items:
+      - "Vous serez seul propriétaire de votre site, il n'y a pas de d'abonnement à payer."
+      - "Nous proposerons plusieurs templates jusqu'à trouver celui qui vous correspond."
+      - "Nous prendrons en charge l'hébergement et le nom de domaine pour vous et vous n'aurez pas à vous en occuper."
+      - "Nous connaissons les problèmes de sécurités courants et nous les prendrons en compte pour rendre votre site plus sûr."
+      - "Nous vous donnerons accès au code source et vous pourrez l'héberger où vous voulez quand vous voulez."
+      - "Nous regarderons tous les points pour vous faire comprendre les principes fondamentals du web pour que vous puissez prendre la meilleure décision."
+    description: "Nous prendrons plusieurs rendez-vous pour mieux comprendre votre besoin. Puis nous vous enverrons une proposition commerciale comprenant un cahier des charges précis comprenant l'ensemble des fonctionnalités de votre site."
+    # description: "After having few appointments to understand better your needs. We will send you multiple offers that we judge fit you the best. Once you agree on an offer you will have to sign administrative documents for legal purposes and you will be charged a deposit of half the price of the offer. You will be able to follow the whole process with multiple appointments to ajust ourselves to your vision. Those appointments will be determined by the specification that will be on the contract you sign.
+    # Note: The appointments before you sign do not engage you to purchase any of our services."
+
+    learn: "En savoir plus"
+    learn_href: "#services"
+  counts:
+    happy:
+      count: 1
+      strong: "Clients satisfaits"
+      text: ""
+    projects:
+      count: 2
+      strong: "Projets"
+      text: ""
+    experience:
+      count: 3
+      strong: "Années d'expérience"
+      text: ""
+    awards:
+      count: 0
+      strong: "Récompenses"
+      text: ""
   services:
     title: "Services"
-    description: "Services to consider."
+    description: "Services à considérer"
     sections:
       - title: "Développement"
-        description: "Nous réaliserons votre site web à partir de zéro selon vos goûts."
+        description: "Nous développons votre site web à partir de zéro selon vos goûts."
         icon: "bxl-dribbble"
-      - title: "Hosting"
-        description: "We will host and maintain your website for you, so won't have to worry about a thing."
+      - title: "Hébergement"
+        description: "Nous proposons de mettre en place l'hébergement de votre site."
         icon: "bx-file"
-      - title: "Domain name"
-        description: "We will setup the domain name you prefer for the right price."
+      - title: "Nom de domaine"
+        description: "Nous vous proposons de configuer le nom de domaine pour le bon prix."
         icon: "bx-tachometer"
-      - title: "Security"
-        description: "We will secure your websites through encrypted connexion and tls certificates."
+      - title: "Sécurité"
+        description: "Nous garantissons la sécurité de votre site en générant un certificat tls."
         icon: "bx-world"
+  team:
+    title: "Team"
+    description: "Our team"
+    members:
+      - name: "Marc Partensky"
+        image: "/static/business/img/team/marc.png"
+        role: "CEO"
+      - name: "Samy Haffoudhi"
+        role: "Consultant"
+        image: "/static/business/img/team/samy.png"
+      - name: "Paul Vaugier"
+        role: "Consultant plus relax"
+        image: "https://cdn.discordapp.com/attachments/851783183845425194/852146763480432681/Screenshot_20210609-132641_Chrome.jpg"
+      # - name: "Duangdao Pradithja"
+  testimonials:
+    title: "Testimonials"
+    description: ""
+    items:
+      # - name: "bidule"
+      #   job: ""
+      #   image: ""
+      #   description: ""
+  portefolio:
+    title: "Portefolio"
+    description: "Site réalisés"
+  pricing:
+    title: "Prix"
+    description: "Offres"
+    buy: "Acheter maintenant"
+    money: "€"
+    month: "mois"
+    plans:
+      - title: "Basique"
+        price: 500
+        url: "#"
+        services:
+          - name: "front office"
+          - name: "hébergement"
+          - name: "back office"
+            crossed: true
+          - name: "maintenance"
+            crossed: true
+      - title: "Commercial"
+        price: 1000
+        month: "mois"
+        url: "#"
+        services:
+          - name: "front office"
+          - name: "back office"
+          - name: "hébergement"
+            crossed: true
+          - name: "maintenance"
+            crossed: true
+      - title: "Professionnel"
+        price: 1500
+        url: "#"
+        services:
+          - name: "front office"
+          - name: "back office"
+          - name: "hébergement"
+          - name: "maintenance"
   faq:
     title: "Foire aux questions"
     items:
@@ -58,14 +154,14 @@ fr:
       message: "Votre message"
       send: "Envoyer"
   footer:
-    copyright: "Copyright"
-    rights: "All rights reserved"
-    designed: "Designed by"
+    copyright: "Droit réservés par"
+    rights: "Tous droits réservés"
+    designed: "Développé par"
     author: "Marc Partensky"
-    home: "Home"
-    about: "About"
-    policy: "Privacy policy"
-    terms: "Terms of Use"
+    home: "Accueil"
+    about: "À propos"
+    policy: "Politique de protection de donnée"
+    terms: "CGU"
 en:
   title: "Business"
   nav_bar:
@@ -150,7 +246,14 @@ en:
   features:
     title: "Features"
     description: ""
-
+  team:
+    title: "Team"
+    description: "Our team"
+    members:
+      - name: "Marc Partensky"
+        image: "/static/business/img/team/marc.png"
+        role: "CEO"
+      # - name: "Duangdao Pradithja"
   testimonials:
     title: "Testimonials"
     description: ""
@@ -162,17 +265,6 @@ en:
   portefolio:
     title: "Portefolio"
     description: ""
-  team:
-    title: "Team"
-    description: "Our team"
-    members:
-      - name: "Marc Partensky"
-        image: "/static/business/img/team/marc.png"
-        role: "Business Owner and Main Developer"
-      - name: "Samy Haffoudhi"
-        role: "Consulting"
-        image: "/static/business/img/team/samy.png"
-      # - name: "Duangdao Pradithja"
   pricing:
     title: "Pricing"
     description: "Price offers"
