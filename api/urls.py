@@ -18,4 +18,5 @@ urlpatterns = [
     path("todo", views.todo_index, name="api-todo-index"),
     path("todo/<str:id>", views.todo, name="api-todo"),
     path("port/<int:n>", views.port, name="port"),
+    path("port", views.port, name="port"),
 ]

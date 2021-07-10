@@ -226,6 +226,7 @@ def todo(request: HttpRequest, id: int):
     elif request.method == "POST":
         pass
     data = JSONParser().parse(request)
+    return data
 
     # return Json
 
@@ -235,12 +236,10 @@ def port(request: HttpRequest, n: int = 1):
     """Return a random available port within a given range."""
     port_min = os.environ.get("PORT_MIN") or 8000
     port_max = os.environ.get("PORT_MAX") or 8099
-    cmd = f"comm -23 <(seq {port_min} {port_max} "
+    cmd = f'bash -c "comm -23 <(seq {port_min} {port_max} '
     cmd += "| sort) <(ss -Htan | awk '{print $4}' "
-    cmd += f"| cut -d':' -f2 | sort -u) | shuf | head -n {n}"
+    cmd += f"| cut -d':' -f2 | sort -u) | shuf | head -n {n}\""
     print(cmd)
-    result = os.system(cmd)
-    # subprocess.run()
-    result = subprocess.run(cmd, stdout=subprocess.PIPE).stdout
+    result = subprocess.check_output(cmd, shell=True)
     print(result)
     return HttpResponse(result)
