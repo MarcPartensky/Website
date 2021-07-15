@@ -15,6 +15,7 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def url(request: HttpRequest, route: str = None):
     """One url."""
+    print('redirected from url/views.py:url')
 
     if request.method == "GET":
         url = Url.objects.filter(route=route).first()
