@@ -78,7 +78,8 @@ def get_github_info():
 
     url = "https://api.github.com/repos/marcpartensky/website/commits"
     response = requests.get(url).json()
-    context["date"] = response[0]["commit"]["author"]["date"]
+    if len(response):
+        context["date"] = response[0]["commit"]["author"]["date"]
 
     return context
 
