@@ -17,3 +17,16 @@ class MarkdownModel(models.Model):
     #     print('saving model somewhere')
     #     print(args, kwargs)
     #     return super().save(*args, **kwargs)
+
+
+class NotificationModel(models.Model):
+    """A model that represents a notification."""
+
+    message = models.TextField()
+    source = models.IPAddressField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    seen = models.BooleanField(default=False)
+
+    def __str__(self):
+        """Return the notification sent."""
+        return f"{self.message}"

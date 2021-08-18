@@ -20,7 +20,7 @@ from rest_framework.views import APIView
 
 from .forms import UploadFileForm, UploadMarkdownForm, TodoForm
 from django.views.decorators.csrf import csrf_exempt
-from .models import MarkdownModel
+from .models import MarkdownModel, NotificationModel
 
 from todo.models import Todo
 
@@ -243,3 +243,19 @@ def port(request: HttpRequest, n: int = 1):
     result = subprocess.check_output(cmd, shell=True)
     print(result)
     return HttpResponse(result)
+
+@csrf_exempt
+def notify(request: HttpRequest):
+    """Notify me with a get request container
+    a get variable `message`."""
+    message = request.GET.get("message")
+    return HttpResponse("")
+
+@csrf_exempt
+def notifications(request: HttpRequest):
+    """Return the list of notifications."""
+    notifications = NotificationModel.objects.filter(seen=False)
+    for notification in notifications:
+        notification.seen = True
+        notification.save()
+    return JsonResponse(notifications)
