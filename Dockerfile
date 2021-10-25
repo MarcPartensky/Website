@@ -25,6 +25,6 @@ HEALTHCHECK --interval=5s \
             --timeout=5s \
              CMD curl -sf http://127.0.0.1:$PORT/robots.txt || exit 1
 
-ENTRYPOINT entrypoint.sh
+ENTRYPOINT /app/entrypoint.sh
 
 # ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]

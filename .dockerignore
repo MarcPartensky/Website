@@ -1,3 +1,11 @@
+Dockerfile
+Procfile
+run.sh
+runtime.txt
+Makefile
+heroku.yml
+docker-compose.*
+db.sqlite3
 venv
 .env
 .github/
