@@ -30,3 +30,6 @@ test:
 	pipenv run ./manage.py runserver 0.0.0.0:8000 &
 	curl localhost:8000
 	kill %
+brew:
+	brew services start postgresql
+	brew services start redis
