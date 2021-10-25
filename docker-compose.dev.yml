@@ -1,10 +1,14 @@
 version: "3.9"
+
 x-common:
   website:
     &website
     DJANGO_SETTINGS_MODULE: django_project.settings
     SECRET_KEY: admin
     FTP_URL: 0.0.0.0:21
+    USER: admin
+    PASSWORD: admin
+    EMAIL: admin@admin.com
   postgres:
     &postgres
     POSTGRES_DB: website
