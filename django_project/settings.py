@@ -211,7 +211,7 @@ if postgres_name:
     }
     DATABASES["default"] = postgres_database
 
-mysql_name = os.environ.get("MYSQL_DB")
+mysql_name = os.environ.get("MYSQL_DATABASE")
 if mysql_name:
     mysql_database = {
         "ENGINE": "django.db.backends.mysql",
