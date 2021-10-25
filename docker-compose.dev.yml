@@ -68,7 +68,7 @@ services:
     image: rediscommander/redis-commander
     restart: unless-stopped
     environment:
-      REDIS_HOSTS: redis:6379
+      REDIS_HOST: redis:6379
     ports:
     - "16379:8081"
 
