@@ -10,6 +10,7 @@ activate:
 deactivate:
 	exit
 build:
+	./manage.py collectstatic
 	docker build . -t marcpartensky/website
 push:
 	docker push marcpartensky/website
@@ -26,10 +27,6 @@ migrate:
 	pipenv run ./manage.py migrate
 shell:
 	pipenv run ./manage.py shell
-test:
-	pipenv run ./manage.py runserver 0.0.0.0:8000 &
-	curl localhost:8000
-	kill %
 brewstart:
 	brew services start mysql
 	brew services start redis
