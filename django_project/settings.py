@@ -210,6 +210,7 @@ if postgres_name:
         "PORT": os.environ.get("POSTGRES_PORT"),
     }
     DATABASES["default"] = postgres_database
+    print("PostgreSQL logins detected, using those as default")
 
 mysql_name = os.environ.get("MYSQL_DATABASE")
 if mysql_name:
@@ -223,18 +224,22 @@ if mysql_name:
     }
     if "default" not in DATABASES:
         DATABASES["default"] = mysql_database
+        print("MySQL logins detected, using those as default")
     else:
         DATABASES["mysql"] = mysql_database
+        print("MySQL logins detected, using as second database")
 
-debug = {
+local_db = {
     "ENGINE": "django.db.backends.sqlite3",
     "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
 }
 
 if "default" not in DATABASES:
-    DATABASES["default"] = debug
+    DATABASES["default"] = local_db
+    print("No database detected, using local MySQL database as default")
 else:
-    DATABASES["debug"] = debug
+    DATABASES["debug"] = local_db
+    print("Using local MySQL database as debug database")
 
 
 # DATABASES = {
