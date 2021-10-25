@@ -197,27 +197,45 @@ COMPRESS_OFFLINE = True
 WSGI_APPLICATION = "django_project.wsgi.application"
 
 # Database
+DATABASES = {}
+
+postgres_name = os.environ.get("POSTGRES_DB")
+if postgres_name:
+    postgres_database = {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": postgres_name,
+        "USER": os.environ.get("POSTGRES_USER"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": os.environ.get("POSTGRES_HOST"),
+        "PORT": os.environ.get("POSTGRES_PORT"),
+    }
+    DATABASES["default"] = postgres_database
+
+mysql_name = os.environ.get("MYSQL_DB")
+if mysql_name:
+    mysql_database = {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": mysql_name,
+        "USER": os.environ.get("MYSQL_USER"),
+        "PASSWORD": os.environ.get("MYSQL_PASSWORD"),
+        "HOST": os.environ.get("MYSQL_HOST"),
+        "PORT": os.environ.get("MYSQL_PORT"),
+    }
+    if "default" not in DATABASES:
+        DATABASES["default"] = mysql_database
+    else:
+        DATABASES["mysql"] = mysql_database
+
 debug = {
     "ENGINE": "django.db.backends.sqlite3",
     "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
 }
 
-production = {
-    "ENGINE": "django.db.backends.postgresql",
-    "NAME": os.environ.get("POSTGRES_NAME"),
-    "USER": os.environ.get("POSTGRES_USER"),
-    "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-    "HOST": os.environ.get("POSTGRES_HOST"),
-    "PORT": os.environ.get("POSTGRES_PORT"),
-}
-
-if DEBUG:
-    DATABASES = dict(default=debug, production=production)
+if "default" not in DATABASES:
+    DATABASES["default"] = debug
 else:
-    DATABASES = dict(default=production, debug=debug)
+    DATABASES["debug"] = debug
 
-# print('production port:', os.environ.get('POSTGRES_PORT'))
-# print("DATABASES:", DATABASES)
 
 # DATABASES = {
 #     'default': {
