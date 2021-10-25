@@ -474,10 +474,12 @@ MDEDITOR_CONFIGS = {
 
 # SQL Explorer : https://pypi.org/project/django-sql-explorer/
 # EXPLORER_DEFAULT_CONNECTION = 'readonly'
-if DEBUG:
-    EXPLORER_CONNECTIONS = {"Default": "default", "Production": "production"}
-else:
-    EXPLORER_CONNECTIONS = {"Default": "default", "Debug": "debug"}
+
+EXPLORER_CONNECTIONS = {"Default": "default"}
+if "mysql" in DATABASES:
+    EXPLORER_CONNECTIONS["Mysql"] = "mysql"
+if "debug" in DATABASES:
+    EXPLORER_CONNECTIONS["Debug"] = "debug"
 
 EXPLORER_DEFAULT_CONNECTION = "default"
 
