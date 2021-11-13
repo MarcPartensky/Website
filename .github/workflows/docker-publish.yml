@@ -21,8 +21,12 @@ jobs:
     - uses: actions/checkout@v2
     - name: Update apt
       run: sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
+    - name: Install software-properties-common to add PPA
+      run: sudo apt install software-properties-common -y
+    - name: Add PPA to install python3.10
+      run: sudo add-apt-repository ppa:deadsnakes/ppa
     - name: Install Python3.7.7
-      run: sudo apt install python3.7.7 -y
+      run: sudo apt install python3.7 -y
     - name: Clean apt
       run: |
         sudo apt-get clean autoclean &&
@@ -33,7 +37,7 @@ jobs:
       run: pip install -U pip
     - name: Install pipenv
       run: pip install pipenv
-    - name: Update pip dependencies
+    - name: Lock pip dependencies
       run: pipenv lock --pre --clear
     - name: Install dependencies
       run: pipenv install
