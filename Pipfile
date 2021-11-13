@@ -155,6 +155,9 @@ django-robots = "*"
 
 [dev-packages]
 black = "*"
+jedi = "*"
+pylint = "*"
 
 [requires]
-python_version = "3.7.7"
+# python_version = "3.7.7"
+python_version = "3.7.12"
