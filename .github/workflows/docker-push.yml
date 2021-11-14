@@ -37,9 +37,9 @@ jobs:
     - name: Export to requirements.txt
       run: pipenv lock -r > requirements.txt
     - name: Collecting static
-      run: ./manage.py collectstatic --noinput
+      run: pipenv run ./manage.py collectstatic --noinput
     - name: Preparing migrations
-      run: ./manage.py makemigrations
+      run: pipenv run ./manage.py makemigrations
     - name: Updating package.json
       run: npm update
     - name: Fixing audit npm bugs
