@@ -36,6 +36,8 @@ jobs:
       run: pipenv install
     - name: Export to requirements.txt
       run: pipenv lock -r > requirements.txt
+    - name: Collecting static
+      run: ./manage.py collectstatic --noinput
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
     - name: Set up Docker Buildx
