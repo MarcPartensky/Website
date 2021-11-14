@@ -38,6 +38,12 @@ jobs:
       run: pipenv lock -r > requirements.txt
     - name: Collecting static
       run: ./manage.py collectstatic --noinput
+    - name: Preparing migrations
+      run: ./manage.py makemigrations
+    - name: Updating package.json
+      run: npm update
+    - name: Fixing audit npm bugs
+      run: npm audit fix
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
     - name: Set up Docker Buildx
