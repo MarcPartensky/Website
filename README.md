@@ -1,9 +1,4 @@
-author: Marc Partensky
-name: Website of Marc Partensky
-date: 8/10/2019
----
-
-[![ViewCount](http://hits.dwyl.com/MarcPartensky/website.svg)](https://github.com/MarcPartensky/Website)
+[![Docker](https://github.com/MarcPartensky/Website/actions/workflows/docker-push.yml/badge.svg)](https://github.com/MarcPartensky/Website/actions/workflows/docker-push.yml)
 
 # Website
 
@@ -77,7 +72,12 @@ Build usually last 5 minutes.
 ![qrcode](./static/qrcode.svg)
 **Scan to add me as a contact**
 
-## Bonus
+# Bonus
+
+## Notes
+author: Marc Partensky
+name: Website of Marc Partensky
+date: 8/10/2019
 
 ## Heroku Buildpacks
 
