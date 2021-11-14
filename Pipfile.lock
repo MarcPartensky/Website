@@ -639,11 +639,11 @@
         },
         "graphviz": {
             "hashes": [
-                "sha256:0f04e5f939d3a839b524283d590e941892c56e75e60e0f5238c431264f490022",
-                "sha256:f8bab3bf3eda40ab259bb96f786811b5dec6fd6957fa70a5b1977534e1ee2a40"
+                "sha256:6adf01cf64fb9b1c4374b733d91d4bd8bf2e86d5988d9e140c91fa304203cfb2",
+                "sha256:bb78fbd032590dbfbbb56805b39d61fd5225d165bbf03de1e46873eec48f4b8f"
             ],
             "index": "pypi",
-            "version": "==0.18"
+            "version": "==0.18.1"
         },
         "gunicorn": {
             "hashes": [
