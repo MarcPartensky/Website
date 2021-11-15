@@ -1525,6 +1525,17 @@
             "index": "pypi",
             "version": "==21.1.0"
         },
+<<<<<<< HEAD
+=======
+        "setuptools": {
+            "hashes": [
+                "sha256:03d8ad01799a10c6e867ff105fdd11335712be79a1b29d47d1d3b00132e78d5f",
+                "sha256:17b9c0f82402081585e0a99343b563efa5eb2d0b958a172e1aa2c515fa47425b"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==59.1.0"
+        },
+>>>>>>> adeaf6e (pipfile.lock)
         "shortuuid": {
             "hashes": [
                 "sha256:44a7a86bcf24dbaba2e626cf80c779926b7c3a0d31a3a013e0d3cd1077707d23",
@@ -1977,6 +1988,17 @@
             "index": "pypi",
             "version": "==2021.11.10"
         },
+<<<<<<< HEAD
+=======
+        "setuptools": {
+            "hashes": [
+                "sha256:03d8ad01799a10c6e867ff105fdd11335712be79a1b29d47d1d3b00132e78d5f",
+                "sha256:17b9c0f82402081585e0a99343b563efa5eb2d0b958a172e1aa2c515fa47425b"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==59.1.0"
+        },
+>>>>>>> adeaf6e (pipfile.lock)
         "toml": {
             "hashes": [
                 "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b",
