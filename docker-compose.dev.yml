@@ -21,11 +21,22 @@ x-common:
     REDIS_URL: redis:6379
 
 services:
+  # nginx:
+  #   image: jwilder/nginx-proxy
+  #   restart: unless-stopped
+  #   networks:
+  #     - web
+  #   ports:
+  #     - "127.0.1.1:80:80"
+  #   volumes:
+  #     - /var/run/docker.sock:/tmp/docker.sock:ro
+
   website:
     environment:
       <<: *website
       <<: *postgres
       <<: *redis
+      VIRTUAL_HOST: website.dev
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -33,13 +44,14 @@ services:
       - "8000:80"
     working_dir: /app
     entrypoint: /app/entrypoint.sh
+    command: 80 0.0.0.0
     volumes:
-      - "/app:$PWD"
+      - ".:/app"
     depends_on:
       - redis
       - postgres
     networks:
-      - website
+      - web
     healthcheck:
       test: ["CMD", "curl", "-fs", "http://website:80/robots.txt"]
       interval: 1m30s
@@ -54,7 +66,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - website
+      - web
 
   pgadmin:
     image: dpage/pgadmin4
@@ -62,10 +74,13 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: admin
+      VIRTUAL_HOST: postgres.dev
+    volumes:
+      - dev_pgadmin:/var/lib/pgadmin
     ports:
       - "15432:80"
     networks:
-      - website
+      - web
 
   redis:
     image: redis
@@ -74,17 +89,21 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - website
+      - web
 
   rediscommander:
     image: rediscommander/redis-commander
     restart: unless-stopped
     environment:
+      VIRTUAL_HOST: redis.dev
       REDIS_HOST: redis:6379
     ports:
     - "16379:8081"
     networks:
-      - website
+      - web
 
 networks:
-  website:
+  web:
+volumes:
+  dev_posgres:
+  dev_pgadmin:
