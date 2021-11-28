@@ -114,11 +114,17 @@ def read(request, title: str):
     """Read an article."""
     reset_template_cache()
     clean_templates()
+    print("title", title)
 
-    title_no_extension = "".join(title.split(".")[:-1])
-    print("title no extension:", title_no_extension)
+    if "." in title:
+        title_no_extension = "".join(title.split(".")[:-1])
+    else:
+        title_no_extension = title
+    print("title_no_extension", title_no_extension)
 
     article = Article.objects.filter(title=title_no_extension).first()
+    # article = Article.objects.all()[0]
+    print("article.layout:", article.layout)
     if not article:
         raise Http404("This article was not found.")
 
