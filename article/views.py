@@ -1,23 +1,19 @@
 import time
 import os
 import glob
-import random
 import datetime
 import requests
 
 from django.shortcuts import render, HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
-from django.template import loader
 from .models import Article
 from .forms import ArticleForm
 from .adapt import adapt
 
 from django.template.loader import engines
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
 
 from home.context import home, hydrate
-from .context import get_articles_objects
 from rich import print
 
 
@@ -55,14 +51,16 @@ def clean_templates():
     static_cache_path = os.path.join(os.getcwd(), "article/static/article/cache")
     templates_cache_path = os.path.join(os.getcwd(), "article/templates/cache")
 
-    os.system(f"rm -rf {static_cache_path}")
+    if os.path.exists(static_cache_path):
+        os.system(f"rm -rf {static_cache_path}")
     # print("static:", static_cache_path)
     # print("templates:", templates_cache_path)
 
-    print(
-        "before deleting templates",
-        os.listdir(templates_cache_path),
-    )
+    if os.path.exists(templates_cache_path):
+        print(
+            "before deleting templates",
+            os.listdir(templates_cache_path),
+        )
     path = os.path.join(templates_cache_path, "*")
     # print('path:', path)
     for file in glob.glob(path):
@@ -79,7 +77,6 @@ def build_template(title: str, article: Article, layout: str = "marc"):
     markdown_path = os.path.join(os.getcwd(), f"media/article/{title}.md")
     html_path = os.path.join(os.getcwd(), f"article/templates/cache/{title}.html")
     article_templates = os.path.join(os.getcwd(), "article/templates/cache")
-
     article_static = os.path.join(os.getcwd(), "article/static/article")
 
     with open(markdown_path, "w") as f:
@@ -232,16 +229,14 @@ def upload(request):
         d = fetch_article_data(request.FILES["file"], request)
         form = ArticleForm(d)
         if form.is_valid():
-            print(f"[lightgreen]valid form[/]")
+            print("[lightgreen]valid form[/]")
             form.save()
             return HttpResponse("success")
-        else:
-            print(f"[red]invalid form[/]")
-            print(f"[red]{form.errors.as_data()}[/]")
-            return HttpResponse("invalid form", status=500)
-    elif request.method == "GET":
+        print("[red]invalid form[/]")
+        print(f"[red]{form.errors.as_data()}[/]")
+        return HttpResponse("invalid form", status=500)
+    if request.method == "GET":
         form = ArticleForm()
         context = dict(form=form)
         return render(request, "api/upload.html", context)
-    else:
-        raise PermissionDenied("Only GET and POST methods are allowed")
+    raise PermissionDenied("Only GET and POST methods are allowed")
