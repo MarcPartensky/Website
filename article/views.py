@@ -103,11 +103,11 @@ def build_template(title: str, article: Article, layout: str = "marc"):
     # else:
     os.system(f"mv {layout_path} {article_static}")
 
-    with open(html_path, "r") as f:
-        text = str(f.read())
+    with open(html_path, "r") as stream:
+        text = str(stream.read())
     text = adapt(text, title, layout)
-    with open(html_path, "w") as f:
-        f.write(text)
+    with open(html_path, "w") as stream:
+        stream.write(text)
 
 
 def read(request, title: str):
