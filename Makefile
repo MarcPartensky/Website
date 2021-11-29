@@ -14,7 +14,9 @@ build:
 up:
 	docker-compose up -d
 down:
-	docker-compose down
+	docker-compose -f docker-compose.dev.yml down
+	docker-compose -f docker-compose.yml down
+	DOCKER_HOST ssh://vps docker-compose -f docker-compose.dev.ym up -d --build --force-recreate --remove-orphans website-test
 run:
 	pipenv run ./manage.py runserver 127.0.0.1:8000
 migrate:
@@ -30,3 +32,5 @@ dev:
 	docker-compose -f docker-compose.dev.yml up -d
 prod:
 	docker-compose -f docker.compose.yml up -d
+test:
+	DOCKER_HOST ssh://vps docker-compose -f docker-compose.dev.ym up -d --build --force-recreate --remove-orphans website-test
