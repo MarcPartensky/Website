@@ -32,5 +32,6 @@ dev:
 	docker-compose -f docker-compose.dev.yml up -d
 prod:
 	docker-compose -f docker.compose.yml up -d
-test:
-	DOCKER_HOST ssh://vps docker-compose -f docker-compose.dev.ym up -d --build --force-recreate --remove-orphans website-test
+deploy:
+	DOCKER_HOST=ssh://vps docker-compose -f docker-compose.dev.yml up -d --build --force-recreate --remove-orphans website-test
+	DOCKER_HOST=ssh://vps docker-compose -f docker-compose.dev.ym logs -f website-test

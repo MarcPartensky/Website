@@ -116,9 +116,6 @@ services:
     command: 80 0.0.0.0
     volumes:
       - ".:/app"
-    depends_on:
-      - redis
-      - postgres
     networks:
       - web
       - caddy
