@@ -68,19 +68,31 @@ services:
     networks:
       - web
 
-  pgadmin:
-    image: dpage/pgadmin4
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   restart: unless-stopped
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@admin.com
+  #     PGADMIN_DEFAULT_PASSWORD: admin
+  #     VIRTUAL_HOST: postgres.dev
+  #   volumes:
+  #     - dev_pgadmin:/var/lib/pgadmin
+  #   ports:
+  #     - "15432:80"
+  #   networks:
+  #     - web
+
+  pgweb:
+    image: sosedoff/pgweb
     restart: unless-stopped
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-      VIRTUAL_HOST: postgres.dev
-    volumes:
-      - dev_pgadmin:/var/lib/pgadmin
     ports:
-      - "15432:80"
+    - "15432:8081"
+    environment:
+      DATABASE_URL: postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres:5432/$POSTGRES_DB?sslmode=disable
     networks:
       - web
+    depends_on:
+      - postgres
 
   redis:
     image: redis
