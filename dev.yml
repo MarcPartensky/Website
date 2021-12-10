@@ -41,7 +41,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - "8000:80"
+      - "127.0.0.1:8000:80"
     working_dir: /app
     entrypoint: /app/entrypoint.sh
     command: 80 0.0.0.0
@@ -64,7 +64,7 @@ services:
     environment:
       <<: *postgres
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     networks:
       - web
 
@@ -86,9 +86,9 @@ services:
     image: sosedoff/pgweb
     restart: unless-stopped
     ports:
-    - "15432:8081"
+      - "127.0.0.1:15432:8081"
     environment:
-      DATABASE_URL: postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres:5432/$POSTGRES_DB?sslmode=disable
+      DATABASE_URL: "postgres://admin:admin@postgres:5432/website?sslmode=disable"
     networks:
       - web
     depends_on:
@@ -99,7 +99,7 @@ services:
     environment:
       <<: *redis
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
     networks:
       - web
 
@@ -110,7 +110,7 @@ services:
       VIRTUAL_HOST: redis.dev
       REDIS_HOST: redis:6379
     ports:
-    - "16379:8081"
+      - "127.0.0.1:16379:8081"
     networks:
       - web
 

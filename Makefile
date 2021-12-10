@@ -29,6 +29,8 @@ brewstop:
 	brew services stop redis
 dev:
 	docker-compose -f dev.yml up -d
+devlogs:
+	docker-compose -f dev.yml logs -f
 prod:
 	docker-compose -f docker.compose.yml up -d
 clean:
