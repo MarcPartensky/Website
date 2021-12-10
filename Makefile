@@ -14,9 +14,9 @@ build:
 up:
 	docker-compose up -d
 down:
-	docker-compose -f docker-compose.dev.yml down
+	docker-compose -f dev.yml down
 	docker-compose -f docker-compose.yml down
-	DOCKER_HOST=ssh://vps docker-compose -f docker-compose.dev.ym up -d --build --force-recreate --remove-orphans website-test
+	DOCKER_HOST=ssh://vps docker-compose -f dev.ym up -d --build --force-recreate --remove-orphans website-test
 run:
 	pipenv run ./manage.py runserver 127.0.0.1:8000
 migrate:
@@ -28,12 +28,12 @@ brewstop:
 	brew services stop mysql
 	brew services stop redis
 dev:
-	docker-compose -f docker-compose.dev.yml up -d
+	docker-compose -f dev.yml up -d
 prod:
 	docker-compose -f docker.compose.yml up -d
 clean:
 	docker-compose -f docker-compose.yml down
-	docker-compose -f docker-compose.dev.yml down
+	docker-compose -f dev.yml down
 deploy:
-	DOCKER_HOST=ssh://vps docker-compose -f docker-compose.dev.yml up -d --build --force-recreate --remove-orphans website-test
+	DOCKER_HOST=ssh://vps docker-compose -f dev.yml up -d --build --force-recreate --remove-orphans website-test
 	DOCKER_HOST=ssh://vps docker-compose -f docker-compose.dev.ym logs -f website-test
