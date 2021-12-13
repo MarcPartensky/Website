@@ -1,25 +1,31 @@
-init:
-	pip install pipenv
-	pipenv install --dev
-	npm install --save
-build:
+run: update
+	pipenv run ./manage.py runserver 127.0.0.1:8000
+build: update
+	docker build . -t marcpartensky/website
+	docker push marcpartensky/website
+push: update build
+	git add -A
+	git commit -m "Makefile update"
+	git pushall
+	docker push marcpartensky/website
+update: install
 	npm update
 	npm audit fix
 	pipenv lock --pre --clear
-	pipenv run ./manage.py collectstatic
+	pipenv lock -r > requirements.txt
+	pipenv run ./manage.py collectstatic --noinput
 	pipenv run ./manage.py makemigrations
-	docker build . -t marcpartensky/website
-	docker push marcpartensky/website
-	git pushall
-up:
+install:
+	pip install --user pipenv
+	pipenv install --dev
+	npm install --save
+up: init
 	docker-compose up -d
 down:
 	docker-compose -f dev.yml down
 	docker-compose -f docker-compose.yml down
 	DOCKER_HOST=ssh://vps docker-compose -f dev.ym up -d --build --force-recreate --remove-orphans website-test
-run:
-	pipenv run ./manage.py runserver 127.0.0.1:8000
-migrate:
+migrate: update
 	pipenv run ./manage.py migrate
 brewstart:
 	brew services start mysql
@@ -29,8 +35,7 @@ brewstop:
 	brew services stop redis
 dev:
 	docker-compose -f dev.yml up -d
-devlogs:
-	docker-compose -f dev.yml logs -f
+	exec docker-compose -f dev.yml logs -f
 prod:
 	docker-compose -f docker.compose.yml up -d
 clean:
