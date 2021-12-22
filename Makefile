@@ -1,14 +1,12 @@
-run: update
+start:
 	pipenv run ./manage.py runserver 127.0.0.1:8000
 build: update
 	docker build . -t marcpartensky/website
-	docker push marcpartensky/website
-push: update build
-	git add -A
-	git commit -m "Makefile update"
+push: build
 	git pushall
 	docker push marcpartensky/website
-update: install
+setup: install update start
+update:
 	npm update
 	npm audit fix
 	pipenv lock --pre --clear
