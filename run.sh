@@ -70,7 +70,7 @@ deploy() {
 	run
 }
 
-update() {
+updatepip() {
 	git pull
 	pipenv run pip install -U pip
 	pipenv run pip install -r requirements.txt -U
