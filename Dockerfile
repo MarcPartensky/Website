@@ -1,4 +1,8 @@
 FROM python:3.7.12
+LABEL maintainer="marc.partensky@gmail.com"
+LABEL image="https://hub.docker.com/r/marcpartensky/website"
+LABEL source="https://github.com/marcpartensky/website"
+LABEL link="https://marcpartensky.com"
 
 COPY . /app
 WORKDIR /app
