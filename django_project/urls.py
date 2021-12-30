@@ -1,18 +1,17 @@
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.http import HttpResponse
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.core.exceptions import ViewDoesNotExist
 
 
-# def response_error_handler(request, exception=None):
-# raise HttpResponse('<div class="tenor-gif-embed" data-postid="5094560" data-share-method="host" data-width="100%" data-aspect-ratio="1.7543859649122806"><a href="https://tenor.com/view/elmo-shrug-gif-5094560">Elmo Shrug GIF</a> from <a href="https://tenor.com/search/elmo-gifs">Elmo GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>', status=404)
-
-
 def not_found_view(request):
     raise ViewDoesNotExist
 
+def healthcheck(request):
+    return HttpResponse(content="Ok")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -43,6 +42,7 @@ urlpatterns = [
     # path('accounts/', include('allauth.urls')),
     path("mdeditor/", include("mdeditor.urls")),
     path("404/", not_found_view, name="404"),
+    path("live/", healthcheck, name="healthcheck"),
     path("business/", include("business.urls")),
     path("avatar/", include("avatar.urls")),
     path("robots.txt", include("robots.urls")),
