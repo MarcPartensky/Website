@@ -9,6 +9,7 @@ db.sqlite3
 venv
 .env
 .github/
+.git
 .vim/
 .buildpacks
 *.pem

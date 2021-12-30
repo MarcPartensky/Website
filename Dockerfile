@@ -1,8 +1,12 @@
 FROM python:3.7.12
+# ARG timestamp
+# ARG commit
 LABEL maintainer="marc.partensky@gmail.com"
 LABEL image="https://hub.docker.com/r/marcpartensky/website"
 LABEL source="https://github.com/marcpartensky/website"
 LABEL link="https://marcpartensky.com"
+# LABEL build.timestamp=timestamp
+# LABEL build.commit=commit
 
 COPY . /app
 WORKDIR /app
@@ -22,6 +26,7 @@ RUN pip install -U pip
 RUN pip install -r requirements.txt
 
 ENV PORT 80
+ENV HOST 0.0.0.0
 EXPOSE 80
 # EXPOSE 443
 
