@@ -12,5 +12,5 @@ echo -e "Running \033[1mentrypoint.sh\033[0m using $HOST:$PORT"
 ./manage.py migrate
 echo -e "Creating \033[1msuper user\033[0m using:\n - username: \033[1m$username\033[0m\n - email: \033[1m$email\033[0m\n"
 ./manage.py createsuperuser --user $username --email $email --noinput
-./manage.py collecstatic --noinput --clear
+./manage.py collectstatic --noinput --clear
 daphne django_project.asgi:application --port $port --bind $host -v2
