@@ -35,7 +35,7 @@ dev:
 	docker-compose -f dev.yml up -d --build --remove-orphans
 	exec docker-compose -f dev.yml logs -f
 prod:
-	docker-compose -f docker.compose.yml up -d --build --remove-orphans
+	docker-compose -f docker-compose.yml up -d --build --remove-orphans
 clean:
 	docker-compose -f docker-compose.yml down
 	docker-compose -f dev.yml down

@@ -10,8 +10,10 @@ from django.core.exceptions import ViewDoesNotExist
 def not_found_view(request):
     raise ViewDoesNotExist
 
+
 def healthcheck(request):
     return HttpResponse(content="Ok")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -42,7 +44,7 @@ urlpatterns = [
     # path('accounts/', include('allauth.urls')),
     path("mdeditor/", include("mdeditor.urls")),
     path("404/", not_found_view, name="404"),
-    path("live/", healthcheck, name="healthcheck"),
+    path("live", healthcheck, name="healthcheck"),
     path("business/", include("business.urls")),
     path("avatar/", include("avatar.urls")),
     path("robots.txt", include("robots.urls")),

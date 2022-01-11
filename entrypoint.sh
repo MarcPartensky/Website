@@ -3,7 +3,7 @@
 port=${1:-$PORT}
 host=${2:-$HOST}
 port=${port:-"80"}
-host=${addr:-"127.0.0.1"}
+host=${addr:-"0.0.0.0"}
 username=${DJANGO_SUPERUSER_USERNAME:-"admin"}
 email=${DJANGO_SUPERUSER_EMAIL:-"admin@admin.com"}
 DJANGO_SUPERUSER_PASSWORD=${PASSWORD:-$(date +%s | sha256sum | base64 | head -c 32)}
