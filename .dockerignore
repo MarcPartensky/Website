@@ -17,3 +17,4 @@ venv
 *.crt
 Pipfile
 Pipfile.lock
+.travis.yml
