@@ -15,3 +15,5 @@ venv
 .buildpacks
 *.pem
 *.crt
+Pipfile
+Pipfile.lock
