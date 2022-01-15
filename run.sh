@@ -38,23 +38,6 @@ all() {
 	down
 }
 
-
-# build the project for docker
-build() {
-	pipenv run ./manage.py collectstatic --noinput
-	docker build . -t marcpartensky/website
-	docker push marcpartensky/website
-	git pull --all
-	git push -ll
-}
-
-deploy() {
-	pipenv run ./manage.py collectstatic --noinput
-	pipenv run ./manage.py makemigrations
-	pipenv run ./manage.py migrate
-	run
-}
-
 updatepip() {
 	git pull
 	pipenv run pip install -U pip
