@@ -27,14 +27,6 @@ django() {
 	pipenv run daphne -e "ssl:${PORT}:privateKey=${KEY}:certKey=${CERT}" django_project.asgi:application
 }
 
-alias run=django
-
-up() {
-	postgres
-	redis
-	django
-}
-
 down() {
 	docker-compose down
 	echo -e "Ended \e[31mRedis\e[0m"
