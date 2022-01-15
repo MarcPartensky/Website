@@ -30,9 +30,11 @@ ENV HOST 0.0.0.0
 EXPOSE 80
 # EXPOSE 443
 
-HEALTHCHECK --interval=5s \
-            --timeout=5s \
-             CMD curl -sf http://127.0.0.1:$PORT/live || exit 1
+HEALTHCHECK --interval=30s \
+            --timeout=10s \
+            --start-period=1m \
+            --retries=3 \
+             CMD curl -sSf http://127.0.0.1:$PORT/live || exit 1
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 # ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]
