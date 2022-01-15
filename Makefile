@@ -1,11 +1,11 @@
 start:
-	pipenv run ./manage.py runserver 127.0.0.1:8000
+	PRODUCTION=false ./entrypoint.sh
 build: update
 	docker-compose -f dev.yml build website
 push: build
 	git pushall
 	docker-compose -f dev.yml push website
-setup: install update start
+setup: init update start
 update:
 	npm update
 	npm audit fix || echo npm audit fix failed
@@ -13,7 +13,7 @@ update:
 	pipenv lock -r > requirements.txt
 	SECRET_KEY=secret pipenv run ./manage.py collectstatic --noinput
 	SECRET_KEY=secret pipenv run ./manage.py makemigrations
-install:
+init:
 	pip install --user pipenv
 	pipenv install --dev
 	npm install --save
