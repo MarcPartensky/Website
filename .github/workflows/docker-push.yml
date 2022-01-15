@@ -21,29 +21,17 @@ jobs:
     - uses: actions/checkout@v2
     - name: Update apt
       run: sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
+    - name: Install make
+      run: sudo apt install make -y
     - name: Install Python3.7
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
         architecture: x64
-    - name: Update pip
-      run: pip install -U pip
-    - name: Install pipenv
-      run: pip install pipenv
-    - name: Lock pip dependencies
-      run: pipenv lock --pre --clear
-    - name: Install dependencies
-      run: pipenv install
-    - name: Export to requirements.txt
-      run: pipenv lock -r > requirements.txt
-    - name: Collecting static
-      run: SECRET_KEY=secret pipenv run ./manage.py collectstatic --noinput
-    - name: Preparing migrations
-      run: SECRET_KEY=secret pipenv run ./manage.py makemigrations
-    - name: Updating package.json
-      run: npm update
-    - name: Fixing audit npm bugs
-      run: npm audit fix
+    - name: make init
+      run: make init
+    - name: make update
+      run: make update
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
     - name: Set up Docker Buildx

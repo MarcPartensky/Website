@@ -1,18 +1,18 @@
 start:
 	pipenv run ./manage.py runserver 127.0.0.1:8000
 build: update
-	docker build . -t marcpartensky/website
+	docker-compose -f dev.yml build website
 push: build
 	git pushall
-	docker push marcpartensky/website
+	docker-compose -f dev.yml push website
 setup: install update start
 update:
 	npm update
-	npm audit fix
+	npm audit fix || echo npm audit fix failed
 	pipenv lock --pre --clear
 	pipenv lock -r > requirements.txt
-	pipenv run ./manage.py collectstatic --noinput
-	pipenv run ./manage.py makemigrations
+	SECRET_KEY=secret pipenv run ./manage.py collectstatic --noinput
+	SECRET_KEY=secret pipenv run ./manage.py makemigrations
 install:
 	pip install --user pipenv
 	pipenv install --dev
