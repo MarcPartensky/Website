@@ -27,13 +27,6 @@ django() {
 	pipenv run daphne -e "ssl:${PORT}:privateKey=${KEY}:certKey=${CERT}" django_project.asgi:application
 }
 
-down() {
-	docker-compose down
-	echo -e "Ended \e[31mRedis\e[0m"
-	echo -e "Ended \e[31mPostgreSQL\e[0m"
-	kill % && echo -e "Ended \e[31mDjango\e[0m"	&& echo -e "Ended \e[31mFTP\e[0m"
-}
-
 ftp() {
 	echo -e "Starting \e[92mFTP Server\e[0m"
 	pipenv run ./manage.py ftpserver $FTP_URL
