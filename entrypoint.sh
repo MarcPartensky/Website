@@ -8,6 +8,15 @@ username=${DJANGO_SUPERUSER_USERNAME:-"admin"}
 email=${DJANGO_SUPERUSER_EMAIL:-"admin@admin.com"}
 DJANGO_SUPERUSER_PASSWORD=${PASSWORD:-$(date +%s | sha256sum | base64 | head -c 32)}
 
+_kill() {
+    kill $(cat /tmp/website.pid)
+}
+
+if [ $1 = "kill" ]; then
+    _kill
+    exit 0
+fi
+
 echo $$ > /tmp/website.pid
 
 setup() {

@@ -28,6 +28,8 @@ init: .env
 	npm install --save
 test:
 	pipenv run ./manage.py test
+kill:
+	pipenv run ./entrypoint.sh kill
 up: init
 	docker-compose up -d
 down:
