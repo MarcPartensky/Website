@@ -1,5 +1,13 @@
+HOST=localhost
+PORT=8000
+PRODUCTION=false
+
+.PHONY: start list build push setup update init test up down migrate brewstart brewstop dev prod clean deploy
+
 start:
-	PRODUCTION=false ./entrypoint.sh
+	./entrypoint.sh
+list:
+	@LC_ALL=C $(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
 build: update
 	docker-compose -f dev.yml build website
 push: build
@@ -18,6 +26,8 @@ init:
 	pip install --user pipenv
 	pipenv install --dev
 	npm install --save
+test:
+	./manage.py test
 up: init
 	docker-compose up -d
 down:
@@ -43,3 +53,4 @@ clean:
 deploy:
 	DOCKER_HOST=ssh://vps docker-compose -f dev.yml up -d --build --force-recreate --remove-orphans website-test
 	DOCKER_HOST=ssh://vps docker-compose -f docker-compose.dev.ym logs -f website-test
+

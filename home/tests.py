@@ -1,12 +1,15 @@
 import os
+import geckodriver_autoinstaller
+
 from django.test import TestCase
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
 
-class AnimalTestCase(TestCase):
+class HomePageTestCase(TestCase):
     def setUp(self):
         """Setup selenium."""
+        geckodriver_autoinstaller.install()
         options = Options()
         options.headless = True
         self.driver = webdriver.Firefox(options=options)
@@ -19,3 +22,4 @@ class AnimalTestCase(TestCase):
         self.driver.get(self.url)
         icon = self.driver.find_element_by_id("img-theme")
         icon.click()
+        assert True
