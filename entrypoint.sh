@@ -16,6 +16,7 @@ echo -e "Creating \033[1msuper user\033[0m using:\n - username: \033[1m$username
 ./manage.py createsuperuser --user $username --email $email --noinput
 ./manage.py collectstatic --noinput --clear
 
+# dev vs prod
 if [ -z $PRODUCTION ]; then
     daphne django_project.asgi:application --port $port --bind $host -v2
 else
