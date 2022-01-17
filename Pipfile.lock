@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ec283af8da6d269ee937ef72db174188bd4a4b5f8841f1f916d96ab6671d2c35"
+            "sha256": "e04a6cff29c226b303185ffa5c47c4eb8a2eb01a03d190fe03856bce2fa1cd77"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -635,6 +635,14 @@
             ],
             "index": "pypi",
             "version": "==0.18.2"
+        },
+        "geckodriver-autoinstaller": {
+            "hashes": [
+                "sha256:08953404903750a7e0905913d86eab13849c75ed61eb281c45697d9f5b5e2eb2",
+                "sha256:609236aab9c111af10685cab1ab5551ce86b471101b6add34642545bc7e84bdc"
+            ],
+            "index": "pypi",
+            "version": "==0.1.0"
         },
         "graphviz": {
             "hashes": [
