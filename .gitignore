@@ -49,3 +49,6 @@ nohup.out
 
 # Staticfiles
 staticfiles
+
+# selenium
+geckodriver.log
