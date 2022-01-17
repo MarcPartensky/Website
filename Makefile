@@ -56,4 +56,5 @@ deploy:
 .env:
 	echo HOST=localhost > .env
 	echo PORT=8000 >> .env
+	echo PRODUCTION=false >> .env
 	echo SECRET=$$(date +%s | sha256sum | base64 | head -c 32 && echo) >> .env
