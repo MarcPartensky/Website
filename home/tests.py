@@ -11,7 +11,7 @@ class HomePageTestCase(TestCase):
         """Setup selenium."""
         geckodriver_autoinstaller.install()
         options = Options()
-        options.headless = True
+        options.headless = True if os.environ.get("HEADLESS") != "False" else False
         self.driver = webdriver.Firefox(options=options)
         host = os.environ["HOST"]
         port = os.environ["PORT"]
@@ -20,6 +20,6 @@ class HomePageTestCase(TestCase):
     def test_home_page_loads(self):
         """Animals that can speak are correctly identified"""
         self.driver.get(self.url)
-        icon = self.driver.find_element_by_id("img-theme")
+        icon = self.driver.find_element_by_id("theme-img")
         icon.click()
         assert True

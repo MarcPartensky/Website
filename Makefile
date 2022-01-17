@@ -1,6 +1,6 @@
-HOST=localhost
-PORT=8000
-PRODUCTION=false
+HOST := localhost
+PORT := 8000
+PRODUCTION := false
 
 .PHONY: start list build push setup update init test up down migrate brewstart brewstop dev prod clean deploy
 
@@ -27,7 +27,7 @@ init:
 	pipenv install --dev
 	npm install --save
 test:
-	./manage.py test
+	PORT=8000 ./manage.py test
 up: init
 	docker-compose up -d
 down:
