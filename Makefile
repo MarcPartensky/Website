@@ -1,5 +1,5 @@
-HOST := localhost
-PORT := 8000
+# HOST := localhost
+# PORT := 8000
 PRODUCTION := false
 
 .PHONY: start list build push setup update init test up down migrate brewstart brewstop dev prod clean deploy
@@ -22,12 +22,12 @@ update:
 	pipenv lock -r > requirements.txt
 	SECRET_KEY=secret pipenv run ./manage.py collectstatic --noinput
 	SECRET_KEY=secret pipenv run ./manage.py makemigrations
-init:
+init: .env
 	pip install --user pipenv
 	pipenv install --dev
 	npm install --save
 test:
-	PORT=8000 ./manage.py test
+	pipenv run ./manage.py test
 up: init
 	docker-compose up -d
 down:
@@ -53,4 +53,7 @@ clean:
 deploy:
 	DOCKER_HOST=ssh://vps docker-compose -f dev.yml up -d --build --force-recreate --remove-orphans website-test
 	DOCKER_HOST=ssh://vps docker-compose -f docker-compose.dev.ym logs -f website-test
-
+.env:
+	echo HOST=localhost > .env
+	echo PORT=8000 >> .env
+	echo SECRET=$$(date +%s | sha256sum | base64 | head -c 32 && echo) >> .env
