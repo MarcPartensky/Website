@@ -152,6 +152,8 @@ SecretStorage = "*"
 service_identity = "*"
 Twisted = "*"
 django-robots = "*"
+selenium = "*"
+geckodriver-autoinstaller = "*"
 
 [dev-packages]
 black = "*"
