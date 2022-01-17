@@ -5,7 +5,7 @@ PRODUCTION := false
 .PHONY: start list build push setup update init test up down migrate brewstart brewstop dev prod clean deploy
 
 start:
-	pipenv run ./entrypoint.sh
+	NOSETUP=true pipenv run ./entrypoint.sh
 list:
 	@LC_ALL=C $(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
 build: update
