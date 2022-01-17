@@ -28,6 +28,10 @@ init: .env
 	npm install --save
 test:
 	pipenv run ./manage.py test
+runtest:
+	make start &
+	make test
+	make kill
 kill:
 	pipenv run ./entrypoint.sh kill
 up: init
