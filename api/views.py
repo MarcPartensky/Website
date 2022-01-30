@@ -18,6 +18,8 @@ from django.http import (
     HttpResponseRedirect,
 )
 from django.core.exceptions import PermissionDenied
+from django.forms.models import model_to_dict
+from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.parsers import JSONParser, FileUploadParser
 from rest_framework.renderers import JSONRenderer
@@ -25,7 +27,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .forms import UploadFileForm, UploadMarkdownForm, TodoForm
-from django.views.decorators.csrf import csrf_exempt
 from .models import MarkdownModel, NotificationModel, DataModel
 
 from todo.models import Todo
@@ -285,18 +286,21 @@ def store(request: HttpRequest):
     if request.method == "POST":
         request_data = request.POST
     elif request.method == "GET":
-        request_data = request.GET
+        request_data = {key: value[0] for key, value in request.GET.items()}
     else:
         return HttpResponseBadRequest("Only accept POST or GET requests.")
+    print(request_data)
     data = DataModel(content=json.dumps(request_data), source=get_client_ip(request))
     data.save()
     print(data)
-    return JsonResponse(data.__dict__)
+    return JsonResponse(model_to_dict(data))
 
 
 @csrf_exempt
 def read_store(_: HttpRequest, id: int):
     """Read data in the store."""
-    data = DataModel.objects.filter(id=id).first()
+    data = DataModel.objects.get(pk=id)
     data.view_count += 1
-    return JsonResponse(data.__dict__)
+    data.save()
+    print(data)
+    return HttpResponse(data.content, content_type="application/json")
