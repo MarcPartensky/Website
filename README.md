@@ -20,6 +20,7 @@ This is the code of my personal website.
 ### From [source](https://github.com/MarcPartensky/Website) (requires [git](https://git-scm.com/), [python](https://www.python.org/), [pip](https://pip.pypa.io/en/stable/installing/))
 ```sh
 git clone https://github.com/marcpartensky/website
+cd website
 
 pip install -r requirements.txt
 # or with pipenv (recommended, install pipenv with pip install pipenv)
