@@ -56,9 +56,11 @@ prod:
 clean:
 	docker-compose -f docker-compose.yml down
 	docker-compose -f dev.yml down
-deploy:
+testdeploy:
 	DOCKER_HOST=ssh://vps docker-compose -f dev.yml up -d --build --force-recreate --remove-orphans website-test
 	DOCKER_HOST=ssh://vps docker-compose -f docker-compose.dev.ym logs -f website-test
+deploy: push
+	DOCKER_HOST=ssh://vps docker service update vps_website
 .env:
 	echo HOST=localhost > .env
 	echo PORT=8000 >> .env
