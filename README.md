@@ -6,11 +6,14 @@
 This is the code of my personal website.
 [https://marcpartensky.com/](https://marcpartensky.com/)
 
+[![website](https://cdn.discordapp.com/attachments/507519157387132940/937471879776710676/website.png)](https://marcpartensky.com)
+
+
 ## Light theme
-[![light theme](https://cdn.discordapp.com/attachments/702863598761803806/782335262499930112/light.png)](https://websiteofmarcpartensky.herokuapp.com)
+[![light theme](https://cdn.discordapp.com/attachments/507519157387132940/937472721015668766/website1.png)](https://marcpartensky.com)
 
 ## Dark theme
-[![dark theme](https://cdn.discordapp.com/attachments/702863598761803806/782334455385555014/dark.png)](https://websiteofmarcpartensky.herokuapp.com?theme=dark)
+[![dark theme](https://cdn.discordapp.com/attachments/507519157387132940/937472943422849044/website2.png)](https://marcpartensky.com?theme=dark)
 
 ## Install
 
