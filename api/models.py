@@ -37,5 +37,5 @@ class DataModel(models.Model):
 
     content = models.JSONField()
     source = models.GenericIPAddressField()
-    view_count = models.AutoField()
+    view_count = models.PositiveIntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)

@@ -294,8 +294,9 @@ def store(request: HttpRequest):
     return JsonResponse(data.__dict__)
 
 
-@csfr_exempt
-def read_store(request: HttpRequest, id: int):
+@csrf_exempt
+def read_store(_: HttpRequest, id: int):
     """Read data in the store."""
     data = DataModel.objects.filter(id=id).first()
+    data.view_count += 1
     return JsonResponse(data.__dict__)
