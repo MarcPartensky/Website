@@ -30,3 +30,12 @@ class NotificationModel(models.Model):
     def __str__(self):
         """Return the notification sent."""
         return f"{self.message}"
+
+
+class DataModel(models.Model):
+    """A model that represents data sent by either POST or GET requests."""
+
+    content = models.JSONField()
+    source = models.GenericIPAddressField()
+    view_count = models.AutoField()
+    created = models.DateTimeField(auto_now_add=True)

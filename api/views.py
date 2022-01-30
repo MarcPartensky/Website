@@ -10,7 +10,13 @@ import subprocess
 
 from io import StringIO
 from django.shortcuts import render
-from django.http import HttpResponse, HttpRequest
+from django.http import (
+    HttpResponse,
+    HttpRequest,
+    HttpResponseBadRequest,
+    JsonResponse,
+    HttpResponseRedirect,
+)
 from django.core.exceptions import PermissionDenied
 
 from rest_framework.parsers import JSONParser, FileUploadParser
@@ -20,7 +26,7 @@ from rest_framework.views import APIView
 
 from .forms import UploadFileForm, UploadMarkdownForm, TodoForm
 from django.views.decorators.csrf import csrf_exempt
-from .models import MarkdownModel, NotificationModel
+from .models import MarkdownModel, NotificationModel, DataModel
 
 from todo.models import Todo
 
@@ -244,12 +250,14 @@ def port(request: HttpRequest, n: int = 1):
     print(result)
     return HttpResponse(result)
 
+
 @csrf_exempt
 def notify(request: HttpRequest):
     """Notify me with a get request container
     a get variable `message`."""
     message = request.GET.get("message")
     return HttpResponse("")
+
 
 @csrf_exempt
 def notifications(request: HttpRequest):
@@ -259,3 +267,35 @@ def notifications(request: HttpRequest):
         notification.seen = True
         notification.save()
     return JsonResponse(notifications)
+
+
+def get_client_ip(request: HttpRequest):
+    """Get the ip addresse of a client."""
+    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+    if x_forwarded_for:
+        return x_forwarded_for.split(",")[-1].strip()
+    else:
+        return request.META.get("REMOTE_ADDR")
+
+
+@csrf_exempt
+def store(request: HttpRequest):
+    """Store data sent."""
+    request_data: dict
+    if request.method == "POST":
+        request_data = request.POST
+    elif request.method == "GET":
+        request_data = request.GET
+    else:
+        return HttpResponseBadRequest("Only accept POST or GET requests.")
+    data = DataModel(content=json.dumps(request_data), source=get_client_ip(request))
+    data.save()
+    print(data)
+    return JsonResponse(data.__dict__)
+
+
+@csfr_exempt
+def read_store(request: HttpRequest, id: int):
+    """Read data in the store."""
+    data = DataModel.objects.filter(id=id).first()
+    return JsonResponse(data.__dict__)
