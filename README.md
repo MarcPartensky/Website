@@ -20,15 +20,11 @@ This is the code of my personal website.
 ### From [source](https://github.com/MarcPartensky/Website) (requires [git](https://git-scm.com/), [python](https://www.python.org/), [pip](https://pip.pypa.io/en/stable/installing/))
 ```sh
 git clone https://github.com/marcpartensky/website
-```
 
-```sh
 pip install -r requirements.txt
 # or with pipenv (recommended, install pipenv with pip install pipenv)
 pipenv install
-```
 
-```sh
 ./manage.py runserver
 ```
 
@@ -40,9 +36,8 @@ pipenv install
 ```sh
 docker run -it \
 	-e SECRET_KEY=$(openssl rand -base64 32) \
-	-p 80:80 \
+	-p 8080:80 \
 	marcpartensky/website
-	./manage.py runserver
 ```
 
 #### or run with ssl certificate
@@ -51,7 +46,7 @@ docker run -it \
 	-env CERT \ # You must export a ssl certificate path
 	-env KEY \ # You must export a pem key path
 	-e SECRET_KEY=$(openssl rand -base64 32) \
-	-p 443:443 \
+	-p 8443:443 \
 	marcpartensky/website
 ```
 
@@ -61,10 +56,6 @@ git clone https://github.com/marcpartensky/website
 cd website
 docker-compose up
 ```
-
-> If you’re using Docker natively on Linux, Docker Desktop for Mac, or Docker Desktop for Windows, then the web app should now be listening on port 443 on your Docker daemon host. Point your web browser to http://localhost:443 to find the Hello World message. If this doesn’t resolve, you can also try http://127.0.0.1:443.
-
-From https://docs.docker.com/compose/gettingstarted/
 
 ## Build the docker image from source
 ```sh
@@ -80,8 +71,7 @@ Build usually last 5 minutes.
 
 ## Notes
 author: Marc Partensky
-name: Website of Marc Partensky
-date: 8/10/2019
+created: 8/10/2019
 
 ## Heroku Buildpacks
 
