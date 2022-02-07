@@ -1,6 +1,6 @@
-# HOST := localhost
-# PORT := 8000
-PRODUCTION := false
+# HOST=localhost
+# PORT=8000
+PRODUCTION=false
 
 .PHONY: start list build push setup update init test up down migrate brewstart brewstop dev prod clean deploy
 
