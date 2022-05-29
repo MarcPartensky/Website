@@ -18,6 +18,7 @@ x-common:
 
 services:
   website:
+    image: docker.io/marcpartensky/website:latest
     environment:
       <<: *website
       <<: *postgres
