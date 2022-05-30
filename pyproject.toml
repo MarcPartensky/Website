@@ -5,7 +5,7 @@ description = ""
 authors = ["Marc Partensky <marc.partensky@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.7"
 Django = "^4.0.4"
 python-dotenv = "^0.20.0"
 django-heroku = "^0.3.1"
