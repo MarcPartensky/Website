@@ -397,6 +397,17 @@ psycopg2 = "*"
 whitenoise = "*"
 
 [[package]]
+name = "django-jsonfield-backport"
+version = "1.0.5"
+description = "Backport of the cross-DB JSONField model and form fields from Django 3.1."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+Django = ">=2.2"
+
+[[package]]
 name = "django-markdown-view"
 version = "0.0.5"
 description = "Serve .md pages as Django views."
@@ -1135,7 +1146,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "f5be235b29f0d26406279c8f424b77df8e392fbe31979ff0724e580a258ccefb"
+content-hash = "ef0fd102efc474ca87a4a1a8011dd8205478a563b6ee026766d39d56e043e9ce"
 
 [metadata.files]
 ansicon = [
@@ -1351,6 +1362,10 @@ django-ftpserver = [
 django-heroku = [
     {file = "django-heroku-0.3.1.tar.gz", hash = "sha256:6af4bc3ae4a9b55eaad6dbe5164918982d2762661aebc9f83d9fa49f6009514e"},
     {file = "django_heroku-0.3.1-py2.py3-none-any.whl", hash = "sha256:2bc690aab89eedbe01311752320a9a12e7548e3b0ed102681acc5736a41a4762"},
+]
+django-jsonfield-backport = [
+    {file = "django-jsonfield-backport-1.0.5.tar.gz", hash = "sha256:40c39b1f1bade47bd2715664de14983f2e0a96175f65abbad2688029c255c685"},
+    {file = "django_jsonfield_backport-1.0.5-py3-none-any.whl", hash = "sha256:727b402bad632e38539b489e48aefa6ffe03cedba76ac1f11b455423b3225a2d"},
 ]
 django-markdown-view = [
     {file = "django-markdown-view-0.0.5.tar.gz", hash = "sha256:87b453b74fe62cce3f8c3782b98951b1f82ad8253f330ddea719bace8a300101"},
