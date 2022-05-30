@@ -16,6 +16,7 @@ django-extensions = "^3.1.5"
 django-allauth = "^0.50.0"
 django-cors-middleware = "^1.5.0"
 django-compressor = "^4.0"
+django-markdown-view = "^0.0.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
