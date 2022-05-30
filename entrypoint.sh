@@ -1,5 +1,7 @@
 #!/bin/sh
 
+src=./website
+
 port=${1:-$PORT}
 host=${2:-$HOST}
 port=${port:-"80"}
@@ -21,10 +23,10 @@ echo $$ > /tmp/website.pid
 
 setup() {
     echo -e "Running \033[1mentrypoint.sh\033[0m using $HOST:$PORT"
-    ./manage.py migrate
+    $src/manage.py migrate
     echo -e "Creating \033[1msuper user\033[0m using:\n - username: \033[1m$username\033[0m\n - email: \033[1m$email\033[0m\n"
-    ./manage.py createsuperuser --user $username --email $email --noinput
-    ./manage.py collectstatic --noinput --clear
+    $src/manage.py createsuperuser --user $username --email $email --noinput
+    $src/manage.py collectstatic --noinput --clear
 }
 
 if [[ ! -z $NOSETUP && ! $1 = "--nosetup" ]]; then
@@ -35,5 +37,5 @@ fi
 if [ -z $PRODUCTION ]; then
     daphne django_project.asgi:application --port $port --bind $host -v2
 else
-    ./manage.py runserver 127.0.0.1:8000
+    $src/manage.py runserver 127.0.0.1:8000
 fi
