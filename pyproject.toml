@@ -12,6 +12,7 @@ django-heroku = "^0.3.1"
 channels = "^3.0.4"
 django-storages = "^1.12.3"
 django-crispy-forms = "^1.14.0"
+django-extensions = "^3.1.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
