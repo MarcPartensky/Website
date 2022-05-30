@@ -119,7 +119,7 @@ INSTALLED_APPS = [
     # Cluster manager
     "django_q",
     # Default avatar generator
-    "avatar",
+    # "avatar",
     # Generate robots.txt
     "robots",
 ]
