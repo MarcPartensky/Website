@@ -373,6 +373,21 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "django-sql-explorer"
+version = "2.4.1"
+description = "A pluggable app that allows users (admins) to execute SQL, view, and export the results."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Django = ">=2.2.27"
+sqlparse = ">=0.4.0"
+
+[package.extras]
+xls = ["xlsxwriter (>=1.2.1)"]
+
+[[package]]
 name = "django-storages"
 version = "1.12.3"
 description = "Support for many storage backends in Django"
@@ -968,7 +983,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "e4707f18f39741e5277eede515ad2b91a9c0080585510cc55f60108687e5b693"
+content-hash = "a8884a4f5de36fde2c96a65c8a5ff36d8e683044ab9c82ff2c3e9f2b1152741f"
 
 [metadata.files]
 asgiref = [
@@ -1176,6 +1191,10 @@ django-markdown-view = [
 ]
 django-mdeditor = [
     {file = "django-mdeditor-0.1.20.tar.gz", hash = "sha256:d1f3b735b6202b8820f10e024a5aa28c5b948897ee7a8dbb84558df75339827e"},
+]
+django-sql-explorer = [
+    {file = "django-sql-explorer-2.4.1.tar.gz", hash = "sha256:fd3b92b5fdbcb4ecda27454eb70510a44f29176ca43c04dee704503e53b90cf3"},
+    {file = "django_sql_explorer-2.4.1-py3-none-any.whl", hash = "sha256:d9a36461c70184fa1f54d038b20d6b08b40bb1709448a827123ecee5cc6dbbab"},
 ]
 django-storages = [
     {file = "django-storages-1.12.3.tar.gz", hash = "sha256:a475edb2f0f04c4f7e548919a751ecd50117270833956ed5bd585c0575d2a5e7"},
