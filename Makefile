@@ -17,11 +17,9 @@ setup: init update start
 update:
 	npm update
 	npm audit fix || echo npm audit fix failed
-	# pipenv lock --pre --clear
-	pipenv update
-	pipenv lock -r > requirements.txt
-	SECRET_KEY=secret pipenv run ./manage.py collectstatic --noinput
-	SECRET_KEY=secret pipenv run ./manage.py makemigrations
+	poetry export -o requirements.txt
+	SECRET_KEY=secret poetry run ./website/manage.py collectstatic --noinput
+	SECRET_KEY=secret poetry run ./website/manage.py makemigrations
 init: .env
 	pip install --user pipenv
 	pipenv install --dev
