@@ -9,7 +9,9 @@ import django
 
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
-from django.core.asgi import get_asgi_application
+
+# from django.core.asgi import get_asgi_application
+from django.core.wsgi import get_wsgi_application
 from . import routing
 
 # from dotenv import load_dotenv
@@ -21,9 +23,12 @@ django.setup()
 
 # print(routing.websocket_urlpatterns)
 
+application = URLRouter([])
+
 application = ProtocolTypeRouter(
     {
-        "http": get_asgi_application(),
+        # "http": get_asgi_application(),
+        "http": get_wsgi_application(),
         "websocket": AuthMiddlewareStack(URLRouter(routing.websocket_urlpatterns)),
     }
 )
