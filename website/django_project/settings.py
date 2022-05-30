@@ -102,7 +102,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     # 'allauth.socialaccount.providers.google',
     # cors stuff
-    "corsheaders",
+    # "corsheaders",
     # 503 error: maintenance service unavailable
     # 'django_503',
     # Compressor for scss to css
