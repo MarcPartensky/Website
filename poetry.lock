@@ -350,6 +350,14 @@ django = ">=2.2"
 markdown = ">=3.2"
 
 [[package]]
+name = "django-mdeditor"
+version = "0.1.20"
+description = "A simple Django app to edit markdown text."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "django-storages"
 version = "1.12.3"
 description = "Support for many storage backends in Django"
@@ -934,7 +942,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "49504022823b1d4e5afa0732551a13796e394417309a45121b2729807d7de0ff"
+content-hash = "676e5d30932572b4da0fdaafc5491bd7f3882b6e07d91532a26fcd7714dc013c"
 
 [metadata.files]
 asgiref = [
@@ -1135,6 +1143,9 @@ django-heroku = [
 django-markdown-view = [
     {file = "django-markdown-view-0.0.5.tar.gz", hash = "sha256:87b453b74fe62cce3f8c3782b98951b1f82ad8253f330ddea719bace8a300101"},
     {file = "django_markdown_view-0.0.5-py2.py3-none-any.whl", hash = "sha256:8476ba884d3653ec438a4ac8c2c0db62693b162d1e7758555795aa21ff989d76"},
+]
+django-mdeditor = [
+    {file = "django-mdeditor-0.1.20.tar.gz", hash = "sha256:d1f3b735b6202b8820f10e024a5aa28c5b948897ee7a8dbb84558df75339827e"},
 ]
 django-storages = [
     {file = "django-storages-1.12.3.tar.gz", hash = "sha256:a475edb2f0f04c4f7e548919a751ecd50117270833956ed5bd585c0575d2a5e7"},
