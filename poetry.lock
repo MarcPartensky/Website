@@ -459,6 +459,19 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "django-shortuuidfield"
+version = "0.1.3"
+description = "Short UUIDField for Django.  Good for use in urls & file names.  (Base 57, 22 characters)"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django = "*"
+shortuuid = "*"
+six = "*"
+
+[[package]]
 name = "django-sql-explorer"
 version = "2.4.1"
 description = "A pluggable app that allows users (admins) to execute SQL, view, and export the results."
@@ -1122,7 +1135,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "7f81bdecdbbf0a010ec3e1d78aa53e3aa7ee8330df67c090f473decabe4b04c3"
+content-hash = "f5be235b29f0d26406279c8f424b77df8e392fbe31979ff0724e580a258ccefb"
 
 [metadata.files]
 ansicon = [
@@ -1356,6 +1369,9 @@ django-q = [
 ]
 django-robots = [
     {file = "django-robots-5.0.tar.gz", hash = "sha256:f5817975a9e3b082440a81396111d8a6671b54f6aa11349847554bd1beebd959"},
+]
+django-shortuuidfield = [
+    {file = "django-shortuuidfield-0.1.3.tar.gz", hash = "sha256:a292c0fe5538abe947b131e2b914edd9ac44afcc6a40eaec71448e6231a3ef00"},
 ]
 django-sql-explorer = [
     {file = "django-sql-explorer-2.4.1.tar.gz", hash = "sha256:fd3b92b5fdbcb4ecda27454eb70510a44f29176ca43c04dee704503e53b90cf3"},
