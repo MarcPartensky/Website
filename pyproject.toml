@@ -27,6 +27,7 @@ django-jsonfield-backport = "^1.0.5"
 Pillow = "^9.1.1"
 rich = "^12.4.4"
 djangorestframework = "^3.13.1"
+PyYAML = "^6.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
