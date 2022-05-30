@@ -46,7 +46,7 @@ urlpatterns = [
     path("404/", not_found_view, name="404"),
     path("live", healthcheck, name="healthcheck"),
     path("business/", include("business.urls")),
-    path("avatar/", include("avatar.urls")),
+    # path("avatar/", include("avatar.urls")),
     path("robots.txt", include("robots.urls")),
     path("", include("url.urls")),  # Last url pattern to put
 ]
