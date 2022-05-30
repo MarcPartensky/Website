@@ -1,3 +1,0 @@
-{% extends 'home/base' %}
-
-<p> salut </p>
