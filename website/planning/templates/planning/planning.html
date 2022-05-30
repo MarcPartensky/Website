@@ -1,0 +1,37 @@
+{% extends "layout/home.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="card border-dark bg-light mb-3" style="width: 100%; text-align: center;">
+    <div class="card-body">
+      <h1 class="card-title">Marc's Planning today</h1>
+      <hr/>
+      <br/>
+      {% for event in events %}
+        <div class="container">
+          <div class="card border-dark mb-3" style="width: 100%; text-align: center">
+            <div class="card-body">
+              <div class="well">
+                <div class="caption">
+                  <h3>{{event.title}}</h3>
+                  <p>From {{event.start}} to {{event.end}}</p>
+                  <p>During {{event.duration}}</p>
+                  <blockquote class="blockquote mb-0">
+                    <footer class="blockquote-footer">
+                    <small>
+                      id: <cite title="author">{{event.guid}}</cite>
+                    </small>
+                    </footer>
+                  </blockquote>
+                  </div>
+                  </br>
+                <p><a href="#" class="btn btn-primary" role="button">Checkout the event</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content%}

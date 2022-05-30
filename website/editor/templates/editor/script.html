@@ -1,0 +1,105 @@
+{% extends 'layout/home.html' %}
+{% load static %}
+
+{% block styles %}
+<!-- Importing vuejs to watch change -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
+
+<!--<script src="lib/codemirror.js"></script>-->
+<!--<link rel="stylesheet" href="lib/codemirror.css">-->
+<!--<script src="mode/javascript/javascript.js"></script>-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.css" integrity="sha512-xIf9AdJauwKIVtrVRZ0i4nHP61Ogx9fSRAkCLecmE2dL/U8ioWpDvFCAy4dcfecN72HHB9+7FfQj3aiO68aaaw==" crossorigin="anonymos" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/dialog/dialog.min.css" integrity="sha512-Vogm+Cii1SXP5oxWQyPdkA91rHB776209ZVvX4C/i4ypcfBlWVRXZGodoTDAyyZvO36JlTqDqkMhVKAYc7CMjQ==" crossorigin="anonymous" />
+
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/theme/ayu-dark.min.css" integrity="sha512-3/qeNGuMFHa3JQVnHybYEdUbc0ktOoIqqkNiF+UpjroQ0StzmwFvMtEWL6Bt+9SUF6xgYYeW29x3SXC07MwvDw==" crossorigin="anonymous" />-->
+
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/theme/midnight.min.css" integrity="sha512-ZTF0X2l7PXEFDyP+MSOK0QM3Qh+C+lQ70Tqx4vQb3+6Uxh2lYkwmbSbpDmksZaX8w0sSz8ctVBnPSzAR1TQlzA==" crossorigin="anonymous" />-->
+
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/theme/solarized.min.css" integrity="sha512-9eh7EKENNB3CJcWthLysOUEcOw1hCVES0IoNcgLeKRgcG1j1HRNXST3b1i7SV/XQEFGAvg7RMm5XbHfdaA0juQ==" crossorigin="anonymous" />-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/theme/material-palenight.min.css" integrity="sha512-WcJFeiToPv3ZknO2qXQq505rxYSisraahZ9mdI04HHdx0x7nhr7VP4thoY1ub2GTYiVUEUpy+8tJ+kpgz8pt+A==" crossorigin="anonymous" />
+
+
+<style>
+#code {
+	height: 100vh;
+	width: 100vw;
+}
+
+#code-card {
+	margin: 2rem;
+}
+
+#modal-dialog {
+    width: 100%;
+    height: 100%;
+}
+#buttons {
+	padding: 2%;
+}
+</style>
+{% endblock styles %}
+
+{% block content %}
+<form id="code-form" name="code" action="/code/script/{{script.title}}">
+	{% csrf_token %}
+	<textarea id="code" name="code">{{ code }}</textarea>
+	<div id="buttons">
+	<center>
+		<button id="button-save" type="button submit" class="btn btn-dark">Save</button>
+		<button id="button-run" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" type="submit" onclick="runit()">Run</button>
+	</center>
+	</div>
+</form>
+
+
+<div class="container">
+    <div class="code-card card">
+        <div class="card-body">
+            <div style="font-size: 13px; width: 300px; height: 30px;">Key buffer: <span id="command-display" class="badge badge-primary"></span></div>
+            <div style="font-size: 13px; width: 300px; height: 30px;">Vim mode: <span id="vim-mode" class="badge badge-info"></span></div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">filename</span>
+                </div>
+                <input id="filename" type="text" class="form-control" placeholder="blank" aria-label="blank" aria-describedby="basic-addon1" onkeyup="filenameChange(this.value)">
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <code><pre id="output"></pre></code>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.js" integrity="sha512-WWC1A/JchDFZ2ZGaNyMC7CmPFXGLI/6Ih7WN6YG0DX1NGMkW5lqCVFxCmEx3e56Z7iqdQGpO0f+m2t9CJhdb2Q==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/python/python.min.js" integrity="sha512-DS+asaww1mE0V/N6YGVgoNIRj+yXB9hAV68vM6rVeWs0G+OyMd24LKrnS4Z+g26rgghU7qvGeEnRVUArV7nVog==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/dialog/dialog.min.js" integrity="sha512-YU8ue8QADzIU/tOodVSM+D74vp1FICLl737eY54IbYYuu+ZsG/JEoZFgfUGOXWWyp3lo02wKTnPHrroWRy+Fgg==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/search/searchcursor.min.js" integrity="sha512-DVIRH6DkN3F/ZpyO69rw0Z4v2KmSXzt281MckBasGKgKfLSi2n4n5L0SByrLFZzZP1cunvJY8xkjhtZKk9k8HA==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/edit/matchbrackets.min.js" integrity="sha512-zgTUY40c9HFb3Kr25lTW3gpnSt+xVc0yWPYwa6Yu7kChiaOHfNlyA4bM8Y3YLzjeQfrNFy40UcbOE/Cmmb29nQ==" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/keymap/vim.min.js" integrity="sha512-iisxvAO2iQQD52++It/lOo+oBpZT/S7j3NevR7Vp0317oGVv48FoEr2/yLqt8CcJmSrnzvM9Cu7EIR/jYhYp+A==" crossorigin="anonymous"></script>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+<script src="http://www.skulpt.org/js/skulpt.min.js" type="text/javascript"></script>
+<script src="http://www.skulpt.org/js/skulpt-stdlib.js" type="text/javascript"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@s524797336/skulpt@1.0.3/skulpt.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/@s524797336/skulpt@1.0.3/skulpt-stdlib.js" type="text/javascript"></script>
+
+<script src="{% static 'editor/script/editor.js' %}"></script>
+<script src="{% static 'editor/script/websocket.js' %}"></script>
+{% endblock script %}

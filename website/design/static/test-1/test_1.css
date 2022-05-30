@@ -1,0 +1,114 @@
+:root {
+  --black: black;
+  --rose: #e91e63;
+}
+
+a {
+  color: inherit;
+}
+
+small {
+  font-weight: 300;
+}
+
+p {
+  font-size: 20px;
+  line-height: 35px;
+  margin: 30px 0 0 0;
+}
+
+.banner-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.banner-section .container {
+  z-index: 1;
+}
+
+.section {
+  padding: 50px 0 0 0;
+}
+
+.nav-pills .nav-item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.nav-pills .nav-item .nav-link {
+  font-size: 18px;
+  padding: 10px 25px;
+  text-transform: none;
+}
+
+.card-columns {
+  column-count: 1;
+  column-gap: 20px;
+}
+
+.card-columns .card {
+  margin: 0 0 20px 0;
+}
+
+.card-columns h4 {
+  font-size: 22px;
+}
+
+.card-img-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.form-control,
+.is-focused .form-control {
+  background-image: linear-gradient(0deg, var(--rose) 2px, rgba(156, 39, 176, 0) 0),
+    linear-gradient(0deg, #d2d2d2 1px, hsla(0, 0%, 82%, 0) 0);
+}
+
+.form-check .form-check-input:checked + .form-check-sign .check {
+  background: var(--rose);
+}
+
+.form-row button {
+  font-size: 16px;
+}
+
+.btn.back-to-top {
+  bottom: 50px;
+  right: 30px;
+  z-index: 10;
+  opacity: 0.5;
+  transition: all 0.2s;
+}
+
+.btn.back-to-top.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.btn.back-to-top:hover {
+  opacity: 1;
+}
+
+.page-footer,
+.page-footer small {
+  font-size: 14px;
+}
+
+.page-footer a,
+.page-footer span {
+  color: #3c4858;
+}
+
+.page-footer span {
+  color: var(--rose);
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 2;
+  }
+}

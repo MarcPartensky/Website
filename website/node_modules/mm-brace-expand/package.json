@@ -1,0 +1,24 @@
+{
+  "name": "mm-brace-expand",
+  "version": "0.0.1",
+  "description": "The braceExpand() code from Minimatch as a separate module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mixu/mm-brace-expand.git"
+  },
+  "keywords": [
+    "brace",
+    "braces",
+    "glob"
+  ],
+  "author": "Mikito Takada <mikito.takada@gmail.com> (http://mixu.net/)",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/mixu/mm-brace-expand/issues"
+  },
+  "homepage": "https://github.com/mixu/mm-brace-expand"
+}

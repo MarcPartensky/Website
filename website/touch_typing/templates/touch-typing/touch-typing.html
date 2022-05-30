@@ -1,0 +1,46 @@
+{% extends "layout/home.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'touch-typing.css' %}">
+<div id="app">
+    <div class="card" id="card">
+    <transition name="fade" appear>
+        <div class="container">
+            <div id="textboxcontainer">
+                <cite title="Source Title"><p id="textbox" unselectable="on" >
+                    &#10077; {{quote.content}} &#10078;
+                </p></cite>
+            </div>
+            <div id="textinputcontainer" v-if="!done">
+                <!-- <input id="textinput" v-model="textinput" :placeholder="[[textbox]]" @keydown.enter="finish()"> -->
+                <textarea id="textinput" v-model="textinput" @keydown.prevent.enter="finish()" :autofocus="'autofocus'" placeholder="Start typing here when you are ready.">[[textbox]]</textarea>
+            </div>
+            <p> Speed: [[getWPM()]] WPM</p>
+            <p> Time Left: [[left]]</p>
+            <footer class="blockquote-footer">
+                <p> Author: {{quote.author}}</p>
+                <p> Source: <a href={{quote.url}} target="_blank">{{quote.url}} </a></p>
+            </footer>
+        </div>
+    </transition>
+    <div class="container">
+        <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" v-bind:style="{width: getRatio()+'%'}" :aria-valuenow="getTextInputLength()" aria-valuemin="0" :aria-valuemax="getTextBoxLength()">[[getRatio()]]%</div>
+        </div>
+    </div>
+    <div class="container" v-if="!check()">
+        <div class="alert alert-danger" role="alert">
+            You made a mistake!
+        </div>
+    </div>
+    <div class="container" v-if="done">
+        <div class="alert alert-success" role="alert">
+            Well done you finished the race!
+        </div>
+    </div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="{% static 'touch-typing.js' %}"></script>
+{% endblock content %}

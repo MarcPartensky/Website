@@ -1,0 +1,12 @@
+{% extends "layout/home.html" %}
+{% load static %}
+<style>
+#qrcode-container {
+    text-align: center;
+}
+</style>
+{% block content %}
+<div id="qrcode-container"class="container">
+    <img src="{% static 'qrcode.svg' %}" width="100%" height="100%" alt="Add me as a contact.">
+</div>
+{% endblock content %}

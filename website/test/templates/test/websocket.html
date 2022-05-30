@@ -1,0 +1,12 @@
+{% extends 'layout/home.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+	<p> Test websocket </p>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'test/websocket.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,181 @@
+{% load static %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/material-kit/1.1.0/js/material-kit.min.js" integrity="sha512-MiJMkDCTI9lXQ89Mp8dg1BOS2Ud2+6NqYJ+9cNc/CBb67aVPRY1OteyF/SMg3g2vTUYErmzFrg/i3kfU1efA2A==" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-kit/1.1.0/css/material-kit.min.css" integrity="sha512-Hz7RawI1cA/bOzm7dTpIIqI1OOqN5RyL7bU7VWJmESB43Hm8B4p4+RW23OA6fHhoRhhI89SHRRwVeK8F/2DQkA==" crossorigin="anonymous" />
+
+<link href="{% static 'test-1/test_1.css' %}" rel="stylesheet" type="text/css">
+<script src="{% static 'test-1/test_1.js' %}"></script>
+
+<header class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="50">
+  <div class="container">
+    <a class="btn btn-rose btn-round" href="https://www.visitscotland.com/" role="button" target="_blank">
+      <strong>Pick Your Flight</strong>
+      <i class="material-icons">flight</i>
+    </a>
+  </div>
+</header>
+
+<section class="page-header text-center position-relative banner-section" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/scotland-unsplash.jpg);">
+  <div class="container">
+    <h1 class="title">Welcome to Scotland</h1>
+    <h3 class="">One of the most beautiful countries in the world...</h3>
+  </div>
+</section>
+
+<main class="main main-raised">
+  <section class="section text-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10">
+          <h2 class="title mb-4" data-aos="fade-up">About Scotland...</h2>
+          <p data-aos="fade-up">Scotland is a country that is part of the United Kingdom. It covers the northern third of the island of Great Britain, with a border with England to the southeast, and is surrounded by the Atlantic Ocean to the north and west, the North Sea
+            to the northeast, the Irish Sea to the south, and more than 790 islands, including the Northern Isles and the Hebrides.</p>
+          <p data-aos="fade-up">Scotland is divided into 32 administrative subdivisions or local authorities, known as council areas. Glasgow City is the largest council area in terms of population, with Highland being the largest in terms of area. Limited self-governing power,
+            covering matters such as education, social services and roads and transportation, is devolved from the Scottish Government to each subdivision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section text-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10">
+          <h2 class="title mb-4" data-aos="fade-up">Cities to visit...</h2>
+          <ul class="nav nav-pills nav-pills-rose justify-content-center mt-5" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="pills-edinburgh-tab" data-toggle="pill" href="#pills-edinburgh" role="tab" aria-controls="pills-edinburgh" aria-selected="true" data-aos="fade-up">Edinburgh</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pills-glasgow-tab" data-toggle="pill" href="#pills-glasgow" role="tab" aria-controls="pills-glasgow" aria-selected="false" data-aos="fade-up" data-aos-delay="150">Glasgow</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pills-aberdeen-tab" data-toggle="pill" href="#pills-aberdeen" role="tab" aria-controls="pills-aberdeen" aria-selected="false" data-aos="fade-up" data-aos-delay="300">Aberdeen</a>
+            </li>
+          </ul>
+          <div class="tab-content tab-space pb-0">
+            <div class="tab-pane active" id="pills-edinburgh" role="tabpanel" aria-labelledby="pills-edinburgh-tab">
+              <p data-aos="fade-up">Edinburgh is the capital of Scotland and one of its 32 council areas. Historically part of the county of Midlothian (interchangeably Edinburghshire before 1921), it is located in Lothian on the Firth of Forth's southern shore.</p>
+              <p data-aos="fade-up">Recognised as the capital of Scotland since at least the 15th century, Edinburgh is the seat of the Scottish Government, the Scottish Parliament and the supreme courts of Scotland. The city's Palace of Holyroodhouse is the official residence
+                of the monarch in Scotland. The city has long been a centre of education, particularly in the fields of medicine, Scots law, literature, philosophy, the sciences and engineering. It is the second largest financial centre in the United
+                Kingdom (after London) and the city's historical and cultural attractions have made it the United Kingdom's second most popular tourist destination attracting 1.75 million visits from overseas in 2016.</p>
+              <a class="btn btn-round btn-sm mt-4" href="https://en.wikipedia.org/wiki/Edinburgh" role="button" target="_blank" data-aos="fade-up">LEARN MORE</a>
+            </div>
+            <div class="tab-pane" id="pills-glasgow" role="tabpanel" aria-labelledby="pills-glasgow-tab">
+              <p>Glasgow is the most populous city in Scotland, and the third most populous city in the United Kingdom, as of the 2017 estimated city population of 621,020. Historically part of Lanarkshire, the city now forms the Glasgow City council area,
+                one of the 32 council areas of Scotland; the local authority is Glasgow City Council. Glasgow is situated on the River Clyde in the country's West Central Lowlands. It is the fifth most visited city in the UK.</p>
+              <p>Inhabitants of the city are referred to formally as "Glaswegians" or "Weegies". Glasgow is also known for the Glasgow patter, a distinct dialect of the Scots language that is noted for being difficult to understand by those from outside
+                the city.</p>
+              <a class="btn btn-round btn-sm mt-4" href="https://en.wikipedia.org/wiki/Glasgow" role="button" target="_blank">LEARN MORE</a>
+            </div>
+            <div class="tab-pane" id="pills-aberdeen" role="tabpanel" aria-labelledby="pills-aberdeen-tab">
+              <p>Aberdeen is a city in northeast Scotland. It is Scotland's third most populous city, one of Scotland's 32 local government council areas and the United Kingdom's 39th most populous built-up area, with an official population estimate of 196,670
+                for the city of Aberdeen and 227,560 for the local council area.</p>
+              <a class="btn btn-round btn-sm mt-4" href="https://en.wikipedia.org/wiki/Aberdeen" role="button" target="_blank">LEARN MORE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section text-center">
+    <div class="container">
+      <h2 class="title mb-4" data-aos="fade-up">Beautiful places...</h2>
+      <div class="card-columns text-white">
+        <div class="card bg-dark" data-aos="fade-right">
+          <img class="card-img" src="https://images.unsplash.com/photo-1506377585622-bedcbb027afc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="Card image">
+          <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center">
+            <h4 class="card-title">Edinburgh</h4>
+            <p class="card-text mt-0">Calton Hill, Edinburgh, United Kingdom</p>
+          </div>
+        </div>
+        <div class="card bg-dark" data-aos="fade-right">
+          <img class="card-img" src="https://images.unsplash.com/photo-1571936697695-786a86657299?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80" alt="Card image">
+          <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center">
+            <h4 class="card-title">Scotland, UK</h4>
+          </div>
+        </div>
+        <div class="card bg-dark" data-aos="fade-right">
+          <img class="card-img" src="https://images.unsplash.com/photo-1551625864-e63ab48154a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=625&q=80" alt="Card image">
+          <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center">
+            <h4 class="card-title">Isle of Skye, Scotland</h4>
+          </div>
+        </div>
+        <div class="card bg-dark" data-aos="fade-left">
+          <img class="card-img" src="https://images.unsplash.com/photo-1470478626242-c4f9af4585f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="Card image">
+          <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center">
+            <h4 class="card-title">Spean Bridge, Scotland, United Kingdom</h4>
+            <p class="card-text mt-0">Forest path in Scotland</p>
+          </div>
+        </div>
+        <div class="card bg-dark" data-aos="fade-left">
+          <img class="card-img" src="https://images.unsplash.com/photo-1573667575455-0710e2a3d692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="Card image">
+          <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center">
+            <h4 class="card-title">Scotland, UK</h4>
+          </div>
+        </div>
+        <div class="card bg-dark" data-aos="fade-left">
+          <img class="card-img" src="https://images.unsplash.com/photo-1571670954858-176b0731cda5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="Card image">
+          <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center">
+            <h4 class="card-title">Highland, Scotland, Royaume-Uni</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section pb-5">
+    <div class="container">
+      <h2 class="title text-center mb-4" data-aos="fade-up">Share your Scottish Experience!</h2>
+      <form data-aos="fade-up">
+        <div class="form-row">
+          <div class="col-12 col-md-6 mb-4">
+            <input type="text" class="form-control" placeholder="Full Name">
+          </div>
+          <div class="col col-md-6 mb-4">
+            <input type="email" class="form-control" placeholder="Email">
+          </div>
+          <div class="col-12 mb-4">
+            <textarea class="form-control" rows="5" placeholder="Message"></textarea>
+          </div>
+          <div class="col-12 mb-4">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                I agree to share my story
+                <span class="form-check-sign">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="col-12 text-right">
+            <button type="submit" class="btn btn-rose">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+<footer class="py-4 page-footer">
+  <div class="container text-center">
+    <div class="row justify-content-between">
+      <div class="col-auto">Photos from <a href="https://unsplash.com/" target="_blank">Unsplash.com</a></div>
+      <div class="col-auto">
+        <small>Made with <span>❤</span> by <a href="http://georgemartsoukos.com/" target="_blank">George Martsoukos</a> & <a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="btn btn-rose btn-fab btn-fab-mini btn-round position-fixed back-to-top is-hidden">
+  <i class="material-icons">keyboard_arrow_up</i>
+</button>

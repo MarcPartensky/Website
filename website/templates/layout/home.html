@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% include 'include/head.html' %}
+	{% block styles %}
+	{% endblock styles %}
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+	{% include 'include/header.html' %}
+  <!-- End Header -->
+
+	{% include 'include/messages.html' %}
+
+  <main id="main">
+		{% block content %}
+		{% endblock content %}
+  </main><!-- End #main -->
+
+	<!-- Footer -->
+	{% include 'include/footer.html' %}
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+	{% include 'include/scripts.html' %}
+
+	<!-- Template Main JS File -->
+  {% block script %}
+  {% endblock script %}
+</body>
+
+</html>
+
+

@@ -1,0 +1,15 @@
+{% extends "layout/home.html" %}
+{% load static %}
+
+{% block content %}
+<a href="/code/script/blank">
+	<button type="button" class="btn btn-primary btn-lg btn-block">New script</button>
+</a>
+<ul class="list-group">
+	{% for script in scripts %}
+	<li class="list-group-item">{{ script.name }}</li>
+	{% empty %}
+	<li class="list-group-item">No scripts for now.</li>
+	{% endfor %}
+</ul>
+{% endblock content %}

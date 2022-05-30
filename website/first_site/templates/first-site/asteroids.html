@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Playground</title>
+    <style>
+      #html {
+        background-color: black;
+      }
+      #canvas {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        border-width: thick;
+        border-color: white;
+      }
+    </style>
+  </head>
+  <body bgcolor="#000000">
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <!-- WEB DEPENDENCIES -->
+    <!-- <script src="{% static '/socket.io/socket.io.js' %}"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="{% static 'asteroids/libs/tools.js' %}"></script>
+    <script src="{% static 'asteroids/libs/test.js' %}"></script>  
+    <!-- Base types -->
+    <script src="{% static 'asteroids/libs/iterator.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/dict.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/tree.js' %}"></script>
+    <!-- Math types -->
+    <script src="{% static 'asteroids/libs/tensor.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/vector.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/matrix.js' %}"></script>  
+    <!-- Visual types -->
+    <script src="{% static 'asteroids/libs/color.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/point.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/figure.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/form.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/circle.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/segment.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/basepolygon.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/polygon.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/triangle.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/rectangle.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/square.js' %}"></script>  
+    <!-- Physics types -->
+    <script src="{% static 'asteroids/libs/motion.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/body.js' %}"></script>
+    <script src="{% static 'asteroids/libs/entity.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/group.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/plane.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/context.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/manager.js' %}"></script>  
+    <!-- Game types -->
+    <script src="{% static 'asteroids/models/supergroup.js' %}"></script>  
+    <script src="{% static 'asteroids/models/gameentity.js' %}"></script>  
+    <script src="{% static 'asteroids/models/life.js' %}"></script>  
+    <script src="{% static 'asteroids/models/missile.js' %}"></script>  
+    <script src="{% static 'asteroids/models/missilegroup.js' %}"></script>
+    <script src="{% static 'asteroids/models/shooter.js' %}"></script>  
+    <script src="{% static 'asteroids/models/follower.js' %}"></script>  
+    <script src="{% static 'asteroids/models/spaceship.js' %}"></script>  
+    <script src="{% static 'asteroids/models/spaceshipgroup.js' %}"></script>
+    <script src="{% static 'asteroids/models/meteor.js' %}"></script>  
+    <script src="{% static 'asteroids/models/meteorgroup.js' %}"></script>
+    <script src="{% static 'asteroids/models/asteroid.js' %}"></script>
+    <script src="{% static 'asteroids/models/asteroidgroup.js' %}"></script>  
+    <script src="{% static 'asteroids/models/gamemap.js' %}"></script>  
+    <script src="{% static 'asteroids/models/game.js' %}"></script>  
+    <script src="{% static 'asteroids/models/gameclient.js' %}"></script>  
+    <!-- Entry point -->
+    <script src="{% static 'asteroids/models/client.js' %}"></script>  
+    
+    <!-- SELF DEPENDENCIES -->
+    <!-- <script src="{% static 'asteroids/libs/tools.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/test.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/iterator.js' %}"></script>   -->
+    <!-- <script src="{% static 'asteroids/libs/group.js' %}"></script>   -->
+    <!-- <script src="{% static 'asteroids/libs/tensor.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/vector.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/matrix.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/color.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/point.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/figure.js' %}"></script>   -->
+    <!-- <script src="{% static 'asteroids/libs/form.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/polygon.js' %}"></script>   -->
+    <!-- <script src="{% static 'asteroids/libs/circle.js' %}"></script>   -->
+    <!-- <script src="{% static 'asteroids/libs/segment.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/polygon.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/triangle.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/rectangle.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/square.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/motion.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/body.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/entity.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/tree.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/group.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/plane.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/context.js' %}"></script>  
+    <script src="{% static 'asteroids/libs/manager.js' %}"></script>   -->
+    <!-- SCRIPTS -->
+
+    <!-- <script src="{% static 'asteroids/models/supergroup.js' %}"></script>  
+    <script src="{% static 'asteroids/models/spaceship.js' %}"></script>  
+    <script src="{% static 'asteroids/models/gameentity.js' %}"></script>  
+    <script src="{% static 'asteroids/models/meteor.js' %}"></script>  
+    <script src="{% static 'asteroids/models/asteroid.js' %}"></script>  
+    <script src="{% static 'asteroids/models/asteroidgroup.js' %}"></script>  
+    <script src="{% static 'asteroids/models/gamemap.js' %}"></script>  
+    <script src="{% static 'asteroids/models/game.js' %}"></script>  
+    <script src="{% static 'asteroids/models/client.js' %}"></script>   --> -->
+
+  </body>
+</html>

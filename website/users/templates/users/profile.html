@@ -1,0 +1,48 @@
+{% extends "layout/home.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+<!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="{% static 'users/card.css' %}"></link>
+{% endblock styles %}
+
+{% block content %}
+<div id="main-container" class="container">
+	<div id="card" class="card border-light border-solid mb-3" style="text-align: center; margin: 3rem">
+		<div class="card-body">
+			<div class="media">
+				<img class="rounded-circle account-img" src="{{ user.profile.get_avatar }}">
+				<div class="media-body">
+					<h2 class="account-heading">{{ user.username }}</h2>
+					<p class="text-secondary">{{ user.email }}</p>
+				</div>
+			</div>
+			<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<fieldset class="form-group">
+					<legend class="border-bottom mb-4"> Profile Info </legend>
+					{{ u_form|crispy }}
+					{{ p_form|crispy }}
+				</fieldset>
+				<div class="form-group">
+					<button class="btn btn-outline-info" type="submit"> Update </button>
+				</div>
+			</form>
+			<hr>
+			</br>
+			<div class="form-group">
+				<a href="{% url 'logout' %}">
+					<button type="button" class="btn btn-default btn-sm">
+						<!-- <span class="glyphicon glyphicon-log-out"></span> Log out -->
+					<i style="font-size: 4vw" class="fas fa-sign-out-alt"></i>
+					<!-- <img src="file:///Users/marcpartensky/Downloads/sign-out-alt-solid.svg -->
+					<!-- </button> -->
+					<!-- <span class="glyphicon">&#xe163;</span> -->
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
