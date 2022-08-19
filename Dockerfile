@@ -1,5 +1,6 @@
 FROM marcpartensky/paru:latest as builder
 RUN paru -Syyyu --noconfirm python-pipenv npm make
+USER root
 COPY . /opt/website
 WORKDIR /opt/website
 RUN pipenv update
