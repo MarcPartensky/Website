@@ -6,7 +6,7 @@ RUN pipenv run ./manage.py collectstatic --noinput
 RUN npm install -g npm@latest
 RUN npm install
 
-FROM archlinux:latest
+FROM marcpartensky/paru:latest
 LABEL maintainer="marc.partensky@gmail.com"
 LABEL image="https://hub.docker.com/r/marcpartensky/website"
 LABEL source="https://github.com/marcpartensky/website"
