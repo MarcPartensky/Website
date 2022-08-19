@@ -1,4 +1,15 @@
-FROM python:3.7.12
+FROM python:3.7.12-alpine as builder
+COPY . /app
+WORKDIR /app
+
+RUN apk update
+RUN apk add curl npm
+
+RUN pip install pipenv
+RUN pipenv update
+RUN npm install
+
+FROM python:3.7.12-alpine
 # ARG timestamp
 # ARG commit
 LABEL maintainer="marc.partensky@gmail.com"
@@ -8,15 +19,11 @@ LABEL link="https://marcpartensky.com"
 # LABEL build.timestamp=timestamp
 # LABEL build.commit=commit
 
-COPY . /app
+COPY --from=builder . /app
 WORKDIR /app
 
-RUN apt-get update
-
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash
-RUN apt-get install -y nodejs
-RUN npm install -g npm@latest
-RUN npm install
+RUN apk update
+RUN apk add curl npm
 
 # No .pyo and easier debugging
 ENV PYTHONDONTWRITEBYTECODE 1

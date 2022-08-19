@@ -15,8 +15,7 @@ venv
 .buildpacks
 *.pem
 *.crt
-Pipfile
-Pipfile.lock
 .travis.yml
 .gitignore
 .dockerignore
+requirements.txt
