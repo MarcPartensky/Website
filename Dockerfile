@@ -1,5 +1,5 @@
-FROM archlinux:latest as builder
-RUN pacman -Syyyu --noconfirm python37 python-pipenv node make
+FROM marcpartensky/paru:latest
+RUN paru -Syyyu --noconfirm python37 python-pipenv node make
 COPY . /app
 RUN pipenv update
 RUN pipenv run ./manage.py collectstatic --noinput
