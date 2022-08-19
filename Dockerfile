@@ -1,7 +1,7 @@
 FROM python:3.7.12 as builder
 WORKDIR /opt/website
 COPY website /opt/website/website
-COPY LICENSE Dockerfile pyproject.toml package.json package-lock.json ./
+COPY LICENSE pyproject.toml package.json package-lock.json ./
 
 RUN apt update
 RUN apt install -y curl npm
