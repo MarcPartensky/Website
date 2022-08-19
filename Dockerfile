@@ -1,12 +1,12 @@
 FROM python:3.7.12-alpine as builder
-COPY . /app
-WORKDIR /app
+WORKDIR /opt/website
+COPY website /opt/website/website
+COPY package.json package-lock.json ./
 
-RUN apk update
-RUN apk add curl npm
+RUN apk add curl npm gcc
 
-RUN pip install pipenv
-RUN pipenv update
+RUN pip install poetry
+RUN poetry update
 RUN npm install
 
 FROM python:3.7.12-alpine
@@ -19,8 +19,8 @@ LABEL link="https://marcpartensky.com"
 # LABEL build.timestamp=timestamp
 # LABEL build.commit=commit
 
-COPY --from=builder . /app
-WORKDIR /app
+COPY --from=builder /opt/website /opt/website
+WORKDIR /opt/website
 
 RUN apk update
 RUN apk add curl npm
@@ -43,5 +43,5 @@ HEALTHCHECK --interval=30s \
             --retries=3 \
              CMD curl -sSf http://127.0.0.1:$PORT/live || exit 1
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 # ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]
