@@ -1,4 +1,6 @@
 FROM python:3.7.12 as builder
+ENV SECRET_KEY=whatever
+
 WORKDIR /opt/website
 COPY website /opt/website/website
 COPY pyproject.toml package.json package-lock.json ./
@@ -8,6 +10,10 @@ RUN apt install -y curl npm
 
 RUN pip install poetry
 RUN poetry update
+RUN poetry run ./website/manage.py makemigrations
+RUN poetry run ./website/manage.py collecstatic --noinput
+RUN poetry lock -r requirements.txt
+
 RUN npm update
 
 FROM python:3.7.12-alpine
