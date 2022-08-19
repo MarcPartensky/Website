@@ -3,7 +3,7 @@ ENV SECRET_KEY=whatever
 
 WORKDIR /opt/website
 COPY website /opt/website/website
-COPY pyproject.toml package.json package-lock.json ./
+COPY pyproject.toml poetry.lock package.json package-lock.json ./
 
 RUN apt update
 RUN apt install -y curl npm
