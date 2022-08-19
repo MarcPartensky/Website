@@ -1,4 +1,4 @@
-FROM marcpartensky/paru:latest
+FROM marcpartensky/paru:latest as builder
 RUN paru -Syyyu --noconfirm python37 python-pipenv node make
 COPY . /app
 RUN pipenv update
@@ -11,7 +11,7 @@ LABEL maintainer="marc.partensky@gmail.com"
 LABEL image="https://hub.docker.com/r/marcpartensky/website"
 LABEL source="https://github.com/marcpartensky/website"
 LABEL link="https://marcpartensky.com"
-RUN pacman -Syyyu --noconfirm python37 node
+RUN paru -Syyyu --noconfirm python37 node
 # ARG timestamp
 # ARG commit
 # LABEL build.timestamp=timestamp
