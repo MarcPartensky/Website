@@ -45,5 +45,15 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v2
       with:
+        push: false
+        tags: marcpartensky/website:latest
+    - name: Compose up
+      run: docker-compose -f dev.yml up -d website postgres mysql
+    - name: Test
+      run: docker-compse run test
+    - name: Build and push
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
         push: true
         tags: marcpartensky/website:latest
