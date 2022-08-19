@@ -1,14 +1,14 @@
 FROM python:3.7.12 as builder
 WORKDIR /opt/website
 COPY website /opt/website/website
-COPY LICENSE pyproject.toml package.json package-lock.json ./
+COPY pyproject.toml package.json package-lock.json ./
 
 RUN apt update
 RUN apt install -y curl npm
 
 RUN pip install poetry
 RUN poetry update
-RUN npm install
+RUN npm update
 
 FROM python:3.7.12-alpine
 # ARG timestamp
@@ -21,6 +21,7 @@ LABEL link="https://marcpartensky.com"
 # LABEL build.commit=commit
 
 COPY --from=builder /opt/website /opt/website
+COPY LICENSE package.json package-lock.json ./
 WORKDIR /opt/website
 
 RUN apk update
@@ -32,6 +33,7 @@ ENV PYTHONUNBUFFERED 1
 
 RUN pip install -U pip
 RUN pip install -r requirements.txt
+RUN npm install
 
 ENV PORT 80
 ENV HOST 0.0.0.0
