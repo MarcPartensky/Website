@@ -1,22 +1,24 @@
-FROM python:3.7.12
-# ARG timestamp
-# ARG commit
+FROM archlinux:latest as builder
+RUN pacman -Syyyu --noconfirm python37 python-pipenv node make
+COPY . /app
+RUN pipenv update
+RUN pipenv run ./manage.py collectstatic --noinput
+RUN npm install -g npm@latest
+RUN npm install
+
+FROM archlinux:latest
 LABEL maintainer="marc.partensky@gmail.com"
 LABEL image="https://hub.docker.com/r/marcpartensky/website"
 LABEL source="https://github.com/marcpartensky/website"
 LABEL link="https://marcpartensky.com"
+RUN pacman -Syyyu --noconfirm python37 node
+# ARG timestamp
+# ARG commit
 # LABEL build.timestamp=timestamp
 # LABEL build.commit=commit
 
-COPY . /app
+COPY --from=builder /app /app
 WORKDIR /app
-
-RUN apt-get update
-
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash
-RUN apt-get install -y nodejs
-RUN npm install -g npm@latest
-RUN npm install
 
 # No .pyo and easier debugging
 ENV PYTHONDONTWRITEBYTECODE 1
