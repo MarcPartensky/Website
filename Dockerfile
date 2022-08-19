@@ -1,9 +1,9 @@
-FROM python:3.7.12-alpine as builder
+FROM python:3.7.12 as builder
 WORKDIR /opt/website
 COPY website /opt/website/website
 COPY package.json package-lock.json ./
 
-RUN apk add curl npm gcc
+RUN apt install -y curl npm gcc
 
 RUN pip install poetry
 RUN poetry update
