@@ -19,8 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Update apt
-      run: sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
     - name: Install make
       run: sudo apt install make -y
     - name: Install Python3.7
