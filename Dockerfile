@@ -1,9 +1,10 @@
 FROM python:3.7.12 as builder
 WORKDIR /opt/website
 COPY website /opt/website/website
-COPY package.json package-lock.json ./
+COPY LICENSE Dockerfile pyproject.toml package.json package-lock.json ./
 
-RUN apt install -y curl npm gcc
+RUN apt update
+RUN apt install -y curl npm
 
 RUN pip install poetry
 RUN poetry update
