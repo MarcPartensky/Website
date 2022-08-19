@@ -1,6 +1,7 @@
 FROM marcpartensky/paru:latest as builder
 RUN paru -Syyyu --noconfirm python-pipenv npm make
 COPY . /app
+WORKDIR /app
 RUN pipenv update
 RUN pipenv run ./manage.py collectstatic --noinput
 RUN npm install -g npm@latest
