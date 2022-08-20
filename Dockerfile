@@ -50,6 +50,8 @@ RUN pip install -U pip
 RUN sed -i '/psycopg2=/d' requirements.txt
 RUN pip install -r requirements.txt
 
+RUN apk del .tmp
+
 # Setup env vars for entrypoint.sh
 ENV PORT 80
 ENV HOST 0.0.0.0
