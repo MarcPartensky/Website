@@ -1207,7 +1207,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "9212045b286e7e6669fec122d116f7cae78732e31d7f2c4264a187c72e614ed9"
+content-hash = "aa10ebed894be57b630fbae9fc7bdf673a0153f3dfec82985f33fa1084de0179"
 
 [metadata.files]
 ansicon = []
