@@ -108,7 +108,7 @@ services:
   website-test:
     environment:
       <<: *website
-      <<: *postgres
+      # <<: *postgres
       <<: *redis
       VIRTUAL_HOST: website.dev
     build:
