@@ -13,7 +13,7 @@ RUN poetry update
 RUN poetry run ./website/manage.py makemigrations
 RUN poetry run ./website/manage.py collectstatic --noinput
 RUN poetry export -f requirements.txt --without-hashes --output requirements.txt
-RUN sed '/psycopg2=/d' requirements.txt
+RUN sed -i '/psycopg2=/d' requirements.txt
 
 RUN npm update
 
