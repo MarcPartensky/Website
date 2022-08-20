@@ -40,8 +40,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN pip install -U pip
+RUN cat requirements.txt
 RUN pip install -r requirements.txt
-RUN npm install
 
 ENV PORT 80
 ENV HOST 0.0.0.0
