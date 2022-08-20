@@ -8,10 +8,9 @@ start:
 	poetry run ./entrypoint.sh --nosetup
 list:
 	@LC_ALL=C $(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
-build: update
+build:
 	docker-compose -f dev.yml build website
 push: build
-	git pushall
 	docker-compose -f dev.yml push website
 setup: init update start
 update:
@@ -21,8 +20,8 @@ update:
 	SECRET_KEY=secret poetry run ./website/manage.py collectstatic --noinput
 	SECRET_KEY=secret poetry run ./website/manage.py makemigrations
 init: .env
-	pip install --user pipenv
-	pipenv install --dev
+	pip install --user poetry
+	poetry install --dev
 	npm install --save
 test:
 	pipenv run ./manage.py test
