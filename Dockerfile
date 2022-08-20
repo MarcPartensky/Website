@@ -1,12 +1,12 @@
 FROM python:3.7.12 as builder
 ENV SECRET_KEY=whatever
 
+RUN apt update
+RUN apt install -y curl npm
+
 WORKDIR /opt/website
 COPY website /opt/website/website
 COPY pyproject.toml poetry.lock package.json package-lock.json ./
-
-RUN apt update
-RUN apt install -y curl npm
 
 RUN pip install poetry
 RUN poetry update
