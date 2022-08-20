@@ -34,7 +34,7 @@ LABEL source="https://github.com/marcpartensky/website"
 LABEL link="https://marcpartensky.com"
 
 # Install curl and stuff for pillow
-RUN apk add --update --virtual .tmp curl jpeg zlib gcc libc-dev linux-headers
+RUN apk add --update --virtual .tmp curl jpeg zlib build-base linux-headers
 
 # Copy useful files
 COPY --from=builder /opt/website /opt/website
