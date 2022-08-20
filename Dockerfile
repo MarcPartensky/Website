@@ -33,9 +33,8 @@ LABEL image="https://hub.docker.com/r/marcpartensky/website"
 LABEL source="https://github.com/marcpartensky/website"
 LABEL link="https://marcpartensky.com"
 
-# Install curl
-RUN apk update
-RUN apk add curl zlib
+# Install curl and stuff for pillow
+RUN apk add --update --virtual .tmp curl jpeg zlib gcc libc-dev linux-headers
 
 # Copy useful files
 COPY --from=builder /opt/website /opt/website
