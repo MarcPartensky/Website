@@ -34,10 +34,10 @@ RUN apk add --update --virtual .tmp libffi-dev build-base linux-headers
 RUN apk add curl jpeg-dev zlib-dev
 
 # Copy useful files
+WORKDIR /opt/website
 COPY website /opt/website
 COPY --from=builder /opt/website/requirements.txt ./
 COPY LICENSE ./
-WORKDIR /opt/website
 
 # No .pyo and easier debugging
 ENV PYTHONDONTWRITEBYTECODE 1
