@@ -27,6 +27,7 @@ rich = "*"
 djangorestframework = "*"
 PyYAML = "*"
 django-cors-headers = "*"
+Pillow = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"

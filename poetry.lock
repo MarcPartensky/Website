@@ -697,6 +697,18 @@ optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 
 [[package]]
+name = "pillow"
+version = "9.2.0"
+description = "Python Imaging Library (Fork)"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-issues (>=3.0.1)", "sphinx-removed-in", "sphinxext-opengraph"]
+tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
+
+[[package]]
 name = "platformdirs"
 version = "2.5.2"
 description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
@@ -1195,7 +1207,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "bee15aadfd8c98f5f952fa5296cb1c7d7e71133a9b40c8f123fbcb0a819e1294"
+content-hash = "9212045b286e7e6669fec122d116f7cae78732e31d7f2c4264a187c72e614ed9"
 
 [metadata.files]
 ansicon = []
@@ -1255,6 +1267,7 @@ neovim = []
 oauthlib = []
 packaging = []
 pathspec = []
+pillow = []
 platformdirs = []
 pluggy = []
 py = []
