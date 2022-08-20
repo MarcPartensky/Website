@@ -48,7 +48,7 @@ ENV PYTHONUNBUFFERED 1
 RUN pip install -U pip
 RUN pip install -r requirements.txt
 
-RUN apk del .tmp
+# RUN apk del .tmp
 
 # Setup env vars for entrypoint.sh
 ENV PORT 80
