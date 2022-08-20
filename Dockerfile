@@ -8,13 +8,11 @@ RUN pip install poetry
 
 # Copy useful files
 WORKDIR /opt/website
-COPY website /opt/website/website
 COPY pyproject.toml poetry.lock package.json package-lock.json ./
 
 # Run updates
 RUN poetry update
 RUN poetry run ./website/manage.py makemigrations
-RUN poetry run ./website/manage.py collectstatic --noinput
 RUN poetry export -f requirements.txt --without-hashes --output requirements.txt
 RUN npm update
 RUN npm install
@@ -33,9 +31,11 @@ LABEL source="https://github.com/marcpartensky/website"
 LABEL link="https://marcpartensky.com"
 
 # Install curl and stuff for pillow
-RUN apk add --update --virtual .tmp curl jpeg-dev zlib-dev libffi-dev build-base linux-headers
+RUN apk add --update --virtual .tmp libffi-dev build-base linux-headers
+RUN apk add curl jpeg-dev zlib-dev 
 
 # Copy useful files
+COPY website /opt/website
 COPY --from=builder /opt/website /opt/website
 COPY LICENSE ./
 WORKDIR /opt/website
@@ -47,8 +47,9 @@ ENV PYTHONUNBUFFERED 1
 # Install dependencies
 RUN pip install -U pip
 RUN pip install -r requirements.txt
+RUN ./website/manage.py collectstatic --noinput
 
-# RUN apk del .tmp
+RUN apk del .tmp
 
 # Setup env vars for entrypoint.sh
 ENV PORT 80
