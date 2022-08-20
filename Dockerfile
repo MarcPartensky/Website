@@ -35,7 +35,7 @@ RUN apk add curl jpeg-dev zlib-dev
 
 # Copy useful files
 COPY website /opt/website
-COPY --from=builder /opt/website/requirements.txt /opt/website
+COPY --from=builder /opt/website/requirements.txt ./
 COPY LICENSE ./
 WORKDIR /opt/website
 
