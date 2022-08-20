@@ -33,14 +33,14 @@ LABEL image="https://hub.docker.com/r/marcpartensky/website"
 LABEL source="https://github.com/marcpartensky/website"
 LABEL link="https://marcpartensky.com"
 
+# Install curl
+RUN apk update
+RUN apk add curl
+
 # Copy useful files
 COPY --from=builder /opt/website /opt/website
 COPY LICENSE ./
 WORKDIR /opt/website
-
-# Install curl
-RUN apk update
-RUN apk add curl
 
 # No .pyo and easier debugging
 ENV PYTHONDONTWRITEBYTECODE 1
