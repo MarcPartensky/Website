@@ -30,7 +30,7 @@ runtest:
 	make test
 	make kill
 kill:
-	pipenv run ./entrypoint.sh kill
+	pipenv run ./website/entrypoint.sh kill
 up: init
 	docker-compose up -d
 down:
