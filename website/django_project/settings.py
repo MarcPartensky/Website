@@ -13,7 +13,6 @@ from urllib.parse import urlparse
 # import dj_database_url
 import mimetypes
 import dotenv
-import django_heroku
 
 mimetypes.add_type("text/css", ".css", True)
 
@@ -502,5 +501,3 @@ Q_CLUSTER = {
 }
 
 PANDOC_API_URL = os.environ.get("PANDOC_API_URL") or "https://pandoc.marcpartensky.com"
-
-django_heroku.settings(locals())
