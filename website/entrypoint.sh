@@ -28,7 +28,7 @@ setup() {
     $src/manage.py createsuperuser --user $username --email $email --noinput
 }
 
-if [[ ! -z $NOSETUP && ! $1 = "--nosetup" ]]; then
+if [[ ! -z $NOSETUP ]] && [[ ! $1 = "--nosetup" ]]; then
     setup
 fi
 
