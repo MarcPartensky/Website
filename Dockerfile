@@ -12,7 +12,7 @@ RUN pip install poetry
 RUN poetry update
 RUN poetry run ./website/manage.py makemigrations
 RUN poetry run ./website/manage.py collectstatic --noinput
-RUN poetry lock -r requirements.txt
+RUN poetry export -f requirements.txt --output requirements.txt
 
 RUN npm update
 
