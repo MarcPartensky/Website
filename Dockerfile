@@ -11,7 +11,7 @@ COPY pyproject.toml poetry.lock package.json package-lock.json ./
 RUN pip install poetry
 RUN poetry update
 RUN poetry run ./website/manage.py makemigrations
-RUN poetry run ./website/manage.py collecstatic --noinput
+RUN poetry run ./website/manage.py collectstatic --noinput
 RUN poetry lock -r requirements.txt
 
 RUN npm update
