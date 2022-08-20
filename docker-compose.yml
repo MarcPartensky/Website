@@ -28,8 +28,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:80"
-    working_dir: /app
-    entrypoint: /app/entrypoint.sh
     depends_on:
       - redis
       - postgres
