@@ -1,5 +1,4 @@
 FROM python:3.7.12 as builder
-ENV SECRET_KEY=whatever
 
 # Pre installations
 RUN apt update
@@ -18,6 +17,7 @@ RUN npm install
 
 # Image of production
 FROM python:3.7.12-alpine
+ENV SECRET_KEY=whatever
 # ARG timestamp
 # ARG commit
 # LABEL build.timestamp=timestamp
