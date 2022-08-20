@@ -5,7 +5,7 @@ PRODUCTION=false
 .PHONY: start list build push setup update init test up down migrate brewstart brewstop dev prod clean deploy
 
 start:
-	pipenv run ./entrypoint.sh --nosetup
+	poetry run ./entrypoint.sh --nosetup
 list:
 	@LC_ALL=C $(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
 build: update
@@ -17,11 +17,9 @@ setup: init update start
 update:
 	npm update
 	npm audit fix || echo npm audit fix failed
-	# pipenv lock --pre --clear
-	pipenv update
-	pipenv lock -r > requirements.txt
-	SECRET_KEY=secret pipenv run ./manage.py collectstatic --noinput
-	SECRET_KEY=secret pipenv run ./manage.py makemigrations
+	poetry export -o requirements.txt
+	SECRET_KEY=secret poetry run ./website/manage.py collectstatic --noinput
+	SECRET_KEY=secret poetry run ./website/manage.py makemigrations
 init: .env
 	pip install --user pipenv
 	pipenv install --dev
