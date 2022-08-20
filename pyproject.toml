@@ -8,7 +8,6 @@ authors = ["Marc Partensky <marc.partensky@gmail.com>"]
 python = "^3.7"
 Django = "*"
 python-dotenv = "*"
-django-heroku = "*"
 channels = "*"
 django-storages = "*"
 django-crispy-forms = "*"

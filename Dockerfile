@@ -40,7 +40,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN pip install -U pip
-RUN cat requirements.txt
+RUN sed -i '/psycopg2=/d' requirements.txt
 RUN pip install -r requirements.txt
 
 ENV PORT 80
