@@ -28,6 +28,7 @@ djangorestframework = "*"
 PyYAML = "*"
 django-cors-headers = "*"
 Pillow = "*"
+psycopg2-binary = "^2.9.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"

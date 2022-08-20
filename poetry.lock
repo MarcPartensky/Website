@@ -736,6 +736,14 @@ testing = ["pytest-benchmark", "pytest"]
 dev = ["tox", "pre-commit"]
 
 [[package]]
+name = "psycopg2-binary"
+version = "2.9.3"
+description = "psycopg2 - Python-PostgreSQL Database Adapter"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "py"
 version = "1.11.0"
 description = "library with cross-python path, ini-parsing, io, code, log facilities"
@@ -1207,7 +1215,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "aa10ebed894be57b630fbae9fc7bdf673a0153f3dfec82985f33fa1084de0179"
+content-hash = "6422bbc42124721574782b08ad0a4067488454838afa7eabfdbd48854a269aee"
 
 [metadata.files]
 ansicon = []
@@ -1270,6 +1278,7 @@ pathspec = []
 pillow = []
 platformdirs = []
 pluggy = []
+psycopg2-binary = []
 py = []
 pyasn1 = []
 pyasn1-modules = []
