@@ -53,9 +53,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # print('secret key:', SECRET_KEY)
 
 ALLOWED_HOSTS = [
+    "localhost",
     "marcpartensky.com",
-    "marcpartensky.herokuapp.com",
-    "websiteofmarcpartensky.herokuapp.com",
 ]
 
 # Application definition
