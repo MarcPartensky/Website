@@ -22,7 +22,7 @@ FROM python:3.7.12-alpine
 # ARG commit
 # LABEL build.timestamp=timestamp
 # LABEL build.commit=commit
- 
+
 # Labels
 LABEL maintainer="marc.partensky@gmail.com"
 LABEL image="https://hub.docker.com/r/marcpartensky/website"
@@ -31,11 +31,11 @@ LABEL link="https://marcpartensky.com"
 
 # Install curl and stuff for pillow
 RUN apk add --update --virtual .tmp libffi-dev build-base linux-headers
-RUN apk add curl jpeg-dev zlib-dev 
+RUN apk add curl jpeg-dev zlib-dev
 
 # Copy useful files
 COPY website /opt/website
-COPY --from=builder /opt/website /opt/website
+COPY --from=builder /opt/website/requirements.txt /opt/website
 COPY LICENSE ./
 WORKDIR /opt/website
 
