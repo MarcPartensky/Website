@@ -65,5 +65,5 @@ HEALTHCHECK --interval=30s \
              CMD curl -sSf http://127.0.0.1:$PORT/live || exit 1
 
 WORKDIR /opt/website/website
-ENTRYPOINT ["/opt/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 # ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]

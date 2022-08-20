@@ -1,6 +1,6 @@
 #!/bin/sh
 
-src=./website
+src=.
 
 port=${1:-$PORT}
 host=${2:-$HOST}
@@ -26,7 +26,6 @@ setup() {
     $src/manage.py migrate
     echo -e "Creating \033[1msuper user\033[0m using:\n - username: \033[1m$username\033[0m\n - email: \033[1m$email\033[0m\n"
     $src/manage.py createsuperuser --user $username --email $email --noinput
-    $src/manage.py collectstatic --noinput --clear
 }
 
 if [[ ! -z $NOSETUP && ! $1 = "--nosetup" ]]; then
