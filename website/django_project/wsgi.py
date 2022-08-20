@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
+from whitenoise import WhiteNoise
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,3 +20,4 @@ load_dotenv()
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
 
 application = get_wsgi_application()
+application = WhiteNoise(application, root="./staticfiles")

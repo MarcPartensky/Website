@@ -28,7 +28,8 @@ djangorestframework = "*"
 PyYAML = "*"
 django-cors-headers = "*"
 Pillow = "*"
-psycopg2-binary = "^2.9.3"
+psycopg2-binary = "*"
+whitenoise = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"

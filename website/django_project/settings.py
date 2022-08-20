@@ -133,6 +133,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # cors stuff
     "corsheaders.middleware.CorsMiddleware",
+    # serve static files in production
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     # 'django.middleware.common.CommonMiddleware',
     # 503 error
     # 'django_503.middleware.MaintenanceMiddleware',
@@ -289,7 +291,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfiles"),
+    os.path.join(BASE_DIR, "static"),
 ]
 
 STATICFILES_FINDERS = [
@@ -297,6 +299,8 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     "compressor.finders.CompressorFinder",
 ]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")

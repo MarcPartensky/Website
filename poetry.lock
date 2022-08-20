@@ -1180,6 +1180,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "whitenoise"
+version = "6.2.0"
+description = "Radically simplified static file serving for WSGI applications"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+brotli = ["brotli"]
+
+[[package]]
 name = "wrapt"
 version = "1.14.1"
 description = "Module for decorators, wrappers and monkey patching."
@@ -1215,7 +1226,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "6422bbc42124721574782b08ad0a4067488454838afa7eabfdbd48854a269aee"
+content-hash = "83e9fbc1a2edcae576197475e590d781666a228c246d61a3b0697e01d11dee24"
 
 [metadata.files]
 ansicon = []
@@ -1314,6 +1325,7 @@ typed-ast = []
 typing-extensions = []
 urllib3 = []
 wcwidth = []
+whitenoise = []
 wrapt = []
 zipp = []
 "zope.interface" = []
