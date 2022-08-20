@@ -27,7 +27,7 @@ LABEL link="https://marcpartensky.com"
 # LABEL build.commit=commit
 
 COPY --from=builder /opt/website /opt/website
-COPY LICENSE package.json package-lock.json ./
+COPY LICENSE ./
 WORKDIR /opt/website
 
 RUN apk update
