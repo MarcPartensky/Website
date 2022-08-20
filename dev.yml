@@ -118,7 +118,7 @@ services:
     networks:
       - web
     ports:
-      - "8000:80"
+      - "8080:80"
     healthcheck:
       test: ["CMD", "curl", "-fs", "http://website:80/robots.txt"]
       interval: 1m30s
