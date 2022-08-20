@@ -12,7 +12,6 @@ COPY pyproject.toml poetry.lock package.json package-lock.json ./
 
 # Run updates
 RUN poetry update
-RUN poetry run ./website/manage.py makemigrations
 RUN poetry export -f requirements.txt --without-hashes --output requirements.txt
 RUN npm update
 RUN npm install
@@ -47,6 +46,7 @@ ENV PYTHONUNBUFFERED 1
 # Install dependencies
 RUN pip install -U pip
 RUN pip install -r requirements.txt
+RUN ./website/manage.py makemigrations
 RUN ./website/manage.py collectstatic --noinput
 
 RUN apk del .tmp
