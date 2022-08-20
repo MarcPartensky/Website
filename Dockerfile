@@ -16,6 +16,7 @@ RUN poetry export -f requirements.txt --without-hashes --output requirements.txt
 RUN sed -i '/psycopg2=/d' requirements.txt
 
 RUN npm update
+RUN npm install
 
 FROM python:3.7.12-alpine
 # ARG timestamp
@@ -32,7 +33,7 @@ COPY LICENSE ./
 WORKDIR /opt/website
 
 RUN apk update
-RUN apk add curl npm
+RUN apk add curl
 
 # No .pyo and easier debugging
 ENV PYTHONDONTWRITEBYTECODE 1
