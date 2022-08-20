@@ -35,7 +35,7 @@ LABEL link="https://marcpartensky.com"
 
 # Install curl
 RUN apk update
-RUN apk add curl
+RUN apk add curl zlib
 
 # Copy useful files
 COPY --from=builder /opt/website /opt/website
