@@ -39,4 +39,5 @@ jobs:
         context: .
         push: false
         tags: marcpartensky/website:latest
-
+        cache-from: type=local,src=/tmp/buildx
+        cache-to: type=local,dest=/tmp/buildx
