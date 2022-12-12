@@ -1,7 +1,5 @@
 [![Docker](https://github.com/MarcPartensky/Website/actions/workflows/docker-push.yml/badge.svg)](https://github.com/MarcPartensky/Website/actions/workflows/docker-push.yml)
 [![CodeQL](https://github.com/MarcPartensky/Website/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/MarcPartensky/Website/actions/workflows/codeql-analysis.yml)
-<script src="https://liberapay.com/marcpartensky/widgets/button.js"></script>
-<noscript><a href="https://liberapay.com/marcpartensky/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
 
 # Website
 
