@@ -1,5 +1,6 @@
 [![Docker](https://github.com/MarcPartensky/Website/actions/workflows/docker-push.yml/badge.svg)](https://github.com/MarcPartensky/Website/actions/workflows/docker-push.yml)
 [![CodeQL](https://github.com/MarcPartensky/Website/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/MarcPartensky/Website/actions/workflows/codeql-analysis.yml)
+<img src="https://img.shields.io/liberapay/goal/marcpartensky.svg?logo=liberapay">
 
 # Website
 
