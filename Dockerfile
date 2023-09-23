@@ -1,8 +1,8 @@
-FROM python:3.7.12 as builder
+FROM python:3.7.12-alpine as builder
 
 # Pre installations
-RUN apt update
-RUN apt install -y curl npm
+RUN apk add --update --virtual .tmp libffi-dev build-base linux-headers
+RUN apk add curl jpeg-dev zlib-dev
 RUN pip install poetry
 
 # Copy useful files
