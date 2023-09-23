@@ -1,28 +1,9 @@
 version: "3.9"
-x-common:
-  website:
-    &website
-    DJANGO_SETTINGS_MODULE: django_project.settings
-    SECRET_KEY: "$${openssl rand -base64 64}"
-    FTP_URL: 0.0.0.0:21
-  postgres:
-    &postgres
-    POSTGRES_NAME: website
-    POSTGRESQL_USER: root
-    POSTGRES_PASSWORD: "$${openssl rand -base64 64}"
-    POSTGRES_HOST: postgres
-    POSTGRES_PORT: 5432
-  redis:
-    &redis
-    REDIS_URL: redis:6379
-
 services:
   website:
     image: docker.io/marcpartensky/website:latest
-    environment:
-      <<: *website
-      <<: *postgres
-      <<: *redis
+    env_file:
+      - .env
     build:
       context: .
       dockerfile: Dockerfile
@@ -36,17 +17,19 @@ services:
 
   redis:
     image: redis
-    environment:
-      <<: *redis
+    env_file:
+      - .env
     networks:
       - website
 
   postgres:
     image: postgres
-    environment:
-      <<: *postgres
+    env_file:
+      - .env
     networks:
       - website
 
 networks:
   website:
+  postgres:
+    external: true
