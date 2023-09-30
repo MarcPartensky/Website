@@ -41,6 +41,11 @@ jobs:
       with:
         context: .
         push: true
-        tags: 
-          - marcpartensky/website:latest
-          - marcpartensky/website:v${{ github.run_number }}.${{ steps.tags.outputs.tag }}
+        tags:  marcpartensky/website:latest
+
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: true
+        tags:  marcpartensky/website:v${{ github.run_number }}.${{ steps.tags.outputs.tag }}
