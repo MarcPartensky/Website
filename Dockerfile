@@ -2,7 +2,7 @@ FROM python:3.7.12-alpine as builder
 
 # Pre installations
 RUN apk add --update --virtual .tmp libffi-dev build-base linux-headers
-RUN apk add curl jpeg-dev zlib-dev
+RUN apk add curl jpeg-dev zlib-dev npm
 RUN pip install poetry
 
 # Copy useful files
