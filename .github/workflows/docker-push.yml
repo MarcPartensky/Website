@@ -3,7 +3,7 @@ name: Docker
 on:
   push:
     branches:
-      - "*"
+      - master
     # Publish `v1.2.3` tags as releases.
     tags:
       - v*
@@ -19,6 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
+    - name: Build the tag
+      id: tag
+      run: echo "::set-output name=tag::$((git rev-parse --short HEAD)).$(date +'%Y-%m-%d')"
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
@@ -37,4 +41,6 @@ jobs:
       with:
         context: .
         push: true
-        tags: marcpartensky/website:latest
+        tags: 
+          - marcpartensky/website:latest
+          - marcpartensky/website:v${{ github.run_number }}.${{ steps.tags.outputs.tag }}
