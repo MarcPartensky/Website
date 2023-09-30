@@ -1,6 +1,7 @@
-FROM python:3.7.12-alpine as builder
+FROM python:3.7.17-alpine as builder
 
 # Pre installations
+RUN apk update
 RUN apk add --update --virtual .tmp libffi-dev build-base linux-headers
 RUN apk add curl jpeg-dev zlib-dev npm
 RUN pip install poetry
@@ -16,7 +17,8 @@ RUN npm update
 RUN npm install
 
 # Image of production
-FROM python:3.7.12-alpine
+FROM python:3.7.17-alpine
+# FROM alpine
 ENV SECRET_KEY=whatever
 # ARG timestamp
 # ARG commit
@@ -30,13 +32,19 @@ LABEL source="https://github.com/marcpartensky/website"
 LABEL link="https://marcpartensky.com"
 
 # Install curl and stuff for pillow
+RUN apk update
 RUN apk add --update --virtual .tmp libffi-dev build-base linux-headers
-RUN apk add curl jpeg-dev zlib-dev
+RUN apk add python3 curl jpeg-dev zlib-dev py3-pip
+RUN apk add shadow
+
+# Setup home user website
+RUN useradd -m website
+USER website
 
 # Copy useful files
-WORKDIR /opt/website
-COPY website /opt/website/website
-COPY --from=builder /opt/website/requirements.txt ./
+WORKDIR /home/website
+COPY --chown=website website ./website
+COPY --chown=website --from=builder /opt/website/requirements.txt ./
 COPY LICENSE ./
 
 # No .pyo and easier debugging
@@ -44,16 +52,19 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Install dependencies
-RUN pip install -U pip
+# RUN pip install -U pip
 RUN pip install -r requirements.txt
 RUN ./website/manage.py makemigrations
 RUN ./website/manage.py collectstatic --noinput
 
+USER root
 RUN apk del .tmp
+USER website
 
 # Setup env vars for entrypoint.sh
 ENV PORT 80
 ENV HOST 0.0.0.0
+ENV PATH="${PATH}:/home/website/.local/bin"
 EXPOSE 80
 
 # Check health
@@ -63,6 +74,6 @@ HEALTHCHECK --interval=30s \
             --retries=3 \
              CMD curl -sSf http://localhost:$PORT/live || exit 1
 
-WORKDIR /opt/website/website
+WORKDIR /home/website/website
 ENTRYPOINT ["./entrypoint.sh"]
 # ENTRYPOINT ["daphne", "-e", "ssl:443:privateKey=$KEY:certKey=$CERT", "django_project.asgi:application"]
