@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "00c1e5370bb7fdcc4e8b5361ac4cf41b142a4b25db7c4402b3f4c3806d4f0224"
+            "sha256": "af38e5e085e88a7a59ed642f9a322043951b7a9e9ab30075e7862545063f2695"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -401,11 +401,11 @@
         },
         "oauthlib": {
             "hashes": [
-                "sha256:23a8208d75b902797ea29fd31fa80a15ed9dc2c6c16fe73f5d346f83f6fa27a2",
-                "sha256:6db33440354787f9b7f3a6dbd4febf5d0f93758354060e802f6c06cb493022fe"
+                "sha256:8139f29aac13e25d502680e9e19963e83f16838d48a0d71c287fe40e7067fbca",
+                "sha256:9859c40929662bec5d64f34d01c99e093149682a3f38915dc0655d5a633dd918"
             ],
             "index": "pypi",
-            "version": "==3.2.0"
+            "version": "==3.2.2"
         },
         "pillow": {
             "hashes": [
@@ -717,11 +717,11 @@
         },
         "setuptools": {
             "hashes": [
-                "sha256:57f6f22bde4e042978bcd50176fdb381d7c21a9efa4041202288d3737a0c6a54",
-                "sha256:a7620757bf984b58deaf32fc8a4577a9bbc0850cf92c20e1ce41c38c19e5fb75"
+                "sha256:a7687c12b444eaac951ea87a9627c4f904ac757e7abdc5aac32833234af90378",
+                "sha256:e261cdf010c11a41cb5cb5f1bf3338a7433832029f559a6a7614bd42a967c300"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==65.6.3"
+            "version": "==67.1.0"
         },
         "shortuuid": {
             "hashes": [
