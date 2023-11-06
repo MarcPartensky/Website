@@ -5,7 +5,7 @@ description = ""
 authors = ["Marc Partensky <marc.partensky@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9"
 Django = "*"
 python-dotenv = "*"
 channels = "*"
@@ -31,6 +31,7 @@ django-cors-headers = "*"
 Pillow = "*"
 psycopg2-binary = "*"
 whitenoise = "*"
+crispy-bootstrap4 = "^2023.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"

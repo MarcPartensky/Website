@@ -1,4 +1,4 @@
-FROM python:3.7.17-alpine as builder
+FROM python:3.9-alpine as builder
 
 # Pre installations
 RUN apk update
@@ -17,7 +17,7 @@ RUN npm update
 RUN npm install
 
 # Image of production
-FROM python:3.7.17-alpine
+FROM python:3.9-alpine
 # FROM alpine
 ENV SECRET_KEY=whatever
 # ARG timestamp

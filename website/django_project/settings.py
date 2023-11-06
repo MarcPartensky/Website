@@ -92,6 +92,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "storages",
     "crispy_forms",
+    "crispy_bootstrap4",
     "django_extensions",
     # allauth stuff
     "django.contrib.sites",
@@ -306,6 +307,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = "profile"
