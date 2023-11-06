@@ -1,0 +1,194 @@
+{% load static %}<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cnh_formation</title>
+        <link href="{% static 'home/assets/img/white-orchid.svg' %}" rel="icon">
+        <link href="{% static 'home/assets/img/black-orchid.svg' %}" rel="apple-touch-icon">
+        <link href="{% static 'article/assets/css/main.css' %}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="{% static 'article/mixu-radar/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'article/mixu-radar/css/pilcrow.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'article/mixu-radar/css/hljs-github.min.css' %}"/>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script src="https://cdn.jsdelivr.net/npm/node-plantuml@0.9.0/index.min.js"></script>
+        </head>
+<body>
+        <div style="clear: both;">
+            <div style="float: left">
+                {{ view_count }}
+                <span class="iconify" data-icon="carbon:view" data-inline="false"></span>
+                {{ like_count }}
+                <span class="iconify" data-icon="fluent-thumb-like-16-regular" data-inline="false"></span>
+                {{ dislike_count }}
+                <span class="iconify" data-icon="fluent:thumb-dislike-24-regular"data-inline="false"></span>
+                <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+            </div>
+            <div style="float: right">
+                <small style="text-align: right">{{ created }}</small>
+                {% if update_count > 0 %}
+                <small> V{{ update_count }}</small>
+                {% endif %}
+            </div>
+        </div>
+        
+
+  <div id="toc">
+    <div id="toc-inner">
+        <a class="back" class="container" href="{% url 'article' %}"><p>Back to articles</p></a><div class="fade_rule"></div><ul class="nav nav-list">
+    <li class="sidebar-header-1"><a href="#l&#x27;éloquence-les-clés-du-succès">L&#x27;éloquence les clés du succès</a></li>
+    <li class="sidebar-header-2"><a href="#dates">Dates</a></li>
+    <li class="sidebar-header-2"><a href="#structurer-son-discours">Structurer son discours</a></li>
+    <li class="sidebar-header-2"><a href="#10-règles">10 règles</a></li>
+    <li class="sidebar-header-2"><a href="#oral---être-chauve-c&#x27;est-le-futur">Oral - Être chauve c&#x27;est le futur</a></li>
+    <li class="sidebar-header-1"><a href="#kpi">Kpi</a></li>
+    <li class="sidebar-header-2"><a href="#kpi-en-entreprises">Kpi en entreprises</a></li>
+    <li class="sidebar-header-3"><a href="#performance-business---satisfaction-client">Performance business - Satisfaction client</a></li>
+    <li class="sidebar-header-3"><a href="#performance-financière-et-opérationnel---cash">Performance financière et opérationnel - Cash</a></li>
+    <li class="sidebar-header-3"><a href="#motivation-et-engagement-des-troupes---satisfaction-staff">Motivation et engagement des troupes - Satisfaction staff</a></li>
+    <li class="sidebar-header-2"><a href="#description-du-sujet">Description du sujet</a></li>
+    <li class="sidebar-header-3"><a href="#exemples">Exemples</a></li>
+    <li class="sidebar-header-2"><a href="#la-méthode-des-5-pourquoi">La méthode des 5 pourquoi</a></li>
+    <li class="sidebar-header-2"><a href="#swot">SWOT</a></li>
+    <li class="sidebar-header-2"><a href="#le-diagramme-d&#x27;ishikawa">Le diagramme d&#x27;Ishikawa</a></li>
+    <li class="sidebar-header-2"><a href="#la-méthode-qqoqcp">La méthode QQOQCP</a></li>
+    <li class="sidebar-header-2"><a href="#pour-résumer">Pour résumer</a></li>
+</ul>
+    </div>
+  </div>
+
+  <div id="wrapper">
+    <div id="header">
+
+    </div>
+
+    <div class="clear"></div>
+    <div id="main">
+      <div id="content" class="post"><h1 id="léloquence-les-clés-du-succès"><a class="header-link" href="#léloquence-les-clés-du-succès"></a>L&#39;éloquence les clés du succès</h1>
+<h2 id="dates"><a class="header-link" href="#dates"></a>Dates</h2>
+<p>Cicéron - 63 av jc
+Martin Luther King - 1963</p>
+<p>Ethos - 55% : Gestes, intonation
+Pathos - 40% :<br>Logos - 5% :</p>
+<h2 id="structurer-son-discours"><a class="header-link" href="#structurer-son-discours"></a>Structurer son discours</h2>
+<ul class="list">
+<li>Introduction</li>
+<li>Contexte</li>
+<li>Argumentation</li>
+<li>Conclusion</li>
+</ul>
+<h2 id="10-règles"><a class="header-link" href="#10-règles"></a>10 règles</h2>
+<ul class="list">
+<li>Écrire son discours</li>
+<li>Enregistrer son discours pour l&#39;écouter</li>
+<li>S&#39;adapter à son audience</li>
+<li>Connaître son discours</li>
+<li>Gérer son rythme</li>
+<li>Pieds au sol tu ancreras</li>
+<li>Sourire</li>
+<li>Faire des gestes</li>
+<li>Supprimer les tics</li>
+<li>Prendre du plaisir</li>
+</ul>
+<h2 id="oral---être-chauve-cest-le-futur"><a class="header-link" href="#oral---être-chauve-cest-le-futur"></a>Oral - Être chauve c&#39;est le futur</h2>
+<p>Dans un monde ou le capillaire est capital, unissons-nous pour changer les choses!
+et rejoignez-nous dans la chauveté. 
+Pourquoi être chauve en 2021? En 2021 dans un monde ou le réchauffement climatique est
+une problématique majeure et où préserver l&#39;environnement est primordiale. Dans un monde
+ou devons faire face, au défi, de la discrimination, devenir chauve c&#39;est supprimer
+les discriminations de coiffure.
+Dans un monde où tous va de plus en plus vite, être chauve c&#39;est garder du temps pour soi.</p>
+<p>Pour conclure, être chauve est la clé du succès.</p>
+<ul class="list">
+<li>réchauffement climatique</li>
+<li>économiser le champoin écologique</li>
+<li>gain de temps</li>
+<li>gain d&#39;argent</li>
+<li>c&#39;est la solution contre le réchauffement climatique</li>
+<li>c&#39;est pour se réunir pour avoir un point en commun</li>
+</ul>
+<h1 id="kpi"><a class="header-link" href="#kpi"></a>Kpi</h1>
+<p>Comment mieux piolter sa stratégie grâce aux KPI en période de crise</p>
+<h2 id="kpi-en-entreprises"><a class="header-link" href="#kpi-en-entreprises"></a>Kpi en entreprises</h2>
+<h3 id="performance-business---satisfaction-client"><a class="header-link" href="#performance-business---satisfaction-client"></a>Performance business - Satisfaction client</h3>
+<ul class="list">
+<li>CA</li>
+<li>Nobre d&#39;études</li>
+<li>Délais</li>
+<li>Taux de transformation</li>
+<li>Satisfaction client</li>
+<li>KPI sur la sous / co-traitance</li>
+</ul>
+<h3 id="performance-financière-et-opérationnel---cash"><a class="header-link" href="#performance-financière-et-opérationnel---cash"></a>Performance financière et opérationnel - Cash</h3>
+<ul class="list">
+<li>Taux marge</li>
+<li>Rentabilité globale</li>
+<li>Cash / trésorerie</li>
+<li>Conformité</li>
+<li>Délais sur les retours clients (factures, trésorerie)</li>
+</ul>
+<h3 id="motivation-et-engagement-des-troupes---satisfaction-staff"><a class="header-link" href="#motivation-et-engagement-des-troupes---satisfaction-staff"></a>Motivation et engagement des troupes - Satisfaction staff</h3>
+<ul class="list">
+<li>Satisfaction consultant</li>
+<li>Satisfaction du staff</li>
+<li>Turnovers VS rétention</li>
+</ul>
+<h2 id="description-du-sujet"><a class="header-link" href="#description-du-sujet"></a>Description du sujet</h2>
+<p>Comment mieux piloter sa stratégie grâce aux KPI en <strong>période de crise</strong></p>
+<h3 id="exemples"><a class="header-link" href="#exemples"></a>Exemples</h3>
+<ul class="list">
+<li>Départ du président ou du trésorier</li>
+<li>Client fidèle qui dépose le bilan</li>
+<li>Perte du soutien de l&#39;école</li>
+<li>La moitié de l&#39;effectif qui part</li>
+</ul>
+<h2 id="la-méthode-des-5-pourquoi"><a class="header-link" href="#la-méthode-des-5-pourquoi"></a>La méthode des 5 pourquoi</h2>
+<p>Outil de résolution de probleme qui permet d&#39;identifier les cause profondes d&#39;un dysfonctionnement au sein de la structure.
+En se posant successivement 5 questions commençant par <strong>Pourquoi</strong>
+KPI : CA en baisse -&gt; Moins de clients - Nouveau concurrent</p>
+<h2 id="swot"><a class="header-link" href="#swot"></a>SWOT</h2>
+<ul class="list">
+<li>Strengths</li>
+<li>Weaknesses</li>
+<li>Opportunities</li>
+<li>Threats</li>
+</ul>
+<h2 id="le-diagramme-dishikawa"><a class="header-link" href="#le-diagramme-dishikawa"></a>Le diagramme d&#39;Ishikawa</h2>
+<ul class="list">
+<li>Pointer l&#39;effet</li>
+<li>Repérer les causes sur lesquelles votre JE peut agir</li>
+<li>Dresser les causes</li>
+<li>Hiérarchiser les causes</li>
+</ul>
+<h2 id="la-méthode-qqoqcp"><a class="header-link" href="#la-méthode-qqoqcp"></a>La méthode QQOQCP</h2>
+<ul class="list">
+<li>Qui ?</li>
+<li>Quoi ?</li>
+<li>Où ?</li>
+<li>Quand ?</li>
+<li>Comment ?</li>
+<li>Pourquoi ?</li>
+</ul>
+<h2 id="pour-résumer"><a class="header-link" href="#pour-résumer"></a>Pour résumer</h2>
+<ul class="list">
+<li>La méthode des 5 pourquoi</li>
+<li>La matrice SWOT</li>
+<li>The Ecosystem Canva</li>
+<li>Le diagramme d&#39;Ishikawa</li>
+<li>La méthode QQOQCP</li>
+</ul>
+      </div>
+    </div>
+
+    <div class="clear">
+    </div>
+
+    <div id="footer">
+    </div>
+  </div>
+<script src="{% static 'home/assets/vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'home/assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'article/assets/js/main.js' %}"></script>
+    </body>
+<a href="#" class="back-to-top" style="display: inline;         position:fixed; right:15px; bottom:15px; z-index:99999;">         <i style="display: flex; align-items: center; justify-content: center;         font-size: 24px; width: 40px; height: 40px; border-radius: 4px;         background: #7cc576; color: #fff; transition: all 0.4s;"         class="icofont-simple-up"></i></a>
+</html>
