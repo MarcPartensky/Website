@@ -11,7 +11,7 @@ WORKDIR /opt/website
 COPY pyproject.toml poetry.lock package.json package-lock.json ./
 
 # Run updates
-RUN poetry update
+# RUN poetry update
 RUN poetry export -f requirements.txt --without-hashes --output requirements.txt
 RUN npm update
 RUN npm install
