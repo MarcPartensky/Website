@@ -413,6 +413,21 @@ files = [
 ]
 
 [[package]]
+name = "crispy-bootstrap4"
+version = "2023.1"
+description = "Bootstrap4 template pack for django-crispy-forms"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "crispy-bootstrap4-2023.1.tar.gz", hash = "sha256:d60e93eb6d82886c009eb174f2a4c78fdac602a1efadf0305471c84815bd973a"},
+    {file = "crispy_bootstrap4-2023.1-py3-none-any.whl", hash = "sha256:1a88e74f8d36d2dedeb40a66f246994f3ce5cd855017785d0291e741d3e7d7c2"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+django-crispy-forms = ">=2.0"
+
+[[package]]
 name = "cryptography"
 version = "41.0.5"
 description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
@@ -2090,4 +2105,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "1882089430f38e035df558776d04efff37fc2da61a83b6b25c4376b5ae96a333"
+content-hash = "79080c929952b3ae6ebbdcacf3755724525bb6ea4c369cb18bdeeaa632a0f46b"

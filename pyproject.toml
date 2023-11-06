@@ -31,6 +31,7 @@ django-cors-headers = "*"
 Pillow = "*"
 psycopg2-binary = "*"
 whitenoise = "*"
+crispy-bootstrap4 = "^2023.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
