@@ -15,7 +15,7 @@ env:
   IMAGE_NAME: website
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -49,3 +49,20 @@ jobs:
         context: .
         push: true
         tags:  marcpartensky/website:v${{ github.run_number }}.${{ steps.tag.outputs.tag }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs:
+      - build-and-push
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd ~/git/docker/services
+          docker compose -f website.yml pull
+          docker compose -f website.yml up -d

@@ -16,6 +16,8 @@ from django.views.decorators.csrf import csrf_exempt
 from home.context import home, hydrate
 from rich import print
 
+DEFAULT_LAYOUT="mixu-radar"
+
 
 def get_article_context(request):
     """Create the context of the article view."""
@@ -129,7 +131,7 @@ def read(request, title: str):
         raise Http404("This article was not found.")
 
     print("GET:", request.GET)
-    layout = request.GET.get("layout") or article.layout or "marc"
+    layout = request.GET.get("layout") or article.layout or DEFAULT_LAYOUT
     layouts = os.listdir("./node_modules/markdown-styles/layouts")
 
     article.read = datetime.datetime.now()
@@ -138,7 +140,7 @@ def read(request, title: str):
 
     if layout not in layouts:
         print(layout, "not in ", layouts)
-        return render(request, "article/403.html", dict(layouts=layouts))
+        return render(request, "article/nolayout.html", dict(article=article, layouts=layouts))
 
     if title.endswith(".md"):
         return HttpResponse(article.content, content_type="text/markdown")

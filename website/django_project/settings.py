@@ -8,6 +8,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import sys
 from urllib.parse import urlparse
 
 # import dj_database_url
@@ -36,7 +37,6 @@ HEROKU_SERVER = os.environ.get("HEROKU_SERVER")
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print("BASE_DIR:", BASE_DIR)
 
 # Allowing cors
 CORS_ORIGIN_ALLOW_ALL = False
@@ -56,6 +56,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 ALLOWED_HOSTS = [
     "localhost",
     "marcpartensky.com",
+    # "http://marcpartensky.com",
+    # "https://marcpartensky.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://marcpartensky.com",
+    "https://marcpartensky.com",
 ]
 
 # Application definition
@@ -504,5 +511,7 @@ Q_CLUSTER = {
         "db": 0,
     },
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PANDOC_API_URL = os.environ.get("PANDOC_API_URL") or "https://pandoc.marcpartensky.com"

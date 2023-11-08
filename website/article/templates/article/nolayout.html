@@ -47,12 +47,12 @@
 
 
 <div id="app">
-   <div>403</div>
+   <div>403 Error this layout is not recognized choose one of those layouts.</div>
    <div class="txt">
-      Theme Forbidden: authorized themes<span class="blink">_</span>
+      <!-- Theme Forbidden: authorized themes<span class="blink">_</span> -->
       <ul>
           {% for layout in layouts %}
-          <li>{{layout}}</li>
+          <a href=/article/{{article.title}}/{{layout}}><li>{{layout}}</li></a>
           {% endfor %}
       </ul>
    </div>

@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from django_jsonfield_backport.models import JSONField
+from django.db.models import JSONField
 
 # from . import article
 from article.models import ArticleLayout
