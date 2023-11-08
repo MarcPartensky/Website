@@ -52,7 +52,3 @@ staticfiles
 
 # selenium
 geckodriver.log
-
-# pyenv version of python
-.python-version
-
