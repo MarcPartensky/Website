@@ -506,4 +506,6 @@ Q_CLUSTER = {
     },
 }
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 PANDOC_API_URL = os.environ.get("PANDOC_API_URL") or "https://pandoc.marcpartensky.com"
