@@ -63,6 +63,6 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          cd ~/git/docker
+          cd ~/git/docker/services
           docker compose -f website.yml pull
           docker compose -f website.yml up -d
