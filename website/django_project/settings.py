@@ -56,6 +56,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 ALLOWED_HOSTS = [
     "localhost",
     "marcpartensky.com",
+    # "http://marcpartensky.com",
+    # "https://marcpartensky.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
     "http://marcpartensky.com",
     "https://marcpartensky.com",
 ]
