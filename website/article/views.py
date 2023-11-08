@@ -140,7 +140,7 @@ def read(request, title: str):
 
     if layout not in layouts:
         print(layout, "not in ", layouts)
-        return render(request, "article/403.html", dict(layouts=layouts))
+        return render(request, "article/nolayout.html", dict(article=article, layouts=layouts))
 
     if title.endswith(".md"):
         return HttpResponse(article.content, content_type="text/markdown")
