@@ -34,7 +34,7 @@ LABEL website="https://marcpartensky.com"
 # Install curl and stuff for pillow
 RUN apk update
 RUN apk add --update --virtual .tmp libffi-dev build-base linux-headers
-RUN apk add python3 curl jpeg-dev zlib-dev py3-pip
+RUN apk add python3 curl jpeg-dev zlib-dev py3-pip node
 RUN apk add shadow
 
 # Setup home user website
