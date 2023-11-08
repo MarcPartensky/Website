@@ -13,49 +13,49 @@
 
           <li class="drop-down"><a href="/">Explore</a>
             <ul>
-							{% if not user.is_authenticated %}
-								<li><a href="{% url 'login' %}">Login</a></li>
-								<li><a href="{% url 'register' %}">Register</a></li>
-							{% else %}
-								<li><a href="{% url 'logout' %}">Logout</a></li>
-							{% endif %}
-              <li class="drop-down"><a href="{% url 'demo' %}">Demos</a>
-                <ul>
-									{% for demo in demos %}
-									<li><a href="/demo/{{ demo }}">{{ demo }}</a></li>
-									{% empty %}
-									<li>No demo loaded.</li>
-									{% endfor %}
-                </ul>
-							</li>
+            				{% if not user.is_authenticated %}
+            					<li><a href="{% url 'login' %}">Login</a></li>
+            					<li><a href="{% url 'register' %}">Register</a></li>
+            				{% else %}
+            					<li><a href="{% url 'logout' %}">Logout</a></li>
+            				{% endif %}
+              <!-- <li class="drop-down"><a href="{% url 'demo' %}">Demos</a> -->
+              <!--   <ul> -->
+              <!--   					{% for demo in demos %} -->
+              <!--   					<li><a href="/demo/{{ demo }}">{{ demo }}</a></li> -->
+              <!--   					{% empty %} -->
+              <!--   					<li>No demo loaded.</li> -->
+              <!--   					{% endfor %} -->
+              <!--   </ul> -->
+              <!-- </li> -->
               <li class="drop-down"><a href="{% url 'article' %}">Articles</a>
                 <ul>
-									{% for article in articles %}
-									<li><a href="/article/{{ article }}">{{ article }}</a></li>
-									{% empty %}
-									<li>No article loaded.</li>
-									{% endfor %}
+                					{% for article in articles %}
+                					<li><a href="/article/{{ article }}">{{ article }}</a></li>
+                					{% empty %}
+                					<li>No article loaded.</li>
+                					{% endfor %}
                 </ul>
-							</li>
+              </li>
               <li><a href="{% url 'touch-typing' %}">Touch typing</a></li>
               <!-- <li><a href="% url 'planning' %">Planning</a></li> -->
               <li><a href="{% url 'first-site' %}">First site</a></li>
               <li class="drop-down"><a href="{% url 'game' %}">Games</a>
-								<ul>
-									{% for game in games %}
-									<li><a href="/game/{{ game }}">{{ game }}</a></li>
-									{% empty %}
-									<li>No game loaded.</li>
-									{% endfor %}
-								</ul>
-							</li>
-              <li><a href="{% url 'blog-home' %}">Blog</a></li>
-              <li class="drop-down"><a href="{% url 'cv' %}">Curriculum Vitae</a>
-                <ul>
-									<li><a href="/cv/1p">1 page version</a></li>
-									<li><a href="/cv/2p">2 pages version</a></li>
-                </ul>
-							</li>
+                				<ul>
+                					{% for game in games %}
+                					<li><a href="/game/{{ game }}">{{ game }}</a></li>
+                					{% empty %}
+                					<li>No game loaded.</li>
+                					{% endfor %}
+                				</ul>
+              </li>
+              <!-- <li><a href="{% url 'blog-home' %}">Blog</a></li> -->
+              <!-- <li class="drop-down"><a href="{% url 'cv' %}">Resume</a> -->
+              <!--   <ul> -->
+              <!--   					<li><a href="/cv/1p">1 page version</a></li> -->
+              <!--   					<li><a href="/cv/2p">2 pages version</a></li> -->
+              <!--   </ul> -->
+              <!-- </li> -->
               <!-- <li class="drop-down"><a href="#">Projects</a> -->
               <!--   <ul> -->
               <!--     <li><a href="#">Not</a></li> -->
