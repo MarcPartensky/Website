@@ -64,5 +64,5 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd ~/git/docker
-          docker-compose -f website.yml pull
-          docker-compose -f website.yml up -d
+          docker compose -f website.yml pull
+          docker compose -f website.yml up -d
