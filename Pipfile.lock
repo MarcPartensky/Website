@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "00c1e5370bb7fdcc4e8b5361ac4cf41b142a4b25db7c4402b3f4c3806d4f0224"
+            "sha256": "168e8c92e551b0444c20f6738b3502d2ea9f21eb4a9bd254c5a69f4304039fe2"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -749,11 +749,11 @@
         },
         "twisted": {
             "hashes": [
-                "sha256:a047990f57dfae1e0bd2b7df2526d4f16dcdc843774dc108b78c52f2a5f13680",
-                "sha256:f9f7a91f94932477a9fc3b169d57f54f96c6e74a23d78d9ce54039a7f48928a2"
+                "sha256:32acbd40a94f5f46e7b42c109bfae2b302250945561783a8b7a059048f2d4d31",
+                "sha256:86c55f712cc5ab6f6d64e02503352464f0400f66d4f079096d744080afcccbd0"
             ],
             "index": "pypi",
-            "version": "==22.4.0"
+            "version": "==22.10.0"
         },
         "twisted-iocpsupport": {
             "hashes": [
